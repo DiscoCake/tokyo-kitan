@@ -119,7 +119,8 @@ collects vocabulary — all wrapped in a ~12-scene mystery story set in Tokyo.
 
 - Vanilla JS, no framework, no build step — keep it that way unless the user asks
 - All UI strings in Japanese with ruby; English only in learner-facing feedback/translations
-- Test by running `npm start` and playing at least one choice + one typed-input scene
+- Use `npm run dev` during development — `node --watch` auto-restarts on `server.js` changes. `npm start` is for production only.
+- Test by playing at least one choice + one typed-input scene
 - Canonical GitHub remote: https://github.com/DiscoCake/tokyo-kitan — push all changes here
 
 ## File Change Discipline
