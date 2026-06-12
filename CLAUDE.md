@@ -6,7 +6,16 @@ collects vocabulary — all wrapped in a ~12-scene mystery story set in Tokyo.
 
 ## Architecture
 
-- `public/index.html` — the entire frontend (single file, vanilla JS, no build step)
+- `public/index.html` — HTML markup only (~90 lines); no inline script or style
+- `public/css/style.css` — all styles extracted here
+- `public/js/` — ES modules (no build step, `<script type="module">`):
+  - `state.js` — `S` object, `SAVE_KEY`, `SCENE_NUMS`, save/load/clear
+  - `images.js` — `TOKYO_IMAGES` map, `pickImage(query)`
+  - `tts.js` — TTS controller, Web Speech API, audio button listeners
+  - `ambience.js` — synthesized brown-noise ambience, ambience button
+  - `ui.js` — panels, vocab chips, gallery, cinematic, scene helpers
+  - `game.js` — `generate()`, `renderScene()`, `renderChoices()`, story bible `SYSTEM` prompt
+  - `main.js` — entry point: scale, furigana, IME, start/resume/restart, ending buttons
 - `server.js` — minimal Express proxy; its ONLY job is keeping `ANTHROPIC_API_KEY` server-side
   and forwarding `/api/scene` → Anthropic Messages API
 - No database yet. Game state lives in browser memory + localStorage saves

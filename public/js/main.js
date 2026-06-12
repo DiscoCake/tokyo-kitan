@@ -1,0 +1,125 @@
+import { S, SCENE_NUMS, loadGame, clearSave } from './state.js';
+import { updateVocabBadge, renderItems, openVocabPanel, openGalleryPanel } from './ui.js';
+import { generate, renderScene } from './game.js';
+
+// Side-effect imports — each module wires its own event listeners on load
+import './tts.js';
+import './ambience.js';
+
+/* ── SCALE ── */
+function setScale(v) {
+  S.scale = Math.min(2.0, Math.max(0.5, Math.round(v * 10) / 10));
+  document.documentElement.style.setProperty('--s', S.scale);
+  const pad = Math.max(0.5, 2 / S.scale);
+  document.getElementById('app').style.padding = `${pad}rem ${pad * 1.1}rem ${4 / S.scale}rem`;
+  document.getElementById('scale-label').textContent = Math.round(S.scale * 100) + '%';
+}
+document.getElementById('scale-up').onclick   = () => setScale(S.scale + 0.1);
+document.getElementById('scale-down').onclick = () => setScale(S.scale - 0.1);
+window.addEventListener('wheel', e => {
+  if (e.ctrlKey || e.metaKey) { e.preventDefault(); setScale(S.scale + (e.deltaY < 0 ? 0.1 : -0.1)); }
+}, { passive: false });
+
+/* ── FURIGANA ── */
+function setFurigana(on) {
+  S.furigana = on;
+  document.body.classList.toggle('hide-furigana', !on);
+  document.getElementById('furigana-btn').classList.toggle('active', on);
+  document.getElementById('setup-furigana-btn').classList.toggle('active', on);
+}
+document.getElementById('furigana-btn').onclick       = () => setFurigana(!S.furigana);
+document.getElementById('setup-furigana-btn').onclick = () => setFurigana(!S.furigana);
+
+/* ── TOPBAR TOGGLES ── */
+document.getElementById('translation-btn').onclick = function() {
+  const b = document.getElementById('translation-box');
+  const v = b.style.display !== 'none';
+  b.style.display = v ? 'none' : 'block';
+  this.classList.toggle('active', !v);
+  if (!v) { S.peeks++; }
+};
+document.getElementById('grammar-btn').onclick = function() {
+  const b = document.getElementById('grammar-box');
+  const v = b.style.display !== 'none';
+  b.style.display = v ? 'none' : 'block';
+  this.classList.toggle('active', !v);
+};
+
+/* ── TYPED ANSWER + WANAKANA IME ── */
+const answerInput = document.getElementById('answer-input');
+let imeBound = false;
+function bindIME() {
+  if (!imeBound && window.wanakana) { wanakana.bind(answerInput, { IMEMode: true }); imeBound = true; }
+}
+function unbindIME() {
+  if (imeBound && window.wanakana) { wanakana.unbind(answerInput); imeBound = false; }
+}
+bindIME();
+document.getElementById('ime-toggle').onclick = function() {
+  if (imeBound) { unbindIME(); this.classList.remove('active'); }
+  else { bindIME(); this.classList.add('active'); }
+  answerInput.focus();
+};
+document.getElementById('answer-send').onclick = submitAnswer;
+answerInput.addEventListener('keydown', e => {
+  if (e.key === 'Enter' && !e.isComposing) { e.preventDefault(); submitAnswer(); }
+});
+function submitAnswer() {
+  const val = answerInput.value.trim();
+  if (!val || S.loading) return;
+  const d = document.createElement('div');
+  d.innerHTML = S.currentScene?.location_jp || '';
+  S.history.push({ num: S.sceneNum, loc: d.textContent, choice: `(typed) ${val}`, type: 'input' });
+  generate({ kind: 'answer', value: val });
+}
+
+/* ── RESET ── */
+function resetGame() {
+  S.history = []; S.sceneNum = 0; S.currentScene = null;
+  S.mysteryMemo = ''; S.vocabLog = []; S.grammarSeen = [];
+  S.items = []; S.gallery = []; S.peeks = 0;
+  updateVocabBadge(); renderItems(false);
+  document.getElementById('history-trail').style.display = 'none';
+  clearSave();
+}
+
+/* ── START / RESUME ── */
+document.getElementById('start-btn').onclick = function() {
+  const n = document.getElementById('name-input').value.trim();
+  if (n) S.playerName = n;
+  clearSave();
+  document.getElementById('setup-screen').style.display = 'none';
+  document.getElementById('game-screen').style.display = 'block';
+  generate(null);
+};
+document.getElementById('resume-btn').onclick = function() {
+  const snap = loadGame();
+  if (!snap) return;
+  Object.assign(S, snap);
+  updateVocabBadge();
+  document.getElementById('setup-screen').style.display = 'none';
+  document.getElementById('game-screen').style.display = 'block';
+  document.getElementById('scene-tag').innerHTML =
+    '<ruby>場面<rt>ばめん</rt></ruby> ' + (SCENE_NUMS[S.sceneNum - 1] || S.sceneNum);
+  if (S.currentScene) renderScene(S.currentScene);
+};
+
+/* ── RESTART ── */
+document.getElementById('restart-btn').onclick = function() {
+  if (!confirm('最初からやり直しますか？単語帳もリセットされます。')) return;
+  resetGame();
+  generate(null);
+};
+
+/* ── ENDING SCREEN ── */
+document.getElementById('ending-vocab-btn').onclick = openVocabPanel;
+document.getElementById('ending-gallery-btn').onclick = openGalleryPanel;
+document.getElementById('ending-restart-btn').onclick = () => {
+  resetGame();
+  document.getElementById('ending-screen').style.display = 'none';
+  document.getElementById('game-screen').style.display = 'block';
+  generate(null);
+};
+
+/* ── INIT ── */
+if (loadGame()) document.getElementById('resume-btn').style.display = 'inline-flex';

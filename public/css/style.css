@@ -1,0 +1,371 @@
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bg: #0d0d1a; --bg2: #13132a; --bg3: #1a1a35;
+  --border: rgba(180,140,255,0.10); --border2: rgba(180,140,255,0.24);
+  --text: #eeeaf8; --text2: #9b94c0; --text3: #534e72;
+  --pink: #ff6fa8; --pink2: #c44c7e;
+  --cyan: #4fd8e8; --cyan2: #279aaa;
+  --yellow: #ffe066; --purple: #b97fff; --purple2: #7a4fbf;
+  --s: 1;
+}
+
+html { font-size: calc(18px * var(--s)); }
+body {
+  font-family: "Noto Sans JP", "Hiragino Sans", sans-serif;
+  background: var(--bg); color: var(--text);
+  min-height: 100vh; margin: 0; padding: 0;
+}
+#app { width: 100%; padding: 1.5rem 2rem 4rem; }
+
+body.hide-furigana rt { display: none !important; }
+ruby { display: inline-ruby; }
+rt { font-family: "Noto Sans JP", sans-serif; font-size: 0.52rem; color: var(--pink); letter-spacing: 0.01em; }
+
+#scene-text, .choice-btn, .setup-sub, #scene-tag,
+#hero-location, #history-trail { color: var(--cyan); }
+.setup-title, .game-title { color: var(--pink); }
+
+/* ── SCALE BAR ── */
+#scale-bar {
+  position: fixed; bottom: 1rem; right: 1rem;
+  display: flex; align-items: center; gap: 0.3rem;
+  background: var(--bg2); border: 1px solid var(--border2);
+  border-radius: 99px; padding: 0.25rem 0.45rem; z-index: 200;
+}
+.scale-btn {
+  width: 1.6rem; height: 1.6rem; background: transparent;
+  border: 1px solid var(--border); border-radius: 50%;
+  color: var(--text2); cursor: pointer; font-size: 1rem;
+  display: flex; align-items: center; justify-content: center;
+  transition: border-color 0.12s, color 0.12s; padding: 0; font-family: inherit;
+}
+.scale-btn:hover { border-color: var(--cyan2); color: var(--cyan); }
+#scale-label { font-size: 0.58rem; color: var(--text3); min-width: 2rem; text-align: center; }
+
+/* ── SETUP ── */
+#setup-screen { display: flex; flex-direction: column; gap: 2rem; padding-top: 3rem; max-width: 600px; }
+.setup-title { font-family: "Noto Serif JP", serif; font-size: 2.8rem; font-weight: 500; letter-spacing: 0.04em; line-height: 3.4rem; }
+.setup-sub { font-size: 0.95rem; line-height: 2.6; margin-top: 0.5rem; }
+.setup-furigana-row { margin-top: 0.8rem; }
+.setup-field label { display: block; font-size: 0.62rem; color: var(--text3); letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 0.45rem; }
+.setup-field input {
+  font-family: "Noto Sans JP", sans-serif; font-size: 1rem;
+  padding: 0.55rem 0.85rem; background: var(--bg2);
+  border: 1px solid var(--border2); border-radius: 8px;
+  color: var(--text); width: 100%; max-width: 280px; outline: none;
+  transition: border-color 0.15s, box-shadow 0.15s;
+}
+.setup-field input:focus { border-color: var(--pink2); box-shadow: 0 0 0 3px rgba(255,111,168,0.12); }
+#setup-buttons { display: flex; gap: 0.7rem; align-items: center; flex-wrap: wrap; }
+#start-btn, #resume-btn {
+  font-family: "Noto Sans JP", sans-serif; font-size: 0.9rem;
+  border: none; border-radius: 8px; color: #fff; cursor: pointer;
+  letter-spacing: 0.06em; transition: background 0.15s, transform 0.1s;
+  line-height: 2.5; display: inline-flex; align-items: center; padding: 0 1.6rem;
+}
+#start-btn { background: var(--pink2); }
+#start-btn:hover { background: var(--pink); transform: translateY(-1px); }
+#resume-btn { background: var(--purple2); display: none; }
+#resume-btn:hover { background: var(--purple); transform: translateY(-1px); }
+
+/* ── CTRL BTNS ── */
+.ctrl-btn {
+  font-family: "Noto Sans JP", sans-serif; font-size: 0.68rem;
+  padding: 0.28rem 0.8rem; background: transparent;
+  border: 1px solid var(--border); border-radius: 99px;
+  color: var(--text2); cursor: pointer; letter-spacing: 0.05em;
+  white-space: nowrap; transition: border-color 0.12s, color 0.12s;
+}
+.ctrl-btn:hover { border-color: var(--border2); color: var(--text); }
+.ctrl-btn.active { border-color: var(--cyan2); color: var(--cyan); }
+.ctrl-btn .badge {
+  display: inline-block; background: var(--pink2); color: #fff;
+  font-size: 0.5rem; border-radius: 99px; padding: 0 0.35rem;
+  margin-left: 0.3rem; vertical-align: middle;
+}
+
+/* ── GAME ── */
+#game-screen { display: none; }
+#topbar {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0.9rem 0 1.2rem; border-bottom: 1px solid var(--border);
+  margin-bottom: 1.5rem; gap: 1rem;
+}
+#topbar-left { display: flex; align-items: baseline; gap: 0.7rem; flex-shrink: 0; }
+.game-title { font-family: "Noto Serif JP", serif; font-size: 1.15rem; letter-spacing: 0.1em; line-height: 2; }
+#scene-tag { font-size: 0.68rem; letter-spacing: 0.07em; }
+#topbar-right { display: flex; gap: 0.45rem; flex-wrap: wrap; justify-content: flex-end; }
+
+/* ── HERO ── */
+#scene-hero {
+  width: 100%; height: 13rem; border-radius: 12px 12px 0 0;
+  overflow: hidden; position: relative; background: var(--bg3);
+}
+#hero-img { width: 100%; height: 100%; object-fit: cover; transition: opacity 0.7s ease; opacity: 0; }
+#hero-img.loaded { opacity: 1; }
+#hero-skeleton {
+  position: absolute; inset: 0;
+  background: linear-gradient(90deg, var(--bg3) 25%, var(--bg2) 50%, var(--bg3) 75%);
+  background-size: 200% 100%; animation: shimmer 1.4s infinite;
+}
+@keyframes shimmer { 0% { background-position: 200% 0; } 100% { background-position: -200% 0; } }
+#hero-overlay {
+  position: absolute; inset: 0;
+  background: linear-gradient(to bottom, rgba(13,13,26,0.05) 40%, rgba(13,13,26,0.75) 100%);
+  pointer-events: none;
+}
+#hero-location {
+  position: absolute; bottom: 0.85rem; left: 1.1rem;
+  font-size: 0.8rem; letter-spacing: 0.09em; line-height: 2;
+  text-shadow: 0 1px 8px rgba(0,0,0,0.8);
+  display: flex; align-items: center; gap: 0.4rem;
+}
+.loc-dot { width: 5px; height: 5px; background: var(--cyan); border-radius: 50%; flex-shrink: 0; }
+
+/* ── AUDIO BAR (TTS) ── */
+#audio-bar {
+  display: flex; align-items: center; gap: 0.6rem;
+  padding: 0.6rem 0.9rem; margin-bottom: 1rem;
+  background: var(--bg3); border: 1px solid var(--border);
+  border-radius: 10px;
+}
+.audio-btn {
+  width: 1.9rem; height: 1.9rem; border-radius: 50%;
+  background: transparent; border: 1px solid var(--border2);
+  color: var(--cyan); cursor: pointer; font-size: 0.75rem;
+  display: flex; align-items: center; justify-content: center;
+  transition: border-color 0.15s, color 0.15s; flex-shrink: 0; padding: 0;
+  font-family: inherit;
+}
+.audio-btn:hover { border-color: var(--cyan); }
+.audio-btn.speaking { color: var(--pink); border-color: var(--pink2); animation: ttspulse 1s infinite; }
+@keyframes ttspulse { 0%,100% { transform: scale(1); } 50% { transform: scale(1.08); } }
+#audio-progress-wrap {
+  flex: 1; height: 0.5rem; cursor: pointer;
+  display: flex; align-items: center;
+}
+#audio-progress-track {
+  width: 100%; height: 3px; border-radius: 99px;
+  background: var(--border2); position: relative; overflow: visible;
+}
+#audio-progress-fill {
+  position: absolute; left: 0; top: 0; bottom: 0; width: 0%;
+  background: linear-gradient(90deg, var(--pink), var(--purple));
+  border-radius: 99px; transition: width 0.2s linear;
+}
+#audio-progress-fill::after {
+  content: ''; position: absolute; right: -4px; top: 50%;
+  transform: translateY(-50%);
+  width: 9px; height: 9px; border-radius: 50%;
+  background: var(--pink); box-shadow: 0 0 8px rgba(255,111,168,0.6);
+}
+#audio-speed {
+  font-family: "Noto Sans JP", sans-serif; font-size: 0.6rem;
+  background: transparent; border: 1px solid var(--border);
+  border-radius: 99px; color: var(--text2); cursor: pointer;
+  padding: 0.2rem 0.6rem; min-width: 3.2rem; text-align: center;
+  transition: border-color 0.12s, color 0.12s; flex-shrink: 0;
+}
+#audio-speed:hover { border-color: var(--cyan2); color: var(--cyan); }
+
+/* ── SCENE CARD ── */
+#scene-card {
+  background: var(--bg2); border: 1px solid var(--border); border-top: none;
+  border-radius: 0 0 12px 12px;
+  padding: 1.5rem 1.75rem 1.5rem; margin-bottom: 1rem;
+}
+#scene-text { font-family: "Noto Serif JP", serif; font-size: 1.05rem; line-height: 2.6; }
+
+#feedback-box {
+  display: none; background: rgba(255,224,102,0.06);
+  border: 1px solid rgba(255,224,102,0.25); border-radius: 10px;
+  padding: 0.8rem 1.1rem; margin-bottom: 1rem;
+  font-size: 0.82rem; color: var(--yellow); line-height: 1.9;
+}
+#feedback-box .fb-label { font-size: 0.6rem; letter-spacing: 0.15em; opacity: 0.7; display: block; margin-bottom: 0.3rem; }
+
+#translation-box {
+  font-size: 0.82rem; color: var(--text2); font-style: italic;
+  border-top: 1px solid var(--border);
+  margin-top: 1.1rem; padding-top: 0.9rem; line-height: 1.9; display: none;
+}
+#grammar-box {
+  font-size: 0.82rem; color: var(--text2);
+  border-top: 1px solid var(--border);
+  margin-top: 0.9rem; padding-top: 0.9rem; line-height: 1.9; display: none;
+}
+#grammar-box strong { color: var(--yellow); font-weight: 500; }
+
+/* ── ITEMS (inventory) ── */
+#items-row {
+  display: none; flex-wrap: wrap; gap: 0.4rem; align-items: center;
+  margin-bottom: 0.8rem;
+}
+#items-label { font-size: 0.6rem; color: var(--text3); letter-spacing: 0.12em; margin-right: 0.3rem; }
+.item-chip {
+  font-family: "Noto Serif JP", serif; font-size: 0.78rem;
+  background: rgba(255,224,102,0.07); border: 1px solid rgba(255,224,102,0.3);
+  border-radius: 99px; padding: 0.2rem 0.8rem;
+  color: var(--yellow); line-height: 1.9;
+}
+.item-chip.new { animation: itemglow 1.2s ease 2; }
+@keyframes itemglow { 0%,100% { box-shadow: none; } 50% { box-shadow: 0 0 12px rgba(255,224,102,0.5); } }
+
+/* ── VOCAB CHIPS ── */
+#vocab-row { display: flex; flex-wrap: wrap; gap: 0.45rem; margin-bottom: 1.1rem; }
+.vocab-chip {
+  font-family: "Noto Serif JP", serif; font-size: 0.85rem;
+  background: var(--bg2); border: 1px solid var(--border2);
+  border-radius: 99px; padding: 0.3rem 0.9rem;
+  color: var(--purple); cursor: pointer; line-height: 1.9;
+  transition: border-color 0.15s, background 0.15s, color 0.15s;
+}
+.vocab-chip:hover { border-color: var(--purple); background: var(--bg3); }
+.vocab-chip.revealed {
+  color: var(--cyan); border-color: var(--cyan2); cursor: default;
+  font-family: "Noto Sans JP", sans-serif; font-size: 0.72rem;
+}
+.vocab-chip.revealed .meaning { color: var(--text2); }
+
+/* ── CHOICES / INPUT ── */
+#choices { display: flex; flex-direction: column; gap: 0.55rem; margin-bottom: 1.25rem; }
+.choice-btn {
+  font-family: "Noto Serif JP", serif; font-size: 1rem; line-height: 2.2;
+  text-align: left; cursor: pointer;
+  background: var(--bg2); border: 1px solid var(--border); border-radius: 10px;
+  padding: 0.7rem 1.2rem 0.7rem 0.9rem;
+  display: flex; align-items: center; gap: 0.8rem;
+  transition: border-color 0.15s, background 0.15s; position: relative; overflow: hidden;
+}
+.choice-btn::before {
+  content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 3px;
+  background: linear-gradient(180deg, var(--pink), var(--purple));
+  opacity: 0; transition: opacity 0.15s;
+}
+.choice-btn:hover { border-color: var(--border2); background: var(--bg3); }
+.choice-btn:hover::before { opacity: 1; }
+.choice-num { font-family: "Noto Sans JP", sans-serif; font-size: 0.6rem; color: var(--text3); min-width: 0.9rem; text-align: center; flex-shrink: 0; }
+
+#answer-row { display: none; gap: 0.6rem; margin-bottom: 0.5rem; }
+#answer-input {
+  flex: 1; font-family: "Noto Serif JP", serif; font-size: 1rem;
+  padding: 0.7rem 1rem; background: var(--bg2);
+  border: 1px solid var(--border2); border-radius: 10px;
+  color: var(--cyan); outline: none; line-height: 1.8;
+  transition: border-color 0.15s, box-shadow 0.15s;
+}
+#answer-input:focus { border-color: var(--pink2); box-shadow: 0 0 0 3px rgba(255,111,168,0.1); }
+#answer-input::placeholder { color: var(--text3); }
+#answer-send {
+  font-family: "Noto Sans JP", sans-serif; font-size: 0.85rem;
+  background: var(--pink2); border: none; border-radius: 10px;
+  color: #fff; cursor: pointer; padding: 0 1.4rem;
+  transition: background 0.15s; flex-shrink: 0;
+}
+#answer-send:hover { background: var(--pink); }
+#input-hint { display: none; font-size: 0.65rem; color: var(--text3); margin: 0 0 1rem; letter-spacing: 0.05em; }
+
+/* ── PANELS (vocab + gallery) ── */
+.panel {
+  display: none; position: fixed; inset: 0; z-index: 500;
+  background: rgba(13,13,26,0.92); backdrop-filter: blur(4px);
+  padding: 3rem 2rem; overflow-y: auto;
+}
+.panel-inner { max-width: 620px; margin: 0 auto; }
+.panel h2 {
+  font-family: "Noto Serif JP", serif; font-size: 1.4rem;
+  color: var(--pink); letter-spacing: 0.1em; line-height: 2.2;
+  margin-bottom: 1rem;
+}
+.vlog-entry {
+  display: flex; align-items: baseline; gap: 0.9rem;
+  padding: 0.6rem 0; border-bottom: 1px solid var(--border);
+  font-size: 0.9rem;
+}
+.vlog-word { font-family: "Noto Serif JP", serif; color: var(--cyan); min-width: 5.5rem; }
+.vlog-reading { color: var(--pink); font-size: 0.72rem; min-width: 5rem; }
+.vlog-meaning { color: var(--text2); font-size: 0.75rem; }
+.panel-actions { display: flex; gap: 0.6rem; margin-top: 1.4rem; }
+.panel-btn {
+  font-family: "Noto Sans JP", sans-serif; font-size: 0.75rem;
+  background: var(--bg3); border: 1px solid var(--border2);
+  border-radius: 8px; color: var(--text); cursor: pointer;
+  padding: 0.5rem 1.2rem; transition: border-color 0.15s;
+}
+.panel-btn:hover { border-color: var(--cyan2); }
+.panel-empty { color: var(--text3); font-size: 0.8rem; padding: 1.5rem 0; }
+
+/* gallery grid */
+#gallery-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 0.8rem; }
+.gallery-card { border-radius: 10px; overflow: hidden; border: 1px solid var(--border); background: var(--bg2); }
+.gallery-card img { width: 100%; height: 90px; object-fit: cover; display: block; }
+.gallery-card .g-loc {
+  font-family: "Noto Serif JP", serif; font-size: 0.72rem; color: var(--cyan);
+  padding: 0.4rem 0.6rem; line-height: 1.9;
+}
+.gallery-card .g-num { font-size: 0.55rem; color: var(--text3); padding: 0 0.6rem 0.4rem; }
+
+/* ── ENDING ── */
+#ending-screen { display: none; padding-top: 2rem; max-width: 620px; margin: 0 auto; }
+#ending-screen h2 {
+  font-family: "Noto Serif JP", serif; font-size: 2rem;
+  color: var(--pink); letter-spacing: 0.12em; line-height: 2.6;
+  margin-bottom: 1.2rem; text-align: center;
+}
+.summary-stat {
+  display: flex; justify-content: space-between; align-items: baseline;
+  padding: 0.7rem 0; border-bottom: 1px solid var(--border);
+  font-size: 0.85rem; color: var(--text2);
+}
+.summary-stat .val { color: var(--cyan); font-size: 1.1rem; font-family: "Noto Serif JP", serif; }
+#ending-actions { display: flex; gap: 0.6rem; margin-top: 1.6rem; justify-content: center; flex-wrap: wrap; }
+
+/* ── CINEMATIC ── */
+#cinematic {
+  position: fixed; inset: 0; z-index: 1000; background: #000;
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center; gap: 1.5rem;
+  pointer-events: none; opacity: 0; transition: opacity 0.35s ease;
+}
+#cinematic.visible { opacity: 1; pointer-events: all; }
+#cin-location {
+  font-family: "Noto Serif JP", serif; font-size: 2.2rem; font-weight: 500;
+  color: var(--pink); letter-spacing: 0.18em;
+  opacity: 0; transform: translateY(12px);
+  transition: opacity 0.5s ease 0.3s, transform 0.5s ease 0.3s;
+  text-align: center; text-shadow: 0 0 40px rgba(255,111,168,0.4);
+}
+#cinematic.visible #cin-location { opacity: 1; transform: translateY(0); }
+#cin-subtitle {
+  font-family: "Noto Sans JP", sans-serif; font-size: 0.72rem;
+  color: var(--text3); letter-spacing: 0.22em;
+  opacity: 0; transition: opacity 0.5s ease 0.55s;
+}
+#cinematic.visible #cin-subtitle { opacity: 1; }
+#cin-bar {
+  width: 120px; height: 1px; background: var(--border);
+  position: relative; overflow: hidden; opacity: 0;
+  transition: opacity 0.3s ease 0.4s;
+}
+#cinematic.visible #cin-bar { opacity: 1; }
+#cin-bar::after {
+  content: ''; position: absolute; top: 0; left: -100%; width: 100%; height: 100%;
+  background: linear-gradient(90deg, transparent, var(--pink), var(--purple), transparent);
+  animation: barswipe 1.4s ease-in-out infinite;
+}
+@keyframes barswipe { 0% { left: -100%; } 100% { left: 100%; } }
+#cin-top, #cin-bottom {
+  position: fixed; left: 0; right: 0; height: 0;
+  background: #000; z-index: 999; transition: height 0.35s ease;
+}
+#cin-top { top: 0; } #cin-bottom { bottom: 0; }
+body.cinematic-active #cin-top, body.cinematic-active #cin-bottom { height: 2.5rem; }
+
+@keyframes fadein { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: translateY(0); } }
+.fadein { animation: fadein 0.4s ease forwards; }
+
+#history-trail {
+  font-size: 0.68rem; line-height: 2; margin-bottom: 0.9rem;
+  padding-left: 0.65rem; border-left: 2px solid var(--border);
+}

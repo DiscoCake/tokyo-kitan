@@ -1,0 +1,1195 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>東京奇譚</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;500&family=Noto+Sans+JP:wght@400;500&display=swap" rel="stylesheet" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/wanakana/5.3.1/wanakana.min.js"></script>
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bg: #0d0d1a; --bg2: #13132a; --bg3: #1a1a35;
+  --border: rgba(180,140,255,0.10); --border2: rgba(180,140,255,0.24);
+  --text: #eeeaf8; --text2: #9b94c0; --text3: #534e72;
+  --pink: #ff6fa8; --pink2: #c44c7e;
+  --cyan: #4fd8e8; --cyan2: #279aaa;
+  --yellow: #ffe066; --purple: #b97fff; --purple2: #7a4fbf;
+  --s: 1;
+}
+
+html { font-size: calc(18px * var(--s)); }
+body {
+  font-family: "Noto Sans JP", "Hiragino Sans", sans-serif;
+  background: var(--bg); color: var(--text);
+  min-height: 100vh; margin: 0; padding: 0;
+}
+#app { width: 100%; padding: 1.5rem 2rem 4rem; }
+
+body.hide-furigana rt { display: none !important; }
+ruby { display: inline-ruby; }
+rt { font-family: "Noto Sans JP", sans-serif; font-size: 0.52rem; color: var(--pink); letter-spacing: 0.01em; }
+
+#scene-text, .choice-btn, .setup-sub, #scene-tag,
+#hero-location, #history-trail { color: var(--cyan); }
+.setup-title, .game-title { color: var(--pink); }
+
+/* ── SCALE BAR ── */
+#scale-bar {
+  position: fixed; bottom: 1rem; right: 1rem;
+  display: flex; align-items: center; gap: 0.3rem;
+  background: var(--bg2); border: 1px solid var(--border2);
+  border-radius: 99px; padding: 0.25rem 0.45rem; z-index: 200;
+}
+.scale-btn {
+  width: 1.6rem; height: 1.6rem; background: transparent;
+  border: 1px solid var(--border); border-radius: 50%;
+  color: var(--text2); cursor: pointer; font-size: 1rem;
+  display: flex; align-items: center; justify-content: center;
+  transition: border-color 0.12s, color 0.12s; padding: 0; font-family: inherit;
+}
+.scale-btn:hover { border-color: var(--cyan2); color: var(--cyan); }
+#scale-label { font-size: 0.58rem; color: var(--text3); min-width: 2rem; text-align: center; }
+
+/* ── SETUP ── */
+#setup-screen { display: flex; flex-direction: column; gap: 2rem; padding-top: 3rem; max-width: 600px; }
+.setup-title { font-family: "Noto Serif JP", serif; font-size: 2.8rem; font-weight: 500; letter-spacing: 0.04em; line-height: 3.4rem; }
+.setup-sub { font-size: 0.95rem; line-height: 2.6; margin-top: 0.5rem; }
+.setup-furigana-row { margin-top: 0.8rem; }
+.setup-field label { display: block; font-size: 0.62rem; color: var(--text3); letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 0.45rem; }
+.setup-field input {
+  font-family: "Noto Sans JP", sans-serif; font-size: 1rem;
+  padding: 0.55rem 0.85rem; background: var(--bg2);
+  border: 1px solid var(--border2); border-radius: 8px;
+  color: var(--text); width: 100%; max-width: 280px; outline: none;
+  transition: border-color 0.15s, box-shadow 0.15s;
+}
+.setup-field input:focus { border-color: var(--pink2); box-shadow: 0 0 0 3px rgba(255,111,168,0.12); }
+#setup-buttons { display: flex; gap: 0.7rem; align-items: center; flex-wrap: wrap; }
+#start-btn, #resume-btn {
+  font-family: "Noto Sans JP", sans-serif; font-size: 0.9rem;
+  border: none; border-radius: 8px; color: #fff; cursor: pointer;
+  letter-spacing: 0.06em; transition: background 0.15s, transform 0.1s;
+  line-height: 2.5; display: inline-flex; align-items: center; padding: 0 1.6rem;
+}
+#start-btn { background: var(--pink2); }
+#start-btn:hover { background: var(--pink); transform: translateY(-1px); }
+#resume-btn { background: var(--purple2); display: none; }
+#resume-btn:hover { background: var(--purple); transform: translateY(-1px); }
+
+/* ── CTRL BTNS ── */
+.ctrl-btn {
+  font-family: "Noto Sans JP", sans-serif; font-size: 0.68rem;
+  padding: 0.28rem 0.8rem; background: transparent;
+  border: 1px solid var(--border); border-radius: 99px;
+  color: var(--text2); cursor: pointer; letter-spacing: 0.05em;
+  white-space: nowrap; transition: border-color 0.12s, color 0.12s;
+}
+.ctrl-btn:hover { border-color: var(--border2); color: var(--text); }
+.ctrl-btn.active { border-color: var(--cyan2); color: var(--cyan); }
+.ctrl-btn .badge {
+  display: inline-block; background: var(--pink2); color: #fff;
+  font-size: 0.5rem; border-radius: 99px; padding: 0 0.35rem;
+  margin-left: 0.3rem; vertical-align: middle;
+}
+
+/* ── GAME ── */
+#game-screen { display: none; }
+#topbar {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0.9rem 0 1.2rem; border-bottom: 1px solid var(--border);
+  margin-bottom: 1.5rem; gap: 1rem;
+}
+#topbar-left { display: flex; align-items: baseline; gap: 0.7rem; flex-shrink: 0; }
+.game-title { font-family: "Noto Serif JP", serif; font-size: 1.15rem; letter-spacing: 0.1em; line-height: 2; }
+#scene-tag { font-size: 0.68rem; letter-spacing: 0.07em; }
+#topbar-right { display: flex; gap: 0.45rem; flex-wrap: wrap; justify-content: flex-end; }
+
+/* ── HERO ── */
+#scene-hero {
+  width: 100%; height: 13rem; border-radius: 12px 12px 0 0;
+  overflow: hidden; position: relative; background: var(--bg3);
+}
+#hero-img { width: 100%; height: 100%; object-fit: cover; transition: opacity 0.7s ease; opacity: 0; }
+#hero-img.loaded { opacity: 1; }
+#hero-skeleton {
+  position: absolute; inset: 0;
+  background: linear-gradient(90deg, var(--bg3) 25%, var(--bg2) 50%, var(--bg3) 75%);
+  background-size: 200% 100%; animation: shimmer 1.4s infinite;
+}
+@keyframes shimmer { 0% { background-position: 200% 0; } 100% { background-position: -200% 0; } }
+#hero-overlay {
+  position: absolute; inset: 0;
+  background: linear-gradient(to bottom, rgba(13,13,26,0.05) 40%, rgba(13,13,26,0.75) 100%);
+  pointer-events: none;
+}
+#hero-location {
+  position: absolute; bottom: 0.85rem; left: 1.1rem;
+  font-size: 0.8rem; letter-spacing: 0.09em; line-height: 2;
+  text-shadow: 0 1px 8px rgba(0,0,0,0.8);
+  display: flex; align-items: center; gap: 0.4rem;
+}
+.loc-dot { width: 5px; height: 5px; background: var(--cyan); border-radius: 50%; flex-shrink: 0; }
+/* ── AUDIO BAR (TTS) ── */
+#audio-bar {
+  display: flex; align-items: center; gap: 0.6rem;
+  padding: 0.6rem 0.9rem; margin-bottom: 1rem;
+  background: var(--bg3); border: 1px solid var(--border);
+  border-radius: 10px;
+}
+.audio-btn {
+  width: 1.9rem; height: 1.9rem; border-radius: 50%;
+  background: transparent; border: 1px solid var(--border2);
+  color: var(--cyan); cursor: pointer; font-size: 0.75rem;
+  display: flex; align-items: center; justify-content: center;
+  transition: border-color 0.15s, color 0.15s; flex-shrink: 0; padding: 0;
+  font-family: inherit;
+}
+.audio-btn:hover { border-color: var(--cyan); }
+.audio-btn.speaking { color: var(--pink); border-color: var(--pink2); animation: ttspulse 1s infinite; }
+@keyframes ttspulse { 0%,100% { transform: scale(1); } 50% { transform: scale(1.08); } }
+#audio-progress-wrap {
+  flex: 1; height: 0.5rem; cursor: pointer;
+  display: flex; align-items: center;
+}
+#audio-progress-track {
+  width: 100%; height: 3px; border-radius: 99px;
+  background: var(--border2); position: relative; overflow: visible;
+}
+#audio-progress-fill {
+  position: absolute; left: 0; top: 0; bottom: 0; width: 0%;
+  background: linear-gradient(90deg, var(--pink), var(--purple));
+  border-radius: 99px; transition: width 0.2s linear;
+}
+#audio-progress-fill::after {
+  content: ''; position: absolute; right: -4px; top: 50%;
+  transform: translateY(-50%);
+  width: 9px; height: 9px; border-radius: 50%;
+  background: var(--pink); box-shadow: 0 0 8px rgba(255,111,168,0.6);
+}
+#audio-speed {
+  font-family: "Noto Sans JP", sans-serif; font-size: 0.6rem;
+  background: transparent; border: 1px solid var(--border);
+  border-radius: 99px; color: var(--text2); cursor: pointer;
+  padding: 0.2rem 0.6rem; min-width: 3.2rem; text-align: center;
+  transition: border-color 0.12s, color 0.12s; flex-shrink: 0;
+}
+#audio-speed:hover { border-color: var(--cyan2); color: var(--cyan); }
+
+/* ── SCENE CARD ── */
+#scene-card {
+  background: var(--bg2); border: 1px solid var(--border); border-top: none;
+  border-radius: 0 0 12px 12px;
+  padding: 1.5rem 1.75rem 1.5rem; margin-bottom: 1rem;
+}
+#scene-text { font-family: "Noto Serif JP", serif; font-size: 1.05rem; line-height: 2.6; }
+
+#feedback-box {
+  display: none; background: rgba(255,224,102,0.06);
+  border: 1px solid rgba(255,224,102,0.25); border-radius: 10px;
+  padding: 0.8rem 1.1rem; margin-bottom: 1rem;
+  font-size: 0.82rem; color: var(--yellow); line-height: 1.9;
+}
+#feedback-box .fb-label { font-size: 0.6rem; letter-spacing: 0.15em; opacity: 0.7; display: block; margin-bottom: 0.3rem; }
+
+#translation-box {
+  font-size: 0.82rem; color: var(--text2); font-style: italic;
+  border-top: 1px solid var(--border);
+  margin-top: 1.1rem; padding-top: 0.9rem; line-height: 1.9; display: none;
+}
+#grammar-box {
+  font-size: 0.82rem; color: var(--text2);
+  border-top: 1px solid var(--border);
+  margin-top: 0.9rem; padding-top: 0.9rem; line-height: 1.9; display: none;
+}
+#grammar-box strong { color: var(--yellow); font-weight: 500; }
+
+/* ── ITEMS (inventory) ── */
+#items-row {
+  display: none; flex-wrap: wrap; gap: 0.4rem; align-items: center;
+  margin-bottom: 0.8rem;
+}
+#items-label { font-size: 0.6rem; color: var(--text3); letter-spacing: 0.12em; margin-right: 0.3rem; }
+.item-chip {
+  font-family: "Noto Serif JP", serif; font-size: 0.78rem;
+  background: rgba(255,224,102,0.07); border: 1px solid rgba(255,224,102,0.3);
+  border-radius: 99px; padding: 0.2rem 0.8rem;
+  color: var(--yellow); line-height: 1.9;
+}
+.item-chip.new { animation: itemglow 1.2s ease 2; }
+@keyframes itemglow { 0%,100% { box-shadow: none; } 50% { box-shadow: 0 0 12px rgba(255,224,102,0.5); } }
+
+/* ── VOCAB CHIPS ── */
+#vocab-row { display: flex; flex-wrap: wrap; gap: 0.45rem; margin-bottom: 1.1rem; }
+.vocab-chip {
+  font-family: "Noto Serif JP", serif; font-size: 0.85rem;
+  background: var(--bg2); border: 1px solid var(--border2);
+  border-radius: 99px; padding: 0.3rem 0.9rem;
+  color: var(--purple); cursor: pointer; line-height: 1.9;
+  transition: border-color 0.15s, background 0.15s, color 0.15s;
+}
+.vocab-chip:hover { border-color: var(--purple); background: var(--bg3); }
+.vocab-chip.revealed {
+  color: var(--cyan); border-color: var(--cyan2); cursor: default;
+  font-family: "Noto Sans JP", sans-serif; font-size: 0.72rem;
+}
+.vocab-chip.revealed .meaning { color: var(--text2); }
+
+/* ── CHOICES / INPUT ── */
+#choices { display: flex; flex-direction: column; gap: 0.55rem; margin-bottom: 1.25rem; }
+.choice-btn {
+  font-family: "Noto Serif JP", serif; font-size: 1rem; line-height: 2.2;
+  text-align: left; cursor: pointer;
+  background: var(--bg2); border: 1px solid var(--border); border-radius: 10px;
+  padding: 0.7rem 1.2rem 0.7rem 0.9rem;
+  display: flex; align-items: center; gap: 0.8rem;
+  transition: border-color 0.15s, background 0.15s; position: relative; overflow: hidden;
+}
+.choice-btn::before {
+  content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 3px;
+  background: linear-gradient(180deg, var(--pink), var(--purple));
+  opacity: 0; transition: opacity 0.15s;
+}
+.choice-btn:hover { border-color: var(--border2); background: var(--bg3); }
+.choice-btn:hover::before { opacity: 1; }
+.choice-num { font-family: "Noto Sans JP", sans-serif; font-size: 0.6rem; color: var(--text3); min-width: 0.9rem; text-align: center; flex-shrink: 0; }
+
+#answer-row { display: none; gap: 0.6rem; margin-bottom: 0.5rem; }
+#answer-input {
+  flex: 1; font-family: "Noto Serif JP", serif; font-size: 1rem;
+  padding: 0.7rem 1rem; background: var(--bg2);
+  border: 1px solid var(--border2); border-radius: 10px;
+  color: var(--cyan); outline: none; line-height: 1.8;
+  transition: border-color 0.15s, box-shadow 0.15s;
+}
+#answer-input:focus { border-color: var(--pink2); box-shadow: 0 0 0 3px rgba(255,111,168,0.1); }
+#answer-input::placeholder { color: var(--text3); }
+#answer-send {
+  font-family: "Noto Sans JP", sans-serif; font-size: 0.85rem;
+  background: var(--pink2); border: none; border-radius: 10px;
+  color: #fff; cursor: pointer; padding: 0 1.4rem;
+  transition: background 0.15s; flex-shrink: 0;
+}
+#answer-send:hover { background: var(--pink); }
+#input-hint { display: none; font-size: 0.65rem; color: var(--text3); margin: 0 0 1rem; letter-spacing: 0.05em; }
+
+/* ── PANELS (vocab + gallery) ── */
+.panel {
+  display: none; position: fixed; inset: 0; z-index: 500;
+  background: rgba(13,13,26,0.92); backdrop-filter: blur(4px);
+  padding: 3rem 2rem; overflow-y: auto;
+}
+.panel-inner { max-width: 620px; margin: 0 auto; }
+.panel h2 {
+  font-family: "Noto Serif JP", serif; font-size: 1.4rem;
+  color: var(--pink); letter-spacing: 0.1em; line-height: 2.2;
+  margin-bottom: 1rem;
+}
+.vlog-entry {
+  display: flex; align-items: baseline; gap: 0.9rem;
+  padding: 0.6rem 0; border-bottom: 1px solid var(--border);
+  font-size: 0.9rem;
+}
+.vlog-word { font-family: "Noto Serif JP", serif; color: var(--cyan); min-width: 5.5rem; }
+.vlog-reading { color: var(--pink); font-size: 0.72rem; min-width: 5rem; }
+.vlog-meaning { color: var(--text2); font-size: 0.75rem; }
+.panel-actions { display: flex; gap: 0.6rem; margin-top: 1.4rem; }
+.panel-btn {
+  font-family: "Noto Sans JP", sans-serif; font-size: 0.75rem;
+  background: var(--bg3); border: 1px solid var(--border2);
+  border-radius: 8px; color: var(--text); cursor: pointer;
+  padding: 0.5rem 1.2rem; transition: border-color 0.15s;
+}
+.panel-btn:hover { border-color: var(--cyan2); }
+.panel-empty { color: var(--text3); font-size: 0.8rem; padding: 1.5rem 0; }
+
+/* gallery grid */
+#gallery-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 0.8rem; }
+.gallery-card { border-radius: 10px; overflow: hidden; border: 1px solid var(--border); background: var(--bg2); }
+.gallery-card img { width: 100%; height: 90px; object-fit: cover; display: block; }
+.gallery-card .g-loc {
+  font-family: "Noto Serif JP", serif; font-size: 0.72rem; color: var(--cyan);
+  padding: 0.4rem 0.6rem; line-height: 1.9;
+}
+.gallery-card .g-num { font-size: 0.55rem; color: var(--text3); padding: 0 0.6rem 0.4rem; }
+
+/* ── ENDING ── */
+#ending-screen { display: none; padding-top: 2rem; max-width: 620px; margin: 0 auto; }
+#ending-screen h2 {
+  font-family: "Noto Serif JP", serif; font-size: 2rem;
+  color: var(--pink); letter-spacing: 0.12em; line-height: 2.6;
+  margin-bottom: 1.2rem; text-align: center;
+}
+.summary-stat {
+  display: flex; justify-content: space-between; align-items: baseline;
+  padding: 0.7rem 0; border-bottom: 1px solid var(--border);
+  font-size: 0.85rem; color: var(--text2);
+}
+.summary-stat .val { color: var(--cyan); font-size: 1.1rem; font-family: "Noto Serif JP", serif; }
+#ending-actions { display: flex; gap: 0.6rem; margin-top: 1.6rem; justify-content: center; flex-wrap: wrap; }
+
+/* ── CINEMATIC ── */
+#cinematic {
+  position: fixed; inset: 0; z-index: 1000; background: #000;
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center; gap: 1.5rem;
+  pointer-events: none; opacity: 0; transition: opacity 0.35s ease;
+}
+#cinematic.visible { opacity: 1; pointer-events: all; }
+#cin-location {
+  font-family: "Noto Serif JP", serif; font-size: 2.2rem; font-weight: 500;
+  color: var(--pink); letter-spacing: 0.18em;
+  opacity: 0; transform: translateY(12px);
+  transition: opacity 0.5s ease 0.3s, transform 0.5s ease 0.3s;
+  text-align: center; text-shadow: 0 0 40px rgba(255,111,168,0.4);
+}
+#cinematic.visible #cin-location { opacity: 1; transform: translateY(0); }
+#cin-subtitle {
+  font-family: "Noto Sans JP", sans-serif; font-size: 0.72rem;
+  color: var(--text3); letter-spacing: 0.22em;
+  opacity: 0; transition: opacity 0.5s ease 0.55s;
+}
+#cinematic.visible #cin-subtitle { opacity: 1; }
+#cin-bar {
+  width: 120px; height: 1px; background: var(--border);
+  position: relative; overflow: hidden; opacity: 0;
+  transition: opacity 0.3s ease 0.4s;
+}
+#cinematic.visible #cin-bar { opacity: 1; }
+#cin-bar::after {
+  content: ''; position: absolute; top: 0; left: -100%; width: 100%; height: 100%;
+  background: linear-gradient(90deg, transparent, var(--pink), var(--purple), transparent);
+  animation: barswipe 1.4s ease-in-out infinite;
+}
+@keyframes barswipe { 0% { left: -100%; } 100% { left: 100%; } }
+#cin-top, #cin-bottom {
+  position: fixed; left: 0; right: 0; height: 0;
+  background: #000; z-index: 999; transition: height 0.35s ease;
+}
+#cin-top { top: 0; } #cin-bottom { bottom: 0; }
+body.cinematic-active #cin-top, body.cinematic-active #cin-bottom { height: 2.5rem; }
+
+@keyframes fadein { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: translateY(0); } }
+.fadein { animation: fadein 0.4s ease forwards; }
+
+#history-trail {
+  font-size: 0.68rem; line-height: 2; margin-bottom: 0.9rem;
+  padding-left: 0.65rem; border-left: 2px solid var(--border);
+}
+</style>
+</head>
+<body>
+<div id="app">
+
+  <!-- SETUP -->
+  <div id="setup-screen">
+    <div>
+      <div class="setup-title"><ruby>冒険<rt>ぼうけん</rt></ruby>を<ruby>始<rt>はじ</rt></ruby>めよう</div>
+      <p class="setup-sub">
+        <ruby>東京<rt>とうきょう</rt></ruby>を<ruby>舞台<rt>ぶたい</rt></ruby>にした<ruby>謎<rt>なぞ</rt></ruby>の<ruby>物語<rt>ものがたり</rt></ruby>。<br>
+        <ruby>読<rt>よ</rt></ruby>んで、<ruby>選<rt>えら</rt></ruby>んで、<ruby>時々<rt>ときどき</rt></ruby><ruby>自分<rt>じぶん</rt></ruby>で<ruby>答<rt>こた</rt></ruby>えよう。
+      </p>
+      <div class="setup-furigana-row">
+        <button class="ctrl-btn active" id="setup-furigana-btn">ふりがな</button>
+      </div>
+    </div>
+    <div class="setup-field">
+      <label>なまえ</label>
+      <input type="text" id="name-input" placeholder="旅人" value="旅人" />
+    </div>
+    <div id="setup-buttons">
+      <button id="start-btn"><ruby>新<rt>あたら</rt></ruby>しい<ruby>物語<rt>ものがたり</rt></ruby></button>
+      <button id="resume-btn"><ruby>続<rt>つづ</rt></ruby>きから</button>
+    </div>
+  </div>
+
+  <!-- GAME -->
+  <div id="game-screen">
+    <div id="topbar">
+      <div id="topbar-left">
+        <span class="game-title"><ruby>東京<rt>とうきょう</rt></ruby><ruby>奇譚<rt>きたん</rt></ruby></span>
+        <span id="scene-tag"><ruby>場面<rt>ばめん</rt></ruby> 一</span>
+      </div>
+      <div id="topbar-right">
+        <button class="ctrl-btn active" id="furigana-btn">ふりがな</button>
+        <button class="ctrl-btn" id="translation-btn">訳</button>
+        <button class="ctrl-btn" id="grammar-btn"><ruby>文法<rt>ぶんぽう</rt></ruby></button>
+        <button class="ctrl-btn" id="vocab-btn"><ruby>単語帳<rt>たんごちょう</rt></ruby><span class="badge" id="vocab-count" style="display:none;">0</span></button>
+        <button class="ctrl-btn" id="gallery-btn"><ruby>場所<rt>ばしょ</rt></ruby></button>
+        <button class="ctrl-btn" id="ambience-btn">🔇</button>
+        <button class="ctrl-btn" id="restart-btn">↺</button>
+      </div>
+    </div>
+
+    <div id="history-trail" style="display:none;"></div>
+
+    <div id="scene-hero">
+      <img id="hero-img" alt="" />
+      <div id="hero-skeleton"></div>
+      <div id="hero-overlay"></div>
+      <div id="hero-location"><span class="loc-dot"></span><span id="loc-text"></span></div>
+    </div>
+    <div id="scene-card">
+      <div id="audio-bar">
+        <button class="audio-btn" id="audio-back" title="文を戻る">⏮</button>
+        <button class="audio-btn" id="audio-play" title="再生 / 一時停止">▶</button>
+        <div id="audio-progress-wrap">
+          <div id="audio-progress-track"><div id="audio-progress-fill"></div></div>
+        </div>
+        <button id="audio-speed" title="速度">0.9×</button>
+      </div>
+      <div id="feedback-box"><span class="fb-label">先生メモ</span><span id="feedback-text"></span></div>
+      <div id="scene-text"></div>
+      <div id="translation-box"></div>
+      <div id="grammar-box"></div>
+    </div>
+
+    <div id="items-row"><span id="items-label">もちもの</span></div>
+    <div id="vocab-row"></div>
+
+    <div id="choices"></div>
+
+    <div id="answer-row">
+      <input type="text" id="answer-input" placeholder="日本語で答えよう…" autocomplete="off" lang="ja" />
+      <button id="answer-send">送信</button>
+    </div>
+    <div id="input-hint">ローマ字で打つと自動的にかなになります（例: konnichiha → こんにちは）<button class="ctrl-btn active" id="ime-toggle" style="margin-left:0.6rem;">ローマ字入力</button></div>
+  </div>
+
+  <!-- ENDING -->
+  <div id="ending-screen">
+    <h2><ruby>物語<rt>ものがたり</rt></ruby>の<ruby>終<rt>お</rt></ruby>わり</h2>
+    <div id="summary-stats"></div>
+    <div id="ending-actions">
+      <button class="panel-btn" id="ending-vocab-btn">単語帳を見る</button>
+      <button class="panel-btn" id="ending-gallery-btn">訪れた場所</button>
+      <button class="panel-btn" id="ending-restart-btn">新しい物語</button>
+    </div>
+  </div>
+
+</div>
+
+<!-- VOCAB PANEL -->
+<div class="panel" id="vocab-panel">
+  <div class="panel-inner">
+    <h2><ruby>単語帳<rt>たんごちょう</rt></ruby></h2>
+    <div id="vocab-list"></div>
+    <div class="panel-empty" id="vocab-empty" style="display:none;">まだ単語がありません。場面の下の単語をタップしよう。</div>
+    <div class="panel-actions">
+      <button class="panel-btn" id="vocab-export">Ankiにエクスポート (TSV)</button>
+      <button class="panel-btn panel-close">閉じる</button>
+    </div>
+  </div>
+</div>
+
+<!-- GALLERY PANEL -->
+<div class="panel" id="gallery-panel">
+  <div class="panel-inner">
+    <h2><ruby>訪<rt>おとず</rt></ruby>れた<ruby>場所<rt>ばしょ</rt></ruby></h2>
+    <div id="gallery-grid"></div>
+    <div class="panel-empty" id="gallery-empty" style="display:none;">まだどこにも行っていません。</div>
+    <div class="panel-actions">
+      <button class="panel-btn panel-close">閉じる</button>
+    </div>
+  </div>
+</div>
+
+<!-- CINEMATIC -->
+<div id="cin-top"></div>
+<div id="cin-bottom"></div>
+<div id="cinematic">
+  <div id="cin-location"></div>
+  <div id="cin-bar"></div>
+  <div id="cin-subtitle">読み込み中</div>
+</div>
+
+<div id="scale-bar">
+  <button class="scale-btn" id="scale-down">−</button>
+  <span id="scale-label">100%</span>
+  <button class="scale-btn" id="scale-up">＋</button>
+</div>
+
+<script>
+const SCENE_NUMS = ['一','二','三','四','五','六','七','八','九','十','十一','十二','十三','十四','十五'];
+const SAVE_KEY = 'tokyo_kitan_save_v1';
+
+const TOKYO_IMAGES = {
+  station: 'https://upload.wikimedia.org/wikipedia/commons/thumb/b/b2/Shinjuku_station_south_entrance_2012.JPG/1280px-Shinjuku_station_south_entrance_2012.JPG',
+  night:   'https://upload.wikimedia.org/wikipedia/commons/thumb/b/b2/Shinjuku_Night_View.jpg/1280px-Shinjuku_Night_View.jpg',
+  temple:  'https://upload.wikimedia.org/wikipedia/commons/thumb/5/5a/Senso-Ji_Temple_Asakusa.jpg/1280px-Senso-Ji_Temple_Asakusa.jpg',
+  street:  'https://upload.wikimedia.org/wikipedia/commons/thumb/c/cd/Shibuya_Night_%28Unsplash%29.jpg/1280px-Shibuya_Night_%28Unsplash%29.jpg',
+  cafe:    'https://upload.wikimedia.org/wikipedia/commons/thumb/4/45/A_small_cup_of_coffee.JPG/1280px-A_small_cup_of_coffee.JPG',
+  market:  'https://upload.wikimedia.org/wikipedia/commons/thumb/9/9a/Tsukiji_Fish_Market_2_%284751694937%29.jpg/1280px-Tsukiji_Fish_Market_2_%284751694937%29.jpg',
+  rain:    'https://upload.wikimedia.org/wikipedia/commons/thumb/d/d4/Rain_in_Shinjuku.jpg/1280px-Rain_in_Shinjuku.jpg',
+  default: 'https://upload.wikimedia.org/wikipedia/commons/thumb/b/b2/Shinjuku_Night_View.jpg/1280px-Shinjuku_Night_View.jpg'
+};
+function pickImage(q) {
+  q = (q || '').toLowerCase();
+  if (q.includes('station') || q.includes('train') || q.includes('subway')) return TOKYO_IMAGES.station;
+  if (q.includes('temple') || q.includes('shrine') || q.includes('asakusa')) return TOKYO_IMAGES.temple;
+  if (q.includes('rain')) return TOKYO_IMAGES.rain;
+  if (q.includes('market') || q.includes('shop') || q.includes('store')) return TOKYO_IMAGES.market;
+  if (q.includes('cafe') || q.includes('coffee') || q.includes('restaurant')) return TOKYO_IMAGES.cafe;
+  if (q.includes('night') || q.includes('neon') || q.includes('shinjuku') || q.includes('shibuya')) return TOKYO_IMAGES.night;
+  if (q.includes('street') || q.includes('alley') || q.includes('walk')) return TOKYO_IMAGES.street;
+  return TOKYO_IMAGES.default;
+}
+
+const S = {
+  playerName: '旅人',
+  sceneNum: 0,
+  furigana: true,
+  scale: 1,
+  history: [],
+  currentScene: null,
+  loading: false,
+  mysteryMemo: '',
+  vocabLog: [],
+  grammarSeen: [],
+  items: [],          // {jp, reading}
+  gallery: [],        // {loc, img, num}
+  peeks: 0            // translation reveals (adaptive difficulty)
+};
+
+/* ── SAVE / RESUME ── */
+function saveGame() {
+  try {
+    const snap = {
+      playerName: S.playerName, sceneNum: S.sceneNum, history: S.history,
+      currentScene: S.currentScene, mysteryMemo: S.mysteryMemo,
+      vocabLog: S.vocabLog, grammarSeen: S.grammarSeen,
+      items: S.items, gallery: S.gallery, peeks: S.peeks
+    };
+    localStorage.setItem(SAVE_KEY, JSON.stringify(snap));
+  } catch(e) { /* storage unavailable — fine */ }
+}
+function loadGame() {
+  try {
+    const raw = localStorage.getItem(SAVE_KEY);
+    return raw ? JSON.parse(raw) : null;
+  } catch(e) { return null; }
+}
+function clearSave() {
+  try { localStorage.removeItem(SAVE_KEY); } catch(e) {}
+}
+
+/* ── SCALE ── */
+function setScale(v) {
+  S.scale = Math.min(2.0, Math.max(0.5, Math.round(v * 10) / 10));
+  document.documentElement.style.setProperty('--s', S.scale);
+  const pad = Math.max(0.5, 2 / S.scale);
+  document.getElementById('app').style.padding = `${pad}rem ${pad * 1.1}rem ${4 / S.scale}rem`;
+  document.getElementById('scale-label').textContent = Math.round(S.scale * 100) + '%';
+}
+document.getElementById('scale-up').onclick   = () => setScale(S.scale + 0.1);
+document.getElementById('scale-down').onclick = () => setScale(S.scale - 0.1);
+window.addEventListener('wheel', e => {
+  if (e.ctrlKey || e.metaKey) { e.preventDefault(); setScale(S.scale + (e.deltaY < 0 ? 0.1 : -0.1)); }
+}, { passive: false });
+
+/* ── FURIGANA ── */
+function setFurigana(on) {
+  S.furigana = on;
+  document.body.classList.toggle('hide-furigana', !on);
+  document.getElementById('furigana-btn').classList.toggle('active', on);
+  document.getElementById('setup-furigana-btn').classList.toggle('active', on);
+}
+document.getElementById('furigana-btn').onclick       = () => setFurigana(!S.furigana);
+document.getElementById('setup-furigana-btn').onclick = () => setFurigana(!S.furigana);
+
+/* ── TTS AUDIO CONTROLLER ── */
+let jaVoice = null;
+function findJaVoice() {
+  const vs = speechSynthesis.getVoices();
+  jaVoice = vs.find(v => v.lang === 'ja-JP' && v.name.includes('Google')) ||
+            vs.find(v => v.lang === 'ja-JP') ||
+            vs.find(v => v.lang.startsWith('ja')) || null;
+}
+if ('speechSynthesis' in window) {
+  findJaVoice();
+  speechSynthesis.onvoiceschanged = findJaVoice;
+}
+function sceneSpokenText() {
+  const d = document.createElement('div');
+  d.innerHTML = S.currentScene?.scene_jp || '';
+  d.querySelectorAll('rt').forEach(rt => rt.remove());
+  return d.textContent;
+}
+
+const TTS = {
+  text: '',            // full plain text of scene
+  offset: 0,           // char offset where current utterance started
+  boundaryChar: 0,     // last boundary charIndex within current utterance
+  rate: 0.9,
+  rates: [0.7, 0.9, 1.0, 1.2],
+  playing: false,
+  paused: false,
+  startTime: 0,        // for time-based fallback
+  timer: null,
+  boundaryFired: false
+};
+
+function ttsGlobalChar() {
+  if (TTS.boundaryFired) return TTS.offset + TTS.boundaryChar;
+  // time-based fallback: estimate ~7 chars/sec * rate for Japanese
+  const elapsed = (Date.now() - TTS.startTime) / 1000;
+  return Math.min(TTS.text.length, TTS.offset + Math.floor(elapsed * 7 * TTS.rate));
+}
+
+function ttsUpdateProgress() {
+  const frac = TTS.text.length ? ttsGlobalChar() / TTS.text.length : 0;
+  document.getElementById('audio-progress-fill').style.width = (frac * 100) + '%';
+}
+
+function ttsSpeakFrom(charOffset) {
+  speechSynthesis.cancel();
+  TTS.offset = Math.max(0, Math.min(charOffset, TTS.text.length - 1));
+  TTS.boundaryChar = 0;
+  TTS.boundaryFired = false;
+  TTS.startTime = Date.now();
+  const u = new SpeechSynthesisUtterance(TTS.text.slice(TTS.offset));
+  u.lang = 'ja-JP';
+  if (jaVoice) u.voice = jaVoice;
+  u.rate = TTS.rate;
+  u.onboundary = e => {
+    if (typeof e.charIndex === 'number') {
+      TTS.boundaryChar = e.charIndex;
+      TTS.boundaryFired = true;
+    }
+  };
+  u.onend = () => {
+    // natural finish (not a cancel-restart): reset if we reached the end
+    if (TTS.playing && !TTS.paused) ttsStop(true);
+  };
+  u.onerror = () => ttsStop(false);
+  TTS.playing = true;
+  TTS.paused = false;
+  document.getElementById('audio-play').textContent = '⏸';
+  document.getElementById('audio-play').classList.add('speaking');
+  speechSynthesis.speak(u);
+  if (!TTS.timer) TTS.timer = setInterval(ttsUpdateProgress, 250);
+}
+
+function ttsStop(completed) {
+  speechSynthesis.cancel();
+  TTS.playing = false; TTS.paused = false;
+  clearInterval(TTS.timer); TTS.timer = null;
+  const btn = document.getElementById('audio-play');
+  btn.textContent = '▶';
+  btn.classList.remove('speaking');
+  document.getElementById('audio-progress-fill').style.width = completed ? '100%' : '0%';
+  if (completed) setTimeout(() => {
+    document.getElementById('audio-progress-fill').style.width = '0%';
+  }, 1200);
+}
+
+document.getElementById('audio-play').onclick = function() {
+  if (!('speechSynthesis' in window)) { alert('このブラウザは読み上げに対応していません'); return; }
+  if (!TTS.playing) {
+    TTS.text = sceneSpokenText();
+    if (!TTS.text) return;
+    ttsSpeakFrom(0);
+  } else if (TTS.paused) {
+    speechSynthesis.resume();
+    TTS.paused = false;
+    TTS.startTime = Date.now() - ((TTS.boundaryFired ? TTS.boundaryChar : 0) / (7 * TTS.rate)) * 1000;
+    this.textContent = '⏸';
+    this.classList.add('speaking');
+  } else {
+    speechSynthesis.pause();
+    TTS.paused = true;
+    this.textContent = '▶';
+    this.classList.remove('speaking');
+  }
+};
+
+/* rewind one sentence (。！？ boundaries) */
+document.getElementById('audio-back').onclick = function() {
+  if (!TTS.playing) return;
+  const cur = ttsGlobalChar();
+  // find sentence start before current position (skip the immediate vicinity)
+  const upto = TTS.text.slice(0, Math.max(0, cur - 4));
+  const lastEnd = Math.max(upto.lastIndexOf('。'), upto.lastIndexOf('！'), upto.lastIndexOf('？'));
+  // find the sentence start BEFORE that one
+  const before = upto.slice(0, lastEnd);
+  const prevEnd = Math.max(before.lastIndexOf('。'), before.lastIndexOf('！'), before.lastIndexOf('？'));
+  ttsSpeakFrom(prevEnd >= 0 ? prevEnd + 1 : 0);
+};
+
+/* click-to-seek on progress bar */
+document.getElementById('audio-progress-wrap').onclick = function(e) {
+  if (!TTS.text) { TTS.text = sceneSpokenText(); if (!TTS.text) return; }
+  const rect = this.getBoundingClientRect();
+  const frac = Math.max(0, Math.min(1, (e.clientX - rect.left) / rect.width));
+  ttsSpeakFrom(Math.floor(frac * TTS.text.length));
+};
+
+/* speed cycle */
+document.getElementById('audio-speed').onclick = function() {
+  const i = TTS.rates.indexOf(TTS.rate);
+  TTS.rate = TTS.rates[(i + 1) % TTS.rates.length];
+  this.textContent = TTS.rate + '×';
+  if (TTS.playing && !TTS.paused) ttsSpeakFrom(ttsGlobalChar()); // restart at position with new rate
+};
+
+/* ── AMBIENCE (synthesized city hum via Web Audio) ── */
+let audioCtx = null, ambienceNodes = null;
+function startAmbience() {
+  audioCtx = audioCtx || new (window.AudioContext || window.webkitAudioContext)();
+  const bufferSize = 2 * audioCtx.sampleRate;
+  const buffer = audioCtx.createBuffer(1, bufferSize, audioCtx.sampleRate);
+  const data = buffer.getChannelData(0);
+  let lastOut = 0;
+  for (let i = 0; i < bufferSize; i++) {
+    const white = Math.random() * 2 - 1;
+    data[i] = (lastOut + (0.02 * white)) / 1.02; // brown-ish noise
+    lastOut = data[i];
+    data[i] *= 3.5;
+  }
+  const src = audioCtx.createBufferSource();
+  src.buffer = buffer; src.loop = true;
+  const filter = audioCtx.createBiquadFilter();
+  filter.type = 'lowpass'; filter.frequency.value = 400;
+  const gain = audioCtx.createGain();
+  gain.gain.value = 0.04;
+  src.connect(filter); filter.connect(gain); gain.connect(audioCtx.destination);
+  src.start();
+  ambienceNodes = { src, gain };
+}
+function stopAmbience() {
+  if (ambienceNodes) { ambienceNodes.src.stop(); ambienceNodes = null; }
+}
+document.getElementById('ambience-btn').onclick = function() {
+  if (ambienceNodes) { stopAmbience(); this.textContent = '🔇'; this.classList.remove('active'); }
+  else { startAmbience(); this.textContent = '🔊'; this.classList.add('active'); }
+};
+
+/* ── CINEMATIC ── */
+function cinematicOpen(locationHtml) {
+  document.getElementById('cin-location').innerHTML = locationHtml || '　';
+  document.body.classList.add('cinematic-active');
+  requestAnimationFrame(() => document.getElementById('cinematic').classList.add('visible'));
+}
+function cinematicClose() {
+  document.getElementById('cinematic').classList.remove('visible');
+  document.body.classList.remove('cinematic-active');
+}
+
+function clearScene() {
+  if ('speechSynthesis' in window) ttsStop(false);
+  TTS.text = '';
+  document.getElementById('scene-text').innerHTML = '';
+  document.getElementById('choices').innerHTML = '';
+  document.getElementById('vocab-row').innerHTML = '';
+  document.getElementById('answer-row').style.display = 'none';
+  document.getElementById('input-hint').style.display = 'none';
+  document.getElementById('feedback-box').style.display = 'none';
+  const img = document.getElementById('hero-img');
+  img.classList.remove('loaded');
+  document.getElementById('hero-skeleton').style.display = 'block';
+  document.getElementById('loc-text').innerHTML = '…';
+}
+
+function loadHeroImage(query) {
+  const img = document.getElementById('hero-img');
+  const sk = document.getElementById('hero-skeleton');
+  img.classList.remove('loaded');
+  sk.style.display = 'block';
+  img.onload  = () => { img.classList.add('loaded'); sk.style.display = 'none'; };
+  img.onerror = () => { sk.style.display = 'none'; };
+  img.src = pickImage(query);
+  return img.src;
+}
+
+/* ── ADAPTIVE DIFFICULTY ── */
+function difficultyLevel() {
+  if (S.sceneNum < 2) return 'standard';
+  const rate = S.peeks / S.sceneNum;
+  if (rate < 0.25) return 'harder';   // rarely peeks → push toward N3+/N2
+  if (rate > 0.6)  return 'easier';   // peeks a lot → ease toward solid N4
+  return 'standard';
+}
+
+/* ── STORY BIBLE ── */
+const SYSTEM = `You are the narrator of 東京奇譚 (Tokyo Strange Tales), an interactive mystery RPG for an early-intermediate Japanese learner (N4/N3).
+
+STORY BIBLE — follow strictly:
+- A central mystery threads ALL scenes: scene 1 plants something strange (object, message, person who knows the player's name). Deepens every scene, resolves around scene 12.
+- Act 1 (1-3): hook. Act 2 (4-8): deepening, recurring characters, clues. Act 3 (9-11): revelation approaching. Scene 12+: resolution/ending.
+- NPCs RECUR and REMEMBER the player — track relationships in mystery_memo (friendly/cold/suspicious based on how the player has treated them) and reflect it in their behavior.
+- ITEMS matter: things the player picks up are carried (provided in context as inventory). Reference and use them in later scenes — a key opens something, a note gets deciphered.
+- REGISTER VARIATION: deliberately rotate NPC speech styles across scenes — casual young people (だよ/じゃん), polite shopkeepers (です/ます/いらっしゃいませ), rough older men (だろ/〜ぞ), formal keigo where natural. The grammar_note should sometimes highlight register differences.
+- Tone: 不思議, Murakami-adjacent quiet surreality. Never horror.
+
+DIFFICULTY (provided per request as easier/standard/harder):
+- easier: shorter sentences, solid N4 grammar, common vocab
+- standard: N4/N3 mix
+- harder: longer sentences, N3 grammar throughout with occasional N2, less common vocab
+
+OUTPUT: valid JSON only — no markdown fences.
+{
+  "location_jp": "場所名, ruby furigana on ALL kanji, Japanese only",
+  "image_query": "3-6 English keywords (station/temple/cafe/market/rain/night/street etc)",
+  "scene_jp": "3-5 sentences, ALL kanji with ruby furigana, at least one NPC line in 「」",
+  "scene_translation": "Natural English translation",
+  "grammar_note": "【expression】explanation — sometimes a register note",
+  "vocab": [{"word": "切符", "reading": "きっぷ", "meaning": "ticket"}, ... 4-6 words],
+  "items_gained": [{"jp": "古い鍵", "reading": "ふるいかぎ"}] (ONLY when the player gains an item this scene, else omit or empty),
+  "scene_type": "choice" OR "input" OR "ending",
+  "choices": [...] (when choice: 3 options, jp with full ruby + text_only plain),
+  "feedback": "(only when evaluating typed answer) 1-2 English sentences on naturalness; suggest natural phrasing if needed. Player types kana-only — NEVER penalize missing kanji.",
+  "mystery_memo": "2-4 sentence English internal note: mystery state + NPC relationships + items significance"
+}
+
+SCENE TYPE: roughly every 3rd scene is "input" — an NPC asks a direct question the player answers by typing. Scene 12+: "ending".
+Player name: PLAYER_NAME`;
+
+/* ── RENDER ── */
+function renderScene(scene) {
+  S.currentScene = scene;
+  if (scene.mystery_memo) S.mysteryMemo = scene.mystery_memo;
+  if (scene.grammar_note) S.grammarSeen.push(scene.grammar_note);
+
+  document.getElementById('loc-text').innerHTML = scene.location_jp;
+  const imgUrl = loadHeroImage(scene.image_query);
+
+  // gallery entry
+  S.gallery.push({ loc: scene.location_jp, img: imgUrl, num: S.sceneNum });
+
+  // items
+  if (scene.items_gained && scene.items_gained.length) {
+    scene.items_gained.forEach(it => {
+      if (!S.items.some(x => x.jp === it.jp)) S.items.push(it);
+    });
+    renderItems(true);
+  } else renderItems(false);
+
+  const fb = document.getElementById('feedback-box');
+  if (scene.feedback) {
+    document.getElementById('feedback-text').textContent = scene.feedback;
+    fb.style.display = 'block';
+  } else fb.style.display = 'none';
+
+  const textEl = document.getElementById('scene-text');
+  textEl.innerHTML = scene.scene_jp;
+  textEl.classList.add('fadein');
+  setTimeout(() => textEl.classList.remove('fadein'), 400);
+
+  document.getElementById('translation-box').innerHTML = scene.scene_translation || '';
+  document.getElementById('grammar-box').innerHTML =
+    (scene.grammar_note || '').replace(/【(.+?)】/, '<strong>【$1】</strong>');
+
+  renderVocabChips(scene.vocab || []);
+
+  if (scene.scene_type === 'ending') { saveGame(); showEnding(); return; }
+
+  if (scene.scene_type === 'input') {
+    document.getElementById('choices').innerHTML = '';
+    document.getElementById('answer-row').style.display = 'flex';
+    document.getElementById('input-hint').style.display = 'block';
+    const inp = document.getElementById('answer-input');
+    inp.value = '';
+    setTimeout(() => inp.focus(), 450);
+  } else {
+    document.getElementById('answer-row').style.display = 'none';
+    document.getElementById('input-hint').style.display = 'none';
+    renderChoices(scene.choices || []);
+  }
+  updateHistoryTrail();
+  saveGame();
+}
+
+function renderItems(highlightNew) {
+  const row = document.getElementById('items-row');
+  if (!S.items.length) { row.style.display = 'none'; return; }
+  row.style.display = 'flex';
+  row.innerHTML = '<span id="items-label">もちもの</span>';
+  S.items.forEach((it, i) => {
+    const chip = document.createElement('span');
+    chip.className = 'item-chip' + (highlightNew && i === S.items.length - 1 ? ' new' : '');
+    chip.innerHTML = `<ruby>${it.jp}<rt>${it.reading}</rt></ruby>`;
+    row.appendChild(chip);
+  });
+}
+
+/* ── VOCAB ── */
+function renderVocabChips(vocab) {
+  const row = document.getElementById('vocab-row');
+  row.innerHTML = '';
+  vocab.forEach(v => {
+    const chip = document.createElement('button');
+    chip.className = 'vocab-chip';
+    chip.textContent = v.word;
+    chip.onclick = () => {
+      if (chip.classList.contains('revealed')) return;
+      chip.classList.add('revealed');
+      chip.innerHTML = `${v.word}（${v.reading}）<span class="meaning"> ${v.meaning}</span>`;
+      if (!S.vocabLog.some(x => x.word === v.word)) {
+        S.vocabLog.push(v);
+        updateVocabBadge();
+        saveGame();
+      }
+    };
+    row.appendChild(chip);
+  });
+}
+function updateVocabBadge() {
+  const b = document.getElementById('vocab-count');
+  b.textContent = S.vocabLog.length;
+  b.style.display = S.vocabLog.length ? 'inline-block' : 'none';
+}
+
+document.getElementById('vocab-btn').onclick = openVocabPanel;
+function openVocabPanel() {
+  const list = document.getElementById('vocab-list');
+  const empty = document.getElementById('vocab-empty');
+  list.innerHTML = '';
+  if (!S.vocabLog.length) empty.style.display = 'block';
+  else {
+    empty.style.display = 'none';
+    S.vocabLog.forEach(v => {
+      const d = document.createElement('div');
+      d.className = 'vlog-entry';
+      d.innerHTML = `<span class="vlog-word">${v.word}</span><span class="vlog-reading">${v.reading}</span><span class="vlog-meaning">${v.meaning}</span>`;
+      list.appendChild(d);
+    });
+  }
+  document.getElementById('vocab-panel').style.display = 'block';
+}
+document.getElementById('vocab-export').onclick = function() {
+  const tsv = S.vocabLog.map(v => `${v.word}\t${v.reading}\t${v.meaning}`).join('\n');
+  navigator.clipboard.writeText(tsv).then(() => {
+    this.textContent = 'コピーしました！';
+    setTimeout(() => this.textContent = 'Ankiにエクスポート (TSV)', 2000);
+  });
+};
+
+/* ── GALLERY ── */
+document.getElementById('gallery-btn').onclick = openGalleryPanel;
+function openGalleryPanel() {
+  const grid = document.getElementById('gallery-grid');
+  const empty = document.getElementById('gallery-empty');
+  grid.innerHTML = '';
+  if (!S.gallery.length) empty.style.display = 'block';
+  else {
+    empty.style.display = 'none';
+    S.gallery.forEach(g => {
+      const card = document.createElement('div');
+      card.className = 'gallery-card';
+      card.innerHTML = `<img src="${g.img}" alt="" /><div class="g-loc">${g.loc}</div><div class="g-num">場面 ${SCENE_NUMS[g.num-1] || g.num}</div>`;
+      grid.appendChild(card);
+    });
+  }
+  document.getElementById('gallery-panel').style.display = 'block';
+}
+
+document.querySelectorAll('.panel-close').forEach(btn => {
+  btn.onclick = () => btn.closest('.panel').style.display = 'none';
+});
+
+/* ── CHOICES ── */
+function renderChoices(choices) {
+  const c = document.getElementById('choices');
+  c.innerHTML = '';
+  const nums = ['一','二','三'];
+  choices.forEach((ch, i) => {
+    const btn = document.createElement('button');
+    btn.className = 'choice-btn';
+    btn.innerHTML = `<span class="choice-num">${nums[i]}</span><span>${ch.jp}</span>`;
+    btn.onclick = () => {
+      if (S.loading) return;
+      S.history.push({ num: S.sceneNum, loc: stripHtml(S.currentScene?.location_jp || ''), choice: ch.text_only, type: 'choice' });
+      generate({ kind: 'choice', value: ch.text_only });
+    };
+    c.appendChild(btn);
+  });
+}
+
+/* ── TYPED ANSWER + WANAKANA IME ── */
+const answerInput = document.getElementById('answer-input');
+let imeBound = false;
+function bindIME() {
+  if (!imeBound && window.wanakana) { wanakana.bind(answerInput, { IMEMode: true }); imeBound = true; }
+}
+function unbindIME() {
+  if (imeBound && window.wanakana) { wanakana.unbind(answerInput); imeBound = false; }
+}
+bindIME();
+document.getElementById('ime-toggle').onclick = function() {
+  if (imeBound) { unbindIME(); this.classList.remove('active'); }
+  else { bindIME(); this.classList.add('active'); }
+  answerInput.focus();
+};
+document.getElementById('answer-send').onclick = submitAnswer;
+answerInput.addEventListener('keydown', e => {
+  if (e.key === 'Enter' && !e.isComposing) { e.preventDefault(); submitAnswer(); }
+});
+function submitAnswer() {
+  const val = answerInput.value.trim();
+  if (!val || S.loading) return;
+  S.history.push({ num: S.sceneNum, loc: stripHtml(S.currentScene?.location_jp || ''), choice: `(typed) ${val}`, type: 'input' });
+  generate({ kind: 'answer', value: val });
+}
+
+function stripHtml(s) { const d = document.createElement('div'); d.innerHTML = s; return d.textContent; }
+
+/* ── HISTORY ── */
+function updateHistoryTrail() {
+  const trail = document.getElementById('history-trail');
+  if (!S.history.length) { trail.style.display = 'none'; return; }
+  trail.style.display = 'block';
+  trail.innerHTML = S.history.slice(-3).map(h => `${h.loc} → ${h.choice}`).join('<br>');
+}
+
+/* ── ENDING ── */
+function showEnding() {
+  document.getElementById('choices').innerHTML = '';
+  document.getElementById('answer-row').style.display = 'none';
+  document.getElementById('input-hint').style.display = 'none';
+  setTimeout(() => {
+    document.getElementById('game-screen').style.display = 'none';
+    const stats = document.getElementById('summary-stats');
+    stats.innerHTML = `
+      <div class="summary-stat"><span>読んだ場面</span><span class="val">${S.sceneNum}</span></div>
+      <div class="summary-stat"><span>集めた単語</span><span class="val">${S.vocabLog.length}</span></div>
+      <div class="summary-stat"><span>出会った文法</span><span class="val">${S.grammarSeen.length}</span></div>
+      <div class="summary-stat"><span>持ち物</span><span class="val">${S.items.length}</span></div>
+      <div class="summary-stat"><span>自分で答えた回数</span><span class="val">${S.history.filter(h => h.type === 'input').length}</span></div>`;
+    document.getElementById('ending-screen').style.display = 'block';
+    clearSave();
+  }, 6000);
+}
+document.getElementById('ending-vocab-btn').onclick = openVocabPanel;
+document.getElementById('ending-gallery-btn').onclick = openGalleryPanel;
+document.getElementById('ending-restart-btn').onclick = () => {
+  resetGame();
+  document.getElementById('ending-screen').style.display = 'none';
+  document.getElementById('game-screen').style.display = 'block';
+  generate(null);
+};
+
+function resetGame() {
+  S.history = []; S.sceneNum = 0; S.currentScene = null;
+  S.mysteryMemo = ''; S.vocabLog = []; S.grammarSeen = [];
+  S.items = []; S.gallery = []; S.peeks = 0;
+  updateVocabBadge(); renderItems(false);
+  document.getElementById('history-trail').style.display = 'none';
+  clearSave();
+}
+
+/* ── GENERATE ── */
+async function generate(action) {
+  if (S.loading) return;
+  S.loading = true;
+
+  cinematicOpen(S.currentScene?.location_jp || '');
+  clearScene();
+
+  document.getElementById('translation-box').style.display = 'none';
+  document.getElementById('grammar-box').style.display = 'none';
+  document.getElementById('translation-btn').classList.remove('active');
+  document.getElementById('grammar-btn').classList.remove('active');
+
+  S.sceneNum++;
+  document.getElementById('scene-tag').innerHTML =
+    '<ruby>場面<rt>ばめん</rt></ruby> ' + (SCENE_NUMS[S.sceneNum - 1] || S.sceneNum);
+
+  const histCtx = S.history.length
+    ? '\nRecent history:\n' + S.history.slice(-4).map(h => `Scene ${h.num} (${h.loc}): ${h.choice}`).join('\n')
+    : '';
+  const memoCtx = S.mysteryMemo ? `\nMystery state: ${S.mysteryMemo}` : '';
+  const itemCtx = S.items.length ? `\nInventory: ${S.items.map(i => i.jp).join('、')}` : '';
+  const diffCtx = `\nDifficulty: ${difficultyLevel()}`;
+
+  let userMsg;
+  if (!action) {
+    userMsg = `Scene 1 of ~12. Begin — the player just arrived in Tokyo. Establish the mystery hook.${diffCtx}`;
+  } else if (action.kind === 'answer') {
+    userMsg = `Scene ${S.sceneNum} of ~12. The player TYPED this answer to the NPC's question: "${action.value}". Evaluate it (feedback field), then continue incorporating their answer.${memoCtx}${itemCtx}${diffCtx}${histCtx}`;
+  } else {
+    userMsg = `Scene ${S.sceneNum} of ~12. Player chose: "${action.value}". Continue.${memoCtx}${itemCtx}${diffCtx}${histCtx}`;
+  }
+
+  try {
+    const res = await fetch('/api/scene', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        max_tokens: 1600,
+        system: SYSTEM.replace('PLAYER_NAME', S.playerName),
+        messages: [{ role: 'user', content: userMsg }]
+      })
+    });
+    if (!res.ok) throw new Error(`API error ${res.status}`);
+    const data = await res.json();
+    const raw = (data.content?.[0]?.text || '').replace(/```json|```/g, '').trim();
+    if (!raw) throw new Error('Empty response');
+    const scene = JSON.parse(raw);
+
+    document.getElementById('cin-location').innerHTML = scene.location_jp;
+    await new Promise(r => setTimeout(r, 900));
+    cinematicClose();
+    await new Promise(r => setTimeout(r, 380));
+
+    renderScene(scene);
+
+  } catch(e) {
+    cinematicClose();
+    const msg = e.message.includes('Failed to fetch') || e.message.includes('NetworkError')
+      ? 'サーバーに接続できません。`npm start` でサーバーが起動しているか確認してください。'
+      : 'エラーが発生しました: ' + e.message;
+    document.getElementById('scene-text').textContent = msg;
+  }
+
+  S.loading = false;
+}
+
+/* ── TOPBAR TOGGLES ── */
+document.getElementById('translation-btn').onclick = function() {
+  const b = document.getElementById('translation-box');
+  const v = b.style.display !== 'none';
+  b.style.display = v ? 'none' : 'block';
+  this.classList.toggle('active', !v);
+  if (!v) { S.peeks++; saveGame(); }  // count reveals for adaptive difficulty
+};
+document.getElementById('grammar-btn').onclick = function() {
+  const b = document.getElementById('grammar-box');
+  const v = b.style.display !== 'none';
+  b.style.display = v ? 'none' : 'block';
+  this.classList.toggle('active', !v);
+};
+document.getElementById('restart-btn').onclick = function() {
+  if (!confirm('最初からやり直しますか？単語帳もリセットされます。')) return;
+  resetGame();
+  generate(null);
+};
+
+/* ── START / RESUME ── */
+document.getElementById('start-btn').onclick = function() {
+  const n = document.getElementById('name-input').value.trim();
+  if (n) S.playerName = n;
+  clearSave();
+  document.getElementById('setup-screen').style.display = 'none';
+  document.getElementById('game-screen').style.display = 'block';
+  generate(null);
+};
+document.getElementById('resume-btn').onclick = function() {
+  const snap = loadGame();
+  if (!snap) return;
+  Object.assign(S, snap);
+  updateVocabBadge();
+  document.getElementById('setup-screen').style.display = 'none';
+  document.getElementById('game-screen').style.display = 'block';
+  document.getElementById('scene-tag').innerHTML =
+    '<ruby>場面<rt>ばめん</rt></ruby> ' + (SCENE_NUMS[S.sceneNum - 1] || S.sceneNum);
+  if (S.currentScene) renderScene(S.currentScene);
+};
+
+/* show resume button if a save exists */
+if (loadGame()) document.getElementById('resume-btn').style.display = 'inline-flex';
+</script>
+</body>
+</html>

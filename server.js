@@ -9,7 +9,7 @@ const path = require('path');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
-const MODEL = process.env.ANTHROPIC_MODEL || 'claude-sonnet-4-20250514';
+const MODEL = process.env.ANTHROPIC_MODEL || 'claude-sonnet-4-6';
 
 if (!process.env.ANTHROPIC_API_KEY) {
   console.error('Missing ANTHROPIC_API_KEY — copy .env.example to .env and add your key.');
@@ -35,7 +35,7 @@ app.post('/api/scene', async (req, res) => {
       },
       body: JSON.stringify({
         model: MODEL,
-        max_tokens: Math.min(max_tokens || 1600, 2048),
+        max_tokens: Math.min(max_tokens || 3000, 4096),
         system,
         messages
       })
