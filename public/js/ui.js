@@ -32,11 +32,20 @@ export function clearScene() {
   document.getElementById('loc-text').innerHTML = '…';
 }
 
-export function loadHeroImage(query) {
+export async function loadHeroImage(query) {
   const img = document.getElementById('hero-img');
-  const sk = document.getElementById('hero-skeleton');
+  const sk  = document.getElementById('hero-skeleton');
   img.classList.remove('loaded');
   sk.style.display = 'block';
+
+  const url = await pickImage(query);
+  if (!url) {
+    sk.style.display = 'none';
+    img.removeAttribute('src');
+    document.getElementById('hero-overlay').style.background =
+      'linear-gradient(160deg, #0d0d1a 0%, #1a1030 60%, #0d0d2a 100%)';
+    return null;
+  }
   img.onload  = () => { img.classList.add('loaded'); sk.style.display = 'none'; };
   img.onerror = () => {
     sk.style.display = 'none';
@@ -44,8 +53,8 @@ export function loadHeroImage(query) {
     document.getElementById('hero-overlay').style.background =
       'linear-gradient(160deg, #0d0d1a 0%, #1a1030 60%, #0d0d2a 100%)';
   };
-  img.src = pickImage(query);
-  return img.src;
+  img.src = url;
+  return url;
 }
 
 export function renderItems(highlightNew) {

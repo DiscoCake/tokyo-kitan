@@ -58,9 +58,12 @@ collects vocabulary — all wrapped in a ~12-scene mystery story set in Tokyo.
    (~7 chars/sec × rate) because Safari may not fire boundaries for Japanese.
    Furigana (`rt`) is stripped before speaking to avoid double-reading.
 
-9. **Images are a curated local map.** `image_query` keywords → Wikimedia Commons URLs
-   (the Unsplash source API is dead). Fine for v1; a proper image API or generated art
-   is a known future upgrade.
+9. **Images via Pexels API (server-proxied).** Each scene's `image_query` is sent to
+   `GET /api/image` on the server, which appends "japan" and calls the Pexels search API.
+   Results are cached in-memory per query (Map, resets on restart). `PEXELS_API_KEY`
+   required in `.env`. `loadHeroImage` is async; `renderScene` fires it as `.then()`
+   so scene text renders immediately while the image loads in parallel. Falls back to a
+   dark gradient if the key is missing or search returns no results.
 
 10. **Save/resume via localStorage** (`tokyo_kitan_save_v1`), wrapped in try/catch.
     Auto-saves after each scene; cleared on ending or restart. Future: move to server-side

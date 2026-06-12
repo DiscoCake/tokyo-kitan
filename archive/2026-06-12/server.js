@@ -16,33 +16,8 @@ if (!process.env.ANTHROPIC_API_KEY) {
   process.exit(1);
 }
 
-const imageCache = new Map();
-
 app.use(express.json({ limit: '1mb' }));
 app.use(express.static(path.join(__dirname, 'public')));
-
-app.get('/api/image', async (req, res) => {
-  const query = ((req.query.q || '') + ' japan').trim();
-  if (!query) return res.status(400).json({ error: 'q required' });
-  if (imageCache.has(query)) return res.json({ url: imageCache.get(query) });
-  if (!process.env.PEXELS_API_KEY) return res.status(503).json({ error: 'PEXELS_API_KEY not set' });
-
-  try {
-    const r = await fetch(
-      `https://api.pexels.com/v1/search?query=${encodeURIComponent(query)}&per_page=1&orientation=landscape`,
-      { headers: { Authorization: process.env.PEXELS_API_KEY } }
-    );
-    const data = await r.json();
-    const photo = data.photos?.[0];
-    if (!photo) return res.status(404).json({ error: 'No results' });
-    const url = photo.src.large2x || photo.src.large || photo.src.original;
-    imageCache.set(query, url);
-    res.json({ url, photographer: photo.photographer, pexels_url: photo.url });
-  } catch (e) {
-    console.error('Pexels error:', e);
-    res.status(500).json({ error: e.message });
-  }
-});
 
 app.post('/api/scene', async (req, res) => {
   try {

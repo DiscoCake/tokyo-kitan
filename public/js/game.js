@@ -23,7 +23,7 @@ DIFFICULTY (provided per request as easier/standard/harder):
 OUTPUT: valid JSON only — no markdown fences.
 {
   "location_jp": "場所名, ruby furigana on ALL kanji, Japanese only",
-  "image_query": "3-6 English keywords (station/temple/cafe/market/rain/night/street etc)",
+  "image_query": "3-6 English keywords describing the VISUAL ATMOSPHERE of the scene for a photo search — focus on what it looks like, not just the place name. Good examples: 'japan train platform interior crowd', 'tokyo neon alley night rain', 'shinto shrine torii gate fog', 'japanese izakaya lanterns warm', 'old bookshop dusty shelves'. Avoid generic location names alone like 'tokyo station' — describe the mood and setting.",
   "scene_jp": "3-5 sentences, ALL kanji with ruby furigana, at least one NPC line in 「」",
   "scene_translation": "Natural English translation",
   "grammar_note": "【expression】explanation — sometimes a register note",
@@ -69,9 +69,10 @@ export function renderScene(scene) {
   if (scene.grammar_note) S.grammarSeen.push(scene.grammar_note);
 
   document.getElementById('loc-text').innerHTML = scene.location_jp;
-  const imgUrl = loadHeroImage(scene.image_query);
-
-  S.gallery.push({ loc: scene.location_jp, img: imgUrl, num: S.sceneNum });
+  // Fire image request concurrently — scene text/choices render immediately while image loads
+  loadHeroImage(scene.image_query).then(imgUrl => {
+    S.gallery.push({ loc: scene.location_jp, img: imgUrl || '', num: S.sceneNum });
+  });
 
   if (scene.items_gained && scene.items_gained.length) {
     scene.items_gained.forEach(it => {
