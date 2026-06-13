@@ -54,6 +54,10 @@ const ROOMS = {
 const ROOM_COORDS = {};
 for (const [id, r] of Object.entries(ROOMS)) ROOM_COORDS[`${r.x},${r.y}`] = id;
 
+// Act gating — at least one room per act must be visited before the next act unlocks
+const ACT1_ROOM_IDS = ['platform','ticket_gate','alley','noodle_shop'];
+const ACT2_ROOM_IDS = ['torii','shrine_office','hidden_garden','stone_path'];
+
 // ── Module state ──
 const TILE = 22; // px per tile at native canvas resolution
 const COLS = MAP[0].length;
@@ -63,6 +67,7 @@ let canvas, ctx;
 let _onEnterRoom = null; // callback set by main.js: ({ roomId, roomName }) => void
 let dungeonActive = false;
 let promptRoomId = null; // roomId currently stepped on, awaiting enter/escape
+let _gateTimer = null;  // debounce timer for gate hint text
 
 // ── Public API ──
 
@@ -136,6 +141,14 @@ function tryMove(dx, dy) {
   if (ny < 0 || ny >= ROWS || nx < 0 || nx >= COLS) return;
   const tile = MAP[ny][nx];
   if (tile === W) return;
+
+  // Sequential act gating — corridor (row 7) is the only cross-wing path
+  if (ny === 7) {
+    const act1Done = ACT1_ROOM_IDS.some(id => S.visitedRooms.has(id));
+    const act2Done = ACT2_ROOM_IDS.some(id => S.visitedRooms.has(id));
+    if (nx >= 9 && !act1Done)  { showGateHint(2); return; }
+    if (nx >= 20 && !act2Done) { showGateHint(3); return; }
+  }
 
   S.dungeonPos.x = nx;
   S.dungeonPos.y = ny;
@@ -222,6 +235,21 @@ function drawTile(x, y, tile) {
     ctx.fillRect(px + pad, py + pad, TILE - pad * 2, TILE - pad * 2);
     ctx.restore();
   }
+
+  // Amber gate bar on corridor tiles that separate locked acts
+  if (y === 7 && (x === 9 || x === 20)) {
+    const act1Done = ACT1_ROOM_IDS.some(id => S.visitedRooms.has(id));
+    const act2Done = ACT2_ROOM_IDS.some(id => S.visitedRooms.has(id));
+    const locked = (x === 9 && !act1Done) || (x === 20 && !act2Done);
+    if (locked) {
+      ctx.save();
+      ctx.fillStyle = 'rgba(255,200,50,0.15)';
+      ctx.fillRect(px, py, TILE, TILE);
+      ctx.fillStyle = 'rgba(255,200,50,0.85)';
+      ctx.fillRect(px + TILE / 2 - 1, py, 2, TILE);
+      ctx.restore();
+    }
+  }
 }
 
 // ── HTML helpers ──
@@ -230,6 +258,18 @@ function showPrompt(room) {
   const el = document.getElementById('dungeon-prompt');
   document.getElementById('dungeon-prompt-name').innerHTML = room.name_jp;
   el.style.display = 'flex';
+}
+
+function showGateHint(actNum) {
+  const el = document.getElementById('dungeon-hint');
+  const msg = actNum === 2
+    ? '🔒 <ruby>駅<rt>えき</rt></ruby>エリアを<ruby>探索<rt>たんさく</rt></ruby>してから<ruby>先<rt>さき</rt></ruby>へ'
+    : '🔒 <ruby>神社<rt>じんじゃ</rt></ruby>エリアを<ruby>探索<rt>たんさく</rt></ruby>してから<ruby>先<rt>さき</rt></ruby>へ';
+  el.innerHTML = msg;
+  if (_gateTimer) clearTimeout(_gateTimer);
+  _gateTimer = setTimeout(() => {
+    el.innerHTML = 'WASD /<ruby>矢印<rt>やじるし</rt></ruby>キー で<ruby>移動<rt>いどう</rt></ruby>　ピンクのマスに<ruby>乗<rt>の</rt></ruby>る → Enter で<ruby>入室<rt>にゅうしつ</rt></ruby>';
+  }, 1800);
 }
 
 function hidePrompt() {

@@ -86,7 +86,10 @@ collects vocabulary — all wrapped in a ~12-scene mystery story set in Tokyo.
     furigana, TTS, vocab chips, typed input, adaptive difficulty — are completely identical
     in both modes. Dungeon rooms trigger `generate({ kind: 'room', ... })` the same way
     choices do; `mystery_memo` and inventory carry across. Three wings match the 3-act story
-    (駅エリア → 神社エリア → 地下エリア). Both modes share the same save slot (`tokyo_kitan_save_v1`).
+    (駅エリア → 神社エリア → 地下エリア). Acts are gated sequentially: shrine wing unlocks after
+    visiting any station room; underground wing unlocks after visiting any shrine room. Locked
+    corridor crossings show an amber barrier on the map and a Japanese hint when the player
+    tries to cross. Both modes share the same save slot (`tokyo_kitan_save_v1`).
     Phase 2 items: minimap, fog of war, NPC sprites on map, district-matched ambience.
 
 12. **Cinematic scene transitions + streaming.** Full-black overlay with location kanji title
@@ -133,6 +136,7 @@ collects vocabulary — all wrapped in a ~12-scene mystery story set in Tokyo.
 - Session-end grammar review screen (grammarSeen is already collected)
 - Speech input (Web Speech recognition) for spoken answers — stretch
 - Better scene photos: generated art or curated image library (Pexels is live but results vary)
+- Vocab chip UX: let the player select which words to look up rather than auto-picking 5; current 5-chip auto-selection feels limiting
 - Dungeon Phase 2: minimap overlay, fog of war (unexplored rooms hidden), NPC sprites on map, per-district ambient sound
 
 ## Conventions
