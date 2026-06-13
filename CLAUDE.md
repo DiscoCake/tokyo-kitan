@@ -10,14 +10,16 @@ collects vocabulary — all wrapped in a ~12-scene mystery story set in Tokyo.
 - `public/css/style.css` — all styles extracted here
 - `public/js/` — ES modules (no build step, `<script type="module">`):
   - `state.js` — `S` object, `SAVE_KEY`, `SCENE_NUMS`, save/load/clear
-  - `images.js` — `TOKYO_IMAGES` map, `pickImage(query)`
+  - `images.js` — async `pickImage(query)` — fetches scene-matched photos from Pexels via server proxy; falls back to dark gradient
   - `tts.js` — TTS controller, Web Speech API, audio button listeners
   - `ambience.js` — synthesized brown-noise ambience, ambience button
   - `ui.js` — panels, vocab chips, gallery, cinematic, scene helpers
   - `game.js` — `generate()`, `renderScene()`, `renderChoices()`, story bible `SYSTEM` prompt
   - `main.js` — entry point: scale, furigana, IME, start/resume/restart, ending buttons
-- `server.js` — minimal Express proxy; its ONLY job is keeping `ANTHROPIC_API_KEY` server-side
-  and forwarding `/api/scene` → Anthropic Messages API
+- `server.js` — minimal Express proxy with three routes:
+  - `POST /api/scene` — non-streaming fallback (unused by client, kept for debugging)
+  - `POST /api/scene/stream` — SSE streaming proxy to Anthropic; pipes `text_delta` events to client
+  - `GET /api/image` — Pexels photo search with "japan" appended; in-memory cache (Map)
 - No database yet. Game state lives in browser memory + localStorage saves
 
 ## Design decisions — DO NOT undo these without asking the user
@@ -52,11 +54,13 @@ collects vocabulary — all wrapped in a ~12-scene mystery story set in Tokyo.
 7. **Adaptive difficulty from translation peeks.** `S.peeks / S.sceneNum` < 0.25 → "harder"
    (N3+/occasional N2); > 0.6 → "easier"; else "standard". Passed with every request.
 
-8. **TTS via Web Speech API.** Full audio bar: play/pause, sentence rewind, click-to-seek,
-   speed cycle (0.7/0.9/1.0/1.2). Seeking = cancel + restart utterance from char offset
-   (the API has no native seek). Progress = boundary events with time-based fallback
-   (~7 chars/sec × rate) because Safari may not fire boundaries for Japanese.
-   Furigana (`rt`) is stripped before speaking to avoid double-reading.
+8. **TTS via Web Speech API — segment-based, multi-voice.** Full audio bar: play/pause,
+   sentence rewind, click-to-seek, speed cycle (0.7/0.9/1.0/1.2). `parseSegments(text)`
+   splits on `「」` boundaries: narration → Kyoko (Enhanced), dialogue → Otoya (Enhanced),
+   with Kyoko as universal fallback. Seeking = cancel + restart from segment + char offset.
+   Progress = time-based at ~4 chars/sec × rate (not boundary events — Safari/Chromium fire
+   them unreliably for Japanese). A cancel token (`_tok`) prevents stale segment callbacks
+   from chaining after a seek/stop. Furigana (`rt`) stripped before speaking.
 
 9. **Images via Pexels API (server-proxied).** Each scene's `image_query` is sent to
    `GET /api/image` on the server, which appends "japan" and calls the Pexels search API.
@@ -75,8 +79,13 @@ collects vocabulary — all wrapped in a ~12-scene mystery story set in Tokyo.
     (Noto Sans JP). Everything sized in rem off `--s` scale variable (UI zoom: ±buttons and
     ctrl+scroll, 50–200%, padding compresses as scale grows).
 
-12. **Cinematic scene transitions.** Full-black overlay with location kanji title card +
-    letterbox bars during API calls. The loading state IS the transition.
+12. **Cinematic scene transitions + streaming.** Full-black overlay with location kanji title
+    card + letterbox bars during API calls. `generate()` uses `POST /api/scene/stream` (SSE).
+    A `makeExtractor` state machine watches the arriving JSON stream: as soon as `location_jp`
+    completes (typically ~300-500ms into the stream) the cinematic closes (500ms minimum display
+    enforced). `scene_jp` then streams progressively into `#scene-text` via `makeHtmlAppender`
+    (buffers inside `<...>` to never inject a partial ruby tag). Full JSON parse + `renderScene`
+    fires after stream end. Perceived wait drops from ~8s → ~1-2s.
 
 ## Scene JSON contract (returned by the model)
 
@@ -111,9 +120,9 @@ collects vocabulary — all wrapped in a ~12-scene mystery story set in Tokyo.
 - Server-side persistence (SQLite) → cross-device save
 - Relationship/NPC tracker UI (data already exists in mystery_memo)
 - Difficulty tuning pass once the user has played several full runs
-- Better images: proper image API or generated scene art
 - Session-end grammar review screen (grammarSeen is already collected)
 - Speech input (Web Speech recognition) for spoken answers — stretch
+- Better scene photos: generated art or curated image library (Pexels is live but results vary)
 
 ## Conventions
 
@@ -136,3 +145,6 @@ collects vocabulary — all wrapped in a ~12-scene mystery story set in Tokyo.
    - The `archive/` folder is **not** git-ignored; commit snapshots with the change.
    - Minor edits (typos, style tweaks, small bug fixes) do **not** require archiving.
    - Major rewrites, new features, and any change to the Scene JSON contract always do.
+   - **Plans are also archived.** After a plan is approved and execution begins, copy the
+     plan file to `archive/YYYY-MM-DD/plan-<short-slug>.md` so there is a record of what
+     was decided and why alongside the code changes it produced.

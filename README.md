@@ -9,8 +9,9 @@ unravel a ~12-scene mystery set in Tokyo.
 ```bash
 npm install
 cp .env.example .env
-# edit .env and add your ANTHROPIC_API_KEY
-npm start
+# edit .env — add ANTHROPIC_API_KEY and PEXELS_API_KEY
+npm run dev   # development (auto-restarts on server changes)
+# npm start   # production
 ```
 
 Open http://localhost:3000
@@ -18,10 +19,12 @@ Open http://localhost:3000
 ## Features
 
 - AI-generated mystery story (3-act structure, recurring NPCs, inventory that matters)
+- Streaming scene text — cinematic closes ~0.5s after clicking, text appears progressively
+- Scene-matched photos via Pexels API (atmospheric, not just location names)
 - Furigana on all kanji with a global toggle
 - Tap-to-reveal vocab chips → 単語帳 log → TSV export for Anki
 - Typed answer scenes with romaji→kana auto-conversion (WanaKana) and naturalness feedback
-- TTS audio bar: play/pause, sentence rewind, seek, speed control
+- Multi-voice TTS: Kyoko (narration) / Otoya (dialogue), with play/pause, seek, speed control
 - Adaptive difficulty based on how often you peek at translations
 - Save/resume, scene gallery, UI scaling, cinematic transitions
 

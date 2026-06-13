@@ -116,55 +116,6 @@ export function renderScene(scene) {
   saveGame();
 }
 
-// Extracts a single string field from a streaming JSON payload character by character.
-// Returns newly arrived characters while capturing, null otherwise.
-function makeExtractor(fieldName) {
-  const marker = `"${fieldName}": "`;
-  let state = 'searching', mPos = 0, value = '';
-  return {
-    feed(chunk) {
-      let fresh = '';
-      for (let i = 0; i < chunk.length; i++) {
-        const c = chunk[i];
-        if (state === 'searching') {
-          mPos = (c === marker[mPos]) ? mPos + 1 : 0;
-          if (mPos === marker.length) state = 'capturing';
-        } else if (state === 'capturing') {
-          if (c === '\\' && i + 1 < chunk.length) {
-            const n = chunk[++i];
-            const u = n === 'n' ? '\n' : n === 't' ? '\t' : n;
-            value += u; fresh += u;
-          } else if (c === '"') {
-            state = 'done';
-          } else {
-            value += c; fresh += c;
-          }
-        }
-      }
-      return state === 'capturing' ? fresh : null;
-    },
-    get value() { return value; },
-    get done() { return state === 'done'; }
-  };
-}
-
-// Appends HTML chunks to an element safely — buffers inside tags so we never
-// inject a partial tag into the DOM (which would corrupt ruby markup mid-stream).
-function makeHtmlAppender(el) {
-  let buf = '', inTag = false;
-  return function append(chunk) {
-    for (const c of chunk) {
-      if (c === '<') inTag = true;
-      buf += c;
-      if (!inTag || c === '>') {
-        inTag = false;
-        el.insertAdjacentHTML('beforeend', buf);
-        buf = '';
-      }
-    }
-  };
-}
-
 export async function generate(action) {
   if (S.loading) return;
   S.loading = true;
@@ -197,10 +148,8 @@ export async function generate(action) {
     userMsg = `Scene ${S.sceneNum} of ~12. Player chose: "${action.value}". Continue.${memoCtx}${itemCtx}${diffCtx}${histCtx}`;
   }
 
-  const startTime = Date.now();
-
   try {
-    const res = await fetch('/api/scene/stream', {
+    const res = await fetch('/api/scene', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
@@ -210,75 +159,21 @@ export async function generate(action) {
       })
     });
     if (!res.ok) throw new Error(`API error ${res.status}`);
-
-    const reader = res.body.getReader();
-    const dec = new TextDecoder();
-    let sseBuffer = '';
-    let fullText = '';
-
-    const locEx  = makeExtractor('location_jp');
-    const textEx = makeExtractor('scene_jp');
-
-    let cinematicClosed = false;
-    let sceneTextReady = false;
-    const sceneTextEl = document.getElementById('scene-text');
-    let appendHtml = null;
-
-    // Close cinematic once location_jp arrives; enforce 500ms minimum display time.
-    // Called without await in the stream loop so text keeps arriving during the wait.
-    async function closeCinematic(locationHtml) {
-      if (cinematicClosed) return;
-      cinematicClosed = true;
-      document.getElementById('cin-location').innerHTML = locationHtml;
-      const elapsed = Date.now() - startTime;
-      if (elapsed < 500) await new Promise(r => setTimeout(r, 500 - elapsed));
-      cinematicClose();
-      await new Promise(r => setTimeout(r, 280));
-      sceneTextEl.innerHTML = '';
-      appendHtml = makeHtmlAppender(sceneTextEl);
-      sceneTextReady = true;
-    }
-
-    while (true) {
-      const { done, value } = await reader.read();
-      if (done) break;
-      sseBuffer += dec.decode(value, { stream: true });
-      const lines = sseBuffer.split('\n');
-      sseBuffer = lines.pop();
-
-      for (const line of lines) {
-        if (!line.startsWith('data: ')) continue;
-        const payload = line.slice(6);
-        if (payload === '{}') continue;
-        try {
-          const { t } = JSON.parse(payload);
-          if (!t) continue;
-          fullText += t;
-
-          locEx.feed(t);
-          if (locEx.done && !cinematicClosed) {
-            closeCinematic(locEx.value); // intentionally not awaited
-          }
-
-          const textFrag = textEx.feed(t);
-          if (textFrag && sceneTextReady && appendHtml) {
-            appendHtml(textFrag);
-          }
-        } catch {}
-      }
-    }
-
-    if (!cinematicClosed) await closeCinematic('');
-
-    const raw = fullText.replace(/```json|```/g, '').trim();
+    const data = await res.json();
+    const raw = (data.content?.[0]?.text || '').replace(/```json|```/g, '').trim();
     if (!raw) throw new Error('Empty response');
     const scene = JSON.parse(raw);
 
+    document.getElementById('cin-location').innerHTML = scene.location_jp;
+    await new Promise(r => setTimeout(r, 900));
+    cinematicClose();
+    await new Promise(r => setTimeout(r, 380));
+
     renderScene(scene);
-  } catch (e) {
+  } catch(e) {
     cinematicClose();
     const msg = e.message.includes('Failed to fetch') || e.message.includes('NetworkError')
-      ? 'サーバーに接続できません。`npm run dev` でサーバーが起動しているか確認してください。'
+      ? 'サーバーに接続できません。`npm start` でサーバーが起動しているか確認してください。'
       : 'エラーが発生しました: ' + e.message;
     document.getElementById('scene-text').textContent = msg;
   }

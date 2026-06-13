@@ -78,6 +78,69 @@ app.post('/api/scene', async (req, res) => {
   }
 });
 
+app.post('/api/scene/stream', async (req, res) => {
+  const { system, messages, max_tokens } = req.body;
+  if (!system || !Array.isArray(messages))
+    return res.status(400).json({ error: 'Bad request' });
+
+  res.setHeader('Content-Type', 'text/event-stream');
+  res.setHeader('Cache-Control', 'no-cache');
+  res.setHeader('Connection', 'keep-alive');
+
+  try {
+    const upstream = await fetch('https://api.anthropic.com/v1/messages', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'x-api-key': process.env.ANTHROPIC_API_KEY,
+        'anthropic-version': '2023-06-01'
+      },
+      body: JSON.stringify({
+        model: MODEL,
+        max_tokens: Math.min(max_tokens || 3000, 4096),
+        stream: true,
+        system,
+        messages
+      })
+    });
+
+    if (!upstream.ok) {
+      const err = await upstream.json();
+      res.write(`event: error\ndata: ${JSON.stringify(err)}\n\n`);
+      return res.end();
+    }
+
+    const reader = upstream.body.getReader();
+    const dec = new TextDecoder();
+    let buf = '';
+
+    while (true) {
+      const { done, value } = await reader.read();
+      if (done) break;
+      buf += dec.decode(value, { stream: true });
+      const lines = buf.split('\n');
+      buf = lines.pop();
+      for (const line of lines) {
+        if (!line.startsWith('data: ')) continue;
+        try {
+          const ev = JSON.parse(line.slice(6));
+          if (ev.type === 'content_block_delta' && ev.delta?.type === 'text_delta')
+            res.write(`data: ${JSON.stringify({ t: ev.delta.text })}\n\n`);
+          else if (ev.type === 'message_stop')
+            res.write('event: done\ndata: {}\n\n');
+          else if (ev.type === 'error')
+            res.write(`event: error\ndata: ${JSON.stringify(ev.error)}\n\n`);
+        } catch {}
+      }
+    }
+    res.end();
+  } catch (e) {
+    console.error('Stream proxy error:', e);
+    res.write(`event: error\ndata: ${JSON.stringify({ message: e.message })}\n\n`);
+    res.end();
+  }
+});
+
 app.listen(PORT, () => {
   console.log(`東京奇譚 running at http://localhost:${PORT}`);
 });
