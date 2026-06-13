@@ -4,7 +4,6 @@ import {
   loadHeroImage, renderItems, renderVocabChips,
   updateHistoryTrail, showEnding
 } from './ui.js';
-import { exitDungeonRoom } from './dungeon.js';
 
 const SYSTEM = `You are the narrator of 東京奇譚 (Tokyo Strange Tales), an interactive mystery RPG for an early-intermediate Japanese learner (N4/N3).
 
@@ -113,16 +112,6 @@ export function renderScene(scene) {
     document.getElementById('input-hint').style.display = 'none';
     renderChoices(scene.choices || []);
   }
-
-  // In dungeon mode, add a "back to map" button alongside choices
-  if (S.mode === 'dungeon') {
-    const btn = document.createElement('button');
-    btn.className = 'choice-btn map-return-btn';
-    btn.innerHTML = '<span class="choice-num">↩</span><span><ruby>マップ<rt>まっぷ</rt></ruby>に<ruby>戻<rt>もど</rt></ruby>る</span>';
-    btn.onclick = () => { if (!S.loading) exitDungeonRoom(); };
-    document.getElementById('choices').appendChild(btn);
-  }
-
   updateHistoryTrail();
   saveGame();
 }
@@ -204,8 +193,6 @@ export async function generate(action) {
     userMsg = `Scene 1 of ~12. Begin — the player just arrived in Tokyo. Establish the mystery hook.${diffCtx}`;
   } else if (action.kind === 'answer') {
     userMsg = `Scene ${S.sceneNum} of ~12. The player TYPED this answer to the NPC's question: "${action.value}". Evaluate it (feedback field), then continue incorporating their answer.${memoCtx}${itemCtx}${diffCtx}${histCtx}`;
-  } else if (action.kind === 'room') {
-    userMsg = `Scene ${S.sceneNum} of ~12. The player enters ${action.roomName}. Generate a scene set specifically in this location — describe the space, introduce an NPC or clue, deepen the mystery.${memoCtx}${itemCtx}${diffCtx}${histCtx}`;
   } else {
     userMsg = `Scene ${S.sceneNum} of ~12. Player chose: "${action.value}". Continue.${memoCtx}${itemCtx}${diffCtx}${histCtx}`;
   }

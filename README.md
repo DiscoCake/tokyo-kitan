@@ -19,6 +19,7 @@ Open http://localhost:3000
 ## Features
 
 - AI-generated mystery story (3-act structure, recurring NPCs, inventory that matters)
+- Dual game modes: visual novel (物語モード) or 2D dungeon explorer (探索モード) — same AI story, different navigation
 - Streaming scene text — cinematic closes ~0.5s after clicking, text appears progressively
 - Scene-matched photos via Pexels API (atmospheric, not just location names)
 - Furigana on all kanji with a global toggle

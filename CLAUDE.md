@@ -6,16 +6,17 @@ collects vocabulary — all wrapped in a ~12-scene mystery story set in Tokyo.
 
 ## Architecture
 
-- `public/index.html` — HTML markup only (~90 lines); no inline script or style
+- `public/index.html` — HTML markup only (~130 lines); no inline script or style
 - `public/css/style.css` — all styles extracted here
 - `public/js/` — ES modules (no build step, `<script type="module">`):
-  - `state.js` — `S` object, `SAVE_KEY`, `SCENE_NUMS`, save/load/clear
+  - `state.js` — `S` object, `SAVE_KEY`, `SCENE_NUMS`, save/load/clear; dungeon fields (`mode`, `dungeonPos`, `currentRoomId`, `visitedRooms` Set)
   - `images.js` — async `pickImage(query)` — fetches scene-matched photos from Pexels via server proxy; falls back to dark gradient
   - `tts.js` — TTS controller, Web Speech API, audio button listeners
   - `ambience.js` — synthesized brown-noise ambience, ambience button
   - `ui.js` — panels, vocab chips, gallery, cinematic, scene helpers
-  - `game.js` — `generate()`, `renderScene()`, `renderChoices()`, story bible `SYSTEM` prompt
-  - `main.js` — entry point: scale, furigana, IME, start/resume/restart, ending buttons
+  - `game.js` — `generate()`, `renderScene()`, `renderChoices()`, story bible `SYSTEM` prompt; `kind:'room'` action branch; imports `exitDungeonRoom` for マップに戻る button
+  - `dungeon.js` — 2D top-down dungeon: 32×14 tile MAP, 12 ROOMS, canvas renderer, WASD input, room-entry prompt; exports `initDungeon({ onEnterRoom })`, `startDungeon()`, `exitDungeonRoom()`, `hideDungeonScreen()`
+  - `main.js` — entry point: scale, furigana, IME, mode select (物語/探索), start/resume/restart, `initDungeon` wiring, ending buttons
 - `server.js` — minimal Express proxy with three routes:
   - `POST /api/scene` — non-streaming fallback (unused by client, kept for debugging)
   - `POST /api/scene/stream` — SSE streaming proxy to Anthropic; pipes `text_delta` events to client
@@ -79,6 +80,15 @@ collects vocabulary — all wrapped in a ~12-scene mystery story set in Tokyo.
     (Noto Sans JP). Everything sized in rem off `--s` scale variable (UI zoom: ±buttons and
     ctrl+scroll, 50–200%, padding compresses as scale grows).
 
+13. **Dungeon mode is a navigation shell, not a gameplay replacement.** The 探索モード
+    option adds a 2D top-down canvas dungeon (32×14 tile grid, WASD/arrow-key movement)
+    as an alternative way to move between scenes. The learning mechanics — scene generation,
+    furigana, TTS, vocab chips, typed input, adaptive difficulty — are completely identical
+    in both modes. Dungeon rooms trigger `generate({ kind: 'room', ... })` the same way
+    choices do; `mystery_memo` and inventory carry across. Three wings match the 3-act story
+    (駅エリア → 神社エリア → 地下エリア). Both modes share the same save slot (`tokyo_kitan_save_v1`).
+    Phase 2 items: minimap, fog of war, NPC sprites on map, district-matched ambience.
+
 12. **Cinematic scene transitions + streaming.** Full-black overlay with location kanji title
     card + letterbox bars during API calls. `generate()` uses `POST /api/scene/stream` (SSE).
     A `makeExtractor` state machine watches the arriving JSON stream: as soon as `location_jp`
@@ -123,13 +133,14 @@ collects vocabulary — all wrapped in a ~12-scene mystery story set in Tokyo.
 - Session-end grammar review screen (grammarSeen is already collected)
 - Speech input (Web Speech recognition) for spoken answers — stretch
 - Better scene photos: generated art or curated image library (Pexels is live but results vary)
+- Dungeon Phase 2: minimap overlay, fog of war (unexplored rooms hidden), NPC sprites on map, per-district ambient sound
 
 ## Conventions
 
 - Vanilla JS, no framework, no build step — keep it that way unless the user asks
 - All UI strings in Japanese with ruby; English only in learner-facing feedback/translations
 - Use `npm run dev` during development — `node --watch` auto-restarts on `server.js` changes. `npm start` is for production only.
-- Test by playing at least one choice + one typed-input scene
+- Test by playing at least one choice + one typed-input scene (visual novel mode); also verify dungeon mode: WASD movement, room entry, scene generation, マップに戻る return
 - Canonical GitHub remote: https://github.com/DiscoCake/tokyo-kitan — push all changes here
 
 ## File Change Discipline

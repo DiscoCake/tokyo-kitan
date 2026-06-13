@@ -29,10 +29,8 @@
       <label>なまえ</label>
       <input type="text" id="name-input" placeholder="旅人" value="旅人" />
     </div>
-    <div id="setup-mode-label">モードを<ruby>選<rt>えら</rt></ruby>ぼう</div>
     <div id="setup-buttons">
-      <button id="start-story-btn"><ruby>物語<rt>ものがたり</rt></ruby>モード</button>
-      <button id="start-dungeon-btn"><ruby>探索<rt>たんさく</rt></ruby>モード</button>
+      <button id="start-btn"><ruby>新<rt>あたら</rt></ruby>しい<ruby>物語<rt>ものがたり</rt></ruby></button>
       <button id="resume-btn"><ruby>続<rt>つづ</rt></ruby>きから</button>
     </div>
   </div>
@@ -88,28 +86,6 @@
       <button id="answer-send">送信</button>
     </div>
     <div id="input-hint">ローマ字で打つと自動的にかなになります（例: konnichiha → こんにちは）<button class="ctrl-btn active" id="ime-toggle" style="margin-left:0.6rem;">ローマ字入力</button></div>
-  </div>
-
-  <!-- DUNGEON -->
-  <div id="dungeon-screen">
-    <div id="dungeon-topbar">
-      <div id="dungeon-topbar-left">
-        <span class="game-title"><ruby>東京<rt>とうきょう</rt></ruby><ruby>奇譚<rt>きたん</rt></ruby></span>
-        <span id="dungeon-district"></span>
-      </div>
-      <div id="dungeon-topbar-right">
-        <button class="ctrl-btn active" id="dungeon-furigana-btn">ふりがな</button>
-        <button class="ctrl-btn" id="dungeon-restart-btn">↺</button>
-      </div>
-    </div>
-    <div id="dungeon-wrap">
-      <canvas id="dungeon-canvas"></canvas>
-      <div id="dungeon-prompt">
-        <span id="dungeon-prompt-name"></span>
-        <span id="dungeon-prompt-hint">　— <kbd>Enter</kbd> で<ruby>入<rt>はい</rt></ruby>る　<kbd>Esc</kbd> で<ruby>戻<rt>もど</rt></ruby>る</span>
-      </div>
-    </div>
-    <div id="dungeon-hint">WASD /<ruby>矢印<rt>やじるし</rt></ruby>キー で<ruby>移動<rt>いどう</rt></ruby>　ピンクのマスに<ruby>乗<rt>の</rt></ruby>る → Enter で<ruby>入室<rt>にゅうしつ</rt></ruby></div>
   </div>
 
   <!-- ENDING -->
