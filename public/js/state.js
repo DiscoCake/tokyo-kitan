@@ -15,11 +15,13 @@ export const S = {
   items: [],
   gallery: [],
   peeks: 0,
+  unknownTaps: 0,
   // Dungeon mode state
   mode: 'visual-novel',        // 'visual-novel' | 'dungeon'
   dungeonPos: { x: 1, y: 7 }, // tile coordinates; matches MAP start position
   currentRoomId: null,         // room the player is currently inside
-  visitedRooms: new Set()      // roomIds where a scene has been entered
+  visitedRooms: new Set(),     // roomIds where a scene has been entered
+  roomScenes: {}               // roomId → last scene object seen; restored on re-entry
 };
 
 export function saveGame() {
@@ -28,11 +30,12 @@ export function saveGame() {
       playerName: S.playerName, sceneNum: S.sceneNum, history: S.history,
       currentScene: S.currentScene, mysteryMemo: S.mysteryMemo,
       vocabLog: S.vocabLog, grammarSeen: S.grammarSeen,
-      items: S.items, gallery: S.gallery, peeks: S.peeks,
+      items: S.items, gallery: S.gallery, peeks: S.peeks, unknownTaps: S.unknownTaps,
       mode: S.mode,
       dungeonPos: { ...S.dungeonPos },
       currentRoomId: S.currentRoomId,
-      visitedRooms: [...S.visitedRooms]
+      visitedRooms: [...S.visitedRooms],
+      roomScenes: S.roomScenes
     };
     localStorage.setItem(SAVE_KEY, JSON.stringify(snap));
   } catch(e) {}

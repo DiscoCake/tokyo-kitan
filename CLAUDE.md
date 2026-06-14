@@ -13,7 +13,7 @@ collects vocabulary — all wrapped in a ~12-scene mystery story set in Tokyo.
   - `images.js` — async `pickImage(query)` — fetches scene-matched photos from Pexels via server proxy; falls back to dark gradient
   - `tts.js` — TTS controller, Web Speech API, audio button listeners
   - `ambience.js` — synthesized brown-noise ambience, ambience button
-  - `ui.js` — panels, vocab chips, gallery, cinematic, scene helpers
+  - `ui.js` — panels, vocab chips, gallery, cinematic, scene helpers; `makeSceneWordTaps` wires ruby-tap lookup; `logVocabWord` is shared add-to-log helper
   - `game.js` — `generate()`, `renderScene()`, `renderChoices()`, story bible `SYSTEM` prompt; `kind:'room'` action branch; imports `exitDungeonRoom` for マップに戻る button
   - `dungeon.js` — 2D top-down dungeon: 32×14 tile MAP, 12 ROOMS, canvas renderer, WASD input, room-entry prompt; exports `initDungeon({ onEnterRoom })`, `startDungeon()`, `exitDungeonRoom()`, `hideDungeonScreen()`
   - `main.js` — entry point: scale, furigana, IME, mode select (物語/探索), start/resume/restart, `initDungeon` wiring, ending buttons
@@ -29,9 +29,14 @@ collects vocabulary — all wrapped in a ~12-scene mystery story set in Tokyo.
    removed branch pre-generation deliberately to save tokens. Do not re-add speculative
    generation, parallel calls, or per-word lookup calls.
 
-2. **Vocab rides in the scene response.** Each scene returns 4–6 `vocab` entries; they render
-   as tap-to-reveal chips (meaning hidden until tapped — inference first is intentional
-   learning design). Tapping logs to the 単語帳 with TSV export for Anki. No extra API calls.
+2. **Vocab rides in the scene response — drives lookup and adaptive difficulty.** Each scene
+   returns 4–6 `vocab` entries (no chip UI — hidden). They serve two purposes: (1) the word
+   lookup card (`#word-card`) shows meaning when the player taps a kanji that appears in the
+   list; (2) taps on kanji NOT in the list increment `S.unknownTaps`, which feeds into adaptive
+   difficulty (see #7). Every `<ruby>` element in `#scene-text` is tappable — clicking opens a
+   floating card with reading (from `<rt>`) and meaning (from vocab array if present) plus
+   「単語帳に追加」 to log to `S.vocabLog` for Anki TSV export. `makeSceneWordTaps(sceneEl, vocab)`
+   in `ui.js` wires tap handlers; `logVocabWord(v)` is the shared deduped add-to-log helper.
 
 3. **Furigana everywhere, one global toggle.** EVERY kanji anywhere in the UI (static text,
    scene text, choices, location names, buttons) gets `<ruby>漢字<rt>かんじ</rt></ruby>`.
@@ -52,8 +57,11 @@ collects vocabulary — all wrapped in a ~12-scene mystery story set in Tokyo.
    (casual/polite/rough/keigo) as a deliberate learning feature; Murakami-adjacent
    不思議 tone, never horror. Roughly every 3rd scene is `scene_type: "input"`.
 
-7. **Adaptive difficulty from translation peeks.** `S.peeks / S.sceneNum` < 0.25 → "harder"
-   (N3+/occasional N2); > 0.6 → "easier"; else "standard". Passed with every request.
+7. **Adaptive difficulty from two signals.** `(S.peeks + S.unknownTaps) / S.sceneNum` < 0.25
+   → "harder" (N3+/occasional N2); > 0.6 → "easier"; else "standard". `S.peeks` increments on
+   translation reveals; `S.unknownTaps` increments when the player taps a kanji in the scene
+   text that was NOT in the AI's vocab list (i.e., a word the AI assumed they knew). Passed
+   with every request.
 
 8. **TTS via Web Speech API — segment-based, multi-voice.** Full audio bar: play/pause,
    sentence rewind, click-to-seek, speed cycle (0.7/0.9/1.0/1.2). `parseSegments(text)`
@@ -81,15 +89,18 @@ collects vocabulary — all wrapped in a ~12-scene mystery story set in Tokyo.
     ctrl+scroll, 50–200%, padding compresses as scale grows).
 
 13. **Dungeon mode is a navigation shell, not a gameplay replacement.** The 探索モード
-    option adds a 2D top-down canvas dungeon (32×14 tile grid, WASD/arrow-key movement)
-    as an alternative way to move between scenes. The learning mechanics — scene generation,
-    furigana, TTS, vocab chips, typed input, adaptive difficulty — are completely identical
-    in both modes. Dungeon rooms trigger `generate({ kind: 'room', ... })` the same way
-    choices do; `mystery_memo` and inventory carry across. Three wings match the 3-act story
-    (駅エリア → 神社エリア → 地下エリア). Acts are gated sequentially: shrine wing unlocks after
-    visiting any station room; underground wing unlocks after visiting any shrine room. Locked
-    corridor crossings show an amber barrier on the map and a Japanese hint when the player
-    tries to cross. Both modes share the same save slot (`tokyo_kitan_save_v1`).
+    option adds a 2D top-down canvas dungeon (32×14 tile grid, WASD/arrow-key movement, E or
+    Enter to enter a room) as an alternative way to move between scenes. Learning mechanics —
+    scene generation, furigana, TTS, typed input, adaptive difficulty — are identical in both
+    modes. Three wings match the 3-act story (駅エリア → 神社エリア → 地下エリア). Acts are gated
+    sequentially; locked corridors show an amber barrier. Both modes share `tokyo_kitan_save_v1`.
+    **Room caching:** `S.roomScenes[roomId]` stores the last scene seen in each room.
+    `exitDungeonRoom()` saves before clearing; re-entry calls `renderScene(saved, true, true)`
+    (skipImageLoad + skipMeta) so the player resumes exactly where they left off without a new
+    API call and without regressing `mystery_memo`. **Narrative continuity:** `enterRoom()`
+    passes `visitedRoomNames` (plain-text names from the ROOMS registry) to the `onEnterRoom`
+    callback; `generate()` injects them into the room prompt so the AI can have NPCs and clues
+    reference already-visited locations within the same dungeon run.
     Phase 2 items: minimap, fog of war, NPC sprites on map, district-matched ambience.
 
 12. **Cinematic scene transitions + streaming.** Full-black overlay with location kanji title
@@ -136,7 +147,7 @@ collects vocabulary — all wrapped in a ~12-scene mystery story set in Tokyo.
 - Session-end grammar review screen (grammarSeen is already collected)
 - Speech input (Web Speech recognition) for spoken answers — stretch
 - Better scene photos: generated art or curated image library (Pexels is live but results vary)
-- Vocab chip UX: let the player select which words to look up rather than auto-picking 5; current 5-chip auto-selection feels limiting
+- ~~Vocab chip UX~~ — **done**: tappable ruby words in scene text + explicit ＋ button on chips
 - Dungeon Phase 2: minimap overlay, fog of war (unexplored rooms hidden), NPC sprites on map, per-district ambient sound
 
 ## Conventions

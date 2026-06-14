@@ -218,21 +218,38 @@ rt { font-family: "Noto Sans JP", sans-serif; font-size: 0.52rem; color: var(--p
 .item-chip.new { animation: itemglow 1.2s ease 2; }
 @keyframes itemglow { 0%,100% { box-shadow: none; } 50% { box-shadow: 0 0 12px rgba(255,224,102,0.5); } }
 
-/* ── VOCAB CHIPS ── */
-#vocab-row { display: flex; flex-wrap: wrap; gap: 0.45rem; margin-bottom: 1.1rem; }
-.vocab-chip {
-  font-family: "Noto Serif JP", serif; font-size: 0.85rem;
+/* ── VOCAB CHIPS (hidden — chips removed; #vocab-row kept for clearScene) ── */
+#vocab-row { display: none; }
+
+/* ── WORD LOOKUP CARD ── */
+#word-card {
+  display: none; position: fixed; z-index: 600;
   background: var(--bg2); border: 1px solid var(--border2);
-  border-radius: 99px; padding: 0.3rem 0.9rem;
-  color: var(--purple); cursor: pointer; line-height: 1.9;
-  transition: border-color 0.15s, background 0.15s, color 0.15s;
+  border-radius: 12px; padding: 0.9rem 1.1rem;
+  min-width: 170px; max-width: 270px;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.55);
+  animation: fadein 0.15s ease;
 }
-.vocab-chip:hover { border-color: var(--purple); background: var(--bg3); }
-.vocab-chip.revealed {
-  color: var(--cyan); border-color: var(--cyan2); cursor: default;
-  font-family: "Noto Sans JP", sans-serif; font-size: 0.72rem;
+#wc-word {
+  font-family: "Noto Serif JP", serif; font-size: 1.1rem;
+  color: var(--cyan); line-height: 2; margin-bottom: 0.1rem;
 }
-.vocab-chip.revealed .meaning { color: var(--text2); }
+#wc-reading { font-size: 0.68rem; color: var(--pink); margin-bottom: 0.45rem; }
+#wc-meaning {
+  font-size: 0.76rem; color: var(--text2); line-height: 1.7;
+  margin-bottom: 0.65rem; min-height: 1.2em;
+}
+#wc-add {
+  font-family: "Noto Sans JP", sans-serif; font-size: 0.68rem;
+  background: transparent; border: 1px solid var(--border2);
+  border-radius: 99px; color: var(--purple); cursor: pointer;
+  padding: 0.22rem 0.75rem; line-height: 1.9;
+  transition: border-color 0.12s, color 0.12s;
+}
+#wc-add:hover { border-color: var(--purple); color: var(--text); }
+#wc-add.added { color: var(--cyan); border-color: var(--cyan2); }
+#scene-text ruby { cursor: pointer; }
+#scene-text ruby:hover { color: var(--pink); }
 
 /* ── CHOICES / INPUT ── */
 #choices { display: flex; flex-direction: column; gap: 0.55rem; margin-bottom: 1.25rem; }

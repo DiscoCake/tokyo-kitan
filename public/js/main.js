@@ -1,5 +1,5 @@
 import { S, SCENE_NUMS, loadGame, clearSave } from './state.js';
-import { updateVocabBadge, renderItems, openVocabPanel, openGalleryPanel } from './ui.js';
+import { updateVocabBadge, renderItems, openVocabPanel, openGalleryPanel, clearScene } from './ui.js';
 import { generate, renderScene } from './game.js';
 import { initDungeon, startDungeon, hideDungeonScreen } from './dungeon.js';
 
@@ -80,7 +80,8 @@ function submitAnswer() {
 function resetGame() {
   S.history = []; S.sceneNum = 0; S.currentScene = null;
   S.mysteryMemo = ''; S.vocabLog = []; S.grammarSeen = [];
-  S.items = []; S.gallery = []; S.peeks = 0;
+  S.items = []; S.gallery = []; S.peeks = 0; S.unknownTaps = 0;
+  S.roomScenes = {};
   S.mode = 'visual-novel';
   S.dungeonPos = { x: 1, y: 7 };
   S.visitedRooms = new Set();
@@ -165,8 +166,20 @@ document.getElementById('ending-restart-btn').onclick = () => {
 
 /* ── DUNGEON INIT ── */
 initDungeon({
-  onEnterRoom: ({ roomId, roomName }) => {
-    generate({ kind: 'room', roomId, roomName });
+  onEnterRoom: ({ roomId, roomName, visitedRoomNames }) => {
+    const saved = S.roomScenes[roomId];
+    if (saved) {
+      clearScene();
+      if (saved._imgSrc) {
+        const img = document.getElementById('hero-img');
+        img.src = saved._imgSrc;
+        img.classList.add('loaded');
+        document.getElementById('hero-skeleton').style.display = 'none';
+      }
+      renderScene(saved, true, true); // skipImageLoad + skipMeta: restore without side-effects
+    } else {
+      generate({ kind: 'room', roomId, roomName, visitedRoomNames });
+    }
   }
 });
 
