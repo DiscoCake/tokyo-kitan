@@ -1,8 +1,8 @@
 import { S, SCENE_NUMS, saveGame } from './state.js';
 import {
   stripHtml, cinematicOpen, cinematicClose, clearScene,
-  loadHeroImage, renderItems, renderVocabChips,
-  updateHistoryTrail, showEnding
+  loadHeroImage, renderItems,
+  updateHistoryTrail, showEnding, makeSceneWordTaps
 } from './ui.js';
 import { exitDungeonRoom } from './dungeon.js';
 
@@ -41,7 +41,7 @@ Player name: PLAYER_NAME`;
 
 function difficultyLevel() {
   if (S.sceneNum < 2) return 'standard';
-  const rate = S.peeks / S.sceneNum;
+  const rate = (S.peeks + S.unknownTaps) / S.sceneNum;
   if (rate < 0.25) return 'harder';
   if (rate > 0.6)  return 'easier';
   return 'standard';
@@ -64,10 +64,10 @@ function renderChoices(choices) {
   });
 }
 
-export function renderScene(scene, skipImageLoad = false) {
+export function renderScene(scene, skipImageLoad = false, skipMeta = false) {
   S.currentScene = scene;
-  if (scene.mystery_memo) S.mysteryMemo = scene.mystery_memo;
-  if (scene.grammar_note) S.grammarSeen.push(scene.grammar_note);
+  if (!skipMeta && scene.mystery_memo) S.mysteryMemo = scene.mystery_memo;
+  if (!skipMeta && scene.grammar_note) S.grammarSeen.push(scene.grammar_note);
 
   document.getElementById('loc-text').innerHTML = scene.location_jp;
   if (!skipImageLoad) {
@@ -94,12 +94,11 @@ export function renderScene(scene, skipImageLoad = false) {
   textEl.innerHTML = scene.scene_jp;
   textEl.classList.add('fadein');
   setTimeout(() => textEl.classList.remove('fadein'), 400);
+  makeSceneWordTaps(textEl, scene.vocab || []);
 
   document.getElementById('translation-box').innerHTML = scene.scene_translation || '';
   document.getElementById('grammar-box').innerHTML =
     (scene.grammar_note || '').replace(/【(.+?)】/, '<strong>【$1】</strong>');
-
-  renderVocabChips(scene.vocab || []);
 
   if (scene.scene_type === 'ending') { saveGame(); showEnding(); return; }
 
@@ -223,7 +222,10 @@ export async function generate(action) {
   } else if (action.kind === 'answer') {
     userMsg = `Scene ${S.sceneNum} of ~12. The player TYPED this answer to the NPC's question: "${action.value}". Evaluate it (feedback field), then continue incorporating their answer.${memoCtx}${itemCtx}${diffCtx}${histCtx}`;
   } else if (action.kind === 'room') {
-    userMsg = `Scene ${S.sceneNum} of ~12. The player enters ${action.roomName}. Generate a scene set specifically in this location — describe the space, introduce an NPC or clue, deepen the mystery.${memoCtx}${itemCtx}${diffCtx}${histCtx}`;
+    const visitedCtx = action.visitedRoomNames?.length
+      ? `\nAlready visited this dungeon run: ${action.visitedRoomNames.join('、')} — NPCs and clues in this room may reference those locations.`
+      : '';
+    userMsg = `Scene ${S.sceneNum} of ~12. The player enters ${action.roomName}. Generate a scene set specifically in this location — describe the space, introduce an NPC or clue, deepen the mystery.${visitedCtx}${memoCtx}${itemCtx}${diffCtx}${histCtx}`;
   } else {
     userMsg = `Scene ${S.sceneNum} of ~12. Player chose: "${action.value}". Continue.${memoCtx}${itemCtx}${diffCtx}${histCtx}`;
   }

@@ -106,10 +106,10 @@
       <canvas id="dungeon-canvas"></canvas>
       <div id="dungeon-prompt">
         <span id="dungeon-prompt-name"></span>
-        <span id="dungeon-prompt-hint">　— <kbd>Enter</kbd> で<ruby>入<rt>はい</rt></ruby>る　<kbd>Esc</kbd> で<ruby>戻<rt>もど</rt></ruby>る</span>
+        <span id="dungeon-prompt-hint">　— <kbd>Enter</kbd> / <kbd>E</kbd> で<ruby>入<rt>はい</rt></ruby>る　<kbd>Esc</kbd> で<ruby>戻<rt>もど</rt></ruby>る</span>
       </div>
     </div>
-    <div id="dungeon-hint">WASD /<ruby>矢印<rt>やじるし</rt></ruby>キー で<ruby>移動<rt>いどう</rt></ruby>　ピンクのマスに<ruby>乗<rt>の</rt></ruby>る → Enter で<ruby>入室<rt>にゅうしつ</rt></ruby></div>
+    <div id="dungeon-hint">WASD /<ruby>矢印<rt>やじるし</rt></ruby>キー で<ruby>移動<rt>いどう</rt></ruby>　ピンクのマスに<ruby>乗<rt>の</rt></ruby>る → Enter/E で<ruby>入室<rt>にゅうしつ</rt></ruby></div>
   </div>
 
   <!-- ENDING -->
@@ -130,7 +130,7 @@
   <div class="panel-inner">
     <h2><ruby>単語帳<rt>たんごちょう</rt></ruby></h2>
     <div id="vocab-list"></div>
-    <div class="panel-empty" id="vocab-empty" style="display:none;">まだ単語がありません。場面の下の単語をタップしよう。</div>
+    <div class="panel-empty" id="vocab-empty" style="display:none;">まだ単語がありません。場面の<ruby>漢字<rt>かんじ</rt></ruby>をタップして<ruby>単語帳<rt>たんごちょう</rt></ruby>に<ruby>追加<rt>ついか</rt></ruby>しよう。</div>
     <div class="panel-actions">
       <button class="panel-btn" id="vocab-export">Ankiにエクスポート (TSV)</button>
       <button class="panel-btn panel-close">閉じる</button>
@@ -163,6 +163,14 @@
   <button class="scale-btn" id="scale-down">−</button>
   <span id="scale-label">100%</span>
   <button class="scale-btn" id="scale-up">＋</button>
+</div>
+
+<!-- WORD LOOKUP CARD -->
+<div id="word-card">
+  <div id="wc-word"></div>
+  <div id="wc-reading"></div>
+  <div id="wc-meaning"></div>
+  <button id="wc-add"><ruby>単語帳<rt>たんごちょう</rt></ruby>に<ruby>追加<rt>ついか</rt></ruby></button>
 </div>
 
 <script type="module" src="js/main.js"></script>

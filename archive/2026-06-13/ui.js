@@ -79,14 +79,6 @@ export function updateVocabBadge() {
   b.style.display = S.vocabLog.length ? 'inline-block' : 'none';
 }
 
-export function logVocabWord(v) {
-  if (!S.vocabLog.some(x => x.word === v.word)) {
-    S.vocabLog.push(v);
-    updateVocabBadge();
-    saveGame();
-  }
-}
-
 export function renderVocabChips(vocab) {
   const row = document.getElementById('vocab-row');
   row.innerHTML = '';
@@ -98,80 +90,14 @@ export function renderVocabChips(vocab) {
       if (chip.classList.contains('revealed')) return;
       chip.classList.add('revealed');
       chip.innerHTML = `${v.word}（${v.reading}）<span class="meaning"> ${v.meaning}</span>`;
-      const addBtn = document.createElement('button');
-      addBtn.className = 'chip-add';
-      addBtn.textContent = '＋';
-      addBtn.onclick = e => {
-        e.stopPropagation();
-        logVocabWord(v);
-        addBtn.textContent = '✓';
-        addBtn.classList.add('added');
-        addBtn.disabled = true;
-      };
-      chip.appendChild(addBtn);
+      if (!S.vocabLog.some(x => x.word === v.word)) {
+        S.vocabLog.push(v);
+        updateVocabBadge();
+        saveGame();
+      }
     };
     row.appendChild(chip);
   });
-}
-
-// Attach click-to-lookup handlers on every <ruby> element in the scene text.
-// Called by renderScene after scene HTML is set.
-export function makeSceneWordTaps(sceneEl, vocab) {
-  sceneEl.querySelectorAll('ruby').forEach(rubyEl => {
-    rubyEl.addEventListener('click', e => {
-      e.stopPropagation();
-      showWordCard(rubyEl, vocab);
-    });
-  });
-}
-
-function showWordCard(rubyEl, vocab) {
-  // Extract base word (kanji) by removing <rt> content from a clone
-  const clone = rubyEl.cloneNode(true);
-  clone.querySelectorAll('rt').forEach(n => n.remove());
-  const word = clone.textContent.trim();
-
-  const rt = rubyEl.querySelector('rt');
-  const reading = rt ? rt.innerText.trim() : '';
-
-  const match = vocab.find(v => v.word === word);
-  const meaning = match ? match.meaning : '';
-  if (!match) { S.unknownTaps++; saveGame(); }
-
-  const card = document.getElementById('word-card');
-  document.getElementById('wc-word').textContent = word;
-  document.getElementById('wc-reading').textContent = reading;
-  document.getElementById('wc-meaning').textContent = meaning;
-
-  const addBtn = document.getElementById('wc-add');
-  addBtn.classList.remove('added');
-  addBtn.innerHTML = '<ruby>単語帳<rt>たんごちょう</rt></ruby>に<ruby>追加<rt>ついか</rt></ruby>';
-
-  const vocabItem = match || { word, reading, meaning: '' };
-  addBtn.onclick = e => {
-    e.stopPropagation();
-    logVocabWord(vocabItem);
-    addBtn.textContent = '追加しました ✓';
-    addBtn.classList.add('added');
-  };
-
-  // Show card temporarily off-screen to measure it
-  card.style.top = '-9999px';
-  card.style.left = '-9999px';
-  card.style.display = 'block';
-
-  const rect = rubyEl.getBoundingClientRect();
-  const cardH = card.offsetHeight;
-  const cardW = card.offsetWidth;
-
-  let top = rect.top - cardH - 10;
-  if (top < 8) top = rect.bottom + 10;
-  let left = rect.left;
-  if (left + cardW > window.innerWidth - 8) left = window.innerWidth - cardW - 8;
-  if (left < 8) left = 8;
-
-  card.style.top = top + 'px';
-  card.style.left = left + 'px';
 }
 
 export function openVocabPanel() {
@@ -232,14 +158,6 @@ export function showEnding() {
     clearSave();
   }, 6000);
 }
-
-// Dismiss word lookup card when clicking outside it
-document.addEventListener('click', e => {
-  const card = document.getElementById('word-card');
-  if (card.style.display !== 'none' && !card.contains(e.target)) {
-    card.style.display = 'none';
-  }
-});
 
 // Panel controls
 document.getElementById('vocab-btn').onclick = openVocabPanel;

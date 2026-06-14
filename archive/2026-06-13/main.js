@@ -1,6 +1,7 @@
 import { S, SCENE_NUMS, loadGame, clearSave } from './state.js';
 import { updateVocabBadge, renderItems, openVocabPanel, openGalleryPanel } from './ui.js';
 import { generate, renderScene } from './game.js';
+import { initDungeon, startDungeon, hideDungeonScreen } from './dungeon.js';
 
 // Side-effect imports — each module wires its own event listeners on load
 import './tts.js';
@@ -26,9 +27,11 @@ function setFurigana(on) {
   document.body.classList.toggle('hide-furigana', !on);
   document.getElementById('furigana-btn').classList.toggle('active', on);
   document.getElementById('setup-furigana-btn').classList.toggle('active', on);
+  document.getElementById('dungeon-furigana-btn').classList.toggle('active', on);
 }
-document.getElementById('furigana-btn').onclick       = () => setFurigana(!S.furigana);
-document.getElementById('setup-furigana-btn').onclick = () => setFurigana(!S.furigana);
+document.getElementById('furigana-btn').onclick          = () => setFurigana(!S.furigana);
+document.getElementById('setup-furigana-btn').onclick    = () => setFurigana(!S.furigana);
+document.getElementById('dungeon-furigana-btn').onclick  = () => setFurigana(!S.furigana);
 
 /* ── TOPBAR TOGGLES ── */
 document.getElementById('translation-btn').onclick = function() {
@@ -77,37 +80,76 @@ function submitAnswer() {
 function resetGame() {
   S.history = []; S.sceneNum = 0; S.currentScene = null;
   S.mysteryMemo = ''; S.vocabLog = []; S.grammarSeen = [];
-  S.items = []; S.gallery = []; S.peeks = 0;
+  S.items = []; S.gallery = []; S.peeks = 0; S.unknownTaps = 0;
+  S.mode = 'visual-novel';
+  S.dungeonPos = { x: 1, y: 7 };
+  S.visitedRooms = new Set();
+  S.currentRoomId = null;
   updateVocabBadge(); renderItems(false);
   document.getElementById('history-trail').style.display = 'none';
   clearSave();
 }
 
 /* ── START / RESUME ── */
-document.getElementById('start-btn').onclick = function() {
+function getPlayerName() {
   const n = document.getElementById('name-input').value.trim();
   if (n) S.playerName = n;
+}
+
+document.getElementById('start-story-btn').onclick = function() {
+  getPlayerName();
+  S.mode = 'visual-novel';
   clearSave();
   document.getElementById('setup-screen').style.display = 'none';
   document.getElementById('game-screen').style.display = 'block';
   generate(null);
 };
+
+document.getElementById('start-dungeon-btn').onclick = function() {
+  getPlayerName();
+  S.mode = 'dungeon';
+  S.dungeonPos = { x: 1, y: 7 };
+  S.visitedRooms = new Set();
+  clearSave();
+  document.getElementById('setup-screen').style.display = 'none';
+  startDungeon();
+};
+
 document.getElementById('resume-btn').onclick = function() {
   const snap = loadGame();
   if (!snap) return;
   Object.assign(S, snap);
+  S.mode = snap.mode || 'visual-novel';
+  S.dungeonPos = snap.dungeonPos || { x: 1, y: 7 };
+  S.visitedRooms = new Set(snap.visitedRooms || []);
+  S.currentRoomId = snap.currentRoomId || null;
   updateVocabBadge();
   document.getElementById('setup-screen').style.display = 'none';
-  document.getElementById('game-screen').style.display = 'block';
-  document.getElementById('scene-tag').innerHTML =
-    '<ruby>場面<rt>ばめん</rt></ruby> ' + (SCENE_NUMS[S.sceneNum - 1] || S.sceneNum);
-  if (S.currentScene) renderScene(S.currentScene);
+
+  if (S.mode === 'dungeon') {
+    startDungeon();
+  } else {
+    document.getElementById('game-screen').style.display = 'block';
+    document.getElementById('scene-tag').innerHTML =
+      '<ruby>場面<rt>ばめん</rt></ruby> ' + (SCENE_NUMS[S.sceneNum - 1] || S.sceneNum);
+    if (S.currentScene) renderScene(S.currentScene);
+  }
 };
 
 /* ── RESTART ── */
 document.getElementById('restart-btn').onclick = function() {
   if (!confirm('最初からやり直しますか？単語帳もリセットされます。')) return;
   resetGame();
+  hideDungeonScreen();
+  document.getElementById('game-screen').style.display = 'block';
+  generate(null);
+};
+
+document.getElementById('dungeon-restart-btn').onclick = function() {
+  if (!confirm('最初からやり直しますか？単語帳もリセットされます。')) return;
+  resetGame();
+  hideDungeonScreen();
+  document.getElementById('game-screen').style.display = 'block';
   generate(null);
 };
 
@@ -120,6 +162,13 @@ document.getElementById('ending-restart-btn').onclick = () => {
   document.getElementById('game-screen').style.display = 'block';
   generate(null);
 };
+
+/* ── DUNGEON INIT ── */
+initDungeon({
+  onEnterRoom: ({ roomId, roomName }) => {
+    generate({ kind: 'room', roomId, roomName });
+  }
+});
 
 /* ── INIT ── */
 if (loadGame()) document.getElementById('resume-btn').style.display = 'inline-flex';

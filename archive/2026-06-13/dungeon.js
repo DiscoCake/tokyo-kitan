@@ -90,10 +90,6 @@ export function startDungeon() {
 
 export function exitDungeonRoom() {
   if (S.currentRoomId) {
-    const heroImg = document.getElementById('hero-img');
-    const cachedScene = { ...S.currentScene };
-    if (heroImg.classList.contains('loaded')) cachedScene._imgSrc = heroImg.src;
-    S.roomScenes[S.currentRoomId] = cachedScene;
     S.visitedRooms.add(S.currentRoomId);
     S.currentRoomId = null;
   }
@@ -184,10 +180,7 @@ function enterRoom(roomId) {
   document.getElementById('dungeon-screen').style.display = 'none';
   document.getElementById('game-screen').style.display = 'block';
 
-  const visitedRoomNames = [...S.visitedRooms]
-    .map(id => ROOMS[id]?.name_plain)
-    .filter(Boolean);
-  _onEnterRoom({ roomId, roomName: room.name_plain, visitedRoomNames });
+  _onEnterRoom({ roomId, roomName: room.name_plain });
 }
 
 // ── Canvas rendering ──

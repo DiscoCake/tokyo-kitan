@@ -4,6 +4,7 @@ import {
   loadHeroImage, renderItems, renderVocabChips,
   updateHistoryTrail, showEnding
 } from './ui.js';
+import { exitDungeonRoom } from './dungeon.js';
 
 const SYSTEM = `You are the narrator of 東京奇譚 (Tokyo Strange Tales), an interactive mystery RPG for an early-intermediate Japanese learner (N4/N3).
 
@@ -63,16 +64,18 @@ function renderChoices(choices) {
   });
 }
 
-export function renderScene(scene) {
+export function renderScene(scene, skipImageLoad = false) {
   S.currentScene = scene;
   if (scene.mystery_memo) S.mysteryMemo = scene.mystery_memo;
   if (scene.grammar_note) S.grammarSeen.push(scene.grammar_note);
 
   document.getElementById('loc-text').innerHTML = scene.location_jp;
-  // Fire image request concurrently — scene text/choices render immediately while image loads
-  loadHeroImage(scene.image_query).then(imgUrl => {
-    S.gallery.push({ loc: scene.location_jp, img: imgUrl || '', num: S.sceneNum });
-  });
+  if (!skipImageLoad) {
+    // Fire image request concurrently — scene text/choices render immediately while image loads
+    loadHeroImage(scene.image_query).then(imgUrl => {
+      S.gallery.push({ loc: scene.location_jp, img: imgUrl || '', num: S.sceneNum });
+    });
+  }
 
   if (scene.items_gained && scene.items_gained.length) {
     scene.items_gained.forEach(it => {
@@ -112,15 +115,27 @@ export function renderScene(scene) {
     document.getElementById('input-hint').style.display = 'none';
     renderChoices(scene.choices || []);
   }
+
+  // In dungeon mode, add a "back to map" button alongside choices
+  if (S.mode === 'dungeon') {
+    const btn = document.createElement('button');
+    btn.className = 'choice-btn map-return-btn';
+    btn.innerHTML = '<span class="choice-num">↩</span><span><ruby>マップ<rt>まっぷ</rt></ruby>に<ruby>戻<rt>もど</rt></ruby>る</span>';
+    btn.onclick = () => { if (!S.loading) exitDungeonRoom(); };
+    document.getElementById('choices').appendChild(btn);
+  }
+
   updateHistoryTrail();
   saveGame();
 }
 
 // Extracts a single string field from a streaming JSON payload character by character.
 // Returns newly arrived characters while capturing, null otherwise.
+// `pendingEscape` carries a trailing `\` across SSE chunk boundaries so a `\"` split
+// between two chunks doesn't falsely terminate capture.
 function makeExtractor(fieldName) {
   const marker = `"${fieldName}": "`;
-  let state = 'searching', mPos = 0, value = '';
+  let state = 'searching', mPos = 0, value = '', pendingEscape = false;
   return {
     feed(chunk) {
       let fresh = '';
@@ -130,10 +145,18 @@ function makeExtractor(fieldName) {
           mPos = (c === marker[mPos]) ? mPos + 1 : 0;
           if (mPos === marker.length) state = 'capturing';
         } else if (state === 'capturing') {
-          if (c === '\\' && i + 1 < chunk.length) {
-            const n = chunk[++i];
-            const u = n === 'n' ? '\n' : n === 't' ? '\t' : n;
+          if (pendingEscape) {
+            pendingEscape = false;
+            const u = c === 'n' ? '\n' : c === 't' ? '\t' : c;
             value += u; fresh += u;
+          } else if (c === '\\') {
+            if (i + 1 < chunk.length) {
+              const n = chunk[++i];
+              const u = n === 'n' ? '\n' : n === 't' ? '\t' : n;
+              value += u; fresh += u;
+            } else {
+              pendingEscape = true; // `\` is last char of chunk — resolve on next feed()
+            }
           } else if (c === '"') {
             state = 'done';
           } else {
@@ -148,16 +171,22 @@ function makeExtractor(fieldName) {
   };
 }
 
-// Appends HTML chunks to an element safely — buffers inside tags so we never
-// inject a partial tag into the DOM (which would corrupt ruby markup mid-stream).
+// Appends HTML chunks to an element safely — buffers inside tags and entire
+// <ruby>…</ruby> blocks so furigana is always inserted as a complete unit.
 function makeHtmlAppender(el) {
-  let buf = '', inTag = false;
+  let buf = '', inTag = false, rubyDepth = 0, pendingTag = '';
   return function append(chunk) {
     for (const c of chunk) {
-      if (c === '<') inTag = true;
+      if (c === '<') { inTag = true; pendingTag = ''; }
+      if (inTag) pendingTag += c;
       buf += c;
-      if (!inTag || c === '>') {
+      if (inTag && c === '>') {
         inTag = false;
+        if (/^<ruby[\s>]/i.test(pendingTag)) rubyDepth++;
+        else if (/^<\/ruby>/i.test(pendingTag)) rubyDepth = Math.max(0, rubyDepth - 1);
+        pendingTag = '';
+      }
+      if (!inTag && rubyDepth === 0) {
         el.insertAdjacentHTML('beforeend', buf);
         buf = '';
       }
@@ -193,6 +222,8 @@ export async function generate(action) {
     userMsg = `Scene 1 of ~12. Begin — the player just arrived in Tokyo. Establish the mystery hook.${diffCtx}`;
   } else if (action.kind === 'answer') {
     userMsg = `Scene ${S.sceneNum} of ~12. The player TYPED this answer to the NPC's question: "${action.value}". Evaluate it (feedback field), then continue incorporating their answer.${memoCtx}${itemCtx}${diffCtx}${histCtx}`;
+  } else if (action.kind === 'room') {
+    userMsg = `Scene ${S.sceneNum} of ~12. The player enters ${action.roomName}. Generate a scene set specifically in this location — describe the space, introduce an NPC or clue, deepen the mystery.${memoCtx}${itemCtx}${diffCtx}${histCtx}`;
   } else {
     userMsg = `Scene ${S.sceneNum} of ~12. Player chose: "${action.value}". Continue.${memoCtx}${itemCtx}${diffCtx}${histCtx}`;
   }
@@ -216,11 +247,13 @@ export async function generate(action) {
     let sseBuffer = '';
     let fullText = '';
 
-    const locEx  = makeExtractor('location_jp');
-    const textEx = makeExtractor('scene_jp');
+    const locEx   = makeExtractor('location_jp');
+    const imageEx = makeExtractor('image_query');
+    const textEx  = makeExtractor('scene_jp');
 
     let cinematicClosed = false;
     let sceneTextReady = false;
+    let earlyImagePromise = null;
     const sceneTextEl = document.getElementById('scene-text');
     let appendHtml = null;
 
@@ -234,6 +267,7 @@ export async function generate(action) {
       if (elapsed < 500) await new Promise(r => setTimeout(r, 500 - elapsed));
       cinematicClose();
       await new Promise(r => setTimeout(r, 280));
+      document.getElementById('loc-text').innerHTML = locationHtml;
       sceneTextEl.innerHTML = '';
       appendHtml = makeHtmlAppender(sceneTextEl);
       sceneTextReady = true;
@@ -260,6 +294,11 @@ export async function generate(action) {
             closeCinematic(locEx.value); // intentionally not awaited
           }
 
+          imageEx.feed(t);
+          if (imageEx.done && !earlyImagePromise) {
+            earlyImagePromise = loadHeroImage(imageEx.value);
+          }
+
           const textFrag = textEx.feed(t);
           if (textFrag && sceneTextReady && appendHtml) {
             appendHtml(textFrag);
@@ -274,13 +313,30 @@ export async function generate(action) {
     if (!raw) throw new Error('Empty response');
     const scene = JSON.parse(raw);
 
-    renderScene(scene);
+    if (earlyImagePromise) {
+      earlyImagePromise.then(imgUrl => {
+        S.gallery.push({ loc: scene.location_jp, img: imgUrl || '', num: S.sceneNum });
+      });
+    }
+    renderScene(scene, /* skipImageLoad */ earlyImagePromise != null);
   } catch (e) {
     cinematicClose();
-    const msg = e.message.includes('Failed to fetch') || e.message.includes('NetworkError')
+    console.error('Scene error:', e);
+    const isNetwork = e.message.includes('Failed to fetch') || e.message.includes('NetworkError');
+    const msg = isNetwork
       ? 'サーバーに接続できません。`npm run dev` でサーバーが起動しているか確認してください。'
       : 'エラーが発生しました: ' + e.message;
-    document.getElementById('scene-text').textContent = msg;
+    // Only overwrite scene text when nothing streamed yet (blank screen is worse than error).
+    // If text was already visible, show error below the content instead.
+    const textEl = document.getElementById('scene-text');
+    if (!textEl.textContent.trim()) {
+      textEl.textContent = msg;
+    } else {
+      const err = document.createElement('p');
+      err.style.cssText = 'color:#ff6fa8;font-size:0.8em;margin-top:1em;opacity:0.8';
+      err.textContent = msg;
+      textEl.appendChild(err);
+    }
   }
 
   S.loading = false;
