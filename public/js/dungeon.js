@@ -60,8 +60,10 @@ const ACT2_ROOM_IDS = ['torii','shrine_office','hidden_garden','stone_path'];
 
 // ── Module state ──
 const TILE = 22; // px per tile at native canvas resolution
+const MINI = 4;  // px per tile on the minimap canvas
 const COLS = MAP[0].length;
 const ROWS = MAP.length;
+const FOG_RADIUS = 3; // Chebyshev distance the player reveals around each step
 
 let canvas, ctx;
 let _onEnterRoom = null; // callback set by main.js: ({ roomId, roomName }) => void
@@ -84,6 +86,8 @@ export function startDungeon() {
   dungeonActive = true;
   promptRoomId = null;
   document.getElementById('dungeon-screen').style.display = 'block';
+  document.getElementById('minimap-canvas').style.display = 'none';
+  revealAround(S.dungeonPos.x, S.dungeonPos.y);
   updateDistrict();
   draw();
 }
@@ -100,6 +104,7 @@ export function exitDungeonRoom() {
   promptRoomId = null;
   dungeonActive = true;
   document.getElementById('game-screen').style.display = 'none';
+  document.getElementById('minimap-canvas').style.display = 'none';
   document.getElementById('dungeon-screen').style.display = 'block';
   updateDistrict();
   draw();
@@ -163,6 +168,7 @@ function tryMove(dx, dy) {
 
   S.dungeonPos.x = nx;
   S.dungeonPos.y = ny;
+  revealAround(nx, ny);
   updateDistrict();
 
   const key = `${nx},${ny}`;
@@ -188,6 +194,19 @@ function enterRoom(roomId) {
     .map(id => ROOMS[id]?.name_plain)
     .filter(Boolean);
   _onEnterRoom({ roomId, roomName: room.name_plain, visitedRoomNames });
+}
+
+// ── Fog of war ──
+
+function revealAround(x, y) {
+  for (let dy = -FOG_RADIUS; dy <= FOG_RADIUS; dy++) {
+    for (let dx = -FOG_RADIUS; dx <= FOG_RADIUS; dx++) {
+      const nx = x + dx, ny = y + dy;
+      if (nx >= 0 && nx < COLS && ny >= 0 && ny < ROWS) {
+        S.exploredTiles.add(`${nx},${ny}`);
+      }
+    }
+  }
 }
 
 // ── Canvas rendering ──
@@ -217,6 +236,12 @@ function draw() {
 
 function drawTile(x, y, tile) {
   const px = x * TILE, py = y * TILE;
+
+  if (!S.exploredTiles.has(`${x},${y}`)) {
+    ctx.fillStyle = '#05050f';
+    ctx.fillRect(px, py, TILE, TILE);
+    return;
+  }
 
   if (tile === W) {
     ctx.fillStyle = '#080812';
@@ -298,4 +323,42 @@ function updateDistrict() {
   else              label = '<ruby>地下<rt>ちか</rt></ruby>エリア';
   const el = document.getElementById('dungeon-district');
   if (el) el.innerHTML = label;
+}
+
+// ── Minimap (drawn onto an external canvas while inside a room) ──
+
+export function drawMinimap(miniCanvas) {
+  const mCtx = miniCanvas.getContext('2d');
+  miniCanvas.width  = COLS * MINI;
+  miniCanvas.height = ROWS * MINI;
+
+  mCtx.fillStyle = '#05050f';
+  mCtx.fillRect(0, 0, miniCanvas.width, miniCanvas.height);
+
+  for (let y = 0; y < ROWS; y++) {
+    for (let x = 0; x < COLS; x++) {
+      if (!S.exploredTiles.has(`${x},${y}`)) continue;
+      const tile = MAP[y][x];
+      mCtx.fillStyle = tile === W ? '#10102a' : '#1e1e42';
+      mCtx.fillRect(x * MINI, y * MINI, MINI, MINI);
+    }
+  }
+
+  // Room dots
+  for (const [id, r] of Object.entries(ROOMS)) {
+    if (!S.exploredTiles.has(`${r.x},${r.y}`)) continue;
+    const visited = S.visitedRooms.has(id);
+    const isCurrent = S.currentRoomId === id;
+    mCtx.fillStyle = isCurrent ? '#4fd8e8'
+      : visited ? 'rgba(255,111,168,0.35)'
+      : 'rgba(255,111,168,0.85)';
+    const pad = isCurrent ? 0 : 1;
+    mCtx.fillRect(r.x * MINI + pad, r.y * MINI + pad, MINI - pad * 2, MINI - pad * 2);
+  }
+
+  // Player dot (when on the map, not inside a room)
+  if (!S.currentRoomId) {
+    mCtx.fillStyle = '#4fd8e8';
+    mCtx.fillRect(S.dungeonPos.x * MINI + 1, S.dungeonPos.y * MINI + 1, MINI - 2, MINI - 2);
+  }
 }

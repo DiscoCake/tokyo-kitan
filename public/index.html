@@ -119,9 +119,10 @@
     <h2><ruby>物語<rt>ものがたり</rt></ruby>の<ruby>終<rt>お</rt></ruby>わり</h2>
     <div id="summary-stats"></div>
     <div id="ending-actions">
-      <button class="panel-btn" id="ending-vocab-btn">単語帳を見る</button>
-      <button class="panel-btn" id="ending-gallery-btn">訪れた場所</button>
-      <button class="panel-btn" id="ending-restart-btn">新しい物語</button>
+      <button class="panel-btn" id="ending-vocab-btn"><ruby>単語帳<rt>たんごちょう</rt></ruby>を<ruby>見<rt>み</rt></ruby>る</button>
+      <button class="panel-btn" id="ending-grammar-btn"><ruby>文法<rt>ぶんぽう</rt></ruby>まとめ</button>
+      <button class="panel-btn" id="ending-gallery-btn"><ruby>訪<rt>おとず</rt></ruby>れた<ruby>場所<rt>ばしょ</rt></ruby></button>
+      <button class="panel-btn" id="ending-restart-btn"><ruby>新<rt>あたら</rt></ruby>しい<ruby>物語<rt>ものがたり</rt></ruby></button>
     </div>
   </div>
 
@@ -136,6 +137,18 @@
     <div class="panel-actions">
       <button class="panel-btn" id="vocab-export">Ankiにエクスポート (TSV)</button>
       <button class="panel-btn panel-close">閉じる</button>
+    </div>
+  </div>
+</div>
+
+<!-- GRAMMAR PANEL -->
+<div class="panel" id="grammar-panel">
+  <div class="panel-inner">
+    <h2><ruby>文法<rt>ぶんぽう</rt></ruby>まとめ</h2>
+    <div id="grammar-list"></div>
+    <div class="panel-empty" id="grammar-empty" style="display:none;">まだ<ruby>文法<rt>ぶんぽう</rt></ruby>ノートがありません。</div>
+    <div class="panel-actions">
+      <button class="panel-btn panel-close"><ruby>閉<rt>と</rt></ruby>じる</button>
     </div>
   </div>
 </div>
@@ -174,6 +187,9 @@
   <div id="wc-meaning"></div>
   <button id="wc-add"><ruby>単語帳<rt>たんごちょう</rt></ruby>に<ruby>追加<rt>ついか</rt></ruby></button>
 </div>
+
+<!-- MINIMAP (dungeon mode, shown while inside a room) -->
+<canvas id="minimap-canvas"></canvas>
 
 <script type="module" src="js/main.js"></script>
 </body>

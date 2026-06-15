@@ -21,7 +21,8 @@ export const S = {
   dungeonPos: { x: 1, y: 7 }, // tile coordinates; matches MAP start position
   currentRoomId: null,         // room the player is currently inside
   visitedRooms: new Set(),     // roomIds where a scene has been entered
-  roomScenes: {}               // roomId → last scene object seen; restored on re-entry
+  roomScenes: {},              // roomId → last scene object seen; restored on re-entry
+  exploredTiles: new Set()     // "x,y" strings for fog-of-war reveal
 };
 
 export function saveGame() {
@@ -35,7 +36,8 @@ export function saveGame() {
       dungeonPos: { ...S.dungeonPos },
       currentRoomId: S.currentRoomId,
       visitedRooms: [...S.visitedRooms],
-      roomScenes: S.roomScenes
+      roomScenes: S.roomScenes,
+      exploredTiles: [...S.exploredTiles]
     };
     localStorage.setItem(SAVE_KEY, JSON.stringify(snap));
   } catch(e) {}
