@@ -212,6 +212,32 @@ export function openGrammarPanel() {
   document.getElementById('grammar-panel').style.display = 'block';
 }
 
+const REL_LABEL = { ally: '味方', neutral: '中立', suspicious: '怪しい', hostile: '敵対', unknown: '不明' };
+const REL_COLOR = { ally: 'var(--cyan)', neutral: 'var(--yellow)', suspicious: 'var(--pink)', hostile: '#e05555', unknown: '#888' };
+
+export function openNpcPanel() {
+  const list = document.getElementById('npc-list');
+  const empty = document.getElementById('npc-empty');
+  list.innerHTML = '';
+  if (!S.npcLog.length) {
+    empty.style.display = 'block';
+    list.style.display = 'none';
+  } else {
+    empty.style.display = 'none';
+    list.style.display = '';
+    S.npcLog.forEach(npc => {
+      const rel = npc.relationship || 'unknown';
+      const label = REL_LABEL[rel] || rel;
+      const color = REL_COLOR[rel] || '#888';
+      const d = document.createElement('div');
+      d.className = 'npc-entry';
+      d.innerHTML = `<div class="npc-name">${npc.name_jp}<span class="npc-badge" style="color:${color};border-color:${color};">${label}</span></div><div class="npc-note">${npc.note || ''}</div>`;
+      list.appendChild(d);
+    });
+  }
+  document.getElementById('npc-panel').style.display = 'block';
+}
+
 export function openGalleryPanel() {
   const grid = document.getElementById('gallery-grid');
   const empty = document.getElementById('gallery-empty');

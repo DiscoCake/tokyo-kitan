@@ -1,6 +1,6 @@
 import { setFurigana as setFuriganaCore } from '/jp-ui/furigana.js';
 import { S, SCENE_NUMS, loadGame, loadGameFromServer, clearSave } from './state.js';
-import { updateVocabBadge, renderItems, openVocabPanel, openGalleryPanel, openGrammarPanel, clearScene } from './ui.js';
+import { updateVocabBadge, renderItems, openVocabPanel, openGalleryPanel, openGrammarPanel, openNpcPanel, clearScene } from './ui.js';
 import { generate, renderScene } from './game.js';
 import { initDungeon, startDungeon, hideDungeonScreen, drawMinimap, generateLayout, restoreLayout } from './dungeon.js';
 
@@ -57,6 +57,7 @@ document.getElementById('translation-btn').onclick = function() {
   this.classList.toggle('active', !v);
   if (!v) { S.peeks++; }
 };
+document.getElementById('npc-btn').onclick = openNpcPanel;
 document.getElementById('grammar-btn').onclick = function() {
   const b = document.getElementById('grammar-box');
   const v = b.style.display !== 'none';
@@ -95,7 +96,7 @@ function submitAnswer() {
 /* ── RESET ── */
 function resetGame() {
   S.history = []; S.sceneNum = 0; S.currentScene = null;
-  S.mysteryMemo = ''; S.vocabLog = []; S.grammarSeen = [];
+  S.mysteryMemo = ''; S.vocabLog = []; S.grammarSeen = []; S.npcLog = [];
   S.items = []; S.gallery = []; S.peeks = 0; S.unknownTaps = 0;
   S.roomScenes = {};
   S.dungeonLayout = null;

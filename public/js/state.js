@@ -12,6 +12,7 @@ export const S = {
   mysteryMemo: '',
   vocabLog: [],
   grammarSeen: [],
+  npcLog: [],
   items: [],
   gallery: [],
   peeks: 0,
@@ -31,7 +32,7 @@ export function saveGame() {
     const snap = {
       playerName: S.playerName, sceneNum: S.sceneNum, history: S.history,
       currentScene: S.currentScene, mysteryMemo: S.mysteryMemo,
-      vocabLog: S.vocabLog, grammarSeen: S.grammarSeen,
+      vocabLog: S.vocabLog, grammarSeen: S.grammarSeen, npcLog: S.npcLog,
       items: S.items, gallery: S.gallery, peeks: S.peeks, unknownTaps: S.unknownTaps,
       mode: S.mode,
       dungeonPos: { ...S.dungeonPos },

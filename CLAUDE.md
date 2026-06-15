@@ -74,8 +74,9 @@ collects vocabulary — all wrapped in a ~12-scene mystery story set in Tokyo.
    (casual/polite/rough/keigo) as a deliberate learning feature; Murakami-adjacent
    不思議 tone, never horror. Roughly every 3rd scene is `scene_type: "input"`.
 
-7. **Adaptive difficulty from two signals.** `(S.peeks + S.unknownTaps) / S.sceneNum` < 0.25
-   → "harder" (N3+/occasional N2); > 0.6 → "easier"; else "standard". `S.peeks` increments on
+7. **Adaptive difficulty from two signals.** `(S.peeks + S.unknownTaps) / S.sceneNum` < 0.10
+   → "harder" (N3+/occasional N2); > 0.6 → "easier"; else "standard". No adjustment before
+   scene 4 (guard ensures a real sample before escalating). `S.peeks` increments on
    translation reveals; `S.unknownTaps` increments when the player taps a kanji in the scene
    text that was NOT in the AI's vocab list (i.e., a word the AI assumed they knew). Passed
    with every request.
@@ -165,6 +166,16 @@ collects vocabulary — all wrapped in a ~12-scene mystery story set in Tokyo.
     2048-token minimum for Sonnet 4.6 cache hits, but the wiring is correct and activates
     automatically as the prompt grows.
 
+17. **NPC tracker panel (`#npc-panel`).** Each scene response now includes an `npcs` array of
+    established characters (named or clearly identified — not background pedestrians). Each entry
+    has `name_jp` (ruby-annotated), `name_reading` (plain kana, used as dedup key), `relationship`
+    (`ally/neutral/suspicious/hostile/unknown`), and `note` (1-sentence English context).
+    `S.npcLog` accumulates entries across scenes via upsert-by-`name_reading` in `renderScene()` —
+    relationship and note update in place when a character reappears. Serialized in saves.
+    UI: `#npc-btn` in `#topbar-right` (accessible during play, not just end-of-game). Opens
+    `#npc-panel` via `openNpcPanel()` in `ui.js`; relationship shown as a color-coded badge
+    (cyan=ally, yellow=neutral, pink=suspicious, red=hostile, grey=unknown).
+
 14. **Eval harness for prompt regression testing.** `eval/run.js` has three modes:
     - `npm run eval:check` — reads `eval/snapshots/*.json` offline, runs all 6 validators. No API
       calls. Use in CI or to quickly verify a snapshot batch is still valid.
@@ -192,7 +203,8 @@ collects vocabulary — all wrapped in a ~12-scene mystery story set in Tokyo.
   "scene_type": "choice | input | ending",
   "choices": [{"jp": "ruby-annotated", "text_only": "plain"}],
   "feedback": "only when evaluating a typed answer",
-  "mystery_memo": "internal English continuity note"
+  "mystery_memo": "internal English continuity note",
+  "npcs": [{"name_jp": "ruby-annotated name", "name_reading": "kana dedup key", "relationship": "ally|neutral|suspicious|hostile|unknown", "note": "1-sentence English context"}]
 }
 ```
 
@@ -209,13 +221,12 @@ collects vocabulary — all wrapped in a ~12-scene mystery story set in Tokyo.
 
 - Real location-matched ambience with audio files (current: synthesized brown-noise hum)
 - Server-side persistence (SQLite) → cross-device save
-- Relationship/NPC tracker UI (data already exists in mystery_memo)
-- Difficulty tuning pass once the user has played several full runs
 - Speech input (Web Speech recognition) for spoken answers — stretch
 - Better scene photos: generated art or curated image library (Pexels is live but results vary)
 - ~~Vocab chip UX~~ — **done**: tappable ruby words in scene text + explicit ＋ button on chips
 - ~~Session-end grammar review screen~~ — **done**: `#grammar-panel` on ending screen; `openGrammarPanel()` in ui.js; `【expression】` entries deduplicated and highlighted yellow
 - ~~Dungeon Phase 2 (fog of war + minimap)~~ — **done**: `S.exploredTiles` Set (3-tile Chebyshev reveal per step); unexplored tiles draw near-black; `drawMinimap(canvas)` renders 4px/tile overview in bottom-left corner while inside a room
+- ~~Relationship/NPC tracker UI~~ — **done**: `S.npcLog` array, `npcs` field in scene contract, `#npc-panel` with color-coded relationship badges, accessible mid-game via `#npc-btn` in topbar
 - Dungeon Phase 3 (remaining): NPC sprites on map, per-district ambient sound
 
 ## Conventions

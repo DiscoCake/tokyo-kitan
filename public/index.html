@@ -51,6 +51,7 @@
         <button class="ctrl-btn active" id="furigana-btn">ふりがな</button>
         <button class="ctrl-btn active" id="minimap-btn" style="display:none;"><ruby>地図<rt>ちず</rt></ruby></button>
         <button class="ctrl-btn" id="translation-btn">訳</button>
+        <button class="ctrl-btn" id="npc-btn"><ruby>人物<rt>じんぶつ</rt></ruby></button>
         <button class="ctrl-btn" id="grammar-btn"><ruby>文法<rt>ぶんぽう</rt></ruby></button>
         <button class="ctrl-btn" id="vocab-btn"><ruby>単語帳<rt>たんごちょう</rt></ruby><span class="badge" id="vocab-count" style="display:none;">0</span></button>
         <button class="ctrl-btn" id="gallery-btn"><ruby>場所<rt>ばしょ</rt></ruby></button>
@@ -150,6 +151,18 @@
     <h2><ruby>文法<rt>ぶんぽう</rt></ruby>まとめ</h2>
     <div id="grammar-list"></div>
     <div class="panel-empty" id="grammar-empty" style="display:none;">まだ<ruby>文法<rt>ぶんぽう</rt></ruby>ノートがありません。</div>
+    <div class="panel-actions">
+      <button class="panel-btn panel-close"><ruby>閉<rt>と</rt></ruby>じる</button>
+    </div>
+  </div>
+</div>
+
+<!-- NPC PANEL -->
+<div class="panel" id="npc-panel">
+  <div class="panel-inner">
+    <h2><ruby>登場人物<rt>とうじょうじんぶつ</rt></ruby></h2>
+    <div id="npc-list"></div>
+    <div class="panel-empty" id="npc-empty" style="display:none;">まだ<ruby>登場人物<rt>とうじょうじんぶつ</rt></ruby>がいません。</div>
     <div class="panel-actions">
       <button class="panel-btn panel-close"><ruby>閉<rt>と</rt></ruby>じる</button>
     </div>
