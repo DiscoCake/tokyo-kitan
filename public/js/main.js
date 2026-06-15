@@ -1,8 +1,8 @@
 import { setFurigana as setFuriganaCore } from '/jp-ui/furigana.js';
 import { S, SCENE_NUMS, loadGame, clearSave } from './state.js';
-import { updateVocabBadge, renderItems, openVocabPanel, openGalleryPanel, clearScene } from './ui.js';
+import { updateVocabBadge, renderItems, openVocabPanel, openGalleryPanel, openGrammarPanel, clearScene } from './ui.js';
 import { generate, renderScene } from './game.js';
-import { initDungeon, startDungeon, hideDungeonScreen } from './dungeon.js';
+import { initDungeon, startDungeon, hideDungeonScreen, drawMinimap } from './dungeon.js';
 
 // Side-effect imports — each module wires its own event listeners on load
 import './tts.js';
@@ -87,6 +87,8 @@ function resetGame() {
   S.dungeonPos = { x: 1, y: 7 };
   S.visitedRooms = new Set();
   S.currentRoomId = null;
+  S.exploredTiles = new Set();
+  document.getElementById('minimap-canvas').style.display = 'none';
   updateVocabBadge(); renderItems(false);
   document.getElementById('history-trail').style.display = 'none';
   clearSave();
@@ -125,6 +127,7 @@ document.getElementById('resume-btn').onclick = function() {
   S.dungeonPos = snap.dungeonPos || { x: 1, y: 7 };
   S.visitedRooms = new Set(snap.visitedRooms || []);
   S.currentRoomId = snap.currentRoomId || null;
+  S.exploredTiles = new Set(snap.exploredTiles || []);
   updateVocabBadge();
   document.getElementById('setup-screen').style.display = 'none';
 
@@ -157,6 +160,7 @@ document.getElementById('dungeon-restart-btn').onclick = function() {
 
 /* ── ENDING SCREEN ── */
 document.getElementById('ending-vocab-btn').onclick = openVocabPanel;
+document.getElementById('ending-grammar-btn').onclick = openGrammarPanel;
 document.getElementById('ending-gallery-btn').onclick = openGalleryPanel;
 document.getElementById('ending-restart-btn').onclick = () => {
   resetGame();
@@ -168,6 +172,10 @@ document.getElementById('ending-restart-btn').onclick = () => {
 /* ── DUNGEON INIT ── */
 initDungeon({
   onEnterRoom: ({ roomId, roomName, visitedRoomNames }) => {
+    const miniCanvas = document.getElementById('minimap-canvas');
+    miniCanvas.style.display = 'block';
+    drawMinimap(miniCanvas);
+
     const saved = S.roomScenes[roomId];
     if (saved) {
       clearScene();

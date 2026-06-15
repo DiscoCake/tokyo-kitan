@@ -191,6 +191,27 @@ export function openVocabPanel() {
   document.getElementById('vocab-panel').style.display = 'block';
 }
 
+export function openGrammarPanel() {
+  const list = document.getElementById('grammar-list');
+  const empty = document.getElementById('grammar-empty');
+  list.innerHTML = '';
+  const seen = [...new Set(S.grammarSeen)]; // deduplicate identical notes
+  if (!seen.length) {
+    empty.style.display = 'block';
+    list.style.display = 'none';
+  } else {
+    empty.style.display = 'none';
+    list.style.display = '';
+    seen.forEach(note => {
+      const d = document.createElement('div');
+      d.className = 'grammar-entry';
+      d.innerHTML = note.replace(/【(.+?)】/, '<strong class="grammar-expr">【$1】</strong> ');
+      list.appendChild(d);
+    });
+  }
+  document.getElementById('grammar-panel').style.display = 'block';
+}
+
 export function openGalleryPanel() {
   const grid = document.getElementById('gallery-grid');
   const empty = document.getElementById('gallery-empty');
@@ -225,7 +246,7 @@ export function showEnding() {
     stats.innerHTML = `
       <div class="summary-stat"><span>読んだ場面</span><span class="val">${S.sceneNum}</span></div>
       <div class="summary-stat"><span>集めた単語</span><span class="val">${S.vocabLog.length}</span></div>
-      <div class="summary-stat"><span>出会った文法</span><span class="val">${S.grammarSeen.length}</span></div>
+      <div class="summary-stat"><span><ruby>出会<rt>であ</rt></ruby>った<ruby>文法<rt>ぶんぽう</rt></ruby></span><span class="val">${[...new Set(S.grammarSeen)].length}</span></div>
       <div class="summary-stat"><span>持ち物</span><span class="val">${S.items.length}</span></div>
       <div class="summary-stat"><span>自分で答えた回数</span><span class="val">${S.history.filter(h => h.type === 'input').length}</span></div>`;
     document.getElementById('ending-screen').style.display = 'block';

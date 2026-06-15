@@ -1,5 +1,34 @@
 # Changelog
 
+### 2026-06-14 — Grammar review panel + Dungeon Phase 2 (fog of war + minimap)
+
+**Grammar review:**
+- `public/js/ui.js`: added `openGrammarPanel()` — deduplicated session grammar notes rendered
+  with `【expression】` highlighted yellow; exported alongside existing panel functions
+- `public/index.html`: added `#grammar-panel` (same `.panel` pattern as vocab/gallery); added
+  `#ending-grammar-btn` to ending-actions row; all ending-action buttons now carry ruby markup
+- `public/js/main.js`: `ending-grammar-btn` wired to `openGrammarPanel`
+- `public/css/style.css`: `.grammar-entry` and `.grammar-expr` styles
+
+**Dungeon Phase 2 — fog of war:**
+- `public/js/state.js`: added `exploredTiles: new Set()` field; serialized as array in
+  `saveGame`; restored as `new Set(snap.exploredTiles || [])` on resume; reset in `resetGame`
+- `public/js/dungeon.js`: `revealAround(x, y)` reveals 3-tile Chebyshev radius around player
+  on every move and on `startDungeon`; `drawTile` draws near-black (`#05050f`) for any tile
+  not in `S.exploredTiles` and returns early (walls and rooms are hidden until explored)
+
+**Dungeon Phase 2 — minimap:**
+- `public/js/dungeon.js`: exports `drawMinimap(miniCanvas)` — draws fog-respecting 4px/tile
+  minimap: explored floors in `#1e1e42`, walls in `#10102a`, unvisited rooms pink, visited
+  rooms dim pink, current room cyan; hides `#minimap-canvas` on `exitDungeonRoom` and
+  `startDungeon`
+- `public/index.html`: `<canvas id="minimap-canvas">` as fixed body element (stays visible
+  across screen transitions; controlled via `display` style)
+- `public/js/main.js`: imports `drawMinimap`; `onEnterRoom` callback shows and draws minimap;
+  `resetGame` hides minimap and clears `exploredTiles`
+- `public/css/style.css`: `#minimap-canvas` — fixed bottom-left, pixelated rendering, 2× CSS
+  scale for crispness on HiDPI
+
 Reverse-chronological. Add an entry whenever a feature is added, changed, or removed.
 Include the date (YYYY-MM-DD) and a tight bullet list. Note any archived files.
 

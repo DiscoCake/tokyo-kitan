@@ -415,3 +415,20 @@ body.cinematic-active #cin-top, body.cinematic-active #cin-bottom { height: 2.5r
 
 .map-return-btn { border-color: var(--cyan2) !important; color: var(--cyan) !important; }
 .map-return-btn:hover { background: rgba(79,216,232,0.07) !important; }
+
+/* ── MINIMAP OVERLAY ── */
+#minimap-canvas {
+  display: none; position: fixed; bottom: 3.8rem; left: 1rem; z-index: 150;
+  border-radius: 6px; border: 1px solid var(--border2);
+  image-rendering: pixelated; opacity: 0.88;
+  background: #05050f;
+  /* Scale up 2× for crispness on high-DPI screens without blurring */
+  width: calc(32 * 4px * 2); height: calc(14 * 4px * 2);
+}
+
+/* ── GRAMMAR PANEL ── */
+.grammar-entry {
+  padding: 0.75rem 0; border-bottom: 1px solid var(--border);
+  font-size: 0.82rem; color: var(--text2); line-height: 1.9;
+}
+.grammar-expr { color: var(--yellow); font-weight: 500; font-size: 0.88rem; }

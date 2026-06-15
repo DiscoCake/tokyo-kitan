@@ -116,7 +116,13 @@ collects vocabulary — all wrapped in a ~12-scene mystery story set in Tokyo.
     passes `visitedRoomNames` (plain-text names from the ROOMS registry) to the `onEnterRoom`
     callback; `generate()` injects them into the room prompt so the AI can have NPCs and clues
     reference already-visited locations within the same dungeon run.
-    Phase 2 items: minimap, fog of war, NPC sprites on map, district-matched ambience.
+    **Fog of war (Phase 2):** `S.exploredTiles` (Set of `"x,y"` strings) tracks revealed tiles.
+    `revealAround(x, y)` in `dungeon.js` adds a 3-tile Chebyshev radius on every player move
+    and on `startDungeon`. `drawTile` draws near-black and returns early for unexplored tiles.
+    **Minimap (Phase 2):** `drawMinimap(miniCanvas)` renders a 4px/tile fog-respecting overview
+    onto `#minimap-canvas` (fixed bottom-left, CSS-scaled 2× for HiDPI); shown when entering a
+    room, hidden on `exitDungeonRoom` and `startDungeon`. Serialize `exploredTiles` as array.
+    Phase 3 remaining: NPC sprites on map, per-district ambient sound.
 
 12. **Cinematic scene transitions + streaming.** Full-black overlay with location kanji title
     card + letterbox bars during API calls. `generate()` uses `POST /api/scene/stream` (SSE).
@@ -169,11 +175,12 @@ collects vocabulary — all wrapped in a ~12-scene mystery story set in Tokyo.
 - Server-side persistence (SQLite) → cross-device save
 - Relationship/NPC tracker UI (data already exists in mystery_memo)
 - Difficulty tuning pass once the user has played several full runs
-- Session-end grammar review screen (grammarSeen is already collected)
 - Speech input (Web Speech recognition) for spoken answers — stretch
 - Better scene photos: generated art or curated image library (Pexels is live but results vary)
 - ~~Vocab chip UX~~ — **done**: tappable ruby words in scene text + explicit ＋ button on chips
-- Dungeon Phase 2: minimap overlay, fog of war (unexplored rooms hidden), NPC sprites on map, per-district ambient sound
+- ~~Session-end grammar review screen~~ — **done**: `#grammar-panel` on ending screen; `openGrammarPanel()` in ui.js; `【expression】` entries deduplicated and highlighted yellow
+- ~~Dungeon Phase 2 (fog of war + minimap)~~ — **done**: `S.exploredTiles` Set (3-tile Chebyshev reveal per step); unexplored tiles draw near-black; `drawMinimap(canvas)` renders 4px/tile overview in bottom-left corner while inside a room
+- Dungeon Phase 3 (remaining): NPC sprites on map, per-district ambient sound
 
 ## Conventions
 
