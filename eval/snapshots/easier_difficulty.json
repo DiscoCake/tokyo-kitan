@@ -1,84 +1,80 @@
 {
-  "location_jp": "<ruby>東京駅<rt>とうきょうえき</rt></ruby>の<ruby>コインロッカー<rt>こいんろっかー</rt></ruby>",
-  "image_query": "japan train station coin lockers hallway fluorescent light quiet",
-  "scene_jp": "<ruby>駅員<rt>えきいん</rt></ruby>は<ruby>少<rt>すこ</rt></ruby>し<ruby>迷<rt>まよ</rt></ruby>ってから、あなたをロッカーの<ruby>前<rt>まえ</rt></ruby>まで<ruby>連<rt>つ</rt></ruby>れてきた。「<ruby>彼女<rt>かのじょ</rt></ruby>は……<ruby>昨日<rt>きのう</rt></ruby>の<ruby>夜<rt>よる</rt></ruby>、このロッカーの<ruby>前<rt>まえ</rt></ruby>に<ruby>長<rt>なが</rt></ruby>い<ruby>間<rt>あいだ</rt></ruby><ruby>立<rt>た</rt></ruby>っていました。」<ruby>彼<rt>かれ</rt></ruby>は<ruby>声<rt>こえ</rt></ruby>を<ruby>低<rt>ひく</rt></ruby>くして<ruby>言<rt>い</rt></ruby>った。ロッカーの<ruby>番号<rt>ばんごう</rt></ruby>は<ruby>三十一番<rt>さんじゅういちばん</rt></ruby>で、ドアに<ruby>小<rt>ちい</rt></ruby>さな<ruby>紙<rt>かみ</rt></ruby>が<ruby>貼<rt>は</rt></ruby>ってある。その<ruby>紙<rt>かみ</rt></ruby>には、「テスト<ruby>へ<rt>へ</rt></ruby>」と<ruby>書<rt>か</rt></ruby>いてあった。",
-  "scene_translation": "The station attendant hesitated for a moment, then led you to the lockers. \"She was... standing in front of this locker for a long time last night,\" he said, lowering his voice. The locker number is 31, and a small piece of paper is stuck to the door. Written on the paper were the words: \"To Tesuto.\"",
-  "grammar_note": "【〜てある】This expressive passive-like form means something has been done (and the result remains). 「貼ってある」= \"has been stuck (there).\" It implies someone deliberately put it there — different from 貼っている, which just describes a current state. Great for describing clues left behind on purpose.",
+  "location_jp": "<ruby>東京<rt>とうきょう</rt></ruby><ruby>駅<rt>えき</rt></ruby>の<ruby>荷物<rt>にもつ</rt></ruby><ruby>預<rt>あず</rt></ruby>かり<ruby>所<rt>じょ</rt></ruby>",
+  "image_query": "japan train station coin lockers row fluorescent light quiet",
+  "scene_jp": "<ruby>駅員<rt>えきいん</rt></ruby>は<ruby>少<rt>すこ</rt></ruby>し<ruby>考<rt>かんが</rt></ruby>えてから、<ruby>静<rt>しず</rt></ruby>かな<ruby>声<rt>こえ</rt></ruby>で<ruby>言<rt>い</rt></ruby>った。「その<ruby>人<rt>ひと</rt></ruby>なら、さっきあそこのロッカーの<ruby>前<rt>まえ</rt></ruby>にいましたよ。」<ruby>彼<rt>かれ</rt></ruby>は<ruby>目<rt>め</rt></ruby>を<ruby>合<rt>あ</rt></ruby>わせないまま、ロッカーの<ruby>方向<rt>ほうこう</rt></ruby>を<ruby>指<rt>ゆび</rt></ruby>さした。ロッカーの<ruby>前<rt>まえ</rt></ruby>に<ruby>行<rt>い</rt></ruby>ってみると、<ruby>一<rt>ひと</rt></ruby>つだけ<ruby>鍵<rt>かぎ</rt></ruby>が<ruby>開<rt>あ</rt></ruby>いているロッカーがあった。その<ruby>中<rt>なか</rt></ruby>には、<ruby>小<rt>ちい</rt></ruby>さな<ruby>青<rt>あお</rt></ruby>い<ruby>封筒<rt>ふうとう</rt></ruby>が<ruby>入<rt>はい</rt></ruby>っていて、<ruby>封筒<rt>ふうとう</rt></ruby>には「テスト<ruby>様<rt>さま</rt></ruby>へ」と<ruby>書<rt>か</rt></ruby>いてあった。",
+  "scene_translation": "The station attendant thought for a moment, then said quietly, \"That person was right in front of those lockers just now.\" Without meeting your eyes, he pointed toward the lockers. When you went over to look, you found one locker with its door left open. Inside was a small blue envelope — and written on it were the words: \"For テスト.\"",
+  "grammar_note": "【〜てある】is used when someone has done something intentionally and the result remains visible. 「書いてある」means \"it has been written (by someone, and is still there)\" — focus is on the resulting state, not who did it. Compare: 書いた (someone wrote it) vs. 書いてある (it is written / has been written).",
+  "grammar_point_targeted": "〜てある",
   "vocab": [
     {
-      "word": "迷う",
-      "reading": "まよう",
-      "meaning": "to hesitate; to be unsure"
+      "word": "駅員",
+      "reading": "えきいん",
+      "meaning": "station attendant"
     },
     {
-      "word": "連れてくる",
-      "reading": "つれてくる",
-      "meaning": "to bring (someone) along"
+      "word": "荷物預かり所",
+      "reading": "にもつあずかりじょ",
+      "meaning": "luggage storage area"
     },
     {
-      "word": "長い間",
-      "reading": "ながいあいだ",
-      "meaning": "for a long time"
+      "word": "方向",
+      "reading": "ほうこう",
+      "meaning": "direction"
     },
     {
-      "word": "声を低くする",
-      "reading": "こえをひくくする",
-      "meaning": "to lower one's voice"
+      "word": "指さす",
+      "reading": "ゆびさす",
+      "meaning": "to point at"
     },
     {
-      "word": "番号",
-      "reading": "ばんごう",
-      "meaning": "number; code"
+      "word": "封筒",
+      "reading": "ふうとう",
+      "meaning": "envelope"
     },
     {
-      "word": "貼る",
-      "reading": "はる",
-      "meaning": "to stick; to paste; to affix"
+      "word": "目を合わせる",
+      "reading": "めをあわせる",
+      "meaning": "to make eye contact"
     },
     {
-      "word": "〜番",
-      "reading": "〜ばん",
-      "meaning": "number ~ (counter for numbered items)"
+      "word": "〜様",
+      "reading": "さま",
+      "meaning": "honorific title (more formal than さん)"
     },
     {
-      "word": "コインロッカー",
-      "reading": "こいんろっかー",
-      "meaning": "coin-operated locker"
-    },
-    {
-      "word": "鍵",
-      "reading": "かぎ",
-      "meaning": "key; lock"
+      "word": "鍵が開いている",
+      "reading": "かぎがあいている",
+      "meaning": "the lock is open / the door is unlocked"
     }
   ],
   "items_gained": [
     {
-      "jp": "ロッカー31番の鍵",
-      "reading": "ろっかーさんじゅういちばんのかぎ"
+      "jp": "青い封筒",
+      "reading": "あおいふうとう"
     }
   ],
   "scene_type": "choice",
   "choices": [
     {
-      "jp": "<ruby>鍵<rt>かぎ</rt></ruby>を<ruby>使<rt>つか</rt></ruby>ってロッカーを<ruby>開<rt>あ</rt></ruby>ける",
-      "text_only": "鍵を使ってロッカーを開ける"
+      "jp": "<ruby>封筒<rt>ふうとう</rt></ruby>を<ruby>開<rt>あ</rt></ruby>けて、<ruby>中<rt>なか</rt></ruby>を<ruby>読<rt>よ</rt></ruby>む",
+      "text_only": "封筒を開けて、中を読む"
     },
     {
-      "jp": "<ruby>駅員<rt>えきいん</rt></ruby>に「<ruby>彼女<rt>かのじょ</rt></ruby>のことをもっと<ruby>教<rt>おし</rt></ruby>えてください」と<ruby>頼<rt>たの</rt></ruby>む",
-      "text_only": "駅員に「彼女のことをもっと教えてください」と頼む"
+      "jp": "<ruby>駅員<rt>えきいん</rt></ruby>のところに<ruby>戻<rt>もど</rt></ruby>って、もっと<ruby>聞<rt>き</rt></ruby>く",
+      "text_only": "駅員のところに戻って、もっと聞く"
     },
     {
-      "jp": "<ruby>紙<rt>かみ</rt></ruby>をよく<ruby>見<rt>み</rt></ruby>て、<ruby>字<rt>じ</rt></ruby>に<ruby>見覚<rt>みおぼ</rt></ruby>えがないか<ruby>確<rt>たし</rt></ruby>かめる",
-      "text_only": "紙をよく見て、字に見覚えがないか確かめる"
+      "jp": "<ruby>周<rt>まわ</rt></ruby>りを<ruby>見回<rt>みまわ</rt></ruby>して、<ruby>青<rt>あお</rt></ruby>い<ruby>服<rt>ふく</rt></ruby>の<ruby>女性<rt>じょせい</rt></ruby>を<ruby>探<rt>さが</rt></ruby>す",
+      "text_only": "周りを見回して、青い服の女性を探す"
     }
   ],
-  "mystery_memo": "The mystery deepens: the woman in blue knew the player's name (テスト) and deliberately left a key and note at locker 31 in Tokyo Station before the player even arrived — suggesting she anticipated this encounter. The station attendant (nervous, polite) witnessed her lingering here last night; he is cooperative but clearly unsettled and knows more than he is saying. The locker key is now in the player's inventory and is certain to be important. No NPC relationships have been damaged yet.",
+  "mystery_memo": "The blue envelope addressed to テスト was waiting inside an unlocked locker — clearly left there on purpose. The woman in blue knew the player's name before any introduction, and prepared this in advance. The station attendant (nervous, avoids eye contact) seems to know more than he's saying; he may have been asked to keep quiet or is simply frightened. The blue envelope is now the central clue — its contents will deepen the mystery in Act 2.",
   "npcs": [
     {
       "name_jp": "<ruby>駅員<rt>えきいん</rt></ruby>",
       "name_reading": "えきいん",
       "relationship": "neutral",
-      "note": "東京駅の若い駅員。青い服の女性を知っているが、何か隠しているようで少し緊張している。"
+      "note": "東京駅の駅員。青い服の女性のことを知っているが、目を合わせず、緊張した様子で話す。"
     }
   ]
 }

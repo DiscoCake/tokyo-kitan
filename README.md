@@ -41,6 +41,8 @@ Open http://localhost:3000
 - Typed answer scenes with romaji→kana auto-conversion (WanaKana) and naturalness feedback
 - Multi-voice TTS: Kyoko (narration) / Otoya (dialogue), with play/pause, seek, speed control
 - Adaptive difficulty from two signals: translation peeks + tapping kanji the AI didn't flag as vocabulary
+- Grammar mastery loop: N3 points are reinforced on a spaced schedule across story runs, input scenes prompt you to produce them, and a 定着 panel tracks per-point strength + a journal of your typed-answer feedback
+- NPC relationship tracker (人物 panel) — recurring characters with color-coded ally/suspicious/hostile badges
 - Save/resume, scene gallery, UI scaling, cinematic transitions
 
 ## Development

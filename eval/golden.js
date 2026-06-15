@@ -93,6 +93,16 @@ module.exports = [
     ]
   },
   {
+    slug: 'reinforce_grammar',
+    label: 'Scene 6 with grammar due for reinforcement',
+    messages: [
+      {
+        role: 'user',
+        content: 'Scene 6 of ~12. Player chose: "ノートのページをもう一度めくる". Continue.\nMystery state: The notebook\'s middle pages list dates that match the player\'s grandmother\'s visits to Tokyo. The woman in blue is watching from across the street.\nInventory: 古いノート\nDifficulty: standard\nGrammar covered this run (do not repeat): 【〜ばかり】just did | 【〜らしい】seems/apparently | 【〜ようにする】make an effort to | 【〜たとたん】the moment that\nGrammar due for reinforcement (reuse ONE naturally, do NOT re-explain): 【〜らしい】 | 【〜たとたん】\nRecent history:\nScene 3 (古い煙草屋): おじいさんに話しかける\nScene 4 (駅のロッカー): ロッカー番号を試してみる\nScene 5 (古い本屋): 本棚の裏を確かめる'
+      }
+    ]
+  },
+  {
     slug: 'long_history',
     label: 'Scene 8 with full history and rich memo',
     messages: [

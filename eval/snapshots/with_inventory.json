@@ -1,14 +1,30 @@
 {
-  "location_jp": "<ruby>稲荷<rt>いなり</rt></ruby><ruby>神社<rt>じんじゃ</rt></ruby>の<ruby>奥<rt>おく</rt></ruby>の<ruby>間<rt>ま</rt></ruby>",
-  "image_query": "japanese shrine inner room dim lantern light wooden altar",
-  "scene_jp": "<ruby>鍵<rt>かぎ</rt></ruby>を<ruby>回<rt>まわ</rt></ruby>すと、<ruby>重<rt>おも</rt></ruby>い<ruby>扉<rt>とびら</rt></ruby>がゆっくりと<ruby>開<rt>ひら</rt></ruby>いた。<ruby>中<rt>なか</rt></ruby>は<ruby>小<rt>ちい</rt></ruby>さな<ruby>部屋<rt>へや</rt></ruby>で、<ruby>古<rt>ふる</rt></ruby>い<ruby>線香<rt>せんこう</rt></ruby>のにおいがした。<ruby>棚<rt>たな</rt></ruby>の<ruby>上<rt>うえ</rt></ruby>に<ruby>一枚<rt>いちまい</rt></ruby>の<ruby>紙<rt>かみ</rt></ruby>が<ruby>置<rt>お</rt></ruby>いてあり、テストさんはノートを<ruby>開<rt>ひら</rt></ruby>いてみた。すると、<ruby>前<rt>まえ</rt></ruby>のページとは<ruby>違<rt>ちが</rt></ruby>う<ruby>筆跡<rt>ひっせき</rt></ruby>で、こう<ruby>書<rt>か</rt></ruby>いてあった——「<ruby>次<rt>つぎ</rt></ruby>は<ruby>水道橋<rt>すいどうばし</rt></ruby>の<ruby>古<rt>ふる</rt></ruby>い<ruby>喫茶店<rt>きっさてん</rt></ruby>へ。<ruby>店<rt>みせ</rt></ruby>の<ruby>主人<rt>しゅじん</rt></ruby>はあなたのことを<ruby>知<rt>し</rt></ruby>っているはずです。」<ruby>気<rt>き</rt></ruby>がつくと、<ruby>部屋<rt>へや</rt></ruby>の<ruby>隅<rt>すみ</rt></ruby>に<ruby>青<rt>あお</rt></ruby>い<ruby>布<rt>ぬの</rt></ruby>の<ruby>切<rt>き</rt></ruby>れはしが<ruby>落<rt>お</rt></ruby>ちていた——<ruby>青<rt>あお</rt></ruby>い<ruby>女<rt>おんな</rt></ruby>が<ruby>最近<rt>さいきん</rt></ruby>ここにいたことは、まず<ruby>間違<rt>まちが</rt></ruby>いない。",
-  "scene_translation": "When you turned the key, the heavy door slowly opened. Inside was a small room that smelled of old incense. A single sheet of paper rested on a shelf, and you opened the notebook to look — written in a different handwriting from the previous pages, it said: 'Next, go to the old coffee shop in Suidobashi. The owner should know who you are.' When you looked up, a scrap of blue fabric had fallen in the corner of the room — there could be little doubt that the woman in blue had been here recently.",
-  "grammar_note": "【はずです】 'should be; ought to be' — expresses reasonable expectation based on evidence. 「<ruby>店<rt>みせ</rt></ruby>の<ruby>主人<rt>しゅじん</rt></ruby>はあなたのことを<ruby>知<rt>し</rt></ruby>っているはずです」= 'The owner should know about you.' Notice the polite です/ます register of the written message — it feels formal and deliberate, as if written for a specific reader.",
+  "location_jp": "<ruby>神社<rt>じんじゃ</rt></ruby>の<ruby>奥<rt>おく</rt></ruby>の<ruby>間<rt>ま</rt></ruby>",
+  "image_query": "shinto shrine inner room tatami dim candlelight wooden altar",
+  "scene_jp": "<ruby>古<rt>ふる</rt></ruby>い<ruby>鍵<rt>かぎ</rt></ruby>を<ruby>鍵穴<rt>かぎあな</rt></ruby>に<ruby>差<rt>さ</rt></ruby>し<ruby>込<rt>こ</rt></ruby>むと、<ruby>重<rt>おも</rt></ruby>い<ruby>扉<rt>とびら</rt></ruby>がゆっくりと<ruby>開<rt>あ</rt></ruby>いた。<ruby>部屋<rt>へや</rt></ruby>の<ruby>中<rt>なか</rt></ruby>は<ruby>薄暗<rt>うすぐら</rt></ruby>く、<ruby>古<rt>ふる</rt></ruby>い<ruby>畳<rt>たたみ</rt></ruby>のにおいがした。テストがノートを<ruby>開<rt>ひら</rt></ruby>くと、<ruby>前<rt>まえ</rt></ruby>のページとは<ruby>違<rt>ちが</rt></ruby>う<ruby>筆跡<rt>ひっせき</rt></ruby>で、こう<ruby>書<rt>か</rt></ruby>いてあった。「<ruby>次<rt>つぎ</rt></ruby>は<ruby>水道橋<rt>すいどうばし</rt></ruby>の<ruby>喫茶店<rt>きっさてん</rt></ruby>へ。<ruby>私<rt>わたし</rt></ruby>のことを<ruby>知<rt>し</rt></ruby>っている<ruby>人<rt>ひと</rt></ruby>が<ruby>待<rt>ま</rt></ruby>っているはずです。」<ruby>部屋<rt>へや</rt></ruby>の<ruby>隅<rt>すみ</rt></ruby>には、<ruby>青<rt>あお</rt></ruby>い<ruby>布<rt>ぬの</rt></ruby>の<ruby>切<rt>き</rt></ruby>れがひとつ、<ruby>床<rt>ゆか</rt></ruby>に<ruby>落<rt>お</rt></ruby>ちていた。",
+  "scene_translation": "When you inserted the old key into the keyhole, the heavy door slowly opened. The room inside was dim, with the faint smell of old tatami. When you opened the notebook, written on a new page in handwriting different from before were the words: \"Next, go to the café in Suidobashi. Someone who knows about me should be waiting.\" In the corner of the room, a single scrap of blue cloth lay on the floor.",
+  "grammar_note": "【はずです】 expresses a reasonable expectation based on known information — 'should be,' 'ought to be.' Here: 「<ruby>待<rt>ま</rt></ruby>っているはずです」 means 'someone should be waiting' — the writer believes this with some confidence, but it isn't certain. Attach to the plain form of a verb or い-adjective, or to noun/な-adjective + の + はず.",
+  "grammar_point_targeted": "はずです",
   "vocab": [
     {
-      "word": "奥の間",
-      "reading": "おくのま",
-      "meaning": "inner room, back room"
+      "word": "鍵穴",
+      "reading": "かぎあな",
+      "meaning": "keyhole"
+    },
+    {
+      "word": "差し込む",
+      "reading": "さしこむ",
+      "meaning": "to insert, to plug in"
+    },
+    {
+      "word": "薄暗い",
+      "reading": "うすぐらい",
+      "meaning": "dim, gloomy"
+    },
+    {
+      "word": "畳",
+      "reading": "たたみ",
+      "meaning": "tatami (traditional Japanese floor mat)"
     },
     {
       "word": "筆跡",
@@ -16,19 +32,9 @@
       "meaning": "handwriting, penmanship"
     },
     {
-      "word": "線香",
-      "reading": "せんこう",
-      "meaning": "incense sticks"
-    },
-    {
-      "word": "布",
-      "reading": "ぬの",
-      "meaning": "cloth, fabric"
-    },
-    {
-      "word": "切れはし",
-      "reading": "きれはし",
-      "meaning": "scrap, small piece (of cloth or paper)"
+      "word": "喫茶店",
+      "reading": "きっさてん",
+      "meaning": "café, coffee shop"
     },
     {
       "word": "隅",
@@ -36,49 +42,42 @@
       "meaning": "corner (of a room)"
     },
     {
-      "word": "間違いない",
-      "reading": "まちがいない",
-      "meaning": "certain, no doubt about it"
+      "word": "布",
+      "reading": "ぬの",
+      "meaning": "cloth, fabric"
     },
     {
-      "word": "喫茶店",
-      "reading": "きっさてん",
-      "meaning": "old-style Japanese coffee shop"
+      "word": "切れ",
+      "reading": "きれ",
+      "meaning": "scrap, piece (of cloth)"
     },
     {
-      "word": "主人",
-      "reading": "しゅじん",
-      "meaning": "owner, proprietor (of a shop)"
-    },
-    {
-      "word": "棚",
-      "reading": "たな",
-      "meaning": "shelf"
+      "word": "水道橋",
+      "reading": "すいどうばし",
+      "meaning": "Suidobashi (a place in Tokyo)"
     }
   ],
-  "items_gained": [],
+  "items_gained": [
+    {
+      "jp": "青い布の切れ",
+      "reading": "あおいぬののきれ"
+    }
+  ],
   "scene_type": "choice",
   "choices": [
     {
-      "jp": "<ruby>青<rt>あお</rt></ruby>い<ruby>布<rt>ぬの</rt></ruby>を<ruby>拾<rt>ひろ</rt></ruby>い、ポケットにしまう",
-      "text_only": "青い布を拾い、ポケットにしまう"
+      "jp": "<ruby>青<rt>あお</rt></ruby>い<ruby>布<rt>ぬの</rt></ruby>をよく<ruby>調<rt>しら</rt></ruby>べる",
+      "text_only": "青い布をよく調べる"
     },
     {
-      "jp": "<ruby>棚<rt>たな</rt></ruby>の<ruby>上<rt>うえ</rt></ruby>の<ruby>紙<rt>かみ</rt></ruby>をよく<ruby>調<rt>しら</rt></ruby>べる",
-      "text_only": "棚の上の紙をよく調べる"
+      "jp": "<ruby>神社<rt>じんじゃ</rt></ruby>の<ruby>神主<rt>かんぬし</rt></ruby>にこの<ruby>部屋<rt>へや</rt></ruby>のことを<ruby>聞<rt>き</rt></ruby>く",
+      "text_only": "神社の神主にこの部屋のことを聞く"
     },
     {
-      "jp": "すぐに<ruby>水道橋<rt>すいどうばし</rt></ruby>へ<ruby>向<rt>む</rt></ruby>かう",
-      "text_only": "すぐに水道橋へ向かう"
+      "jp": "すぐに<ruby>水道橋<rt>すいどうばし</rt></ruby>の<ruby>喫茶店<rt>きっさてん</rt></ruby>へ<ruby>向<rt>む</rt></ruby>かう",
+      "text_only": "すぐに水道橋の喫茶店へ向かう"
     }
   ],
-  "mystery_memo": "The notebook now contains a second message directing the player to an old coffee shop in Suidobashi, whose owner 'knows' the player — deepening the central mystery of who knows the player's name and why. A scrap of blue fabric confirms the woman in blue was in this room recently, possibly very recently. The notebook and locker key are both significant: the key has served its immediate purpose but may have a second use yet to be discovered. The grandpa from scene 3 mentioned a coffee shop in passing — this may be the same one, worth revisiting that connection.",
-  "npcs": [
-    {
-      "name_jp": "<ruby>青<rt>あお</rt></ruby>い<ruby>女<rt>おんな</rt></ruby>",
-      "name_reading": "あおいおんな",
-      "relationship": "unknown",
-      "note": "謎の女性で、プレイヤーの名前を知っているらしく、ノートにメッセージを残していった。"
-    }
-  ]
+  "mystery_memo": "The notebook now contains a second message directing the player to a café in Suidobashi, where someone who knows the woman in blue is supposedly waiting. The blue cloth scrap found in the room matches the woman's clothing seen in earlier scenes, confirming she was here recently. The key and notebook connection is deepening — both came from the same locker, suggesting the woman set this trail deliberately. No NPCs have appeared this scene, but the Suidobashi café contact is a new figure to anticipate.",
+  "npcs": []
 }

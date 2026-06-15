@@ -137,6 +137,24 @@ function npcFieldsValid(result) {
   return { name: 'npcFieldsValid', pass: msgs.length === 0, messages: msgs };
 }
 
+function grammarTargetPresent(result) {
+  // The featured grammar point must be declared AND match the 【…】 head in grammar_note,
+  // so spaced reinforcement (which keys on grammar_point_targeted) has a stable anchor.
+  const msgs = [];
+  const target = (result.grammar_point_targeted || '').trim();
+  if (!target) {
+    msgs.push('grammar_point_targeted missing or empty');
+  } else {
+    const head = (result.grammar_note || '').match(/【(.+?)】/)?.[1]?.trim();
+    if (!head) {
+      msgs.push('grammar_note has no 【…】 expression to match grammar_point_targeted against');
+    } else if (head !== target) {
+      msgs.push(`grammar_point_targeted "${target}" does not match grammar_note head "${head}"`);
+    }
+  }
+  return { name: 'grammarTargetPresent', pass: msgs.length === 0, messages: msgs };
+}
+
 function noRawBrackets(result) {
   const text = result.scene_jp || '';
   const pass = !text.includes('【') && !text.includes('】');
@@ -156,6 +174,7 @@ function runChecks(result) {
     sceneTextLength(result),
     noRawBrackets(result),
     npcFieldsValid(result),
+    grammarTargetPresent(result),
   ];
 }
 

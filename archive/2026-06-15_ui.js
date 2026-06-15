@@ -212,52 +212,6 @@ export function openGrammarPanel() {
   document.getElementById('grammar-panel').style.display = 'block';
 }
 
-// Persistent learner profile: grammar consolidation (strength + exposures, spanning runs)
-// and the typed-output feedback journal. Mirrors the openGrammarPanel/openNpcPanel pattern.
-export function openMasteryPanel() {
-  const gList = document.getElementById('mastery-grammar-list');
-  const eList = document.getElementById('mastery-error-list');
-  const empty = document.getElementById('mastery-empty');
-
-  const points = Object.values(S.grammarMastery).sort((a, b) => b.strength - a.strength || b.exposures - a.exposures);
-  const errors = S.errorLog || [];
-
-  if (!points.length && !errors.length) {
-    empty.style.display = 'block';
-    gList.innerHTML = '';
-    eList.innerHTML = '';
-    document.getElementById('mastery-panel').style.display = 'block';
-    return;
-  }
-  empty.style.display = 'none';
-
-  gList.innerHTML = points.length
-    ? points.map(p => {
-        const stars = '★'.repeat(p.strength) + '☆'.repeat(Math.max(0, 4 - p.strength));
-        return `<div class="grammar-entry"><strong class="grammar-expr">【${p.expr}】</strong>` +
-               `<span class="mastery-stars" style="color:var(--yellow);">${stars}</span>` +
-               `<span class="mastery-count">${p.exposures}回</span></div>`;
-      }).join('')
-    : '<div class="panel-empty" style="display:block;">まだ<ruby>文法<rt>ぶんぽう</rt></ruby>の<ruby>記録<rt>きろく</rt></ruby>がありません。</div>';
-
-  eList.innerHTML = errors.length
-    ? errors.map(e => {
-        const d = document.createElement('div');
-        d.className = 'mastery-error-entry';
-        const ans = document.createElement('div');
-        ans.className = 'mastery-answer';
-        ans.textContent = `「${e.answer}」`;
-        const fb = document.createElement('div');
-        fb.className = 'mastery-feedback';
-        fb.textContent = e.feedback;
-        d.appendChild(ans); d.appendChild(fb);
-        return d.outerHTML;
-      }).join('')
-    : '<div class="panel-empty" style="display:block;"><ruby>作文<rt>さくぶん</rt></ruby>の<ruby>記録<rt>きろく</rt></ruby>はまだありません。</div>';
-
-  document.getElementById('mastery-panel').style.display = 'block';
-}
-
 const REL_LABEL = { ally: '味方', neutral: '中立', suspicious: '怪しい', hostile: '敵対', unknown: '不明' };
 const REL_COLOR = { ally: 'var(--cyan)', neutral: 'var(--yellow)', suspicious: 'var(--pink)', hostile: '#e05555', unknown: '#888' };
 

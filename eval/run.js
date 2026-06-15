@@ -46,6 +46,25 @@ async function sleep(ms) {
   return new Promise(r => setTimeout(r, ms));
 }
 
+// Guard against the eval/system.js ↔ game.js SYSTEM-prompt drift that CLAUDE.md warns about.
+// Both hold the same backtick-delimited prompt; extract and compare. Offline, no API.
+function assertSystemInSync() {
+  const extract = src => {
+    const a = src.indexOf('`');
+    const b = src.indexOf('`;', a + 1);
+    return a >= 0 && b > a ? src.slice(a + 1, b) : null;
+  };
+  const evalSrc = fs.readFileSync(path.join(__dirname, 'system.js'), 'utf8');
+  const gameSrc = fs.readFileSync(path.join(__dirname, '..', 'public', 'js', 'game.js'), 'utf8');
+  const a = extract(evalSrc), b = extract(gameSrc);
+  if (a == null || b == null || a !== b) {
+    console.error('\n[DRIFT] eval/system.js does not match the SYSTEM prompt in public/js/game.js.');
+    console.error('        Re-mirror the prompt (CLAUDE.md decision #14) before running evals.');
+    process.exit(1);
+  }
+  console.log('[sync] eval/system.js matches game.js SYSTEM prompt ✓');
+}
+
 async function callScene(messages) {
   const res = await fetch(`${BASE_URL}/api/scene`, {
     method: 'POST',
@@ -157,6 +176,8 @@ async function runLive(writeSnapshots) {
 
 async function main() {
   console.log(`\n東京奇譚 eval — mode: ${mode}\n${'─'.repeat(50)}`);
+
+  assertSystemInSync();
 
   let result;
   if (mode === 'check') {

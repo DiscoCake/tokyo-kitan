@@ -1,19 +1,15 @@
 {
   "location_jp": "<ruby>東京<rt>とうきょう</rt></ruby><ruby>駅<rt>えき</rt></ruby>コンコース",
-  "image_query": "tokyo station concourse interior high vaulted ceiling crowd commuters",
-  "scene_jp": "<ruby>東京<rt>とうきょう</rt></ruby><ruby>駅<rt>えき</rt></ruby>のコンコースは、<ruby>何千<rt>なんぜん</rt></ruby>もの<ruby>人<rt>ひと</rt></ruby>が<ruby>行<rt>い</rt></ruby>き<ruby>交<rt>か</rt></ruby>う<ruby>広<rt>ひろ</rt></ruby>い<ruby>空間<rt>くうかん</rt></ruby>だ。<ruby>天井<rt>てんじょう</rt></ruby>は<ruby>高<rt>たか</rt></ruby>く、<ruby>足音<rt>あしおと</rt></ruby>がどこか<ruby>遠<rt>とお</rt></ruby>くで<ruby>響<rt>ひび</rt></ruby>いている。そのとき、<ruby>制服<rt>せいふく</rt></ruby>を<ruby>着<rt>き</rt></ruby>た<ruby>老<rt>ろう</rt></ruby>いた<ruby>駅員<rt>えきいん</rt></ruby>が、テストの<ruby>前<rt>まえ</rt></ruby>に<ruby>立<rt>た</rt></ruby>ち<ruby>止<rt>と</rt></ruby>まった。「あなたが<ruby>出口<rt>でぐち</rt></ruby>で<ruby>拾<rt>ひろ</rt></ruby>ったものを、<ruby>見<rt>み</rt></ruby>せていただけますか。」と、<ruby>静<rt>しず</rt></ruby>かに<ruby>言<rt>い</rt></ruby>った。<ruby>彼<rt>かれ</rt></ruby>の<ruby>目<rt>め</rt></ruby>は、テストのことを<ruby>前<rt>まえ</rt></ruby>から<ruby>知<rt>し</rt></ruby>っていたかのように<ruby>落<rt>お</rt></ruby>ち<ruby>着<rt>つ</rt></ruby>いていた。",
-  "scene_translation": "The concourse of Tokyo Station is a vast space where thousands of people cross paths. The ceiling soars high above, and the sound of footsteps echoes somewhere far away. Just then, an elderly station attendant in uniform stopped directly in front of you. \"Could you show me what you picked up at the exit?\" he said quietly. His eyes were calm — as if he had known about you all along.",
-  "grammar_note": "【〜かのように】 means 'as if' — it describes something that looks or feels like a certain situation, even if it isn't true. Here: 「<ruby>前<rt>まえ</rt></ruby>から<ruby>知<rt>し</rt></ruby>っていたかのように<ruby>落<rt>お</rt></ruby>ち<ruby>着<rt>つ</rt></ruby>いていた」 = 'he was calm, as if he had known all along.' Also note this NPC's speech is keigo (です/ます, 〜ていただけますか) — very polite and formal compared to ordinary station staff.",
+  "image_query": "tokyo station grand concourse interior high ceiling crowd commuters",
+  "scene_jp": "<ruby>東京<rt>とうきょう</rt></ruby><ruby>駅<rt>えき</rt></ruby>のコンコースは、<ruby>何千<rt>なんぜん</rt></ruby>もの<ruby>人<rt>ひと</rt></ruby>でにぎわっていた。アナウンスの<ruby>声<rt>こえ</rt></ruby>が<ruby>天井<rt>てんじょう</rt></ruby>に<ruby>響<rt>ひび</rt></ruby>き、<ruby>足音<rt>あしおと</rt></ruby>が<ruby>波<rt>なみ</rt></ruby>のように<ruby>重<rt>かさ</rt></ruby>なり<ruby>合<rt>あ</rt></ruby>う。そのとき、<ruby>売店<rt>ばいてん</rt></ruby>の<ruby>前<rt>まえ</rt></ruby>に<ruby>立<rt>た</rt></ruby>っている<ruby>老<rt>ろう</rt></ruby>じんが、こちらをじっと<ruby>見<rt>み</rt></ruby>ていることに<ruby>気<rt>き</rt></ruby>がついた。<ruby>老<rt>ろう</rt></ruby>じんはゆっくりと<ruby>近<rt>ちか</rt></ruby>づいてきて、「テストさん、<ruby>駅<rt>えき</rt></ruby>の<ruby>出口<rt>でぐち</rt></ruby>で<ruby>何<rt>なに</rt></ruby>か<ruby>拾<rt>ひろ</rt></ruby>いましたね」と、まるで<ruby>全部<rt>ぜんぶ</rt></ruby><ruby>知<rt>し</rt></ruby>っていたかのように<ruby>静<rt>しず</rt></ruby>かに<ruby>言<rt>い</rt></ruby>った。<ruby>老<rt>ろう</rt></ruby>じんの<ruby>手<rt>て</rt></ruby>には、<ruby>同<rt>おな</rt></ruby>じ<ruby>紙<rt>かみ</rt></ruby>に<ruby>書<rt>か</rt></ruby>かれたメモが<ruby>握<rt>にぎ</rt></ruby>られていた——<ruby>半分<rt>はんぶん</rt></ruby>だけ。",
+  "scene_translation": "Tokyo Station's concourse buzzed with thousands of people. Announcement voices echoed off the high ceiling, and the sound of footsteps layered together like waves. Just then, you noticed an old man standing in front of a kiosk, staring steadily in your direction. He slowly approached and said quietly, as though he already knew everything: 'You picked something up at the station exit, didn't you, テスト.' In his hand was a memo written on the same kind of paper — but only half of it.",
+  "grammar_note": "【まるで〜かのように】means 'as if' or 'just like' — it compares something to an imagined situation. まるで is often paired with かのように (or ように alone) to add a dreamlike, unreal quality. Example from the scene: まるで全部知っていたかのように静かに言った — 'he said quietly, as if he had known everything all along.' The かのように form (using か + の + よう) is slightly more formal and literary than ように alone.",
+  "grammar_point_targeted": "まるで〜かのように",
   "vocab": [
     {
       "word": "コンコース",
       "reading": "こんこーす",
-      "meaning": "concourse (large open walkway in a station)"
-    },
-    {
-      "word": "行き交う",
-      "reading": "いきかう",
-      "meaning": "to come and go, to pass each other"
+      "meaning": "concourse (large open station hall)"
     },
     {
       "word": "天井",
@@ -23,61 +19,67 @@
     {
       "word": "響く",
       "reading": "ひびく",
-      "meaning": "to echo, to resound"
+      "meaning": "to echo, to resonate"
     },
     {
-      "word": "制服",
-      "reading": "せいふく",
-      "meaning": "uniform"
+      "word": "足音",
+      "reading": "あしおと",
+      "meaning": "sound of footsteps"
     },
     {
-      "word": "駅員",
-      "reading": "えきいん",
-      "meaning": "station attendant"
+      "word": "重なり合う",
+      "reading": "かさなりあう",
+      "meaning": "to layer on top of each other, to overlap"
     },
     {
-      "word": "立ち止まる",
-      "reading": "たちどまる",
-      "meaning": "to stop (while walking), to come to a halt"
+      "word": "売店",
+      "reading": "ばいてん",
+      "meaning": "kiosk, small shop stall"
     },
     {
-      "word": "落ち着く",
-      "reading": "おちつく",
-      "meaning": "to be calm, to settle down"
+      "word": "老じん",
+      "reading": "ろうじん",
+      "meaning": "elderly person, old man/woman"
     },
     {
-      "word": "拾う",
-      "reading": "ひろう",
-      "meaning": "to pick up (an object)"
+      "word": "近づく",
+      "reading": "ちかづく",
+      "meaning": "to approach, to draw near"
     },
     {
-      "word": "見せていただく",
-      "reading": "みせていただく",
-      "meaning": "to show (humble/polite form of 見せてもらう)"
+      "word": "握る",
+      "reading": "にぎる",
+      "meaning": "to grip, to hold in one's hand"
+    },
+    {
+      "word": "半分",
+      "reading": "はんぶん",
+      "meaning": "half"
     }
   ],
+  "items_gained": [],
   "scene_type": "choice",
   "choices": [
     {
-      "jp": "<ruby>素直<rt>すなお</rt></ruby>に<ruby>見<rt>み</rt></ruby>せる — 「どうぞ。」",
-      "text_only": "素直に見せる — 「どうぞ。」"
+      "jp": "「あなたは<ruby>誰<rt>だれ</rt></ruby>ですか？」と<ruby>聞<rt>き</rt></ruby>く",
+      "text_only": "「あなたは誰ですか？」と聞く"
     },
     {
-      "jp": "<ruby>警戒<rt>けいかい</rt></ruby>して<ruby>断<rt>ことわ</rt></ruby>る — 「いいえ、<ruby>結構<rt>けっこう</rt></ruby>です。」",
-      "text_only": "警戒して断る — 「いいえ、結構です。」"
+      "jp": "「その<ruby>半分<rt>はんぶん</rt></ruby>のメモを<ruby>見<rt>み</rt></ruby>せてください」と<ruby>頼<rt>たの</rt></ruby>む",
+      "text_only": "「その半分のメモを見せてください」と頼む"
     },
     {
-      "jp": "<ruby>逆<rt>ぎゃく</rt></ruby>に<ruby>聞<rt>き</rt></ruby>く — 「なぜ<ruby>知<rt>し</rt></ruby>っているんですか？」",
-      "text_only": "逆に聞く — 「なぜ知っているんですか？」"
+      "jp": "<ruby>黙<rt>だま</rt></ruby>って<ruby>一歩<rt>いっぽ</rt></ruby><ruby>後<rt>うし</rt></ruby>ろに<ruby>下<rt>さ</rt></ruby>がる",
+      "text_only": "黙って一歩後ろに下がる"
     }
   ],
-  "mystery_memo": "The old station attendant Morimoto knows the player's name and somehow knows they picked something up at the exit — deepening the central mystery of who is watching and why. His calm, knowing demeanor suggests he is a key figure: possibly a guardian, a messenger, or someone who has been expecting the player. The item picked up at the exit (not yet defined in inventory) is clearly significant. Player's choice here will establish whether Morimoto becomes an ally or a suspicious figure.",
+  "mystery_memo": "The old man at the kiosk knows the player's name and knows they picked something up at the station exit — he should not know either of these things. He holds the other half of a memo written on the same paper as whatever was found at the exit, suggesting the note was deliberately split. This is the second time the player's name has been used by a stranger. The old man's relationship is currently neutral-unknown; his tone is polite but unsettling. The two memo halves together may form a key clue.",
   "npcs": [
     {
-      "name_jp": "<ruby>森本<rt>もりもと</rt></ruby>さん",
-      "name_reading": "もりもと",
+      "name_jp": "<ruby>老<rt>ろう</rt></ruby>じん",
+      "name_reading": "ろうじん",
       "relationship": "unknown",
-      "note": "東京駅の老いた駅員。テストのことを前から知っているかのような落ち着いた態度で近づいてきた。"
+      "note": "東京駅のコンコースで現れた謎の老人。テストの名前を知っており、メモの半分を持っている。"
     }
   ]
 }
