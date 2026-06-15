@@ -1,9 +1,9 @@
 {
-  "location_jp": "<ruby>新宿<rt>しんじゅく</rt></ruby>の<ruby>地下<rt>ちか</rt></ruby><ruby>通路<rt>つうろ</rt></ruby>",
-  "image_query": "underground tunnel wartime concrete Japan dim light narrow passage",
-  "scene_jp": "<ruby>古<rt>ふる</rt></ruby>いノートの<ruby>地図<rt>ちず</rt></ruby>を<ruby>頼<rt>たよ</rt></ruby>りに、テストは<ruby>薄暗<rt>うすぐら</rt></ruby>い<ruby>地下<rt>ちか</rt></ruby><ruby>通路<rt>つうろ</rt></ruby>へ<ruby>足<rt>あし</rt></ruby>を<ruby>踏<rt>ふ</rt></ruby>み<ruby>入<rt>い</rt></ruby>れた。<ruby>空気<rt>くうき</rt></ruby>は<ruby>冷<rt>つめ</rt></ruby>たく、コンクリートの<ruby>壁<rt>かべ</rt></ruby>には<ruby>戦時中<rt>せんじちゅう</rt></ruby>の<ruby>落書<rt>らくが</rt></ruby>きが<ruby>薄<rt>うす</rt></ruby>く<ruby>残<rt>のこ</rt></ruby>っていた。しばらく<ruby>歩<rt>ある</rt></ruby>くと、<ruby>灰色<rt>はいいろ</rt></ruby>のコートの<ruby>男<rt>おとこ</rt></ruby>が<ruby>壁<rt>かべ</rt></ruby>にもたれて<ruby>待<rt>ま</rt></ruby>っていた。「<ruby>来<rt>き</rt></ruby>たか、テスト。ここから<ruby>先<rt>さき</rt></ruby>は、おまえ<ruby>一人<rt>ひとり</rt></ruby>じゃ<ruby>無理<rt>むり</rt></ruby>だぞ。」<ruby>男<rt>おとこ</rt></ruby>はそう<ruby>言<rt>い</rt></ruby>って、<ruby>通路<rt>つうろ</rt></ruby>の<ruby>奥<rt>おく</rt></ruby>にある<ruby>鉄<rt>てつ</rt></ruby>の<ruby>扉<rt>とびら</rt></ruby>を<ruby>指<rt>さ</rt></ruby>した。",
-  "scene_translation": "Using the map in the old notebook as a guide, Tesuto stepped into the dim underground passage. The air was cold, and faint wartime graffiti still remained on the concrete walls. After walking for a while, the man in the grey coat was there, leaning against the wall, waiting. \"You came, Tesuto. Beyond this point, you won't manage alone,\" he said, pointing to an iron door deep in the passage.",
-  "grammar_note": "【おまえ】A blunt, rough second-person pronoun used by older or gruff men — it's not quite rude but signals the speaker sees himself as superior or close. Compare: あなた (polite/neutral), きみ (soft/casual), おまえ (rough, familiar). The grey man has dropped any pretense of distance.",
+  "location_jp": "<ruby>新<rt>しん</rt></ruby><ruby>宿<rt>じゅく</rt></ruby><ruby>地<rt>ち</rt></ruby><ruby>下<rt>か</rt></ruby><ruby>通<rt>つう</rt></ruby><ruby>路<rt>ろ</rt></ruby>",
+  "image_query": "underground tunnel wartime concrete walls dim light tokyo",
+  "scene_jp": "<ruby>古<rt>ふる</rt></ruby>いノートの<ruby>地<rt>ち</rt></ruby><ruby>図<rt>ず</rt></ruby>を<ruby>頼<rt>たよ</rt></ruby>りに、テストは<ruby>駅<rt>えき</rt></ruby><ruby>裏<rt>うら</rt></ruby>の<ruby>古<rt>ふる</rt></ruby>い<ruby>階<rt>かい</rt></ruby><ruby>段<rt>だん</rt></ruby>を<ruby>下<rt>お</rt></ruby>りていった。<ruby>薄<rt>うす</rt></ruby>い<ruby>光<rt>ひかり</rt></ruby>の<ruby>中<rt>なか</rt></ruby>に、コンクリートの<ruby>壁<rt>かべ</rt></ruby>と<ruby>細<rt>ほそ</rt></ruby>い<ruby>通<rt>とお</rt></ruby>り<ruby>道<rt>みち</rt></ruby>が<ruby>続<rt>つづ</rt></ruby>いていた。するとうしろから、あのグレーのコートの<ruby>男<rt>おとこ</rt></ruby>が<ruby>静<rt>しず</rt></ruby>かに<ruby>近<rt>ちか</rt></ruby>づいてきて、「<ruby>怖<rt>こわ</rt></ruby>がらなくていいぞ。おれもずっと、この<ruby>場<rt>ば</rt></ruby><ruby>所<rt>しょ</rt></ruby>を<ruby>探<rt>さが</rt></ruby>していたんだ」と<ruby>低<rt>ひく</rt></ruby>い<ruby>声<rt>こえ</rt></ruby>でつぶやいた。<ruby>通<rt>つう</rt></ruby><ruby>路<rt>ろ</rt></ruby>の<ruby>奥<rt>おく</rt></ruby>には、さびついた<ruby>扉<rt>とびら</rt></ruby>が<ruby>一<rt>ひと</rt></ruby>つ、<ruby>静<rt>しず</rt></ruby>かに<ruby>待<rt>ま</rt></ruby>っているようだった。",
+  "scene_translation": "Using the map in the old notebook as a guide, Tesuto descended an old staircase behind the station. In the thin light, a concrete wall and a narrow passage stretched ahead. Then from behind, the man in the grey coat approached quietly and murmured in a low voice, \"You don't need to be afraid. I've been searching for this place too, for a long time.\" At the far end of the passage, a single rusted door waited in silence.",
+  "grammar_note": "【〜を頼りに】means 'relying on' or 'using ~ as a guide.' It expresses depending on something as your only resource or reference — 地図を頼りに進む means 'to proceed using the map as a guide.' This is an N3 expression worth remembering. Note also the man's speech style: rough, direct masculine forms like ぞ and おれ contrast sharply with the bartender's quiet politeness and the shrine priest's formal keigo.",
   "vocab": [
     {
       "word": "頼りに",
@@ -11,45 +11,65 @@
       "meaning": "relying on, using as a guide"
     },
     {
-      "word": "薄暗い",
-      "reading": "うすぐらい",
-      "meaning": "dim, gloomy"
+      "word": "通り道",
+      "reading": "とおりみち",
+      "meaning": "passageway, path through"
     },
     {
-      "word": "戦時中",
-      "reading": "せんじちゅう",
-      "meaning": "during the war"
+      "word": "コンクリート",
+      "reading": "コンクリート",
+      "meaning": "concrete"
     },
     {
-      "word": "落書き",
-      "reading": "らくがき",
-      "meaning": "graffiti, scribbling"
+      "word": "近づく",
+      "reading": "ちかづく",
+      "meaning": "to approach, draw near"
     },
     {
-      "word": "鉄の扉",
-      "reading": "てつのとびら",
-      "meaning": "iron door"
+      "word": "つぶやく",
+      "reading": "つぶやく",
+      "meaning": "to mutter, murmur"
+    },
+    {
+      "word": "さびついた",
+      "reading": "さびついた",
+      "meaning": "rusted, corroded"
+    },
+    {
+      "word": "扉",
+      "reading": "とびら",
+      "meaning": "door, gate (esp. heavy or significant)"
     },
     {
       "word": "奥",
       "reading": "おく",
-      "meaning": "the back/depths of a place"
+      "meaning": "the back, the depths (of a space)"
+    },
+    {
+      "word": "薄い",
+      "reading": "うすい",
+      "meaning": "thin, faint, pale"
+    },
+    {
+      "word": "低い声",
+      "reading": "ひくいこえ",
+      "meaning": "low voice, deep murmur"
     }
   ],
   "scene_type": "choice",
   "choices": [
     {
-      "jp": "「あなたは<ruby>何者<rt>なにもの</rt></ruby>ですか？」と<ruby>聞<rt>き</rt></ruby>く",
-      "text_only": "「あなたは何者ですか？」と聞く"
+      "jp": "「あなたは<ruby>誰<rt>だれ</rt></ruby>ですか？」と<ruby>男<rt>おとこ</rt></ruby>に<ruby>聞<rt>き</rt></ruby>く",
+      "text_only": "「あなたは誰ですか？」と男に聞く"
     },
     {
-      "jp": "コインロッカーの<ruby>鍵<rt>かぎ</rt></ruby>を<ruby>鉄<rt>てつ</rt></ruby>の<ruby>扉<rt>とびら</rt></ruby>で<ruby>試<rt>ため</rt></ruby>してみる",
-      "text_only": "コインロッカーの鍵を鉄の扉で試してみる"
+      "jp": "<ruby>扉<rt>とびら</rt></ruby>に<ruby>近<rt>ちか</rt></ruby>づいて、コインロッカーの<ruby>鍵<rt>かぎ</rt></ruby>を<ruby>試<rt>ため</rt></ruby>してみる",
+      "text_only": "扉に近づいて、コインロッカーの鍵を試してみる"
     },
     {
-      "jp": "<ruby>男<rt>おとこ</rt></ruby>について<ruby>奥<rt>おく</rt></ruby>へ<ruby>進<rt>すす</rt></ruby>む",
-      "text_only": "男について奥へ進む"
+      "jp": "<ruby>男<rt>おとこ</rt></ruby>を<ruby>無<rt>む</rt></ruby><ruby>視<rt>し</rt></ruby>して、<ruby>一<rt>ひと</rt></ruby>りで<ruby>扉<rt>とびら</rt></ruby>を<ruby>調<rt>しら</rt></ruby>べる",
+      "text_only": "男を無視して、一人で扉を調べる"
     }
   ],
-  "mystery_memo": "Scene 8: Tesuto has entered the wartime underground passage beneath Shinjuku using the notebook map. The grey man was waiting — this confirms he has been guiding the player deliberately, not simply following. He knows Tesuto's name and seems to have been here before. The iron door ahead likely requires the coin locker key (from scene 4). The graffiti on the walls may hold further clues about the grandmother's wartime past. The woman in blue has not appeared here yet — her absence is notable. NPC relationships: shopkeeper (frightened/closed off), bartender (quietly helpful), shrine priest (formally cryptic), grey man (shifting from antagonist to reluctant guide — now clearly an ally with his own agenda). The お守り from the shrine may have protective or symbolic significance in the revelation ahead."
+  "mystery_memo": "Tesuto has descended into the wartime underground passage, the destination marked on the grandmother's notebook map. The man in grey has dropped all pretense of following and revealed himself as a fellow seeker — his connection to the grandmother or the passage is still unknown, but his tone (rough, direct, oddly warm) suggests he is not a threat. The rusted door at the passage's end is the likely focal point of the mystery's revelation; the coinlocker key may or may not fit it — this should be tested next scene. The blue woman has not appeared here yet, which is conspicuous. NPCs: shopkeeper (frightened/closed off), bartender (quietly helpful), shrine priest (formally cryptic), grey man (now openly allied — relationship warming)."
 }

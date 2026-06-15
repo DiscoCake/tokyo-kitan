@@ -1,55 +1,75 @@
 {
-  "location_jp": "<ruby>神社<rt>じんじゃ</rt></ruby>の<ruby>奥<rt>おく</rt></ruby>の<ruby>間<rt>ま</rt></ruby>",
-  "image_query": "japanese shrine inner room dim candlelight wooden altar quiet",
-  "scene_jp": "<ruby>古<rt>ふる</rt></ruby>い<ruby>鍵<rt>かぎ</rt></ruby>を<ruby>鍵穴<rt>かぎあな</rt></ruby>に<ruby>差<rt>さ</rt></ruby>し<ruby>込<rt>こ</rt></ruby>むと、<ruby>重<rt>おも</rt></ruby>い<ruby>扉<rt>とびら</rt></ruby>がゆっくりと<ruby>開<rt>ひら</rt></ruby>いた。<ruby>部屋<rt>へや</rt></ruby>の<ruby>中<rt>なか</rt></ruby>は<ruby>暗<rt>くら</rt></ruby>く、<ruby>線香<rt>せんこう</rt></ruby>のにおいが<ruby>漂<rt>ただよ</rt></ruby>っていた。<ruby>古<rt>ふる</rt></ruby>いノートを<ruby>開<rt>ひら</rt></ruby>くと、<ruby>青<rt>あお</rt></ruby>いインクで<ruby>新<rt>あら</rt></ruby>たなメッセージが<ruby>書<rt>か</rt></ruby>かれていた——「<ruby>次<rt>つぎ</rt></ruby>は<ruby>水天宮<rt>すいてんぐう</rt></ruby>へ。<ruby>夕暮<rt>ゆうぐ</rt></ruby>れ<ruby>前<rt>まえ</rt></ruby>に。」そのとき、<ruby>背後<rt>はいご</rt></ruby>から<ruby>老<rt>お</rt></ruby>いた<ruby>神主<rt>かんぬし</rt></ruby>の<ruby>声<rt>こえ</rt></ruby>が<ruby>聞<rt>き</rt></ruby>こえた。「テストさん、あなたがここに<ruby>来<rt>く</rt></ruby>ることは<ruby>分<rt>わ</rt></ruby>かっておりましたよ。」",
-  "scene_translation": "When you inserted the old key into the keyhole, the heavy door slowly opened. Inside, the room was dark, and the scent of incense drifted through the air. Opening the old notebook, you found a new message written in blue ink — 'Next, go to Suitengū. Before dusk.' At that moment, the voice of an elderly shrine priest came from behind you. 'Mr. Tesuto, I knew you would come here.'",
-  "grammar_note": "【〜ことは分かっておりました】This is keigo (formal/respectful speech) — the shrine priest uses おります, the humble form of います, as a mark of his formal register. Compare a young person who might say 「来るって分かってたよ」 — same meaning, completely different social register. When NPCs speak very formally to you, it often signals they are either respectful OR hiding something behind politeness.",
+  "location_jp": "<ruby>奥<rt>おく</rt></ruby>の<ruby>部屋<rt>へや</rt></ruby>（<ruby>神社<rt>じんじゃ</rt></ruby>）",
+  "image_query": "shinto shrine inner room dim candlelight wooden altar dusty",
+  "scene_jp": "<ruby>鍵<rt>かぎ</rt></ruby>を<ruby>回<rt>まわ</rt></ruby>すと、<ruby>古<rt>ふる</rt></ruby>い<ruby>扉<rt>とびら</rt></ruby>がゆっくり<ruby>開<rt>ひら</rt></ruby>いた。<ruby>中<rt>なか</rt></ruby>には<ruby>小<rt>ちい</rt></ruby>さな<ruby>祭壇<rt>さいだん</rt></ruby>があり、<ruby>薄<rt>うす</rt></ruby>い<ruby>光<rt>ひかり</rt></ruby>の<ruby>中<rt>なか</rt></ruby>にノートが<ruby>置<rt>お</rt></ruby>かれていた。ノートを<ruby>開<rt>ひら</rt></ruby>くと、<ruby>青<rt>あお</rt></ruby>いインクで「テストさん、<ruby>次<rt>つぎ</rt></ruby>は<ruby>水道橋<rt>すいどうばし</rt></ruby>の<ruby>古<rt>ふる</rt></ruby>い<ruby>時計台<rt>とけいだい</rt></ruby>へ。<ruby>夜<rt>よる</rt></ruby>の<ruby>十<rt>じゅう</rt></ruby><ruby>時<rt>じ</rt></ruby>までに。」と<ruby>書<rt>か</rt></ruby>いてあった。<ruby>後<rt>うし</rt></ruby>ろで<ruby>物音<rt>ものおと</rt></ruby>がして、<ruby>振<rt>ふ</rt></ruby>り<ruby>返<rt>かえ</rt></ruby>ると、<ruby>神社<rt>じんじゃ</rt></ruby>の<ruby>宮司<rt>ぐうじ</rt></ruby>らしき<ruby>老<rt>お</rt></ruby>いた<ruby>男性<rt>だんせい</rt></ruby>が<ruby>立<rt>た</rt></ruby>っていた。「この<ruby>部屋<rt>へや</rt></ruby>のことを<ruby>知<rt>し</rt></ruby>っているとは……<ruby>青<rt>あお</rt></ruby>い<ruby>着物<rt>きもの</rt></ruby>の<ruby>女<rt>おんな</rt></ruby>に<ruby>頼<rt>たの</rt></ruby>まれたのかね。」",
+  "scene_translation": "When you turned the key, the old door slowly opened. Inside was a small altar, and in the faint light, a notebook had been placed there. Opening it, you found written in blue ink: 'Testo-san, next go to the old clock tower at Suidobashi. By ten o'clock at night.' There was a sound from behind you — turning around, an elderly man who appeared to be the shrine's priest was standing there. 'To think you know about this room… Were you asked by the woman in the blue kimono?'",
+  "grammar_note": "【〜とは】This expression marks something as surprising or unexpected — the priest says 「この<ruby>部屋<rt>へや</rt></ruby>のことを<ruby>知<rt>し</rt></ruby>っているとは」, meaning 'to think that you know about this room…' It carries a tone of quiet astonishment and is often left unfinished, letting the feeling hang in the air. Note also the priest's speech style: 〜かね is a gentle, old-fashioned masculine ending, warmer and more reflective than plain だ — a register quite different from the casual じゃん of younger characters.",
   "vocab": [
     {
-      "word": "鍵穴",
-      "reading": "かぎあな",
-      "meaning": "keyhole"
+      "word": "祭壇",
+      "reading": "さいだん",
+      "meaning": "altar"
     },
     {
-      "word": "線香",
-      "reading": "せんこう",
-      "meaning": "incense sticks"
+      "word": "宮司",
+      "reading": "ぐうじ",
+      "meaning": "chief priest of a Shinto shrine"
     },
     {
-      "word": "漂う",
-      "reading": "ただよう",
-      "meaning": "to drift, to waft"
+      "word": "時計台",
+      "reading": "とけいだい",
+      "meaning": "clock tower"
     },
     {
-      "word": "背後",
-      "reading": "はいご",
-      "meaning": "behind one's back"
+      "word": "物音",
+      "reading": "ものおと",
+      "meaning": "a sound, a noise (from something)"
     },
     {
-      "word": "神主",
-      "reading": "かんぬし",
-      "meaning": "Shinto shrine priest"
+      "word": "振り返る",
+      "reading": "ふりかえる",
+      "meaning": "to turn around, to look back"
     },
     {
-      "word": "夕暮れ",
-      "reading": "ゆうぐれ",
-      "meaning": "dusk, twilight"
+      "word": "薄い",
+      "reading": "うすい",
+      "meaning": "thin, faint, pale"
+    },
+    {
+      "word": "頼む",
+      "reading": "たのむ",
+      "meaning": "to ask (a favour of), to request"
+    },
+    {
+      "word": "インク",
+      "reading": "インク",
+      "meaning": "ink"
+    },
+    {
+      "word": "着物",
+      "reading": "きもの",
+      "meaning": "kimono, traditional Japanese garment"
+    },
+    {
+      "word": "扉",
+      "reading": "とびら",
+      "meaning": "door, gate (often a heavier or significant one)"
     }
   ],
   "scene_type": "choice",
   "choices": [
     {
-      "jp": "「どうして<ruby>私<rt>わたし</rt></ruby>のことを<ruby>知<rt>し</rt></ruby>っているんですか？」と<ruby>聞<rt>き</rt></ruby>く",
-      "text_only": "「どうして私のことを知っているんですか？」と聞く"
+      "jp": "「はい、<ruby>青<rt>あお</rt></ruby>い<ruby>着物<rt>きもの</rt></ruby>の<ruby>女性<rt>じょせい</rt></ruby>に<ruby>導<rt>みちび</rt></ruby>かれてここに<ruby>来<rt>き</rt></ruby>ました。」と<ruby>正直<rt>しょうじき</rt></ruby>に<ruby>答<rt>こた</rt></ruby>える",
+      "text_only": "「はい、青い着物の女性に導かれてここに来ました。」と正直に答える"
     },
     {
-      "jp": "「<ruby>青<rt>あお</rt></ruby>い<ruby>服<rt>ふく</rt></ruby>の<ruby>女<rt>おんな</rt></ruby>の<ruby>人<rt>ひと</rt></ruby>を<ruby>知<rt>し</rt></ruby>っていますか？」と<ruby>尋<rt>たず</rt></ruby>ねる",
-      "text_only": "「青い服の女の人を知っていますか？」と尋ねる"
+      "jp": "「<ruby>彼女<rt>かのじょ</rt></ruby>のことを<ruby>知<rt>し</rt></ruby>っているんですか？<ruby>教<rt>おし</rt></ruby>えてください。」と<ruby>聞<rt>き</rt></ruby>く",
+      "text_only": "「彼女のことを知っているんですか？教えてください。」と聞く"
     },
     {
-      "jp": "<ruby>黙<rt>だま</rt></ruby>ったまま、ノートを<ruby>神主<rt>かんぬし</rt></ruby>に<ruby>見<rt>み</rt></ruby>せる",
-      "text_only": "黙ったまま、ノートを神主に見せる"
+      "jp": "<ruby>黙<rt>だま</rt></ruby>ったまま、ノートを<ruby>胸<rt>むね</rt></ruby>に<ruby>抱<rt>だ</rt></ruby>いて<ruby>宮司<rt>ぐうじ</rt></ruby>を<ruby>見<rt>み</rt></ruby>つめる",
+      "text_only": "黙ったまま、ノートを胸に抱いて宮司を見つめる"
     }
   ],
-  "mystery_memo": "The back room at the shrine has been unlocked using the key from the locker — both items originated from the same source, suggesting the woman in blue planted them intentionally as a trail for the player. The notebook now contains a second message directing the player to Suitengū before dusk, escalating the time pressure. The elderly shrine priest (kannushi) knows the player's name without having been introduced, deepening the central mystery of who is orchestrating these events. The priest speaks in formal keigo, suggesting either genuine reverence or a careful, guarded manner — relationship status: unknown/watchful. The old tobacco shop grandfather (Scene 3) previously hinted at the shrine; his knowledge and the priest's awareness may be connected."
+  "mystery_memo": "The notebook has now revealed the next destination: the clock tower at Suidobashi, by 10 PM. The woman in blue knows the player's name and has been orchestrating each step — locker, shrine, now this. The elderly shrine priest (宮司) recognizes the blue-kimono woman and seems unsurprised by her involvement, suggesting a prior relationship with the shrine; his tone is cautious but not hostile. Relationship status: priest is neutral-watchful. The notebook and key are now confirmed as a matched set left deliberately for the player."
 }

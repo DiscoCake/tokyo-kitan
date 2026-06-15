@@ -135,7 +135,7 @@ function showWordCard(rubyEl, vocab) {
   const reading = rt ? rt.innerText.trim() : '';
 
   const match = vocab.find(v => v.word === word);
-  const meaning = match ? match.meaning : '';
+  const meaning = match ? match.meaning : '(not in scene vocab)';
   if (!match) { S.unknownTaps++; saveGame(); }
 
   const card = document.getElementById('word-card');

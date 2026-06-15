@@ -1,5 +1,61 @@
 # Changelog
 
+### 2026-06-14 — Minimap toggle moved to game screen topbar
+
+**Fix — Minimap toggle now visible inside rooms (public/index.html, public/js/main.js, public/js/dungeon.js):**
+- Added `#minimap-btn` to `#topbar-right` (game screen), hidden by default.
+- Button appears when entering a room (`onEnterRoom` + resume-into-room path) and hides on
+  `exitDungeonRoom()` / `startDungeon()`.
+- Both `#minimap-btn` (game screen) and `#dungeon-minimap-btn` (dungeon map) call `setMinimap()`
+  and stay in sync — toggling either one updates both.
+
+### 2026-06-14 — Dungeon: resume-in-room, room-tile prompt on spawn, randomised room positions
+
+**Bug fix — Resume restores room scene (public/js/main.js):**
+- Resume handler now checks `S.currentRoomId` before deciding where to land. If the player
+  saved while inside a room, resume restores the room scene directly (same `renderScene(saved,
+  true, true)` path used by re-entry) instead of dropping them at the dungeon map.
+- Layout is restored from `S.dungeonLayout` before any `startDungeon()` or room render call.
+
+**Bug fix — Room prompt shows on spawn/exit (public/js/dungeon.js):**
+- `startDungeon()` now checks `ROOM_COORDS` against the current position after drawing and
+  shows the enter-prompt if the player is standing on a room tile (fixes "must walk off and
+  back" on resume). Same fix applied to `exitDungeonRoom()` — stepping back onto the map
+  while still on the room tile now immediately re-shows the prompt.
+
+**Feature — Randomised room positions (public/js/dungeon.js, state.js, main.js):**
+- Room tile positions are no longer hardcoded. ROOMS now holds name data only; a step-2
+  candidate grid per wing (12 slots each, C(12,4)=495 arrangements) is shuffled on each
+  new dungeon run via `generateLayout()`.
+- `S.dungeonLayout` (roomId → {x,y}) is serialised in saves so layout persists across
+  reloads and is restored via `restoreLayout()` on resume.
+- `generateLayout()` and `restoreLayout()` exported from `dungeon.js`; called from `main.js`
+  on new-game and resume respectively; `resetGame()` clears `S.dungeonLayout`.
+
+---
+
+### 2026-06-14 — Minimap toggle + word card meaning fix
+
+**Minimap toggle (public/index.html, public/js/main.js):**
+- Added `<ruby>地図<rt>ちず</rt></ruby>` toggle button (`#dungeon-minimap-btn`) to
+  `#dungeon-topbar-right`, styled as a standard `ctrl-btn active` (on by default).
+- `onEnterRoom` now checks whether the toggle is active before showing `#minimap-canvas`
+  — toggling off mid-room immediately hides the minimap; toggling on re-draws it if
+  already inside a room.
+
+**Word card meaning (public/js/ui.js):**
+- `showWordCard` now shows `'(not in scene vocab)'` instead of blank when a tapped word
+  is not in the scene's vocab list. Previously the meaning field was silently empty,
+  which made the feature look broken for most words.
+
+**Vocab count (public/js/game.js, eval/system.js, eval/checks.js):**
+- Increased vocab from 4–6 to 8–12 words per scene, skewing toward less common vocab
+  the learner may not know. More words covered means fewer `(not in scene vocab)` hits.
+- `eval/checks.js` validator updated: `< 6 || > 14` (was `< 4 || > 6`).
+- Snapshots regenerated: all 10 pass.
+
+---
+
 ### 2026-06-14 — Server-side SQLite persistence (X2)
 
 **server.js:**

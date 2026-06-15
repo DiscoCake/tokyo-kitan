@@ -2,7 +2,7 @@ import { setFurigana as setFuriganaCore } from '/jp-ui/furigana.js';
 import { S, SCENE_NUMS, loadGame, loadGameFromServer, clearSave } from './state.js';
 import { updateVocabBadge, renderItems, openVocabPanel, openGalleryPanel, openGrammarPanel, clearScene } from './ui.js';
 import { generate, renderScene } from './game.js';
-import { initDungeon, startDungeon, hideDungeonScreen, drawMinimap } from './dungeon.js';
+import { initDungeon, startDungeon, hideDungeonScreen, drawMinimap, generateLayout, restoreLayout } from './dungeon.js';
 
 // Side-effect imports — each module wires its own event listeners on load
 import './tts.js';
@@ -33,6 +33,21 @@ function setFurigana(on) {
 document.getElementById('furigana-btn').onclick          = () => setFurigana(!S.furigana);
 document.getElementById('setup-furigana-btn').onclick    = () => setFurigana(!S.furigana);
 document.getElementById('dungeon-furigana-btn').onclick  = () => setFurigana(!S.furigana);
+
+/* ── MINIMAP TOGGLE ── */
+function setMinimap(on) {
+  document.getElementById('minimap-btn').classList.toggle('active', on);
+  document.getElementById('dungeon-minimap-btn').classList.toggle('active', on);
+  const miniCanvas = document.getElementById('minimap-canvas');
+  if (!on) {
+    miniCanvas.style.display = 'none';
+  } else if (S.currentRoomId) {
+    miniCanvas.style.display = 'block';
+    drawMinimap(miniCanvas);
+  }
+}
+document.getElementById('minimap-btn').onclick = function() { setMinimap(!this.classList.contains('active')); };
+document.getElementById('dungeon-minimap-btn').onclick = function() { setMinimap(!this.classList.contains('active')); };
 
 /* ── TOPBAR TOGGLES ── */
 document.getElementById('translation-btn').onclick = function() {
@@ -83,6 +98,7 @@ function resetGame() {
   S.mysteryMemo = ''; S.vocabLog = []; S.grammarSeen = [];
   S.items = []; S.gallery = []; S.peeks = 0; S.unknownTaps = 0;
   S.roomScenes = {};
+  S.dungeonLayout = null;
   S.mode = 'visual-novel';
   S.dungeonPos = { x: 1, y: 7 };
   S.visitedRooms = new Set();
@@ -115,6 +131,7 @@ document.getElementById('start-dungeon-btn').onclick = function() {
   S.dungeonPos = { x: 1, y: 7 };
   S.visitedRooms = new Set();
   clearSave();
+  S.dungeonLayout = generateLayout();
   document.getElementById('setup-screen').style.display = 'none';
   startDungeon();
 };
@@ -134,10 +151,34 @@ document.getElementById('resume-btn').onclick = async function() {
   S.visitedRooms = new Set(snap.visitedRooms || []);
   S.currentRoomId = snap.currentRoomId || null;
   S.exploredTiles = new Set(snap.exploredTiles || []);
+  S.dungeonLayout = snap.dungeonLayout || null;
+
+  if (S.dungeonLayout) restoreLayout(S.dungeonLayout);
+
   updateVocabBadge();
   document.getElementById('setup-screen').style.display = 'none';
 
-  if (S.mode === 'dungeon') {
+  if (S.mode === 'dungeon' && S.currentRoomId && S.roomScenes[S.currentRoomId]) {
+    // Was inside a room when saved — restore directly to the room scene
+    const saved = S.roomScenes[S.currentRoomId];
+    clearScene();
+    if (saved._imgSrc) {
+      const img = document.getElementById('hero-img');
+      img.src = saved._imgSrc;
+      img.classList.add('loaded');
+      document.getElementById('hero-skeleton').style.display = 'none';
+    }
+    document.getElementById('game-screen').style.display = 'block';
+    document.getElementById('minimap-btn').style.display = 'inline-flex';
+    document.getElementById('scene-tag').innerHTML =
+      '<ruby>場面<rt>ばめん</rt></ruby> ' + (SCENE_NUMS[S.sceneNum - 1] || S.sceneNum);
+    renderScene(saved, true, true);
+    if (document.getElementById('dungeon-minimap-btn').classList.contains('active')) {
+      const miniCanvas = document.getElementById('minimap-canvas');
+      miniCanvas.style.display = 'block';
+      drawMinimap(miniCanvas);
+    }
+  } else if (S.mode === 'dungeon') {
     startDungeon();
   } else {
     document.getElementById('game-screen').style.display = 'block';
@@ -178,9 +219,12 @@ document.getElementById('ending-restart-btn').onclick = () => {
 /* ── DUNGEON INIT ── */
 initDungeon({
   onEnterRoom: ({ roomId, roomName, visitedRoomNames }) => {
+    document.getElementById('minimap-btn').style.display = 'inline-flex';
     const miniCanvas = document.getElementById('minimap-canvas');
-    miniCanvas.style.display = 'block';
-    drawMinimap(miniCanvas);
+    if (document.getElementById('dungeon-minimap-btn').classList.contains('active')) {
+      miniCanvas.style.display = 'block';
+      drawMinimap(miniCanvas);
+    }
 
     const saved = S.roomScenes[roomId];
     if (saved) {

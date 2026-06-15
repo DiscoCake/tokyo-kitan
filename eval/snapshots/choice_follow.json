@@ -1,37 +1,58 @@
 {
   "location_jp": "<ruby>古<rt>ふる</rt></ruby>い<ruby>喫茶店<rt>きっさてん</rt></ruby>",
-  "image_query": "vintage japanese coffee shop dim interior wooden booth retro",
-  "scene_jp": "<ruby>女<rt>おんな</rt></ruby>は<ruby>路地<rt>ろじ</rt></ruby>の<ruby>奥<rt>おく</rt></ruby>にある<ruby>小<rt>ちい</rt></ruby>さな<ruby>喫茶店<rt>きっさてん</rt></ruby>に<ruby>入<rt>はい</rt></ruby>っていった。あなたも<ruby>後<rt>あと</rt></ruby>を<ruby>追<rt>お</rt></ruby>って<ruby>扉<rt>とびら</rt></ruby>を<ruby>開<rt>あ</rt></ruby>けると、<ruby>古<rt>ふる</rt></ruby>いジャズが<ruby>流<rt>なが</rt></ruby>れ、コーヒーの<ruby>香<rt>かお</rt></ruby>りが<ruby>漂<rt>ただよ</rt></ruby>っていた。<ruby>青<rt>あお</rt></ruby>いレインコートの<ruby>女<rt>おんな</rt></ruby>は<ruby>窓際<rt>まどぎわ</rt></ruby>の<ruby>席<rt>せき</rt></ruby>に<ruby>座<rt>すわ</rt></ruby>り、すでにコーヒーカップを<ruby>手<rt>て</rt></ruby>に<ruby>持<rt>も</rt></ruby>っていた。あなたが<ruby>近<rt>ちか</rt></ruby>づくと、<ruby>女<rt>おんな</rt></ruby>は<ruby>顔<rt>かお</rt></ruby>を<ruby>上<rt>あ</rt></ruby>げて<ruby>静<rt>しず</rt></ruby>かに<ruby>言<rt>い</rt></ruby>った。「やっと<ruby>来<rt>き</rt></ruby>たね、テスト。そのノート、<ruby>中<rt>なか</rt></ruby>を<ruby>見<rt>み</rt></ruby>た？」",
-  "scene_translation": "The woman slipped into a small coffee shop at the end of the alley. You followed and pushed open the door — old jazz drifted through the air, and the smell of coffee hung around you. The woman in the blue raincoat was already seated by the window, coffee cup in hand. As you approached, she looked up and said quietly: \"You finally came, Testo. Have you looked inside that notebook?\"",
-  "grammar_note": "【やっと〜た】'Finally did something' — やっと expresses relief or expectation fulfilled after a wait. Similar to ようやく but slightly more casual. Notice her speech is plain-form (来たね、見た？) — a deliberate choice suggesting she sees you as an equal, or perhaps someone she already knows well.",
+  "image_query": "vintage tokyo coffee shop dim warm light wooden counter retro",
+  "scene_jp": "<ruby>女<rt>おんな</rt></ruby>は<ruby>路地<rt>ろじ</rt></ruby>の<ruby>突<rt>つ</rt></ruby>き<ruby>当<rt>あ</rt></ruby>たりにある<ruby>小<rt>ちい</rt></ruby>さな<ruby>喫茶店<rt>きっさてん</rt></ruby>に<ruby>入<rt>はい</rt></ruby>っていった。テストが<ruby>恐<rt>おそ</rt></ruby>る<ruby>恐<rt>おそ</rt></ruby>るドアを<ruby>開<rt>あ</rt></ruby>けると、コーヒーと<ruby>古<rt>ふる</rt></ruby>い<ruby>木<rt>き</rt></ruby>の<ruby>匂<rt>にお</rt></ruby>いがした。<ruby>女<rt>おんな</rt></ruby>はカウンターの<ruby>端<rt>はし</rt></ruby>に<ruby>座<rt>すわ</rt></ruby>っており、こちらを<ruby>見<rt>み</rt></ruby>もせずに<ruby>言<rt>い</rt></ruby>った。「<ruby>来<rt>く</rt></ruby>ると<ruby>思<rt>おも</rt></ruby>っていたよ、テスト。そのノート、もう<ruby>読<rt>よ</rt></ruby>んだ？」<ruby>マスター<rt>マスター</rt></ruby>らしき<ruby>老人<rt>ろうじん</rt></ruby>がカウンターの<ruby>奥<rt>おく</rt></ruby>で<ruby>静<rt>しず</rt></ruby>かにカップを<ruby>磨<rt>みが</rt></ruby>きながら、テストのほうをちらりと<ruby>見<rt>み</rt></ruby>た。",
+  "scene_translation": "The woman had slipped into a small coffee shop at the end of the alley. When Testo cautiously pushed the door open, the smell of coffee and old wood drifted out. The woman was seated at the far end of the counter and, without even glancing over, said: \"I knew you'd come, Testo. Have you read that notebook yet?\" The old man who seemed to be the owner quietly polished a cup behind the counter and shot Testo a brief sideways look.",
+  "grammar_note": "【～もせずに】meaning \"without even ~ing\" — a stronger way to say \"without doing\" than just ～ないで. Here, 見もせずに means \"without even looking\". The も adds emphasis: not just that she didn't look, but she didn't so much as glance. Pattern: verb stem + もせずに.",
   "vocab": [
     {
-      "word": "喫茶店",
-      "reading": "きっさてん",
-      "meaning": "old-style coffee shop, café"
+      "word": "突き当たり",
+      "reading": "つきあたり",
+      "meaning": "dead end, the very end of a path"
     },
     {
-      "word": "漂う",
-      "reading": "ただよう",
-      "meaning": "to drift, to waft (of a smell or atmosphere)"
+      "word": "恐る恐る",
+      "reading": "おそるおそる",
+      "meaning": "fearfully, nervously, gingerly"
     },
     {
-      "word": "窓際",
-      "reading": "まどぎわ",
-      "meaning": "by the window"
+      "word": "匂い",
+      "reading": "におい",
+      "meaning": "smell, scent"
     },
     {
-      "word": "近づく",
-      "reading": "ちかづく",
-      "meaning": "to approach, to draw near"
+      "word": "端",
+      "reading": "はし",
+      "meaning": "edge, far end"
     },
     {
-      "word": "やっと",
-      "reading": "やっと",
-      "meaning": "finally, at last"
+      "word": "マスター",
+      "reading": "マスター",
+      "meaning": "proprietor of a small bar or café"
+    },
+    {
+      "word": "老人",
+      "reading": "ろうじん",
+      "meaning": "old man, elderly person"
+    },
+    {
+      "word": "磨く",
+      "reading": "みがく",
+      "meaning": "to polish, to scrub"
+    },
+    {
+      "word": "ちらり",
+      "reading": "ちらり",
+      "meaning": "a fleeting glance, a quick look"
+    },
+    {
+      "word": "奥",
+      "reading": "おく",
+      "meaning": "the back, the interior (of a room or space)"
     }
   ],
   "scene_type": "input",
-  "mystery_memo": "The woman led the player to a retro coffee shop and immediately asked about the notebook — confirming she planted it deliberately and knows the player by name. She speaks in casual plain-form, suggesting familiarity or a hidden prior connection. The notebook (already in inventory) is now the central clue she wants to discuss. NPC relationship: woman = neutral-curious; she is testing the player. Key question: has the player read the notebook? This answer will shape what she reveals next.",
+  "mystery_memo": "The woman in the blue raincoat has led Testo to a retro coffee shop at the end of the alley — clearly a place she knows well, possibly her base. She again uses Testo's name with familiarity and references the unlabeled notebook, implying she knows Testo has it. She is confident and slightly ahead of Testo at every step — relationship: mysterious/neutral, not yet hostile. The old master of the café noticed Testo with quiet wariness — possible recurring NPC. The notebook is the central item: the woman's question implies it contains something that should already mean something to Testo. NPC relationship status — blue raincoat woman: intriguing/slightly unsettling; café master: watchful/unknown.",
+  "choices": null,
   "feedback": null
 }

@@ -20,8 +20,8 @@ function matchesContract(result) {
   if (!Array.isArray(result.vocab)) {
     msgs.push('vocab must be an array');
   } else {
-    if (result.vocab.length < 4 || result.vocab.length > 6) {
-      msgs.push(`vocab has ${result.vocab.length} items (expected 4–6)`);
+    if (result.vocab.length < 6 || result.vocab.length > 14) {
+      msgs.push(`vocab has ${result.vocab.length} items (expected 8–12)`);
     }
     result.vocab.forEach((v, i) => {
       for (const f of ['word', 'reading', 'meaning']) {
