@@ -1,0 +1,61 @@
+{
+  "location_jp": "<ruby>地<rt>ち</rt></ruby><ruby>下<rt>か</rt></ruby>のバー「<ruby>月<rt>つき</rt></ruby>の<ruby>裏<rt>うら</rt></ruby>」",
+  "image_query": "underground jazz bar tokyo dim amber light vintage counter",
+  "scene_jp": "<ruby>バーテンダー<rt>ばーてんだー</rt></ruby>の<ruby>男<rt>おとこ</rt></ruby>は、グラスを<ruby>磨<rt>みが</rt></ruby>きながらゆっくりと<ruby>話<rt>はな</rt></ruby>し<ruby>続<rt>つづ</rt></ruby>けた。「あなたのおばあさんは、<ruby>毎<rt>まい</rt></ruby><ruby>月<rt>つき</rt></ruby><ruby>一<rt>いち</rt></ruby><ruby>度<rt>ど</rt></ruby>ここへ<ruby>来<rt>き</rt></ruby>ていたんですよ——いつも<ruby>同<rt>おな</rt></ruby>じ<ruby>席<rt>せき</rt></ruby>に<ruby>座<rt>すわ</rt></ruby>って、<ruby>誰<rt>だれ</rt></ruby>かを<ruby>待<rt>ま</rt></ruby>つように。」カウンターの<ruby>端<rt>はし</rt></ruby>に、<ruby>古<rt>ふる</rt></ruby>びた<ruby>封<rt>ふう</rt></ruby><ruby>筒<rt>とう</rt></ruby>がぽつんと<ruby>置<rt>お</rt></ruby>かれているのに<ruby>気<rt>き</rt></ruby>がついた——<ruby>表<rt>おもて</rt></ruby>には「テスト<ruby>様<rt>さま</rt></ruby>へ」と、<ruby>見<rt>み</rt></ruby>たことのない<ruby>筆<rt>ひっ</rt></ruby><ruby>跡<rt>せき</rt></ruby>で<ruby>書<rt>か</rt></ruby>かれている。「それは<ruby>先<rt>せん</rt></ruby><ruby>週<rt>しゅう</rt></ruby><ruby>届<rt>とど</rt></ruby>いたんです。まるであなたが<ruby>来<rt>く</rt></ruby>ることを<ruby>知<rt>し</rt></ruby>っていたかのように。」",
+  "scene_translation": "The bartender slowly continued speaking as he polished a glass. 'Your grandmother used to come here once a month — always sitting in the same seat, as though waiting for someone.' You noticed a worn envelope sitting alone at the far end of the counter — on the front, written in an unfamiliar hand, were the words: 'To テスト.' 'It arrived last week,' he said. 'Almost as if someone knew you were coming.'",
+  "grammar_note": "【まるで〜かのように】 'almost as if / just like' — a simile construction expressing unreality or strong likeness. E.g. まるで<ruby>知<rt>し</rt></ruby>っていたかのように = 'almost as if (he/she) had known.' Note also the bartender's speech register: polite but unhurried (〜んですよ、〜んです), the kind of measured keigo that implies he has been holding this secret carefully for a long time.",
+  "vocab": [
+    {
+      "word": "封筒",
+      "reading": "ふうとう",
+      "meaning": "envelope"
+    },
+    {
+      "word": "筆跡",
+      "reading": "ひっせき",
+      "meaning": "handwriting, penmanship"
+    },
+    {
+      "word": "端",
+      "reading": "はし",
+      "meaning": "edge, end"
+    },
+    {
+      "word": "届く",
+      "reading": "とどく",
+      "meaning": "to arrive, to be delivered"
+    },
+    {
+      "word": "磨く",
+      "reading": "みがく",
+      "meaning": "to polish, to rub clean"
+    },
+    {
+      "word": "席",
+      "reading": "せき",
+      "meaning": "seat, place"
+    }
+  ],
+  "items_gained": [
+    {
+      "jp": "古い封筒（テスト様へ）",
+      "reading": "ふるいふうとう（テストさまへ）"
+    }
+  ],
+  "scene_type": "choice",
+  "choices": [
+    {
+      "jp": "<ruby>封<rt>ふう</rt></ruby><ruby>筒<rt>とう</rt></ruby>をその<ruby>場<rt>ば</rt></ruby>で<ruby>開<rt>ひら</rt></ruby>いて<ruby>中<rt>なか</rt></ruby>を<ruby>読<rt>よ</rt></ruby>む",
+      "text_only": "封筒をその場で開いて中を読む"
+    },
+    {
+      "jp": "バーテンダーに「<ruby>誰<rt>だれ</rt></ruby>がこれを<ruby>届<rt>とど</rt></ruby>けたんですか」と<ruby>尋<rt>たず</rt></ruby>ねる",
+      "text_only": "バーテンダーに「誰がこれを届けたんですか」と尋ねる"
+    },
+    {
+      "jp": "<ruby>封<rt>ふう</rt></ruby><ruby>筒<rt>とう</rt></ruby>を<ruby>鞄<rt>かばん</rt></ruby>にしまい、<ruby>祖<rt>そ</rt></ruby><ruby>母<rt>ぼ</rt></ruby>が<ruby>座<rt>すわ</rt></ruby>っていたという<ruby>席<rt>せき</rt></ruby>を<ruby>確<rt>たし</rt></ruby>かめに<ruby>行<rt>い</rt></ruby>く",
+      "text_only": "封筒を鞄にしまい、祖母が座っていたという席を確かめに行く"
+    }
+  ],
+  "mystery_memo": "The envelope addressed to テスト arrived at the bar last week — before the player had any reason to come here, making it impossible that it was sent in response to their visit. The handwriting is unfamiliar (not the grandmother's). The bartender's tone is cooperative but carefully measured; relationship: cautiously friendly, hiding something he believes it's not yet time to reveal. The grandmother visited monthly and always waited for someone — that someone has not yet been identified. The woman in blue has still not appeared; she may be connected to whoever sent the envelope. Inventory: 古い封筒（テスト様へ）."
+}

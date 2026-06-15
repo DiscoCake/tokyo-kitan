@@ -1,0 +1,56 @@
+{
+  "location_jp": "<ruby>東京駅<rt>とうきょうえき</rt></ruby>の<ruby>コインロッカー<rt>こいんろっかー</rt></ruby><ruby>前<rt>まえ</rt></ruby>",
+  "image_query": "japan train station coin lockers corridor fluorescent light quiet",
+  "scene_jp": "<ruby>駅員<rt>えきいん</rt></ruby>は<ruby>少<rt>すこ</rt></ruby>し<ruby>間<rt>ま</rt></ruby>を<ruby>置<rt>お</rt></ruby>いてから、<ruby>小<rt>ちい</rt></ruby>さな<ruby>声<rt>こえ</rt></ruby>で<ruby>言<rt>い</rt></ruby>いました。「あの……ロッカーの<ruby>前<rt>まえ</rt></ruby>で、<ruby>青<rt>あお</rt></ruby>い<ruby>服<rt>ふく</rt></ruby>の<ruby>女<rt>おんな</rt></ruby>の<ruby>人<rt>ひと</rt></ruby>を<ruby>見<rt>み</rt></ruby>ましたよ。でも、すぐにいなくなって……」<ruby>彼<rt>かれ</rt></ruby>は<ruby>目<rt>め</rt></ruby>をそらして、もう<ruby>何<rt>なに</rt></ruby>も<ruby>言<rt>い</rt></ruby>いません。<ruby>コインロッカー<rt>こいんろっかー</rt></ruby>の<ruby>列<rt>れつ</rt></ruby>の<ruby>前<rt>まえ</rt></ruby>に<ruby>行<rt>い</rt></ruby>くと、ひとつだけ<ruby>開<rt>あ</rt></ruby>いているロッカーがあります。<ruby>中<rt>なか</rt></ruby>には<ruby>古<rt>ふる</rt></ruby>い<ruby>鍵<rt>かぎ</rt></ruby>が<ruby>一<rt>ひと</rt></ruby>つ、ぽつんと<ruby>置<rt>お</rt></ruby>いてあります。",
+  "scene_translation": "The station attendant paused for a moment, then said in a quiet voice. \"Um… I did see a woman in blue clothes near the lockers. But she disappeared right away…\" He looks away and says nothing more. When you walk over to the row of coin lockers, you find one that is open. Inside, a single old key sits there, all alone.",
+  "grammar_note": "【〜ましたよ】The particle よ adds a nuance of sharing new information — \"I did see her, you know.\" Notice the attendant uses polite です/ます speech (the register of a service worker), but his voice is small and nervous. Compare this to a casual speaker who might say 見たよ instead.",
+  "vocab": [
+    {
+      "word": "駅員",
+      "reading": "えきいん",
+      "meaning": "station attendant"
+    },
+    {
+      "word": "間を置く",
+      "reading": "まをおく",
+      "meaning": "to pause, to leave a gap"
+    },
+    {
+      "word": "目をそらす",
+      "reading": "めをそらす",
+      "meaning": "to look away, to avert one's eyes"
+    },
+    {
+      "word": "列",
+      "reading": "れつ",
+      "meaning": "row, line"
+    },
+    {
+      "word": "ぽつんと",
+      "reading": "ぽつんと",
+      "meaning": "all alone, in isolation (soft, lonely image)"
+    }
+  ],
+  "items_gained": [
+    {
+      "jp": "古い鍵",
+      "reading": "ふるいかぎ"
+    }
+  ],
+  "scene_type": "choice",
+  "choices": [
+    {
+      "jp": "<ruby>鍵<rt>かぎ</rt></ruby>を<ruby>持<rt>も</rt></ruby>って、<ruby>駅員<rt>えきいん</rt></ruby>にもう<ruby>一度<rt>いちど</rt></ruby><ruby>話<rt>はな</rt></ruby>しかける",
+      "text_only": "鍵を持って、駅員にもう一度話しかける"
+    },
+    {
+      "jp": "<ruby>鍵<rt>かぎ</rt></ruby>を<ruby>持<rt>も</rt></ruby>って、<ruby>女<rt>おんな</rt></ruby>の<ruby>人<rt>ひと</rt></ruby>を<ruby>追<rt>お</rt></ruby>いかける",
+      "text_only": "鍵を持って、女の人を追いかける"
+    },
+    {
+      "jp": "ロッカーの<ruby>番号<rt>ばんごう</rt></ruby>をよく<ruby>見<rt>み</rt></ruby>る",
+      "text_only": "ロッカーの番号をよく見る"
+    }
+  ],
+  "mystery_memo": "The old key is the first concrete clue — it was left in an open locker near where the woman in blue was last seen, suggesting she left it deliberately for the player (テスト). The station attendant (unnamed) is nervous and evasive; relationship is cautious/suspicious — he knows more than he is saying. The locker number may carry significance if the player examines it. Mystery thread: why does the woman in blue know テスト's name, and what does this key open?"
+}

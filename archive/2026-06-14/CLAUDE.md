@@ -17,12 +17,6 @@ collects vocabulary — all wrapped in a ~12-scene mystery story set in Tokyo.
   - `game.js` — `generate()`, `renderScene()`, `renderChoices()`, story bible `SYSTEM` prompt; `kind:'room'` action branch; imports `exitDungeonRoom` for マップに戻る button
   - `dungeon.js` — 2D top-down dungeon: 32×14 tile MAP, 12 ROOMS, canvas renderer, WASD input, room-entry prompt; exports `initDungeon({ onEnterRoom })`, `startDungeon()`, `exitDungeonRoom()`, `hideDungeonScreen()`
   - `main.js` — entry point: scale, furigana (delegates to `setFurigana` from `/jp-ui/furigana.js`), IME, mode select (物語/探索), start/resume/restart, `initDungeon` wiring, ending buttons
-- `eval/` — prompt-output eval harness (CommonJS, runs against the live server):
-  - `system.js` — SYSTEM prompt mirrored from `game.js`; keep in sync when the prompt changes
-  - `golden.js` — 10 representative scene prompts (opener, choice follow, typed answer, dungeon room, quiet moment, tense encounter, inventory use, harder/easier difficulty, long history)
-  - `checks.js` — 6 pure validators: `matchesContract`, `everyKanjiHasRuby`, `choiceCount`, `choicesAreJapanese`, `sceneTextLength`, `noRawBrackets`
-  - `run.js` — three-mode runner (`check` / `update` / `run`); invoked via `npm run eval:*`
-  - `snapshots/` — committed JSON responses (one per golden case slug); `eval:check` validates these offline
 - `server.js` — minimal Express proxy with four routes:
   - `GET /jp-ui/*` — static files from `../companion/packages/jp-ui` (sibling repo required; see Setup)
   - `POST /api/scene` — non-streaming fallback (unused by client, kept for debugging)
@@ -126,16 +120,6 @@ collects vocabulary — all wrapped in a ~12-scene mystery story set in Tokyo.
     (buffers inside `<...>` to never inject a partial ruby tag). Full JSON parse + `renderScene`
     fires after stream end. Perceived wait drops from ~8s → ~1-2s.
 
-14. **Eval harness for prompt regression testing.** `eval/run.js` has three modes:
-    - `npm run eval:check` — reads `eval/snapshots/*.json` offline, runs all 6 validators. No API
-      calls. Use in CI or to quickly verify a snapshot batch is still valid.
-    - `npm run eval:update` — calls the live server (`POST /api/scene`, non-streaming), writes new
-      snapshot files. Run after changing the SYSTEM prompt to refresh the baseline.
-    - `npm run eval` — calls the live server, reports pass/fail, does NOT write files.
-    Server must be running for `update` and `run` modes. SPACING_MS=7000, MAX_RETRIES=4,
-    BACKOFF_MS=65000 on 429. **Never loosen a check to make a case pass — fix the prompt output.**
-    When updating the SYSTEM prompt in `game.js`, also update `eval/system.js` (exact mirror).
-
 ## Scene JSON contract (returned by the model)
 
 ```json
@@ -189,50 +173,13 @@ collects vocabulary — all wrapped in a ~12-scene mystery story set in Tokyo.
    altered design decision, new dependency, new convention), update the relevant CLAUDE.md
    section in the same edit session.
 
-2. **Archive before significant overwrites.** Before making major changes to `server.js` or
-   any file under `public/`, the PreToolUse hook in `.claude/settings.local.json` automatically
-   copies the file to `archive/YYYY-MM-DD_<filename>` (flat, dated prefix). For manual archives
-   (e.g. a full prompt rewrite), use the same naming convention.
-   - Minor edits (typos, style tweaks, one-liner bug fixes) do **not** require archiving.
+2. **Archive before significant overwrites.** Before making major changes to any project file,
+   copy the existing version to `archive/YYYY-MM-DD/filename` (today's date), then make the
+   change. This creates a human-readable snapshot history alongside git.
+   - Format: `archive/2026-06-12/index.html`, `archive/2026-06-12/server.js`, etc.
+   - The `archive/` folder is **not** git-ignored; commit snapshots with the change.
+   - Minor edits (typos, style tweaks, small bug fixes) do **not** require archiving.
    - Major rewrites, new features, and any change to the Scene JSON contract always do.
-   - **Plans are also archived.** Copy plan files to `plans/YYYY-MM-DD_<slug>.md` before
-     overwriting for a new task.
-
-## Changelog discipline
-
-After any significant change to `server.js` or `public/`, add an entry to `CHANGELOG.md` before
-considering the task complete. Don't batch this to a docs sweep at the end.
-
-## Archive conventions
-
-### Source files
-
-Before making significant edits to `server.js` or any file in `public/`, copy the current version
-to `archive/` with a dated prefix so there's always a recoverable snapshot:
-
-```bash
-cp server.js archive/2026-06-14_server.js
-cp public/js/game.js archive/2026-06-14_game.js
-```
-
-This is automated via the PreToolUse hook in `.claude/settings.local.json` — it fires before
-any Edit or Write on those paths and silently creates the snapshot if one doesn't already exist
-for today. For manual archives (e.g., before a major prompt rewrite), use the same naming convention.
-
-Add a one-line note in the Changelog entry for every archive: what was archived and why.
-
-**Cleanup:** after a PR merges to main, delete all archive files from that branch — git history
-is the real archive from that point. The `/new-branch` skill includes this step.
-
-### Plans
-
-Plans live as a single active file in `.claude/plans/`. Before overwriting it for a new task,
-copy it to `plans/` at the repo root so past plans are versioned and referenceable:
-
-```bash
-cp ".claude/plans/<active-plan>.md" "plans/YYYY-MM-DD_short-description.md"
-```
-
-## Changelog
-
-Full history lives in `CHANGELOG.md`. Add new entries there, not here.
+   - **Plans are also archived.** After a plan is approved and execution begins, copy the
+     plan file to `archive/YYYY-MM-DD/plan-<short-slug>.md` so there is a record of what
+     was decided and why alongside the code changes it produced.
