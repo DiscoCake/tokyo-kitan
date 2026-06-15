@@ -21,16 +21,11 @@ DIFFICULTY (provided per request as easier/standard/harder):
 - standard: N4/N3 mix
 - harder: longer sentences, N3 grammar throughout with occasional N2, less common vocab
 
-GRAMMAR COVERAGE — N3 breadth (separate from difficulty level):
-- Each request includes a list of grammar points already seen this run. Choose ONE N3 grammar point NOT in that list that fits the scene naturally.
-- Weave it into prose or dialogue — story and natural Japanese always come first. Never force it, never stack multiple target points, never bend the prose to cram grammar in.
-- Highlight it in grammar_note as usual. If nothing fits naturally, use whatever grammar the scene calls for.
-
 OUTPUT: valid JSON only — no markdown fences.
 {
   "location_jp": "場所名, ruby furigana on ALL kanji — NO EXCEPTIONS, even common kanji like 駅 or 道, Japanese only",
   "image_query": "3-6 English keywords describing the VISUAL ATMOSPHERE of the scene for a photo search — focus on what it looks like, not just the place name. Good examples: 'japan train platform interior crowd', 'tokyo neon alley night rain', 'shinto shrine torii gate fog', 'japanese izakaya lanterns warm', 'old bookshop dusty shelves'. Avoid generic location names alone like 'tokyo station' — describe the mood and setting.",
-  "scene_jp": "3-5 sentences, ALL kanji with ruby furigana (NO EXCEPTIONS — every single kanji, including common ones like 人・日・駅・続・知, kanji INSIDE 「」 dialogue lines, and BOTH halves of compound/送り仮名 verbs like 拾い上げる → 拾 AND 上), at least one NPC line in 「」",
+  "scene_jp": "3-5 sentences, ALL kanji with ruby furigana (NO EXCEPTIONS — every single kanji, including common ones like 人・日・駅・続・知), at least one NPC line in 「」",
   "scene_translation": "Natural English translation",
   "grammar_note": "【expression】explanation — sometimes a register note",
   "vocab": [{"word": "切符", "reading": "きっぷ", "meaning": "ticket"}, ... 4-6 words],
@@ -220,22 +215,19 @@ export async function generate(action) {
   const memoCtx = S.mysteryMemo ? `\nMystery state: ${S.mysteryMemo}` : '';
   const itemCtx = S.items.length ? `\nInventory: ${S.items.map(i => i.jp).join('、')}` : '';
   const diffCtx = `\nDifficulty: ${difficultyLevel()}`;
-  const grammarCtx = S.grammarSeen.length
-    ? `\nGrammar covered this run (do not repeat): ${S.grammarSeen.join(' | ')}`
-    : '';
 
   let userMsg;
   if (!action) {
-    userMsg = `Scene 1 of ~12. Begin — the player just arrived in Tokyo. Establish the mystery hook.${diffCtx}${grammarCtx}`;
+    userMsg = `Scene 1 of ~12. Begin — the player just arrived in Tokyo. Establish the mystery hook.${diffCtx}`;
   } else if (action.kind === 'answer') {
-    userMsg = `Scene ${S.sceneNum} of ~12. The player TYPED this answer to the NPC's question: "${action.value}". Evaluate it (feedback field), then continue incorporating their answer.${memoCtx}${itemCtx}${diffCtx}${grammarCtx}${histCtx}`;
+    userMsg = `Scene ${S.sceneNum} of ~12. The player TYPED this answer to the NPC's question: "${action.value}". Evaluate it (feedback field), then continue incorporating their answer.${memoCtx}${itemCtx}${diffCtx}${histCtx}`;
   } else if (action.kind === 'room') {
     const visitedCtx = action.visitedRoomNames?.length
       ? `\nAlready visited this dungeon run: ${action.visitedRoomNames.join('、')} — NPCs and clues in this room may reference those locations.`
       : '';
-    userMsg = `Scene ${S.sceneNum} of ~12. The player enters ${action.roomName}. Generate a scene set specifically in this location — describe the space, introduce an NPC or clue, deepen the mystery.${visitedCtx}${memoCtx}${itemCtx}${diffCtx}${grammarCtx}${histCtx}`;
+    userMsg = `Scene ${S.sceneNum} of ~12. The player enters ${action.roomName}. Generate a scene set specifically in this location — describe the space, introduce an NPC or clue, deepen the mystery.${visitedCtx}${memoCtx}${itemCtx}${diffCtx}${histCtx}`;
   } else {
-    userMsg = `Scene ${S.sceneNum} of ~12. Player chose: "${action.value}". Continue.${memoCtx}${itemCtx}${diffCtx}${grammarCtx}${histCtx}`;
+    userMsg = `Scene ${S.sceneNum} of ~12. Player chose: "${action.value}". Continue.${memoCtx}${itemCtx}${diffCtx}${histCtx}`;
   }
 
   const startTime = Date.now();

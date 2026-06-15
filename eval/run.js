@@ -6,6 +6,10 @@
 //   node eval/run.js check   — validate existing snapshots offline (CI-safe, no API)
 //   node eval/run.js update  — call live API, write snapshots, report
 //   node eval/run.js run     — call live API, report, no writes (default)
+//
+// Optional trailing slug args filter to specific golden cases, e.g.:
+//   node eval/run.js update choice_follow dungeon_room
+//   node eval/run.js check long_history
 
 const fs   = require('fs');
 const path = require('path');
@@ -24,6 +28,17 @@ const PLAYER_NAME  = 'テスト';
 const mode = process.argv[2] || 'run';
 if (!['check', 'update', 'run'].includes(mode)) {
   console.error(`Unknown mode: ${mode}. Use check, update, or run.`);
+  process.exit(1);
+}
+
+const slugFilter = new Set(process.argv.slice(3));
+const CASES = slugFilter.size
+  ? GOLDEN.filter(c => slugFilter.has(c.slug))
+  : GOLDEN;
+if (slugFilter.size && CASES.length !== slugFilter.size) {
+  const found = new Set(CASES.map(c => c.slug));
+  const missing = [...slugFilter].filter(s => !found.has(s));
+  console.error(`Unknown slug(s): ${missing.join(', ')}`);
   process.exit(1);
 }
 
@@ -101,7 +116,7 @@ function snapshotPath(c) {
 
 async function runCheck() {
   let passed = 0, total = 0;
-  for (const c of GOLDEN) {
+  for (const c of CASES) {
     const p = snapshotPath(c);
     if (!fs.existsSync(p)) {
       console.log(`\n[SKIP] ${c.slug} — no snapshot (run eval:update first)`);
@@ -116,9 +131,9 @@ async function runCheck() {
 }
 
 async function runLive(writeSnapshots) {
-  let passed = 0, total = GOLDEN.length;
-  for (let i = 0; i < GOLDEN.length; i++) {
-    const c = GOLDEN[i];
+  let passed = 0, total = CASES.length;
+  for (let i = 0; i < CASES.length; i++) {
+    const c = CASES[i];
     if (i > 0) {
       process.stdout.write(`  waiting ${SPACING_MS / 1000}s...`);
       await sleep(SPACING_MS);

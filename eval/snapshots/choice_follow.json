@@ -1,9 +1,9 @@
 {
   "location_jp": "<ruby>古<rt>ふる</rt></ruby>い<ruby>喫茶店<rt>きっさてん</rt></ruby>",
-  "image_query": "old japanese kissaten coffee shop dim warm light retro interior",
-  "scene_jp": "<ruby>女<rt>おんな</rt></ruby>は<ruby>路地<rt>ろじ</rt></ruby>の<ruby>奥<rt>おく</rt></ruby>にある<ruby>小<rt>ちい</rt></ruby>さな<ruby>喫茶店<rt>きっさてん</rt></ruby>に<ruby>入<rt>はい</rt></ruby>っていった。あなたも<ruby>後<rt>あと</rt></ruby>を<ruby>追<rt>お</rt></ruby>って<ruby>扉<rt>とびら</rt></ruby>を<ruby>開<rt>あ</rt></ruby>けると、<ruby>煙草<rt>たばこ</rt></ruby>と<ruby>珈琲<rt>コーヒー</rt></ruby>の<ruby>匂<rt>にお</rt></ruby>いが<ruby>鼻<rt>はな</rt></ruby>をついた。<ruby>店内<rt>てんない</rt></ruby>は<ruby>薄暗<rt>うすぐら</rt></ruby>く、カウンターの<ruby>奥<rt>おく</rt></ruby>では<ruby>老<rt>お</rt></ruby>いた<ruby>店主<rt>てんしゅ</rt></ruby>がゆっくりとカップを<ruby>磨<rt>みが</rt></ruby>いていた。<ruby>青<rt>あお</rt></ruby>いレインコートの<ruby>女<rt>おんな</rt></ruby>は<ruby>窓際<rt>まどぎわ</rt></ruby>の<ruby>席<rt>せき</rt></ruby>に<ruby>座<rt>すわ</rt></ruby>り、あなたを<ruby>見<rt>み</rt></ruby>て<ruby>静<rt>しず</rt></ruby>かに<ruby>言<rt>い</rt></ruby>った。「やっと<ruby>来<rt>き</rt></ruby>てくれたね、テスト。このノートのこと、<ruby>話<rt>はな</rt></ruby>さないといけないから。」",
-  "scene_translation": "The woman slipped into a small coffee shop at the end of the alley. You followed, pushing open the door — the smell of tobacco and coffee hit you at once. Inside it was dim; an elderly proprietor slowly polished cups behind the counter. The woman in the blue raincoat had already taken a seat by the window. She looked at you and said quietly, \"You finally came, Tesuto. I need to talk to you about this notebook.\"",
-  "grammar_note": "【やっと〜てくれた】'やっと' means 'finally/at last', expressing that something took longer than expected. Combined with 〜てくれた (someone did something for the speaker's benefit), it carries a tone of relief — 'you finally came (for me).' Notice the woman speaks in casual register (くれたね, 話さないといけないから) — this suggests familiarity she has no right to have with a stranger.",
+  "image_query": "vintage japanese coffee shop dim interior wooden booth retro",
+  "scene_jp": "<ruby>女<rt>おんな</rt></ruby>は<ruby>路地<rt>ろじ</rt></ruby>の<ruby>奥<rt>おく</rt></ruby>にある<ruby>小<rt>ちい</rt></ruby>さな<ruby>喫茶店<rt>きっさてん</rt></ruby>に<ruby>入<rt>はい</rt></ruby>っていった。あなたも<ruby>後<rt>あと</rt></ruby>を<ruby>追<rt>お</rt></ruby>って<ruby>扉<rt>とびら</rt></ruby>を<ruby>開<rt>あ</rt></ruby>けると、<ruby>古<rt>ふる</rt></ruby>いジャズが<ruby>流<rt>なが</rt></ruby>れ、コーヒーの<ruby>香<rt>かお</rt></ruby>りが<ruby>漂<rt>ただよ</rt></ruby>っていた。<ruby>青<rt>あお</rt></ruby>いレインコートの<ruby>女<rt>おんな</rt></ruby>は<ruby>窓際<rt>まどぎわ</rt></ruby>の<ruby>席<rt>せき</rt></ruby>に<ruby>座<rt>すわ</rt></ruby>り、すでにコーヒーカップを<ruby>手<rt>て</rt></ruby>に<ruby>持<rt>も</rt></ruby>っていた。あなたが<ruby>近<rt>ちか</rt></ruby>づくと、<ruby>女<rt>おんな</rt></ruby>は<ruby>顔<rt>かお</rt></ruby>を<ruby>上<rt>あ</rt></ruby>げて<ruby>静<rt>しず</rt></ruby>かに<ruby>言<rt>い</rt></ruby>った。「やっと<ruby>来<rt>き</rt></ruby>たね、テスト。そのノート、<ruby>中<rt>なか</rt></ruby>を<ruby>見<rt>み</rt></ruby>た？」",
+  "scene_translation": "The woman slipped into a small coffee shop at the end of the alley. You followed and pushed open the door — old jazz drifted through the air, and the smell of coffee hung around you. The woman in the blue raincoat was already seated by the window, coffee cup in hand. As you approached, she looked up and said quietly: \"You finally came, Testo. Have you looked inside that notebook?\"",
+  "grammar_note": "【やっと〜た】'Finally did something' — やっと expresses relief or expectation fulfilled after a wait. Similar to ようやく but slightly more casual. Notice her speech is plain-form (来たね、見た？) — a deliberate choice suggesting she sees you as an equal, or perhaps someone she already knows well.",
   "vocab": [
     {
       "word": "喫茶店",
@@ -11,14 +11,9 @@
       "meaning": "old-style coffee shop, café"
     },
     {
-      "word": "薄暗い",
-      "reading": "うすぐら-い",
-      "meaning": "dim, faintly dark"
-    },
-    {
-      "word": "店主",
-      "reading": "てんしゅ",
-      "meaning": "shop owner, proprietor"
+      "word": "漂う",
+      "reading": "ただよう",
+      "meaning": "to drift, to waft (of a smell or atmosphere)"
     },
     {
       "word": "窓際",
@@ -26,25 +21,17 @@
       "meaning": "by the window"
     },
     {
-      "word": "匂い",
-      "reading": "におい",
-      "meaning": "smell, scent"
-    }
-  ],
-  "scene_type": "choice",
-  "choices": [
-    {
-      "jp": "「どうして<ruby>私<rt>わたし</rt></ruby>の<ruby>名前<rt>なまえ</rt></ruby>を<ruby>知<rt>し</rt></ruby>っているんですか？」と<ruby>聞<rt>き</rt></ruby>く",
-      "text_only": "「どうして私の名前を知っているんですか？」と聞く"
+      "word": "近づく",
+      "reading": "ちかづく",
+      "meaning": "to approach, to draw near"
     },
     {
-      "jp": "ノートを<ruby>取<rt>と</rt></ruby>り<ruby>出<rt>だ</rt></ruby>して<ruby>女<rt>おんな</rt></ruby>に<ruby>見<rt>み</rt></ruby>せる",
-      "text_only": "ノートを取り出して女に見せる"
-    },
-    {
-      "jp": "<ruby>老<rt>お</rt></ruby>いた<ruby>店主<rt>てんしゅ</rt></ruby>に<ruby>話<rt>はな</rt></ruby>しかける",
-      "text_only": "老いた店主に話しかける"
+      "word": "やっと",
+      "reading": "やっと",
+      "meaning": "finally, at last"
     }
   ],
-  "mystery_memo": "The woman in the blue raincoat has led the player to a dim retro kissaten in the alley behind Tokyo Station — her chosen ground, suggesting she planned this encounter. She knows the player's name and has explicitly referenced the notebook, confirming she placed it deliberately. The old proprietor is a new figure to watch; his calm presence may be more than incidental. The woman's casual speech register implies false intimacy — she speaks as though they share history. Player relationship with woman: cautious/neutral. Notebook remains the central object; its contents are still unknown."
+  "scene_type": "input",
+  "mystery_memo": "The woman led the player to a retro coffee shop and immediately asked about the notebook — confirming she planted it deliberately and knows the player by name. She speaks in casual plain-form, suggesting familiarity or a hidden prior connection. The notebook (already in inventory) is now the central clue she wants to discuss. NPC relationship: woman = neutral-curious; she is testing the player. Key question: has the player read the notebook? This answer will shape what she reveals next.",
+  "feedback": null
 }

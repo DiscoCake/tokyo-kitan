@@ -23,11 +23,14 @@ collects vocabulary — all wrapped in a ~12-scene mystery story set in Tokyo.
   - `checks.js` — 6 pure validators: `matchesContract`, `everyKanjiHasRuby`, `choiceCount`, `choicesAreJapanese`, `sceneTextLength`, `noRawBrackets`
   - `run.js` — three-mode runner (`check` / `update` / `run`); invoked via `npm run eval:*`
   - `snapshots/` — committed JSON responses (one per golden case slug); `eval:check` validates these offline
-- `server.js` — minimal Express proxy with four routes:
+- `server.js` — Express proxy with seven routes:
   - `GET /jp-ui/*` — static files from `../companion/packages/jp-ui` (sibling repo required; see Setup)
   - `POST /api/scene` — non-streaming fallback (unused by client, kept for debugging)
-  - `POST /api/scene/stream` — SSE streaming proxy to Anthropic; pipes `text_delta` events to client
+  - `POST /api/scene/stream` — SSE streaming proxy to Anthropic; pipes `text_delta` events to client; wraps `system` string in `[{ type:'text', cache_control:{type:'ephemeral'} }]` for prompt caching (see #16)
   - `GET /api/image` — Pexels photo search with "japan" appended; in-memory cache (Map)
+  - `GET /api/save/:name` — retrieve SQLite save by player name (404 if none)
+  - `POST /api/save` — upsert save by `playerName` field (JSON blob in `saves` table)
+  - `DELETE /api/save/:name` — clear save for that player name
 - **Shared `jp-ui` package** (`../companion/packages/jp-ui`, served at `/jp-ui/`):
   - `palette.css` — CSS custom properties: `--bg`, `--pink`, `--cyan`, `--yellow`, `--purple`, etc.
   - `furigana.css` — `ruby`/`rt` base styles and `body.hide-furigana rt { display:none }` rule
@@ -91,9 +94,12 @@ collects vocabulary — all wrapped in a ~12-scene mystery story set in Tokyo.
    so scene text renders immediately while the image loads in parallel. Falls back to a
    dark gradient if the key is missing or search returns no results.
 
-10. **Save/resume via localStorage** (`tokyo_kitan_save_v1`), wrapped in try/catch.
-    Auto-saves after each scene; cleared on ending or restart. Future: move to server-side
-    persistence (SQLite) for cross-device play.
+10. **Save/resume: server-side SQLite + localStorage cache.** `tokyo_kitan.db` (SQLite,
+    `better-sqlite3`) holds one row per player name in a `saves` table (JSON blob). On every
+    scene, `saveGame()` writes localStorage AND fire-and-forgets `POST /api/save`. Resume
+    tries `GET /api/save/:name` first (server is source of truth, enables cross-device resume
+    by re-entering the same name); falls back to localStorage. `clearSave()` clears both.
+    DB path overridable via `DB_PATH` env var; `tokyo_kitan.db` is gitignored.
 
 11. **Visual identity: citypop/vaporwave.** Deep indigo bg (#0d0d1a), pink (#ff6fa8) for
     titles/furigana/accents, cyan (#4fd8e8) for main Japanese text, yellow for grammar
@@ -132,6 +138,24 @@ collects vocabulary — all wrapped in a ~12-scene mystery story set in Tokyo.
     (buffers inside `<...>` to never inject a partial ruby tag). Full JSON parse + `renderScene`
     fires after stream end. Perceived wait drops from ~8s → ~1-2s.
 
+15. **N3 grammar coverage via self-selected targeting.** Each scene request injects a
+    `grammarCtx` string built from `S.grammarSeen` (the list of `grammar_note` values
+    accumulated this run). The SYSTEM prompt instructs the model to pick ONE N3 grammar
+    point not yet in that list and weave it naturally into the prose or dialogue — never
+    forced, never stacked, story always first. If nothing fits, the scene proceeds normally.
+    This is a **coverage** (breadth) axis distinct from the **difficulty** axis (`easier/
+    standard/harder`) — it ensures ~12 distinct N3 points are seen across a full run
+    without skewing the overall register. `grammarCtx` is injected in every user-message
+    branch in `generate()` alongside `memoCtx`/`itemCtx`/`diffCtx`.
+
+16. **Prompt caching on the static SYSTEM block.** Both Anthropic fetch call sites in
+    `server.js` wrap the incoming `system` string as
+    `[{ type: 'text', text: system, cache_control: { type: 'ephemeral' } }]` before
+    forwarding to Anthropic. The client continues to send a plain string. No beta header
+    required (GA for Sonnet 4.6 / Opus 4.8). The SYSTEM block is currently below the
+    2048-token minimum for Sonnet 4.6 cache hits, but the wiring is correct and activates
+    automatically as the prompt grows.
+
 14. **Eval harness for prompt regression testing.** `eval/run.js` has three modes:
     - `npm run eval:check` — reads `eval/snapshots/*.json` offline, runs all 6 validators. No API
       calls. Use in CI or to quickly verify a snapshot batch is still valid.
@@ -141,6 +165,9 @@ collects vocabulary — all wrapped in a ~12-scene mystery story set in Tokyo.
     Server must be running for `update` and `run` modes. SPACING_MS=7000, MAX_RETRIES=4,
     BACKOFF_MS=65000 on 429. **Never loosen a check to make a case pass — fix the prompt output.**
     When updating the SYSTEM prompt in `game.js`, also update `eval/system.js` (exact mirror).
+    All three modes accept optional trailing slug args to target specific cases:
+    `node eval/run.js update choice_follow dungeon_room` — re-rolls only those snapshots,
+    leaving passing ones untouched. Useful after prompt fixes that only affect certain cases.
 
 ## Scene JSON contract (returned by the model)
 

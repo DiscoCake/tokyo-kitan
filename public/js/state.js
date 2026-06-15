@@ -40,7 +40,20 @@ export function saveGame() {
       exploredTiles: [...S.exploredTiles]
     };
     localStorage.setItem(SAVE_KEY, JSON.stringify(snap));
+    fetch('/api/save', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(snap)
+    }).catch(() => {});
   } catch(e) {}
+}
+
+export async function loadGameFromServer(name) {
+  try {
+    const r = await fetch(`/api/save/${encodeURIComponent(name)}`);
+    if (!r.ok) return null;
+    return await r.json();
+  } catch(e) { return null; }
 }
 
 export function loadGame() {
@@ -52,4 +65,7 @@ export function loadGame() {
 
 export function clearSave() {
   try { localStorage.removeItem(SAVE_KEY); } catch(e) {}
+  if (S.playerName) {
+    fetch(`/api/save/${encodeURIComponent(S.playerName)}`, { method: 'DELETE' }).catch(() => {});
+  }
 }

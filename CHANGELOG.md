@@ -1,5 +1,83 @@
 # Changelog
 
+### 2026-06-14 — Server-side SQLite persistence (X2)
+
+**server.js:**
+- Added `better-sqlite3` dependency; DB initialised at startup at `tokyo_kitan.db`
+  (path overridable via `DB_PATH` env var; file is gitignored).
+- Schema: single `saves` table — `player_name TEXT PRIMARY KEY`, `data TEXT` (full snap
+  JSON), `updated_at TEXT`. Simple and schema-light; no migrations needed while data shape
+  is still changing.
+- Three new routes:
+  - `GET /api/save/:name` — returns the save for that player name (404 if none)
+  - `POST /api/save` — upserts by `playerName` field in request body
+  - `DELETE /api/save/:name` — clears the save for that player
+
+**public/js/state.js:**
+- `saveGame()` fire-and-forgets a `POST /api/save` after each localStorage write (silent
+  on failure — localStorage remains the fast same-device path).
+- `clearSave()` fire-and-forgets a `DELETE /api/save/:name` alongside localStorage clear.
+- New export `loadGameFromServer(name)` — async, returns null on 404/error.
+
+**public/js/main.js:**
+- Imports `loadGameFromServer` from state.js.
+- Resume button now always visible (removed the `if (loadGame())` guard) — enables
+  cross-device resume by entering the same player name on a new device.
+- `resume-btn.onclick` is now async: tries server first, falls back to localStorage.
+  Shows `#resume-msg` in pink if no save found under that name on either source.
+
+**public/index.html / public/css/style.css:**
+- Added `<p id="resume-msg">` below setup buttons for the "no save found" message.
+- `#resume-msg` styled: 0.75rem, `--pink`, min-height 1em.
+
+- Archived: `archive/2026-06-14_server.js`, `archive/2026-06-14_state.js`,
+  `archive/2026-06-14_main.js`
+
+---
+
+### 2026-06-14 — N1: N3 grammar coverage; N2: prompt caching
+
+**N1 — Grammar coverage (public/js/game.js, eval/system.js):**
+- Added GRAMMAR COVERAGE block to SYSTEM prompt between DIFFICULTY and OUTPUT sections.
+  Instructs the model to weave in ONE N3 grammar point not yet in the covered list for this
+  run — story and natural Japanese come first; nothing forced; if nothing fits, proceed normally.
+  Deliberately a *coverage* (breadth) axis, not a difficulty axis — never skews the whole scene
+  toward N3 (that's the `harder` difficulty signal, unchanged).
+- Added `grammarCtx` in `generate()` ([game.js:220](public/js/game.js#L220)): built from
+  `S.grammarSeen` and injected into every user-message branch so the model knows what's
+  already been covered this run.
+- Mirrored both changes in `eval/system.js` (exact mirror verified; 10/10 eval:check pass).
+
+**N2 — Prompt caching (server.js):**
+- Both Anthropic fetch call sites (`/api/scene` and `/api/scene/stream`) now wrap the `system`
+  string in `[{ type: 'text', text: system, cache_control: { type: 'ephemeral' } }]` before
+  forwarding to Anthropic. Client continues sending a plain string; server transforms it.
+- No beta header required (prompt caching is GA for Sonnet 4.6 / Opus 4.8).
+- Note: the SYSTEM prompt is currently ~600–700 tokens; Sonnet 4.6 requires 2048 tokens minimum
+  for a cache hit. Caching is wired and will activate automatically as the prompt grows or if
+  the model is switched to a lower-threshold variant. Zero cost if below threshold.
+- Archived: `archive/2026-06-14_server.js`, `archive/2026-06-14_game.js`
+
+---
+
+### 2026-06-14 — Eval gate: fix everyKanjiHasRuby failures (7/10 → 10/10)
+
+**Prompt fix (public/js/game.js, eval/system.js):**
+- Tightened `scene_jp` ruby instruction to explicitly name the two model blind spots:
+  kanji inside 「」 dialogue lines, and both halves of compound/送り仮名 verbs (e.g. 拾い上げる → 拾 AND 上).
+  Same change applied to both files; exact-mirror verified programmatically.
+- Archived: `archive/2026-06-14_game.js`
+
+**Eval runner (eval/run.js):**
+- Added optional trailing slug args so individual cases can be targeted:
+  `node eval/run.js update choice_follow dungeon_room` — avoids re-rolling good snapshots.
+
+**Snapshots regenerated:** choice_follow, dungeon_room, quiet_moment, tense_encounter,
+with_inventory, harder_difficulty, easier_difficulty, long_history, opener, long_history
+(iteratively re-rolled until all 10 pass `everyKanjiHasRuby` and all other checks).
+
+---
+
 ### 2026-06-14 — Grammar review panel + Dungeon Phase 2 (fog of war + minimap)
 
 **Grammar review:**

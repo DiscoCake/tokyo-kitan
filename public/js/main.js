@@ -1,5 +1,5 @@
 import { setFurigana as setFuriganaCore } from '/jp-ui/furigana.js';
-import { S, SCENE_NUMS, loadGame, clearSave } from './state.js';
+import { S, SCENE_NUMS, loadGame, loadGameFromServer, clearSave } from './state.js';
 import { updateVocabBadge, renderItems, openVocabPanel, openGalleryPanel, openGrammarPanel, clearScene } from './ui.js';
 import { generate, renderScene } from './game.js';
 import { initDungeon, startDungeon, hideDungeonScreen, drawMinimap } from './dungeon.js';
@@ -119,9 +119,15 @@ document.getElementById('start-dungeon-btn').onclick = function() {
   startDungeon();
 };
 
-document.getElementById('resume-btn').onclick = function() {
-  const snap = loadGame();
-  if (!snap) return;
+document.getElementById('resume-btn').onclick = async function() {
+  getPlayerName();
+  let snap = await loadGameFromServer(S.playerName);
+  if (!snap) snap = loadGame();
+  if (!snap || !snap.sceneNum) {
+    const msg = document.getElementById('resume-msg');
+    if (msg) { msg.textContent = `「${S.playerName}」のセーブデータが見つかりません。`; }
+    return;
+  }
   Object.assign(S, snap);
   S.mode = snap.mode || 'visual-novel';
   S.dungeonPos = snap.dungeonPos || { x: 1, y: 7 };
@@ -193,4 +199,4 @@ initDungeon({
 });
 
 /* ── INIT ── */
-if (loadGame()) document.getElementById('resume-btn').style.display = 'inline-flex';
+document.getElementById('resume-btn').style.display = 'inline-flex';

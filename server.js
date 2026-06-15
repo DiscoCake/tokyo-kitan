@@ -6,6 +6,7 @@
 require('dotenv').config();
 const express = require('express');
 const path = require('path');
+const Database = require('better-sqlite3');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -15,6 +16,16 @@ if (!process.env.ANTHROPIC_API_KEY) {
   console.error('Missing ANTHROPIC_API_KEY — copy .env.example to .env and add your key.');
   process.exit(1);
 }
+
+const DB_PATH = process.env.DB_PATH || path.join(__dirname, 'tokyo_kitan.db');
+const db = new Database(DB_PATH);
+db.exec(`
+  CREATE TABLE IF NOT EXISTS saves (
+    player_name TEXT PRIMARY KEY,
+    data        TEXT NOT NULL,
+    updated_at  TEXT DEFAULT (datetime('now'))
+  )
+`);
 
 const imageCache = new Map();
 
@@ -45,6 +56,29 @@ app.get('/api/image', async (req, res) => {
   }
 });
 
+app.get('/api/save/:name', (req, res) => {
+  const row = db.prepare('SELECT data FROM saves WHERE player_name = ?').get(req.params.name);
+  if (!row) return res.status(404).json({ error: 'No save found' });
+  res.json(JSON.parse(row.data));
+});
+
+app.post('/api/save', (req, res) => {
+  const { playerName } = req.body;
+  if (!playerName) return res.status(400).json({ error: 'playerName required' });
+  const data = JSON.stringify(req.body);
+  db.prepare(`
+    INSERT INTO saves (player_name, data, updated_at)
+    VALUES (?, ?, datetime('now'))
+    ON CONFLICT(player_name) DO UPDATE SET data = excluded.data, updated_at = excluded.updated_at
+  `).run(playerName, data);
+  res.json({ ok: true });
+});
+
+app.delete('/api/save/:name', (req, res) => {
+  db.prepare('DELETE FROM saves WHERE player_name = ?').run(req.params.name);
+  res.json({ ok: true });
+});
+
 app.post('/api/scene', async (req, res) => {
   try {
     const { system, messages, max_tokens } = req.body;
@@ -62,7 +96,9 @@ app.post('/api/scene', async (req, res) => {
       body: JSON.stringify({
         model: MODEL,
         max_tokens: Math.min(max_tokens || 3000, 4096),
-        system,
+        system: typeof system === 'string'
+          ? [{ type: 'text', text: system, cache_control: { type: 'ephemeral' } }]
+          : system,
         messages
       })
     });
@@ -100,7 +136,9 @@ app.post('/api/scene/stream', async (req, res) => {
         model: MODEL,
         max_tokens: Math.min(max_tokens || 3000, 4096),
         stream: true,
-        system,
+        system: typeof system === 'string'
+          ? [{ type: 'text', text: system, cache_control: { type: 'ephemeral' } }]
+          : system,
         messages
       })
     });
