@@ -1,61 +1,56 @@
 {
-  "location_jp": "<ruby>東京駅<rt>とうきょうえき</rt></ruby>・<ruby>中央<rt>ちゅうおう</rt></ruby>コンコース",
-  "image_query": "tokyo station central concourse marble floor crowds arrival",
-  "scene_jp": "<ruby>東京駅<rt>とうきょうえき</rt></ruby>の<ruby>中央<rt>ちゅうおう</rt></ruby>コンコースは、いつもより<ruby>静<rt>しず</rt></ruby>かだった。<ruby>夕方<rt>ゆうがた</rt></ruby>の<ruby>光<rt>ひかり</rt></ruby>が<ruby>高<rt>たか</rt></ruby>い<ruby>天井<rt>てんじょう</rt></ruby>から<ruby>差<rt>さ</rt></ruby>し<ruby>込<rt>こ</rt></ruby>んで、<ruby>床<rt>ゆか</rt></ruby>に<ruby>長<rt>なが</rt></ruby>い<ruby>影<rt>かげ</rt></ruby>を<ruby>作<rt>つく</rt></ruby>っていた。ふと<ruby>気<rt>き</rt></ruby>がつくと、<ruby>足元<rt>あしもと</rt></ruby>に<ruby>小<rt>ちい</rt></ruby>さな<ruby>封筒<rt>ふうとう</rt></ruby>が<ruby>落<rt>お</rt></ruby>ちている。<ruby>封筒<rt>ふうとう</rt></ruby>を<ruby>拾<rt>ひろ</rt></ruby>い上げると、そこには<ruby>見覚<rt>みおぼ</rt></ruby>えのない<ruby>字<rt>じ</rt></ruby>で「テストへ」と<ruby>書<rt>か</rt></ruby>いてあった。<ruby>近<rt>ちか</rt></ruby>くに<ruby>立<rt>た</rt></ruby>っていた<ruby>老人<rt>ろうじん</rt></ruby>が、こちらを<ruby>見<rt>み</rt></ruby>て<ruby>静<rt>しず</rt></ruby>かに<ruby>言<rt>い</rt></ruby>った。「……<ruby>来<rt>き</rt></ruby>たか、テスト。<ruby>開<rt>あ</rt></ruby>けてはいけないよ、まだ。」",
-  "scene_translation": "The central concourse of Tokyo Station was quieter than usual. Evening light poured down from the high ceiling, casting long shadows across the floor. Then you noticed it — a small envelope lying at your feet. When you picked it up, written in an unfamiliar hand were the words: 'To Tesuto.' Nearby, an old man who had been standing watching you said quietly, '...So you've come, Tesuto. You mustn't open it. Not yet.'",
-  "grammar_note": "【〜てはいけない】means 'must not / you shouldn't.' The old man says 開けてはいけないよ — 'you must not open it.' This is a prohibition. Note his speech style: short, quiet sentences with よ at the end — the register of someone older and serious, neither rude nor formal.",
+  "location_jp": "<ruby>東<rt>ひがし</rt></ruby><ruby>京<rt>きょう</rt></ruby><ruby>駅<rt>えき</rt></ruby>・<ruby>中<rt>ちゅう</rt></ruby><ruby>央<rt>おう</rt></ruby><ruby>改<rt>かい</rt></ruby><ruby>札<rt>さつ</rt></ruby>",
+  "image_query": "tokyo station central gate crowd arrivals marble floor",
+  "scene_jp": "<ruby>東<rt>ひがし</rt></ruby><ruby>京<rt>きょう</rt></ruby><ruby>駅<rt>えき</rt></ruby>に<ruby>着<rt>つ</rt></ruby>いたばかりのあなたは、ホームの<ruby>人<rt>ひと</rt></ruby><ruby>混<rt>ご</rt></ruby>みの<ruby>中<rt>なか</rt></ruby>で<ruby>立<rt>た</rt></ruby>ち<ruby>止<rt>ど</rt></ruby>まった。ふと<ruby>足<rt>あし</rt></ruby><ruby>元<rt>もと</rt></ruby>を<ruby>見<rt>み</rt></ruby>ると、<ruby>小<rt>ちい</rt></ruby>さな<ruby>白<rt>しろ</rt></ruby>い<ruby>封<rt>ふう</rt></ruby><ruby>筒<rt>とう</rt></ruby>が<ruby>落<rt>お</rt></ruby>ちていた。<ruby>封<rt>ふう</rt></ruby><ruby>筒<rt>とう</rt></ruby>には、インクで<ruby>丁<rt>てい</rt></ruby><ruby>寧<rt>ねい</rt></ruby>に<ruby>書<rt>か</rt></ruby>かれた<ruby>文<rt>も</rt></ruby><ruby>字<rt>じ</rt></ruby>があった。「テストさんへ」。<ruby>周<rt>まわ</rt></ruby>りを<ruby>見<rt>み</rt></ruby><ruby>回<rt>まわ</rt></ruby>しても、だれもこちらを<ruby>見<rt>み</rt></ruby>ていない。",
+  "scene_translation": "You had just arrived at Tokyo Station, standing still amid the crowd on the platform. Glancing down at your feet, you noticed a small white envelope lying there. On it, written carefully in ink, were the words: 'To Tesuto.' You looked around, but no one was watching you.",
+  "grammar_note": "【〜たばかり】means 'just did something' — 着いたばかり = 'just arrived.' It emphasizes that an action happened very recently. Contrast with 〜たところ, which is similar but more neutral in timing.",
   "vocab": [
+    {
+      "word": "人混み",
+      "reading": "ひとごみ",
+      "meaning": "crowd of people"
+    },
     {
       "word": "封筒",
       "reading": "ふうとう",
       "meaning": "envelope"
     },
     {
-      "word": "拾い上げる",
-      "reading": "ひろいあげる",
-      "meaning": "to pick up"
+      "word": "丁寧に",
+      "reading": "ていねいに",
+      "meaning": "carefully, politely"
     },
     {
-      "word": "見覚え",
-      "reading": "みおぼえ",
-      "meaning": "recollection of having seen something"
+      "word": "立ち止まる",
+      "reading": "たちどまる",
+      "meaning": "to stop walking, to halt"
     },
     {
-      "word": "足元",
-      "reading": "あしもと",
-      "meaning": "at one's feet"
-    },
-    {
-      "word": "天井",
-      "reading": "てんじょう",
-      "meaning": "ceiling"
-    },
-    {
-      "word": "老人",
-      "reading": "ろうじん",
-      "meaning": "old man / elderly person"
+      "word": "見回す",
+      "reading": "みまわす",
+      "meaning": "to look around"
     }
   ],
   "items_gained": [
     {
-      "jp": "封筒（まだ閉じている）",
-      "reading": "ふうとう（まだとじている）"
+      "jp": "白い封筒",
+      "reading": "しろいふうとう"
     }
   ],
   "scene_type": "choice",
   "choices": [
     {
-      "jp": "「あなたは<ruby>誰<rt>だれ</rt></ruby>ですか？どうして<ruby>私<rt>わたし</rt></ruby>の<ruby>名前<rt>なまえ</rt></ruby>を<ruby>知<rt>し</rt></ruby>っているんですか？」と<ruby>聞<rt>き</rt></ruby>く。",
-      "text_only": "「あなたは誰ですか？どうして私の名前を知っているんですか？」と聞く。"
+      "jp": "<ruby>封<rt>ふう</rt></ruby><ruby>筒<rt>とう</rt></ruby>を<ruby>開<rt>あ</rt></ruby>けて、<ruby>中<rt>なか</rt></ruby>を<ruby>読<rt>よ</rt></ruby>む。",
+      "text_only": "封筒を開けて、中を読む。"
     },
     {
-      "jp": "<ruby>封筒<rt>ふうとう</rt></ruby>をすぐに<ruby>開<rt>あ</rt></ruby>ける。",
-      "text_only": "封筒をすぐに開ける。"
+      "jp": "<ruby>近<rt>ちか</rt></ruby>くにいる<ruby>駅<rt>えき</rt></ruby><ruby>員<rt>いん</rt></ruby>に<ruby>封<rt>ふう</rt></ruby><ruby>筒<rt>とう</rt></ruby>を<ruby>見<rt>み</rt></ruby>せる。",
+      "text_only": "近くにいる駅員に封筒を見せる。"
     },
     {
-      "jp": "<ruby>老人<rt>ろうじん</rt></ruby>から<ruby>離<rt>はな</rt></ruby>れて、<ruby>封筒<rt>ふうとう</rt></ruby>を<ruby>鞄<rt>かばん</rt></ruby>にしまう。",
-      "text_only": "老人から離れて、封筒を鞄にしまう。"
+      "jp": "<ruby>封<rt>ふう</rt></ruby><ruby>筒<rt>とう</rt></ruby>をポケットに<ruby>入<rt>い</rt></ruby>れて、まず<ruby>改<rt>かい</rt></ruby><ruby>札<rt>さつ</rt></ruby>を<ruby>出<rt>で</rt></ruby>る。",
+      "text_only": "封筒をポケットに入れて、まず改札を出る。"
     }
   ],
-  "mystery_memo": "The sealed envelope addressed to 'Tesuto' by name is the central mystery hook — someone knew the player was arriving at Tokyo Station. The old man also knows the player's name and warned them not to open it yet, suggesting the timing matters. Relationship with old man: NEUTRAL/MYSTERIOUS — he is watchful but not threatening. The envelope is a key item; its contents are unknown. The old man's identity and connection to the player must be revealed gradually across Act 1-2."
+  "mystery_memo": "The central mystery begins: a white envelope addressed to the player ('テストさんへ') was found on the platform floor at Tokyo Station — no one nearby could have left it. The envelope has not yet been opened; its contents are unknown. No NPCs have been met yet. This uncanny, personalized message is the mystery's core hook — someone knows the player's name and anticipated their arrival."
 }

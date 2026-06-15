@@ -1,42 +1,44 @@
 {
-  "location_jp": "<ruby>路地<rt>ろじ</rt></ruby>の<ruby>奥<rt>おく</rt></ruby>、<ruby>神保町<rt>じんぼうちょう</rt></ruby>",
-  "image_query": "tokyo narrow alley night brick walls distant figure",
-  "scene_jp": "<ruby>男<rt>おとこ</rt></ruby>は<ruby>振<rt>ふ</rt></ruby>り<ruby>返<rt>かえ</rt></ruby>りもせず、<ruby>神保町<rt>じんぼうちょう</rt></ruby>の<ruby>細<rt>ほそ</rt></ruby>い<ruby>路地<rt>ろじ</rt></ruby>を<ruby>迷<rt>まよ</rt></ruby>いなく<ruby>進<rt>すす</rt></ruby>んでいった。あたかも、<ruby>後<rt>あと</rt></ruby>をつけられることを<ruby>最初<rt>さいしょ</rt></ruby>から<ruby>知<rt>し</rt></ruby>っていたかのように。やがて<ruby>古<rt>ふる</rt></ruby>びた<ruby>鉄<rt>てつ</rt></ruby>の<ruby>扉<rt>とびら</rt></ruby>の<ruby>前<rt>まえ</rt></ruby>で<ruby>足<rt>あし</rt></ruby>を<ruby>止<rt>と</rt></ruby>め、ゆっくりとテストのほうへ<ruby>顔<rt>かお</rt></ruby>を<ruby>向<rt>む</rt></ruby>けた。「……やっと<ruby>来<rt>き</rt></ruby>たか。<ruby>待<rt>ま</rt></ruby>っていたぞ、テスト。<ruby>君<rt>きみ</rt></ruby>の<ruby>祖母<rt>そぼ</rt></ruby>から、いつかこうなると<ruby>聞<rt>き</rt></ruby>かされていたんだ。」<ruby>男<rt>おとこ</rt></ruby>の<ruby>声<rt>こえ</rt></ruby>は<ruby>低<rt>ひく</rt></ruby>く、どこか<ruby>疲<rt>つか</rt></ruby>れを<ruby>帯<rt>お</rt></ruby>びていた。",
-  "scene_translation": "The man walked without hesitation through the narrow alleys of Jinbocho, never once looking back — as though he had known from the very start that someone was following him. At last he stopped before a weathered iron door and slowly turned his face toward you. '...So you finally came. I've been waiting for you, Tesuto. Your grandmother told me that someday it would come to this.' His voice was low, carrying a certain weariness within it.",
-  "grammar_note": "【あたかも〜かのように】A literary simile meaning 'as if / as though.' あたかも＋clause＋かのように describes something that appears to be a certain way without actually being confirmed as such. It's more formal and literary than まるで〜みたいに. Note also the rough older-man register in 「待っていたぞ」— the sentence-final ぞ signals masculine, slightly gruff speech, contrasting with the more neutral politeness the player has encountered elsewhere.",
+  "location_jp": "<ruby>薄暗<rt>うすぐら</rt></ruby>い<ruby>路地<rt>ろじ</rt></ruby>、<ruby>神社<rt>じんじゃ</rt></ruby>の<ruby>裏手<rt>うらて</rt></ruby>",
+  "image_query": "tokyo narrow alley dusk concrete walls lantern dim light",
+  "scene_jp": "<ruby>男<rt>おとこ</rt></ruby>は<ruby>振<rt>ふ</rt></ruby>り<ruby>返<rt>かえ</rt></ruby>ることなく、<ruby>神社<rt>じんじゃ</rt></ruby>の<ruby>裏手<rt>うらて</rt></ruby>の<ruby>薄暗<rt>うすぐら</rt></ruby>い<ruby>路地<rt>ろじ</rt></ruby>へと<ruby>吸<rt>す</rt></ruby>い<ruby>込<rt>こ</rt></ruby>まれるように<ruby>消<rt>き</rt></ruby>えていった。テストが<ruby>角<rt>かど</rt></ruby>を<ruby>曲<rt>ま</rt></ruby>がると、<ruby>男<rt>おとこ</rt></ruby>はそこで<ruby>立<rt>た</rt></ruby>ち<ruby>止<rt>ど</rt></ruby>まり、<ruby>壁<rt>かべ</rt></ruby>に<ruby>背<rt>せ</rt></ruby>を<ruby>預<rt>あず</rt></ruby>けてこちらを<ruby>見<rt>み</rt></ruby>ていた——まるで<ruby>待<rt>ま</rt></ruby>っていたかのように。「テストさん、ですね」と<ruby>男<rt>おとこ</rt></ruby>は<ruby>静<rt>しず</rt></ruby>かに<ruby>言<rt>い</rt></ruby>った。「お<ruby>祖母<rt>ばあ</rt></ruby>さまから、あなたのことは<ruby>伺<rt>うかが</rt></ruby>っておりました」<ruby>灰色<rt>はいいろ</rt></ruby>のスーツの<ruby>胸<rt>むね</rt></ruby>ポケットから、<ruby>男<rt>おとこ</rt></ruby>は<ruby>折<rt>お</rt></ruby>り<ruby>畳<rt>たた</rt></ruby>まれた<ruby>紙<rt>かみ</rt></ruby>を<ruby>取<rt>と</rt></ruby>り<ruby>出<rt>だ</rt></ruby>し、テストの<ruby>手<rt>て</rt></ruby>に<ruby>押<rt>お</rt></ruby>し<ruby>付<rt>つ</rt></ruby>けるように<ruby>渡<rt>わた</rt></ruby>した。",
+  "scene_translation": "The man disappeared into the dim alley behind the shrine as though swallowed by shadow, never once looking back. When the player turned the corner, he was standing there, leaning against the wall, watching — as if he had been waiting all along. \"You are Tesuto-san,\" the man said quietly. \"Your grandmother had spoken to me about you.\" From the breast pocket of his grey suit, he withdrew a folded piece of paper and pressed it into the player's hand.",
+  "grammar_note": "【まるで〜かのように】'as if / just as though' — a vivid simile construction. まるで待っていたかのように = 'as if he had been waiting.' The かの adds a slightly literary, distancing nuance compared to plain ように alone. Also note the man's speech: 伺っておりました uses おります, the humble-respectful (謙譲語) form of います — a register marker of formal, careful politeness, implying he is someone who deals with people of standing.",
   "vocab": [
     {
-      "word": "路地",
-      "reading": "ろじ",
-      "meaning": "alley, side street"
+      "word": "裏手",
+      "reading": "うらて",
+      "meaning": "the back side, rear area (of a building or place)"
     },
     {
-      "word": "迷いなく",
-      "reading": "まよいなく",
-      "meaning": "without hesitation"
+      "word": "背を預ける",
+      "reading": "せをあずける",
+      "meaning": "to lean one's back against something"
     },
     {
-      "word": "扉",
-      "reading": "とびら",
-      "meaning": "door, gate (heavier/more dramatic than ドア)"
+      "word": "伺う",
+      "reading": "うかがう",
+      "meaning": "to hear/ask (humble form of 聞く・訪ねる)"
     },
     {
-      "word": "帯びる",
-      "reading": "おびる",
-      "meaning": "to carry, to be tinged with (a quality)"
+      "word": "折り畳む",
+      "reading": "おりたたむ",
+      "meaning": "to fold up"
     },
     {
-      "word": "祖母",
-      "reading": "そぼ",
-      "meaning": "one's own grandmother (humble form)"
-    },
+      "word": "押し付ける",
+      "reading": "おしつける",
+      "meaning": "to press something onto someone, to thrust upon"
+    }
+  ],
+  "items_gained": [
     {
-      "word": "あたかも",
-      "reading": "あたかも",
-      "meaning": "as if, as though (literary)"
+      "jp": "折り畳まれた紙",
+      "reading": "おりたたまれたかみ"
     }
   ],
   "scene_type": "input",
-  "mystery_memo": "The grey-suited man (Relationship: cautiously neutral → now openly engaging) has confirmed he knew the player's deceased grandmother and was expecting this meeting. He is not hostile — he has been waiting. The iron door likely leads to the underground passages partially mapped in the notebook. The old shopkeeper's fear may stem from knowing this man or whoever he works for. The coin locker key and notebook are almost certainly relevant to what lies beyond the door. Key question now: what did the grandmother tell him, and what is the player's role in whatever was set in motion?",
-  "feedback": null
+  "choices": null,
+  "feedback": null,
+  "mystery_memo": "The grey-suited man — now confirmed as an agent or associate connected to the player's deceased grandmother — has made direct contact. He knew the player's name unprompted (echoing the hook from Scene 1), deepening the central mystery of how the grandmother's world intersects with the player's present. The folded paper likely contains information related to the underground passages sketched in the notebook. The man's tone is formal and non-threatening but guarded; relationship status: neutral-formal, intent unknown. The old shopkeeper remains too frightened to be useful for now. Next: the man should ask or reveal something that requires the player to respond — perhaps asking whether the player has opened the coin locker, or what they know about the notebook, forcing the player to decide how much to trust him."
 }

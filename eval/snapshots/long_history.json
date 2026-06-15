@@ -1,55 +1,55 @@
 {
-  "location_jp": "<ruby>地下<rt>ちか</rt></ruby><ruby>通路<rt>つうろ</rt></ruby>の<ruby>入口<rt>いりぐち</rt></ruby>",
-  "image_query": "tokyo underground tunnel concrete wartime dim light shadow",
-  "scene_jp": "<ruby>古<rt>ふる</rt></ruby>いノートの<ruby>地図<rt>ちず</rt></ruby>を<ruby>頼<rt>たよ</rt></ruby>りに、テストは<ruby>新宿<rt>しんじゅく</rt></ruby>の<ruby>地下<rt>ちか</rt></ruby>へと<ruby>続<rt>つづ</rt></ruby>く<ruby>階段<rt>かいだん</rt></ruby>を<ruby>降<rt>お</rt></ruby>りた。コンクリートの<ruby>壁<rt>かべ</rt></ruby>には、<ruby>戦時中<rt>せんじちゅう</rt></ruby>に<ruby>書<rt>か</rt></ruby>かれたとおぼしき<ruby>文字<rt>もじ</rt></ruby>がかすかに<ruby>残<rt>のこ</rt></ruby>っていた。すると、<ruby>前方<rt>ぜんぽう</rt></ruby>の<ruby>暗闇<rt>くらやみ</rt></ruby>から<ruby>灰色<rt>はいいろ</rt></ruby>のコートの<ruby>男<rt>おとこ</rt></ruby>がゆっくりと<ruby>振<rt>ふ</rt></ruby>り<ruby>返<rt>かえ</rt></ruby>り、「やっと来たな、テスト。ここから先は、一人では無理だ。」と<ruby>静<rt>しず</rt></ruby>かに<ruby>言<rt>い</rt></ruby>った。<ruby>男<rt>おとこ</rt></ruby>の<ruby>手<rt>て</rt></ruby>には、テストの<ruby>祖母<rt>そぼ</rt></ruby>のものとよく<ruby>似<rt>に</rt></ruby>た<ruby>写真<rt>しゃしん</rt></ruby>が<ruby>握<rt>にぎ</rt></ruby>られていた。",
-  "scene_translation": "Following the map in the old notebook, Tesuto descended the stairs leading into the underground beneath Shinjuku. On the concrete walls, faint writing remained — seemingly inscribed during the war. Then, from the darkness ahead, the man in the grey coat slowly turned around and said quietly, \"You finally came, Tesuto. Beyond this point, it's impossible alone.\" In the man's hand was a photograph — one that looked very much like something belonging to Tesuto's grandmother.",
-  "grammar_note": "【とおぼしき】This is a formal/literary expression meaning 'seemingly' or 'thought to be.' It combines と (quotation particle) + おぼしき (classical adjective form of おぼえる/思う, meaning 'to think/seem'). In everyday speech you'd say らしい or と思われる instead. Notice how the man uses plain/rough speech — だな, だ, 無理だ — the speech of an older man who has decided to stop hiding.",
+  "location_jp": "<ruby>新宿<rt>しんじゅく</rt></ruby>の<ruby>地下<rt>ちか</rt></ruby><ruby>通路<rt>つうろ</rt></ruby>",
+  "image_query": "underground tunnel wartime concrete Japan dim light narrow passage",
+  "scene_jp": "<ruby>古<rt>ふる</rt></ruby>いノートの<ruby>地図<rt>ちず</rt></ruby>を<ruby>頼<rt>たよ</rt></ruby>りに、テストは<ruby>薄暗<rt>うすぐら</rt></ruby>い<ruby>地下<rt>ちか</rt></ruby><ruby>通路<rt>つうろ</rt></ruby>へ<ruby>足<rt>あし</rt></ruby>を<ruby>踏<rt>ふ</rt></ruby>み<ruby>入<rt>い</rt></ruby>れた。<ruby>空気<rt>くうき</rt></ruby>は<ruby>冷<rt>つめ</rt></ruby>たく、コンクリートの<ruby>壁<rt>かべ</rt></ruby>には<ruby>戦時中<rt>せんじちゅう</rt></ruby>の<ruby>落書<rt>らくが</rt></ruby>きが<ruby>薄<rt>うす</rt></ruby>く<ruby>残<rt>のこ</rt></ruby>っていた。しばらく<ruby>歩<rt>ある</rt></ruby>くと、<ruby>灰色<rt>はいいろ</rt></ruby>のコートの<ruby>男<rt>おとこ</rt></ruby>が<ruby>壁<rt>かべ</rt></ruby>にもたれて<ruby>待<rt>ま</rt></ruby>っていた。「<ruby>来<rt>き</rt></ruby>たか、テスト。ここから<ruby>先<rt>さき</rt></ruby>は、おまえ<ruby>一人<rt>ひとり</rt></ruby>じゃ<ruby>無理<rt>むり</rt></ruby>だぞ。」<ruby>男<rt>おとこ</rt></ruby>はそう<ruby>言<rt>い</rt></ruby>って、<ruby>通路<rt>つうろ</rt></ruby>の<ruby>奥<rt>おく</rt></ruby>にある<ruby>鉄<rt>てつ</rt></ruby>の<ruby>扉<rt>とびら</rt></ruby>を<ruby>指<rt>さ</rt></ruby>した。",
+  "scene_translation": "Using the map in the old notebook as a guide, Tesuto stepped into the dim underground passage. The air was cold, and faint wartime graffiti still remained on the concrete walls. After walking for a while, the man in the grey coat was there, leaning against the wall, waiting. \"You came, Tesuto. Beyond this point, you won't manage alone,\" he said, pointing to an iron door deep in the passage.",
+  "grammar_note": "【おまえ】A blunt, rough second-person pronoun used by older or gruff men — it's not quite rude but signals the speaker sees himself as superior or close. Compare: あなた (polite/neutral), きみ (soft/casual), おまえ (rough, familiar). The grey man has dropped any pretense of distance.",
   "vocab": [
     {
-      "word": "通路",
-      "reading": "つうろ",
-      "meaning": "passage, corridor"
+      "word": "頼りに",
+      "reading": "たよりに",
+      "meaning": "relying on, using as a guide"
+    },
+    {
+      "word": "薄暗い",
+      "reading": "うすぐらい",
+      "meaning": "dim, gloomy"
     },
     {
       "word": "戦時中",
       "reading": "せんじちゅう",
-      "meaning": "during wartime"
+      "meaning": "during the war"
     },
     {
-      "word": "暗闇",
-      "reading": "くらやみ",
-      "meaning": "darkness"
+      "word": "落書き",
+      "reading": "らくがき",
+      "meaning": "graffiti, scribbling"
     },
     {
-      "word": "前方",
-      "reading": "ぜんぽう",
-      "meaning": "ahead, in front"
+      "word": "鉄の扉",
+      "reading": "てつのとびら",
+      "meaning": "iron door"
     },
     {
-      "word": "握る",
-      "reading": "にぎる",
-      "meaning": "to grip, to hold in one's hand"
-    },
-    {
-      "word": "先",
-      "reading": "さき",
-      "meaning": "beyond, ahead (from this point)"
+      "word": "奥",
+      "reading": "おく",
+      "meaning": "the back/depths of a place"
     }
   ],
   "scene_type": "choice",
   "choices": [
     {
-      "jp": "「その<ruby>写真<rt>しゃしん</rt></ruby>、どこで<ruby>手<rt>て</rt></ruby>に<ruby>入<rt>い</rt></ruby>れたんですか？」と<ruby>聞<rt>き</rt></ruby>く",
-      "text_only": "「その写真、どこで手に入れたんですか？」と聞く"
+      "jp": "「あなたは<ruby>何者<rt>なにもの</rt></ruby>ですか？」と<ruby>聞<rt>き</rt></ruby>く",
+      "text_only": "「あなたは何者ですか？」と聞く"
     },
     {
-      "jp": "コインロッカーの<ruby>鍵<rt>かぎ</rt></ruby>を<ruby>男<rt>おとこ</rt></ruby>に<ruby>見<rt>み</rt></ruby>せる",
-      "text_only": "コインロッカーの鍵を男に見せる"
+      "jp": "コインロッカーの<ruby>鍵<rt>かぎ</rt></ruby>を<ruby>鉄<rt>てつ</rt></ruby>の<ruby>扉<rt>とびら</rt></ruby>で<ruby>試<rt>ため</rt></ruby>してみる",
+      "text_only": "コインロッカーの鍵を鉄の扉で試してみる"
     },
     {
-      "jp": "<ruby>神社<rt>じんじゃ</rt></ruby>のお<ruby>守<rt>まも</rt></ruby>りを<ruby>強<rt>つよ</rt></ruby>く<ruby>握<rt>にぎ</rt></ruby>りしめ、「あなたは<ruby>誰<rt>だれ</rt></ruby>ですか？」と<ruby>問<rt>と</rt></ruby>いただす",
-      "text_only": "神社のお守りを強く握りしめ、「あなたは誰ですか？」と問いただす"
+      "jp": "<ruby>男<rt>おとこ</rt></ruby>について<ruby>奥<rt>おく</rt></ruby>へ<ruby>進<rt>すす</rt></ruby>む",
+      "text_only": "男について奥へ進む"
     }
   ],
-  "mystery_memo": "Scene 8: The grey-coated man has fully revealed himself as a guide rather than a threat — he was waiting for Tesuto at the underground passage entrance and knows Tesuto's name, confirming he has been deliberately leading them here. He holds a photograph connected to Tesuto's grandmother, suggesting a personal relationship (possibly he was a fellow student, colleague, or someone the grandmother entrusted). The wartime passage is now confirmed real and accessible. The coin locker key has not yet been used underground — there may be a locker or locked compartment inside the passage. The shrine charm may carry significance the priest hinted at cryptically. NPC relationships: shopkeeper (frightened/closed off — avoided further contact), bartender (quietly helpful — confirmed the passage exists via the map), shrine priest (formally cryptic — blessed Tesuto's journey obliquely). The blue-dressed woman has not appeared since Act 1; her reappearance is due in Act 3."
+  "mystery_memo": "Scene 8: Tesuto has entered the wartime underground passage beneath Shinjuku using the notebook map. The grey man was waiting — this confirms he has been guiding the player deliberately, not simply following. He knows Tesuto's name and seems to have been here before. The iron door ahead likely requires the coin locker key (from scene 4). The graffiti on the walls may hold further clues about the grandmother's wartime past. The woman in blue has not appeared here yet — her absence is notable. NPC relationships: shopkeeper (frightened/closed off), bartender (quietly helpful), shrine priest (formally cryptic), grey man (shifting from antagonist to reluctant guide — now clearly an ally with his own agenda). The お守り from the shrine may have protective or symbolic significance in the revelation ahead."
 }

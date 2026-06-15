@@ -1,57 +1,56 @@
 {
   "location_jp": "<ruby>古<rt>ふる</rt></ruby>い<ruby>煙草屋<rt>たばこや</rt></ruby>の<ruby>奥<rt>おく</rt></ruby>",
-  "image_query": "japanese old tobacco shop interior dim wooden shelves dusty",
-  "scene_jp": "<ruby>老人<rt>ろうじん</rt></ruby>は<ruby>目<rt>め</rt></ruby>を<ruby>細<rt>ほそ</rt></ruby>め、しばらく<ruby>黙<rt>だま</rt></ruby>っていた。「……<ruby>婆<rt>ばあ</rt></ruby>さんから、か」と<ruby>彼<rt>かれ</rt></ruby>はつぶやき、カウンターの<ruby>下<rt>した</rt></ruby>に<ruby>手<rt>て</rt></ruby>を<ruby>伸<rt>の</rt></ruby>ばした。「あの<ruby>婆<rt>ばあ</rt></ruby>さんがまだ<ruby>人<rt>ひと</rt></ruby>に<ruby>話<rt>はな</rt></ruby>しているとは<ruby>思<rt>おも</rt></ruby>わなかったよ」と<ruby>彼<rt>かれ</rt></ruby>は<ruby>言<rt>い</rt></ruby>った。<ruby>古<rt>ふる</rt></ruby>い<ruby>鍵<rt>かぎ</rt></ruby>をカウンターの<ruby>上<rt>うえ</rt></ruby>に<ruby>置<rt>お</rt></ruby>き、「これを<ruby>持<rt>も</rt></ruby>って<ruby>行<rt>い</rt></ruby>け。でも……<ruby>気<rt>き</rt></ruby>をつけろ」と<ruby>老人<rt>ろうじん</rt></ruby>は<ruby>静<rt>しず</rt></ruby>かに<ruby>言<rt>い</rt></ruby>った。",
-  "scene_translation": "The old man narrowed his eyes and was silent for a moment. '…From the old woman, is it,' he murmured, reaching his hand under the counter. 'I didn't think that woman was still telling people,' he said. He placed an old key on the counter and said quietly, 'Take this. But… be careful.'",
-  "grammar_note": "【とは思わなかった】'I didn't think that…' — とは adds a nuance of surprise or disbelief. Note the old man's speech style: rough, clipped sentences with だ/ぞ forms and no politeness markers — very different from a polite shopkeeper who would say 思いませんでした.",
+  "image_query": "japanese old tobacco shop interior dim dusty shelves wooden counter",
+  "scene_jp": "<ruby>老人<rt>ろうじん</rt></ruby>の<ruby>目<rt>め</rt></ruby>が、すっと<ruby>細<rt>ほそ</rt></ruby>くなった。「おばあさん…<ruby>誰<rt>だれ</rt></ruby>のことを<ruby>言<rt>い</rt></ruby>っているんだ？」と<ruby>老人<rt>ろうじん</rt></ruby>は<ruby>低<rt>ひく</rt></ruby>い<ruby>声<rt>こえ</rt></ruby>で<ruby>聞<rt>き</rt></ruby>いた。<ruby>店<rt>みせ</rt></ruby>の<ruby>奥<rt>おく</rt></ruby>で、<ruby>古<rt>ふる</rt></ruby>い<ruby>時計<rt>とけい</rt></ruby>がゆっくりと<ruby>音<rt>おと</rt></ruby>を<ruby>立<rt>た</rt></ruby>てている。「この<ruby>路地<rt>ろじ</rt></ruby>を<ruby>知<rt>し</rt></ruby>っている<ruby>人間<rt>にんげん</rt></ruby>は、もうほとんどいないはずだ…テストよ。」",
+  "scene_translation": "The old man's eyes narrowed slowly. 'An old woman… who exactly are you talking about?' he asked in a low voice. From deep inside the shop, an old clock ticks quietly. 'There's almost no one left who knows about this alley… Testa.'",
+  "grammar_note": "【〜はずだ】expresses the speaker's expectation or certainty based on reasoning — 'there shouldn't be anyone' / 'there's no reason anyone would know.' The old man uses blunt masculine speech (だ／ぞ register) — notice how this contrasts with polite です／ます you might use back to him.",
   "vocab": [
     {
-      "word": "細める",
-      "reading": "ほそめる",
-      "meaning": "to narrow (one's eyes)"
+      "word": "老人",
+      "reading": "ろうじん",
+      "meaning": "old man, elderly person"
     },
     {
-      "word": "つぶやく",
-      "reading": "つぶやく",
-      "meaning": "to mutter, to murmur"
+      "word": "細くなる",
+      "reading": "ほそくなる",
+      "meaning": "to narrow (eyes)"
     },
     {
-      "word": "伸ばす",
-      "reading": "のばす",
-      "meaning": "to reach out, to extend"
+      "word": "低い声",
+      "reading": "ひくいこえ",
+      "meaning": "low voice"
     },
     {
-      "word": "気をつける",
-      "reading": "きをつける",
-      "meaning": "to be careful, to watch out"
+      "word": "路地",
+      "reading": "ろじ",
+      "meaning": "alley, lane"
     },
     {
-      "word": "置く",
-      "reading": "おく",
-      "meaning": "to place, to put down"
+      "word": "人間",
+      "reading": "にんげん",
+      "meaning": "person, human being"
+    },
+    {
+      "word": "はずだ",
+      "reading": "はずだ",
+      "meaning": "should be, supposed to be (expectation)"
     }
   ],
-  "items_gained": [
-    {
-      "jp": "古い鍵",
-      "reading": "ふるいかぎ"
-    }
-  ],
-  "feedback": "Great effort — the meaning came through clearly! The natural phrasing would be 「おばあさんから聞きました」— when attaching です to a verb, use the ます-form (聞きました) rather than the dictionary form (聞いた). So: 聞いたです → 聞きました.",
   "scene_type": "choice",
   "choices": [
     {
-      "jp": "「この<ruby>鍵<rt>かぎ</rt></ruby>は<ruby>何<rt>なん</rt></ruby>の<ruby>鍵<rt>かぎ</rt></ruby>ですか？」と<ruby>聞<rt>き</rt></ruby>く",
-      "text_only": "「この鍵は何の鍵ですか？」と聞く"
+      "jp": "「<ruby>駅<rt>えき</rt></ruby>の<ruby>近<rt>ちか</rt></ruby>くで<ruby>会<rt>あ</rt></ruby>ったおばあさんです。<ruby>白<rt>しろ</rt></ruby>い<ruby>服<rt>ふく</rt></ruby>を<ruby>着<rt>き</rt></ruby>ていました。」",
+      "text_only": "「駅の近くで会ったおばあさんです。白い服を着ていました。」"
     },
     {
-      "jp": "「そのおばあさんをご<ruby>存<rt>ぞん</rt></ruby>じですか？」と<ruby>聞<rt>き</rt></ruby>く",
-      "text_only": "「そのおばあさんをご存じですか？」と聞く"
+      "jp": "「<ruby>名前<rt>なまえ</rt></ruby>は<ruby>知<rt>し</rt></ruby>りません。でも、あなたのことを<ruby>知<rt>し</rt></ruby>っているようでした。」",
+      "text_only": "「名前は知りません。でも、あなたのことを知っているようでした。」"
     },
     {
-      "jp": "<ruby>鍵<rt>かぎ</rt></ruby>を<ruby>黙<rt>だま</rt></ruby>って<ruby>受<rt>う</rt></ruby>け<ruby>取<rt>と</rt></ruby>り、<ruby>店<rt>みせ</rt></ruby>を<ruby>出<rt>で</rt></ruby>る",
-      "text_only": "鍵を黙って受け取り、店を出る"
+      "jp": "「どうして<ruby>私<rt>わたし</rt></ruby>の<ruby>名前<rt>なまえ</rt></ruby>を<ruby>知<rt>し</rt></ruby>っているんですか？」",
+      "text_only": "「どうして私の名前を知っているんですか？」"
     }
   ],
-  "mystery_memo": "The old shopkeeper (煙草屋のおじいさん) reacted with fearful surprise that the player learned of this alley from the old woman — confirming these two know each other and share a secret. He has given the player an old key, suggesting there is a locked place relevant to the mystery. Relationship: cautiously cooperative but clearly afraid of something connected to the old woman. The key is likely tied to a location that will appear in Act 2 or 3. The mysterious woman from scenes 1-2 remains unidentified; the old woman (おばあさん) who sent the player here is a separate figure not yet seen on-screen."
+  "feedback": "Great attempt — you communicated the meaning clearly! The natural phrasing would be 「おばあさんから聞きました」. In Japanese, です attaches to nouns and な-adjectives, not directly to verb stems — for past tense verbs, use ました instead. So 聞いたです → 聞きました.",
+  "mystery_memo": "The old shopkeeper (おじいさん) knows the player's name 'テスト' — he used it again, confirming this is not accidental. He is visibly shaken by the mention of an old woman, suggesting he knows who she is and fears her or the connection she has to the alley. Relationship: wary but engaged — he hasn't thrown the player out. The mystery woman from scenes 1-2 may be connected to this shopkeeper's past. No new items this scene. Key unresolved thread: how does everyone know the player's name?"
 }

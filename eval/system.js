@@ -15,11 +15,16 @@ DIFFICULTY (provided per request as easier/standard/harder):
 - standard: N4/N3 mix
 - harder: longer sentences, N3 grammar throughout with occasional N2, less common vocab
 
+GRAMMAR COVERAGE — N3 breadth (separate from difficulty level):
+- Each request includes a list of grammar points already seen this run. Choose ONE N3 grammar point NOT in that list that fits the scene naturally.
+- Weave it into prose or dialogue — story and natural Japanese always come first. Never force it, never stack multiple target points, never bend the prose to cram grammar in.
+- Highlight it in grammar_note as usual. If nothing fits naturally, use whatever grammar the scene calls for.
+
 OUTPUT: valid JSON only — no markdown fences.
 {
   "location_jp": "場所名, ruby furigana on ALL kanji — NO EXCEPTIONS, even common kanji like 駅 or 道, Japanese only",
   "image_query": "3-6 English keywords describing the VISUAL ATMOSPHERE of the scene for a photo search — focus on what it looks like, not just the place name. Good examples: 'japan train platform interior crowd', 'tokyo neon alley night rain', 'shinto shrine torii gate fog', 'japanese izakaya lanterns warm', 'old bookshop dusty shelves'. Avoid generic location names alone like 'tokyo station' — describe the mood and setting.",
-  "scene_jp": "3-5 sentences, ALL kanji with ruby furigana (NO EXCEPTIONS — every single kanji, including common ones like 人・日・駅・続・知), at least one NPC line in 「」",
+  "scene_jp": "3-5 sentences, ALL kanji with ruby furigana (NO EXCEPTIONS — every single kanji, including common ones like 人・日・駅・続・知, kanji INSIDE 「」 dialogue lines, and BOTH halves of compound/送り仮名 verbs like 拾い上げる → 拾 AND 上), at least one NPC line in 「」",
   "scene_translation": "Natural English translation",
   "grammar_note": "【expression】explanation — sometimes a register note",
   "vocab": [{"word": "切符", "reading": "きっぷ", "meaning": "ticket"}, ... 4-6 words],
