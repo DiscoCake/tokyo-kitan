@@ -1,75 +1,78 @@
 {
-  "location_jp": "<ruby>新<rt>しん</rt></ruby><ruby>宿<rt>じゅく</rt></ruby><ruby>地<rt>ち</rt></ruby><ruby>下<rt>か</rt></ruby><ruby>通<rt>つう</rt></ruby><ruby>路<rt>ろ</rt></ruby>",
-  "image_query": "underground tunnel wartime concrete walls dim light tokyo",
-  "scene_jp": "<ruby>古<rt>ふる</rt></ruby>いノートの<ruby>地<rt>ち</rt></ruby><ruby>図<rt>ず</rt></ruby>を<ruby>頼<rt>たよ</rt></ruby>りに、テストは<ruby>駅<rt>えき</rt></ruby><ruby>裏<rt>うら</rt></ruby>の<ruby>古<rt>ふる</rt></ruby>い<ruby>階<rt>かい</rt></ruby><ruby>段<rt>だん</rt></ruby>を<ruby>下<rt>お</rt></ruby>りていった。<ruby>薄<rt>うす</rt></ruby>い<ruby>光<rt>ひかり</rt></ruby>の<ruby>中<rt>なか</rt></ruby>に、コンクリートの<ruby>壁<rt>かべ</rt></ruby>と<ruby>細<rt>ほそ</rt></ruby>い<ruby>通<rt>とお</rt></ruby>り<ruby>道<rt>みち</rt></ruby>が<ruby>続<rt>つづ</rt></ruby>いていた。するとうしろから、あのグレーのコートの<ruby>男<rt>おとこ</rt></ruby>が<ruby>静<rt>しず</rt></ruby>かに<ruby>近<rt>ちか</rt></ruby>づいてきて、「<ruby>怖<rt>こわ</rt></ruby>がらなくていいぞ。おれもずっと、この<ruby>場<rt>ば</rt></ruby><ruby>所<rt>しょ</rt></ruby>を<ruby>探<rt>さが</rt></ruby>していたんだ」と<ruby>低<rt>ひく</rt></ruby>い<ruby>声<rt>こえ</rt></ruby>でつぶやいた。<ruby>通<rt>つう</rt></ruby><ruby>路<rt>ろ</rt></ruby>の<ruby>奥<rt>おく</rt></ruby>には、さびついた<ruby>扉<rt>とびら</rt></ruby>が<ruby>一<rt>ひと</rt></ruby>つ、<ruby>静<rt>しず</rt></ruby>かに<ruby>待<rt>ま</rt></ruby>っているようだった。",
-  "scene_translation": "Using the map in the old notebook as a guide, Tesuto descended an old staircase behind the station. In the thin light, a concrete wall and a narrow passage stretched ahead. Then from behind, the man in the grey coat approached quietly and murmured in a low voice, \"You don't need to be afraid. I've been searching for this place too, for a long time.\" At the far end of the passage, a single rusted door waited in silence.",
-  "grammar_note": "【〜を頼りに】means 'relying on' or 'using ~ as a guide.' It expresses depending on something as your only resource or reference — 地図を頼りに進む means 'to proceed using the map as a guide.' This is an N3 expression worth remembering. Note also the man's speech style: rough, direct masculine forms like ぞ and おれ contrast sharply with the bartender's quiet politeness and the shrine priest's formal keigo.",
+  "location_jp": "<ruby>新宿<rt>しんじゅく</rt></ruby>の<ruby>地下<rt>ちか</rt></ruby><ruby>通路<rt>つうろ</rt></ruby>",
+  "image_query": "underground tunnel concrete wartime japan dim light shadow",
+  "scene_jp": "<ruby>階段<rt>かいだん</rt></ruby>を<ruby>下<rt>お</rt></ruby>りると、<ruby>空気<rt>くうき</rt></ruby>がひんやりと<ruby>変<rt>か</rt></ruby>わった。コンクリートの<ruby>壁<rt>かべ</rt></ruby>には、<ruby>戦時中<rt>せんじちゅう</rt></ruby>に<ruby>書<rt>か</rt></ruby>かれたと<ruby>思<rt>おも</rt></ruby>われる<ruby>文字<rt>もじ</rt></ruby>が<ruby>薄<rt>うす</rt></ruby>く<ruby>残<rt>のこ</rt></ruby>っている。<ruby>通路<rt>つうろ</rt></ruby>の<ruby>奥<rt>おく</rt></ruby>から<ruby>足音<rt>あしおと</rt></ruby>が<ruby>近<rt>ちか</rt></ruby>づいてくると<ruby>思<rt>おも</rt></ruby>ったら、<ruby>灰色<rt>はいいろ</rt></ruby>の<ruby>男<rt>おとこ</rt></ruby>がすでにそこに<ruby>立<rt>た</rt></ruby>っていた。「<ruby>来<rt>き</rt></ruby>たね、テスト。この<ruby>場所<rt>ばしょ</rt></ruby>のことは、<ruby>君<rt>きみ</rt></ruby>の<ruby>お祖母<rt>おばあ</rt></ruby>さんしか<ruby>知<rt>し</rt></ruby>らなかったはずなんだが。」<ruby>男<rt>おとこ</rt></ruby>は<ruby>振<rt>ふ</rt></ruby>り<ruby>返<rt>かえ</rt></ruby>らずに<ruby>言<rt>い</rt></ruby>った。<ruby>彼<rt>かれ</rt></ruby>の<ruby>声<rt>こえ</rt></ruby>には<ruby>怒<rt>おこ</rt></ruby>りはなく、むしろ<ruby>長<rt>なが</rt></ruby>い<ruby>時間<rt>じかん</rt></ruby>を<ruby>待<rt>ま</rt></ruby>ち<ruby>続<rt>つづ</rt></ruby>けた<ruby>人<rt>ひと</rt></ruby>のような、<ruby>静<rt>しず</rt></ruby>かな<ruby>疲<rt>つか</rt></ruby>れがあった。",
+  "scene_translation": "Descending the stairs, the air shifted to a cool stillness. Faint wartime writing remained etched on the concrete walls. You thought you heard footsteps approaching from the depths of the passage — but the man in grey was already standing there. \"You came, Tesuto. This place... only your grandmother should have known about it.\" He spoke without turning around. There was no anger in his voice — only the quiet exhaustion of someone who had been waiting a very long time.",
+  "grammar_note": "【〜続ける】 attached to the stem of a verb, this means 'to keep doing' or 'to continue doing.' Here: 待ち続けた人 — 'a person who kept on waiting.' It emphasizes duration and persistence. Compare: 待った (waited) vs. 待ち続けた (kept waiting, waited on and on).",
   "vocab": [
     {
-      "word": "頼りに",
-      "reading": "たよりに",
-      "meaning": "relying on, using as a guide"
+      "word": "通路",
+      "reading": "つうろ",
+      "meaning": "passage, corridor"
     },
     {
-      "word": "通り道",
-      "reading": "とおりみち",
-      "meaning": "passageway, path through"
+      "word": "戦時中",
+      "reading": "せんじちゅう",
+      "meaning": "during wartime"
     },
     {
-      "word": "コンクリート",
-      "reading": "コンクリート",
-      "meaning": "concrete"
+      "word": "薄く",
+      "reading": "うすく",
+      "meaning": "faintly, thinly"
     },
     {
-      "word": "近づく",
-      "reading": "ちかづく",
-      "meaning": "to approach, draw near"
-    },
-    {
-      "word": "つぶやく",
-      "reading": "つぶやく",
-      "meaning": "to mutter, murmur"
-    },
-    {
-      "word": "さびついた",
-      "reading": "さびついた",
-      "meaning": "rusted, corroded"
-    },
-    {
-      "word": "扉",
-      "reading": "とびら",
-      "meaning": "door, gate (esp. heavy or significant)"
+      "word": "足音",
+      "reading": "あしおと",
+      "meaning": "sound of footsteps"
     },
     {
       "word": "奥",
       "reading": "おく",
-      "meaning": "the back, the depths (of a space)"
+      "meaning": "the back/depths of a place"
     },
     {
-      "word": "薄い",
-      "reading": "うすい",
-      "meaning": "thin, faint, pale"
+      "word": "振り返る",
+      "reading": "ふりかえる",
+      "meaning": "to turn around, to look back"
     },
     {
-      "word": "低い声",
-      "reading": "ひくいこえ",
-      "meaning": "low voice, deep murmur"
+      "word": "むしろ",
+      "reading": "むしろ",
+      "meaning": "rather, instead"
+    },
+    {
+      "word": "疲れ",
+      "reading": "つかれ",
+      "meaning": "fatigue, weariness"
+    },
+    {
+      "word": "はずだ",
+      "reading": "はずだ",
+      "meaning": "should be the case, expected to be"
     }
   ],
   "scene_type": "choice",
   "choices": [
     {
-      "jp": "「あなたは<ruby>誰<rt>だれ</rt></ruby>ですか？」と<ruby>男<rt>おとこ</rt></ruby>に<ruby>聞<rt>き</rt></ruby>く",
-      "text_only": "「あなたは誰ですか？」と男に聞く"
+      "jp": "「<ruby>あなたは<rt>　</rt></ruby><ruby>誰<rt>だれ</rt></ruby>ですか？<ruby>祖母<rt>そぼ</rt></ruby>とどんな<ruby>関係<rt>かんけい</rt></ruby>があるんですか？」と<ruby>聞<rt>き</rt></ruby>く",
+      "text_only": "「あなたは誰ですか？祖母とどんな関係があるんですか？」と聞く"
     },
     {
-      "jp": "<ruby>扉<rt>とびら</rt></ruby>に<ruby>近<rt>ちか</rt></ruby>づいて、コインロッカーの<ruby>鍵<rt>かぎ</rt></ruby>を<ruby>試<rt>ため</rt></ruby>してみる",
-      "text_only": "扉に近づいて、コインロッカーの鍵を試してみる"
+      "jp": "<ruby>黙<rt>だま</rt></ruby>って<ruby>ノート<rt>　</rt></ruby>の<ruby>地図<rt>ちず</rt></ruby>を<ruby>男<rt>おとこ</rt></ruby>に<ruby>見<rt>み</rt></ruby>せる",
+      "text_only": "黙ってノートの地図を男に見せる"
     },
     {
-      "jp": "<ruby>男<rt>おとこ</rt></ruby>を<ruby>無<rt>む</rt></ruby><ruby>視<rt>し</rt></ruby>して、<ruby>一<rt>ひと</rt></ruby>りで<ruby>扉<rt>とびら</rt></ruby>を<ruby>調<rt>しら</rt></ruby>べる",
-      "text_only": "男を無視して、一人で扉を調べる"
+      "jp": "<ruby>通路<rt>つうろ</rt></ruby>の<ruby>奥<rt>おく</rt></ruby>へ<ruby>進<rt>すす</rt></ruby>み、<ruby>壁<rt>かべ</rt></ruby>の<ruby>文字<rt>もじ</rt></ruby>を<ruby>調<rt>しら</rt></ruby>べる",
+      "text_only": "通路の奥へ進み、壁の文字を調べる"
     }
   ],
-  "mystery_memo": "Tesuto has descended into the wartime underground passage, the destination marked on the grandmother's notebook map. The man in grey has dropped all pretense of following and revealed himself as a fellow seeker — his connection to the grandmother or the passage is still unknown, but his tone (rough, direct, oddly warm) suggests he is not a threat. The rusted door at the passage's end is the likely focal point of the mystery's revelation; the coinlocker key may or may not fit it — this should be tested next scene. The blue woman has not appeared here yet, which is conspicuous. NPCs: shopkeeper (frightened/closed off), bartender (quietly helpful), shrine priest (formally cryptic), grey man (now openly allied — relationship warming)."
+  "mystery_memo": "The man in grey has now revealed himself as someone who knew the grandmother and was waiting for the player to find this place — he was guiding them all along. His tone suggests regret or grief rather than threat. The underground passage is the physical heart of the mystery. The notebook map led here precisely. The locker key's purpose is not yet clear — there may be something locked in this passage. The grandmother's connection to the man in grey is the next major reveal, approaching scene 9-10.",
+  "npcs": [
+    {
+      "name_jp": "<ruby>灰色<rt>はいいろ</rt></ruby>の<ruby>男<rt>おとこ</rt></ruby>",
+      "name_reading": "はいいろのおとこ",
+      "relationship": "ally",
+      "note": "祖母を知っていた謎の男で、ずっとプレイヤーを地下通路へ導いていた。今は敵意がなく、長い間ここで待ち続けていたようだ。"
+    }
+  ]
 }

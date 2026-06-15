@@ -231,7 +231,14 @@ export function openNpcPanel() {
       const color = REL_COLOR[rel] || '#888';
       const d = document.createElement('div');
       d.className = 'npc-entry';
-      d.innerHTML = `<div class="npc-name">${npc.name_jp}<span class="npc-badge" style="color:${color};border-color:${color};">${label}</span></div><div class="npc-note">${npc.note || ''}</div>`;
+      const nameDiv = document.createElement('div');
+      nameDiv.className = 'npc-name';
+      nameDiv.innerHTML = `${npc.name_jp}<span class="npc-badge" style="color:${color};border-color:${color};">${label}</span>`;
+      const noteDiv = document.createElement('div');
+      noteDiv.className = 'npc-note';
+      noteDiv.textContent = npc.note || '';
+      d.appendChild(nameDiv);
+      d.appendChild(noteDiv);
       list.appendChild(d);
     });
   }

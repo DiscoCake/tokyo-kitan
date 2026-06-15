@@ -1,70 +1,84 @@
 {
-  "location_jp": "<ruby>東京<rt>とうきょう</rt></ruby><ruby>駅<rt>えき</rt></ruby>の<ruby>コインロッカー<rt>こいんろっかー</rt></ruby><ruby>前<rt>まえ</rt></ruby>",
-  "image_query": "japan train station coin lockers long row fluorescent light quiet",
-  "scene_jp": "<ruby>改札<rt>かいさつ</rt></ruby><ruby>口<rt>ぐち</rt></ruby>から<ruby>少<rt>すこ</rt></ruby>し<ruby>歩<rt>ある</rt></ruby>くと、<ruby>コインロッカー<rt>こいんろっかー</rt></ruby>が<ruby>並<rt>なら</rt></ruby>んでいる<ruby>場所<rt>ばしょ</rt></ruby>に<ruby>着<rt>つ</rt></ruby>いた。<ruby>駅員<rt>えきいん</rt></ruby>はあなたについてきたが、<ruby>足<rt>あし</rt></ruby>が<ruby>震<rt>ふる</rt></ruby>えているようだった。「<ruby>あの<rt>あの</rt></ruby>……<ruby>青<rt>あお</rt></ruby>い<ruby>服<rt>ふく</rt></ruby>の<ruby>女性<rt>じょせい</rt></ruby>は、<ruby>昨日<rt>きのう</rt></ruby>ここに<ruby>来<rt>き</rt></ruby>て、このロッカーに<ruby>何<rt>なに</rt></ruby>かを<ruby>入<rt>い</rt></ruby>れていきました。」<ruby>駅員<rt>えきいん</rt></ruby>は<ruby>小<rt>ちい</rt></ruby>さな<ruby>声<rt>こえ</rt></ruby>でそう<ruby>言<rt>い</rt></ruby>って、<ruby>番号<rt>ばんごう</rt></ruby><ruby>108<rt>ひゃくはち</rt></ruby>のロッカーを<ruby>指<rt>ゆび</rt></ruby>さした。ロッカーのドアには、<ruby>小<rt>ちい</rt></ruby>さな<ruby>紙<rt>かみ</rt></ruby>が<ruby>貼<rt>は</rt></ruby>ってあって、そこには「テスト<ruby>へ<rt>へ</rt></ruby>」と<ruby>書<rt>か</rt></ruby>いてあった。",
-  "scene_translation": "Walking a short way from the ticket gate, you arrived at the row of coin lockers. The station attendant followed you, but his legs seemed to be trembling. \"Um… the woman in the blue clothes came here yesterday and put something in this locker.\" He said it in a quiet voice and pointed to locker number 108. On the locker door, a small piece of paper was stuck, and on it was written: \"To Tesuto.\"",
-  "grammar_note": "【〜てある】 'ロッカーのドアには、小さな紙が貼ってある' — てある indicates that someone has deliberately done something, and the result remains visible. Compare: 貼った (someone stuck it, past action) vs. 貼ってある (it is stuck — the result is here now). It often implies intention behind the action.",
+  "location_jp": "<ruby>東京駅<rt>とうきょうえき</rt></ruby>の<ruby>コインロッカー<rt>こいんろっかー</rt></ruby>",
+  "image_query": "japan train station coin lockers hallway fluorescent light quiet",
+  "scene_jp": "<ruby>駅員<rt>えきいん</rt></ruby>は<ruby>少<rt>すこ</rt></ruby>し<ruby>迷<rt>まよ</rt></ruby>ってから、あなたをロッカーの<ruby>前<rt>まえ</rt></ruby>まで<ruby>連<rt>つ</rt></ruby>れてきた。「<ruby>彼女<rt>かのじょ</rt></ruby>は……<ruby>昨日<rt>きのう</rt></ruby>の<ruby>夜<rt>よる</rt></ruby>、このロッカーの<ruby>前<rt>まえ</rt></ruby>に<ruby>長<rt>なが</rt></ruby>い<ruby>間<rt>あいだ</rt></ruby><ruby>立<rt>た</rt></ruby>っていました。」<ruby>彼<rt>かれ</rt></ruby>は<ruby>声<rt>こえ</rt></ruby>を<ruby>低<rt>ひく</rt></ruby>くして<ruby>言<rt>い</rt></ruby>った。ロッカーの<ruby>番号<rt>ばんごう</rt></ruby>は<ruby>三十一番<rt>さんじゅういちばん</rt></ruby>で、ドアに<ruby>小<rt>ちい</rt></ruby>さな<ruby>紙<rt>かみ</rt></ruby>が<ruby>貼<rt>は</rt></ruby>ってある。その<ruby>紙<rt>かみ</rt></ruby>には、「テスト<ruby>へ<rt>へ</rt></ruby>」と<ruby>書<rt>か</rt></ruby>いてあった。",
+  "scene_translation": "The station attendant hesitated for a moment, then led you to the lockers. \"She was... standing in front of this locker for a long time last night,\" he said, lowering his voice. The locker number is 31, and a small piece of paper is stuck to the door. Written on the paper were the words: \"To Tesuto.\"",
+  "grammar_note": "【〜てある】This expressive passive-like form means something has been done (and the result remains). 「貼ってある」= \"has been stuck (there).\" It implies someone deliberately put it there — different from 貼っている, which just describes a current state. Great for describing clues left behind on purpose.",
   "vocab": [
     {
-      "word": "コインロッカー",
-      "reading": "こいんろっかー",
-      "meaning": "coin locker / storage locker"
+      "word": "迷う",
+      "reading": "まよう",
+      "meaning": "to hesitate; to be unsure"
     },
     {
-      "word": "並ぶ",
-      "reading": "ならぶ",
-      "meaning": "to line up, to be arranged in a row"
+      "word": "連れてくる",
+      "reading": "つれてくる",
+      "meaning": "to bring (someone) along"
     },
     {
-      "word": "震える",
-      "reading": "ふるえる",
-      "meaning": "to tremble, to shake"
+      "word": "長い間",
+      "reading": "ながいあいだ",
+      "meaning": "for a long time"
     },
     {
-      "word": "指す",
-      "reading": "さす",
-      "meaning": "to point at"
-    },
-    {
-      "word": "貼る",
-      "reading": "はる",
-      "meaning": "to stick, to paste, to post"
+      "word": "声を低くする",
+      "reading": "こえをひくくする",
+      "meaning": "to lower one's voice"
     },
     {
       "word": "番号",
       "reading": "ばんごう",
-      "meaning": "number (as a label or code)"
+      "meaning": "number; code"
     },
     {
-      "word": "小さな声",
-      "reading": "ちいさなこえ",
-      "meaning": "a quiet voice, a small voice"
+      "word": "貼る",
+      "reading": "はる",
+      "meaning": "to stick; to paste; to affix"
     },
     {
-      "word": "服",
-      "reading": "ふく",
-      "meaning": "clothes, clothing"
+      "word": "〜番",
+      "reading": "〜ばん",
+      "meaning": "number ~ (counter for numbered items)"
     },
     {
-      "word": "昨日",
-      "reading": "きのう",
-      "meaning": "yesterday"
+      "word": "コインロッカー",
+      "reading": "こいんろっかー",
+      "meaning": "coin-operated locker"
+    },
+    {
+      "word": "鍵",
+      "reading": "かぎ",
+      "meaning": "key; lock"
+    }
+  ],
+  "items_gained": [
+    {
+      "jp": "ロッカー31番の鍵",
+      "reading": "ろっかーさんじゅういちばんのかぎ"
     }
   ],
   "scene_type": "choice",
   "choices": [
     {
-      "jp": "ロッカーを<ruby>開<rt>あ</rt></ruby>けようとするが、<ruby>鍵<rt>かぎ</rt></ruby>がない。<ruby>駅員<rt>えきいん</rt></ruby>に<ruby>鍵<rt>かぎ</rt></ruby>のことを<ruby>聞<rt>き</rt></ruby>く。",
-      "text_only": "ロッカーを開けようとするが、鍵がない。駅員に鍵のことを聞く。"
+      "jp": "<ruby>鍵<rt>かぎ</rt></ruby>を<ruby>使<rt>つか</rt></ruby>ってロッカーを<ruby>開<rt>あ</rt></ruby>ける",
+      "text_only": "鍵を使ってロッカーを開ける"
     },
     {
-      "jp": "<ruby>紙<rt>かみ</rt></ruby>を<ruby>丁寧<rt>ていねい</rt></ruby>に<ruby>剥<rt>は</rt></ruby>がして、<ruby>裏<rt>うら</rt></ruby>に<ruby>何<rt>なに</rt></ruby>か<ruby>書<rt>か</rt></ruby>いてあるか<ruby>確認<rt>かくにん</rt></ruby>する。",
-      "text_only": "紙を丁寧に剥がして、裏に何か書いてあるか確認する。"
+      "jp": "<ruby>駅員<rt>えきいん</rt></ruby>に「<ruby>彼女<rt>かのじょ</rt></ruby>のことをもっと<ruby>教<rt>おし</rt></ruby>えてください」と<ruby>頼<rt>たの</rt></ruby>む",
+      "text_only": "駅員に「彼女のことをもっと教えてください」と頼む"
     },
     {
-      "jp": "<ruby>駅員<rt>えきいん</rt></ruby>に「あなたはなぜ<ruby>怖<rt>こわ</rt></ruby>いのですか？」と<ruby>聞<rt>き</rt></ruby>く。",
-      "text_only": "駅員に「あなたはなぜ怖いのですか？」と聞く。"
+      "jp": "<ruby>紙<rt>かみ</rt></ruby>をよく<ruby>見<rt>み</rt></ruby>て、<ruby>字<rt>じ</rt></ruby>に<ruby>見覚<rt>みおぼ</rt></ruby>えがないか<ruby>確<rt>たし</rt></ruby>かめる",
+      "text_only": "紙をよく見て、字に見覚えがないか確かめる"
     }
   ],
-  "mystery_memo": "The mystery deepens: the woman in blue knew the player's name (Tesuto) and deliberately left something in locker 108 at Tokyo Station. The station attendant (nervous, slightly cooperative) has now guided the player to the locker — he is a recurring NPC, relationship currently: cautious/helpful but clearly frightened of something or someone connected to the woman. The note addressed to Tesuto is the central hook. The locker is locked; a key will be needed. The attendant may know more than he is saying."
+  "mystery_memo": "The mystery deepens: the woman in blue knew the player's name (テスト) and deliberately left a key and note at locker 31 in Tokyo Station before the player even arrived — suggesting she anticipated this encounter. The station attendant (nervous, polite) witnessed her lingering here last night; he is cooperative but clearly unsettled and knows more than he is saying. The locker key is now in the player's inventory and is certain to be important. No NPC relationships have been damaged yet.",
+  "npcs": [
+    {
+      "name_jp": "<ruby>駅員<rt>えきいん</rt></ruby>",
+      "name_reading": "えきいん",
+      "relationship": "neutral",
+      "note": "東京駅の若い駅員。青い服の女性を知っているが、何か隠しているようで少し緊張している。"
+    }
+  ]
 }

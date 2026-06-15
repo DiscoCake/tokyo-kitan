@@ -1,29 +1,24 @@
 {
   "location_jp": "<ruby>新<rt>しん</rt></ruby><ruby>宿<rt>じゅく</rt></ruby><ruby>駅<rt>えき</rt></ruby>　<ruby>南<rt>みなみ</rt></ruby><ruby>口<rt>ぐち</rt></ruby>",
-  "image_query": "shinjuku station exit crowd dusk golden light commuters",
-  "scene_jp": "<ruby>夕<rt>ゆう</rt></ruby><ruby>暮<rt>ぐ</rt></ruby>れの<ruby>新<rt>しん</rt></ruby><ruby>宿<rt>じゅく</rt></ruby><ruby>駅<rt>えき</rt></ruby>は、<ruby>何<rt>なん</rt></ruby><ruby>万<rt>まん</rt></ruby>もの<ruby>人<rt>ひと</rt></ruby>が<ruby>流<rt>なが</rt></ruby>れるように<ruby>動<rt>うご</rt></ruby>いていた。テストはスーツケースを<ruby>持<rt>も</rt></ruby>ちながら、<ruby>南<rt>みなみ</rt></ruby><ruby>口<rt>ぐち</rt></ruby>の<ruby>改<rt>かい</rt></ruby><ruby>札<rt>さつ</rt></ruby>を<ruby>出<rt>で</rt></ruby>たところだった。するとーー<ruby>見<rt>み</rt></ruby>ず<ruby>知<rt>し</rt></ruby>らずの<ruby>老<rt>ろう</rt></ruby><ruby>人<rt>じん</rt></ruby>が、まっすぐテストのほうへ<ruby>歩<rt>ある</rt></ruby>いてきた。「テストさん、<ruby>待<rt>ま</rt></ruby>っていましたよ。これを<ruby>受<rt>う</rt></ruby>け<ruby>取<rt>と</rt></ruby>ってください」と<ruby>老<rt>ろう</rt></ruby><ruby>人<rt>じん</rt></ruby>は<ruby>静<rt>しず</rt></ruby>かな<ruby>声<rt>こえ</rt></ruby>で<ruby>言<rt>い</rt></ruby>い、<ruby>小<rt>ちい</rt></ruby>さな<ruby>封<rt>ふう</rt></ruby><ruby>筒<rt>とう</rt></ruby>を<ruby>差<rt>さ</rt></ruby>し<ruby>出<rt>だ</rt></ruby>した。テストが<ruby>名<rt>な</rt></ruby><ruby>前<rt>まえ</rt></ruby>を<ruby>教<rt>おし</rt></ruby>えた<ruby>覚<rt>おぼ</rt></ruby>えはどこにもなかったのに。",
-  "scene_translation": "Shinjuku Station at dusk — tens of thousands of people flowing like a river. Testo had just passed through the south exit ticket gate, suitcase in hand. And then — a complete stranger, an old man, walked straight toward Testo. \"I've been waiting for you, Testo-san. Please take this,\" the old man said in a quiet voice, holding out a small envelope. Testo had no memory of telling anyone here their name.",
-  "grammar_note": "【〜たところだった】means 'had just done ~' — it describes an action that finished only moments before. Here: 改札を出たところだった = 'had just come out of the ticket gate.' The past tense (〜たところだった) is slightly different from the present 〜たところだ, emphasizing that this moment-in-time is now being recalled.",
+  "image_query": "shinjuku station south exit crowd evening commuters blur",
+  "scene_jp": "<ruby>新<rt>しん</rt></ruby><ruby>宿<rt>えき</rt></ruby>の<ruby>南<rt>みなみ</rt></ruby><ruby>口<rt>ぐち</rt></ruby>を<ruby>出<rt>で</rt></ruby>ると、<ruby>夕<rt>ゆう</rt></ruby><ruby>暮<rt>ぐ</rt></ruby>れの<ruby>光<rt>ひかり</rt></ruby>の<ruby>中<rt>なか</rt></ruby>で<ruby>人<rt>ひと</rt></ruby>の<ruby>波<rt>なみ</rt></ruby>が<ruby>流<rt>なが</rt></ruby>れていく。バッグを<ruby>肩<rt>かた</rt></ruby>にかけて<ruby>地<rt>じ</rt></ruby><ruby>図<rt>ず</rt></ruby>を<ruby>見<rt>み</rt></ruby>ていると、ふいに<ruby>足<rt>あし</rt></ruby><ruby>元<rt>もと</rt></ruby>に<ruby>小<rt>ちい</rt></ruby>さな<ruby>封<rt>ふう</rt></ruby><ruby>筒<rt>とう</rt></ruby>が<ruby>落<rt>お</rt></ruby>ちているのに<ruby>気<rt>き</rt></ruby>がついた。<ruby>封<rt>ふう</rt></ruby><ruby>筒<rt>とう</rt></ruby>を<ruby>拾<rt>ひろ</rt></ruby>い<ruby>上<rt>あ</rt></ruby>げると、そこには<ruby>見<rt>み</rt></ruby><ruby>覚<rt>おぼ</rt></ruby>えのない<ruby>字<rt>じ</rt></ruby>で「テスト<ruby>様<rt>さま</rt></ruby>へ」と<ruby>書<rt>か</rt></ruby>いてある。<ruby>隣<rt>となり</rt></ruby>に<ruby>立<rt>た</rt></ruby>っていた<ruby>老<rt>ろう</rt></ruby><ruby>人<rt>じん</rt></ruby>が、こちらを<ruby>見<rt>み</rt></ruby>てそっとつぶやいた。「<ruby>待<rt>ま</rt></ruby>っていましたよ、テストさん。」",
+  "scene_translation": "You step out of Shinjuku Station's south exit into the flowing tide of people under the dusk light. You're checking your map, bag slung over your shoulder, when you notice a small envelope lying at your feet. Picking it up, you see written in an unfamiliar hand: 'To テスト-sama.' The old man standing beside you glances over and murmurs quietly, 'I've been waiting for you, テスト-san.'",
+  "grammar_note": "【〜のに気がつく】'to notice that ~' — のに here connects a verb clause to 気がつく, expressing the moment of realizing something. e.g. 封筒が落ちているのに気がついた = 'I noticed that an envelope was lying there.' Very useful for mystery and discovery moments.",
   "vocab": [
+    {
+      "word": "南口",
+      "reading": "みなみぐち",
+      "meaning": "south exit"
+    },
     {
       "word": "夕暮れ",
       "reading": "ゆうぐれ",
       "meaning": "dusk, twilight"
     },
     {
-      "word": "改札",
-      "reading": "かいさつ",
-      "meaning": "ticket gate"
-    },
-    {
-      "word": "見ず知らず",
-      "reading": "みずしらず",
-      "meaning": "complete stranger (lit. 'unseen, unknown')"
-    },
-    {
-      "word": "老人",
-      "reading": "ろうじん",
-      "meaning": "old man, elderly person"
+      "word": "人の波",
+      "reading": "ひとのなみ",
+      "meaning": "tide/wave of people"
     },
     {
       "word": "封筒",
@@ -31,54 +26,59 @@
       "meaning": "envelope"
     },
     {
-      "word": "差し出す",
-      "reading": "さしだす",
-      "meaning": "to hold out, to extend toward someone"
+      "word": "拾い上げる",
+      "reading": "ひろいあげる",
+      "meaning": "to pick up"
     },
     {
-      "word": "受け取る",
-      "reading": "うけとる",
-      "meaning": "to receive, to accept"
+      "word": "見覚え",
+      "reading": "みおぼえ",
+      "meaning": "recollection of having seen something"
     },
     {
-      "word": "覚え",
-      "reading": "おぼえ",
-      "meaning": "memory, recollection"
+      "word": "老人",
+      "reading": "ろうじん",
+      "meaning": "old man/person"
     },
     {
-      "word": "流れる",
-      "reading": "ながれる",
-      "meaning": "to flow"
+      "word": "つぶやく",
+      "reading": "つぶやく",
+      "meaning": "to murmur, to mutter"
     },
     {
-      "word": "まっすぐ",
-      "reading": "まっすぐ",
-      "meaning": "straight, directly"
+      "word": "〜様",
+      "reading": "さま",
+      "meaning": "honorific suffix, more formal than さん"
     }
   ],
   "items_gained": [
     {
-      "jp": "小さな封筒",
-      "reading": "ちいさなふうとう"
+      "jp": "封筒（未開封）",
+      "reading": "ふうとう（みかいふう）"
     }
   ],
   "scene_type": "choice",
   "choices": [
     {
-      "jp": "<ruby>封<rt>ふう</rt></ruby><ruby>筒<rt>とう</rt></ruby>を<ruby>受<rt>う</rt></ruby>け<ruby>取<rt>と</rt></ruby>り、「どうして<ruby>私<rt>わたし</rt></ruby>の<ruby>名<rt>な</rt></ruby><ruby>前<rt>まえ</rt></ruby>を<ruby>知<rt>し</rt></ruby>っているんですか？」と<ruby>聞<rt>き</rt></ruby>く。",
-      "text_only": "封筒を受け取り、「どうして私の名前を知っているんですか？」と聞く。",
-      "english": "Accept the envelope and ask, 'How do you know my name?'"
+      "jp": "「<ruby>あなたは<rt></rt></ruby><ruby>誰<rt>だれ</rt></ruby>ですか？」と<ruby>老<rt>ろう</rt></ruby><ruby>人<rt>じん</rt></ruby>に<ruby>聞<rt>き</rt></ruby>く。",
+      "text_only": "「あなたは誰ですか？」と老人に聞く。"
     },
     {
-      "jp": "<ruby>一<rt>いっ</rt></ruby><ruby>歩<rt>ぽ</rt></ruby><ruby>後<rt>うし</rt></ruby>ろに<ruby>下<rt>さ</rt></ruby>がり、「すみません、<ruby>人<rt>ひと</rt></ruby><ruby>違<rt>ちが</rt></ruby>いじゃないですか？」と<ruby>言<rt>い</rt></ruby>う。",
-      "text_only": "一歩後ろに下がり、「すみません、人違いじゃないですか？」と言う。",
-      "english": "Step back and say, 'Excuse me, aren't you mistaking me for someone else?'"
+      "jp": "<ruby>封<rt>ふう</rt></ruby><ruby>筒<rt>とう</rt></ruby>を<ruby>開<rt>あ</rt></ruby>けて、<ruby>中<rt>なか</rt></ruby><ruby>身<rt>み</rt></ruby>を<ruby>確<rt>かく</rt></ruby><ruby>認<rt>にん</rt></ruby>する。",
+      "text_only": "封筒を開けて、中身を確認する。"
     },
     {
-      "jp": "だまって<ruby>封<rt>ふう</rt></ruby><ruby>筒<rt>とう</rt></ruby>を<ruby>受<rt>う</rt></ruby>け<ruby>取<rt>と</rt></ruby>り、<ruby>老<rt>ろう</rt></ruby><ruby>人<rt>じん</rt></ruby>の<ruby>顔<rt>かお</rt></ruby>をじっと<ruby>見<rt>み</rt></ruby>る。",
-      "text_only": "だまって封筒を受け取り、老人の顔をじっと見る。",
-      "english": "Silently accept the envelope and stare at the old man's face."
+      "jp": "<ruby>不<rt>ふ</rt></ruby><ruby>思<rt>し</rt></ruby><ruby>議<rt>ぎ</rt></ruby>に<ruby>思<rt>おも</rt></ruby>いながらも、<ruby>老<rt>ろう</rt></ruby><ruby>人<rt>じん</rt></ruby>から<ruby>離<rt>はな</rt></ruby>れて<ruby>歩<rt>ある</rt></ruby>き<ruby>始<rt>はじ</rt></ruby>める。",
+      "text_only": "不思議に思いながらも、老人から離れて歩き始める。"
     }
   ],
-  "mystery_memo": "The central mystery: a stranger at Shinjuku Station south exit knew Testo's name without being told and delivered a small envelope. Contents unknown. The old man's identity and how he knew Testo are the core thread. Old man relationship: neutral/mysterious — no history yet. The envelope is the first key item and must be opened/referenced in a future scene to reveal its first clue."
+  "mystery_memo": "Central mystery: someone knew the player's name before they arrived in Tokyo and left a sealed envelope for them at Shinjuku Station's south exit. The old man also knows the player's name and claims to have been waiting — he is a key figure. The envelope is unopened and its contents are unknown. The player has just arrived, so no prior relationship has been established with any NPC yet.",
+  "npcs": [
+    {
+      "name_jp": "<ruby>老<rt>ろう</rt></ruby><ruby>人<rt>じん</rt></ruby>",
+      "name_reading": "ろうじん",
+      "relationship": "unknown",
+      "note": "新宿駅でテストさんを待っていた謎の老人。名前はまだ不明。"
+    }
+  ]
 }

@@ -1,86 +1,89 @@
 {
-  "location_jp": "<ruby>地<rt>ち</rt>下<rt>か</rt></ruby>のバー「<ruby>月<rt>つき</rt>の<rt>の</rt>底<rt>そこ</rt></ruby>」",
-  "image_query": "underground jazz bar dim amber light vintage bottles shadow",
-  "scene_jp": "バーテンダーは<ruby>静<rt>しず</rt>か</ruby>にグラスを<ruby>磨<rt>みが</rt></ruby>きながら、テストの<ruby>顔<rt>かお</rt></ruby>をじっと<ruby>見<rt>み</rt></ruby>つめた。「<ruby>君<rt>きみ</rt></ruby>のおばあさんは、よくここへ<ruby>来<rt>き</rt></ruby>てはその<ruby>話<rt>はなし</rt></ruby>をしてくれたよ——<ruby>孫<rt>まご</rt></ruby>がいつかこの<ruby>街<rt>まち</rt></ruby>に<ruby>迷<rt>まよ</rt></ruby>い<ruby>込<rt>こ</rt></ruby>む、ってね。」<ruby>彼<rt>かれ</rt></ruby>はカウンターの<ruby>奥<rt>おく</rt></ruby>から<ruby>小<rt>ちい</rt></ruby>さな<ruby>封<rt>ふう</rt></ruby><ruby>筒<rt>とう</rt></ruby>を<ruby>取<rt>と</rt></ruby>り<ruby>出<rt>だ</rt></ruby>し、それをテストの<ruby>前<rt>まえ</rt></ruby>に<ruby>静<rt>しず</rt>か</ruby>に<ruby>置<rt>お</rt></ruby>いた。「<ruby>預<rt>あず</rt></ruby>かってから<ruby>三<rt>さん</rt></ruby><ruby>年<rt>ねん</rt></ruby>になる。ようやく<ruby>届<rt>とど</rt></ruby>けられた。」<ruby>封<rt>ふう</rt></ruby><ruby>筒<rt>とう</rt></ruby>の<ruby>表<rt>おもて</rt></ruby>には、テストという<ruby>名<rt>な</rt></ruby>が<ruby>古<rt>ふる</rt></ruby>びたインクで<ruby>書<rt>か</rt></ruby>かれていて、<ruby>裏<rt>うら</rt></ruby>には<ruby>見<rt>み</rt></ruby>たことのない<ruby>紋<rt>もん</rt></ruby><ruby>章<rt>しょう</rt></ruby>が<ruby>押<rt>お</rt></ruby>してあった。",
-  "scene_translation": "The bartender polished a glass in silence, fixing his gaze on you. \"Your grandmother used to come here often and tell me — that someday her grandchild would wander into this city.\" He reached behind the counter and set a small envelope quietly in front of you. \"I've been holding onto it for three years now. I'm glad I can finally pass it along.\" On the front of the envelope, your name was written in faded ink; on the back, an unfamiliar crest had been stamped.",
-  "grammar_note": "【〜てはVする】The pattern 「来ては話をしてくれた」 expresses a repeated action — \"she would come, and each time she would tell me.\" 〜ては links a recurring condition to what habitually followed it. It's subtly different from just 来て話した (a single sequence); the 〜ては implies the cycle kept repeating. You'll also notice the bartender's speech (〜てくれたよ、届けられた) is calm and measured — the register of someone older who chooses words with care.",
+  "location_jp": "<ruby>地<rt>ち</rt></ruby><ruby>下<rt>か</rt></ruby>のバー「<ruby>夜<rt>よる</rt></ruby>の<ruby>底<rt>そこ</rt></ruby>」",
+  "image_query": "tokyo underground bar dim candlelight wood counter whiskey glasses intimate",
+  "scene_jp": "<ruby>バーテンダー<rt>バーテンダー</rt></ruby>の<ruby>男<rt>おとこ</rt></ruby>は、グラスを<ruby>磨<rt>みが</rt></ruby>きながらゆっくりと<ruby>口<rt>くち</rt></ruby>を<ruby>開<rt>ひら</rt></ruby>いた。「<ruby>君<rt>きみ</rt></ruby>のお<ruby>祖母<rt>ばあ</rt></ruby>さんは、<ruby>毎<rt>まい</rt></ruby><ruby>月<rt>つき</rt></ruby><ruby>一<rt>いち</rt></ruby><ruby>度<rt>ど</rt></ruby>ここへ<ruby>来<rt>き</rt></ruby>ていたよ。<ruby>何<rt>なに</rt></ruby>かを<ruby>探<rt>さが</rt></ruby>していたらしい。」<ruby>薄<rt>うす</rt></ruby>い<ruby>煙草<rt>たばこ</rt></ruby>の<ruby>煙<rt>けむり</rt></ruby>がカウンターの<ruby>上<rt>うえ</rt></ruby>を<ruby>漂<rt>ただよ</rt></ruby>い、テストは<ruby>言葉<rt>ことば</rt></ruby>を<ruby>失<rt>うしな</rt></ruby>ったまま<ruby>男<rt>おとこ</rt></ruby>の<ruby>顔<rt>かお</rt></ruby>を<ruby>見<rt>み</rt></ruby>つめた。それから<ruby>男<rt>おとこ</rt></ruby>は、まるで<ruby>独<rt>ひと</rt></ruby>り<ruby>言<rt>ごと</rt></ruby>を<ruby>言<rt>い</rt></ruby>うかのように<ruby>付<rt>つ</rt></ruby>け<ruby>加<rt>くわ</rt></ruby>えた。「<ruby>最後<rt>さいご</rt></ruby>に<ruby>来<rt>き</rt></ruby>た<ruby>夜<rt>よる</rt></ruby>、<ruby>彼女<rt>かのじょ</rt></ruby>はこれを<ruby>置<rt>お</rt></ruby>いていった。」<ruby>男<rt>おとこ</rt></ruby>がカウンターの<ruby>下<rt>した</rt></ruby>から<ruby>取<rt>と</rt></ruby>り<ruby>出<rt>だ</rt></ruby>したのは、<ruby>古<rt>ふる</rt></ruby>びた<ruby>封筒<rt>ふうとう</rt></ruby>だった。<ruby>表<rt>おもて</rt></ruby>には、テストという<ruby>名前<rt>なまえ</rt></ruby>が<ruby>書<rt>か</rt></ruby>かれていた。",
+  "scene_translation": "The bartender slowly opened his mouth, polishing a glass. \"Your grandmother used to come here once a month. It seems she was searching for something.\" Thin cigarette smoke drifted across the counter, and Tesuto stared at the man's face, struck speechless. Then the man added, almost as if talking to himself: \"The last night she came, she left this behind.\" What the man produced from beneath the counter was a worn, weathered envelope. On the front, the name 'Tesuto' was written.",
+  "grammar_note": "【まるで〜かのように】'just as if / as though ~' — a simile construction combining まるで (just like) with かのように (as if it were). Here: まるで独り言を言うかのように (as though he were talking to himself). Note how かのように follows the plain form of the verb — this is an N3 pattern for vivid, literary comparisons.",
   "vocab": [
+    {
+      "word": "磨く",
+      "reading": "みがく",
+      "meaning": "to polish, to shine"
+    },
+    {
+      "word": "漂う",
+      "reading": "ただよう",
+      "meaning": "to drift, to waft, to float"
+    },
+    {
+      "word": "煙草",
+      "reading": "たばこ",
+      "meaning": "cigarette, tobacco"
+    },
+    {
+      "word": "煙",
+      "reading": "けむり",
+      "meaning": "smoke"
+    },
+    {
+      "word": "言葉を失う",
+      "reading": "ことばをうしなう",
+      "meaning": "to be struck speechless, to lose one's words"
+    },
+    {
+      "word": "独り言",
+      "reading": "ひとりごと",
+      "meaning": "talking to oneself, muttering"
+    },
+    {
+      "word": "付け加える",
+      "reading": "つけくわえる",
+      "meaning": "to add (words), to append"
+    },
     {
       "word": "封筒",
       "reading": "ふうとう",
       "meaning": "envelope"
     },
     {
-      "word": "紋章",
-      "reading": "もんしょう",
-      "meaning": "crest, coat of arms"
-    },
-    {
-      "word": "預かる",
-      "reading": "あずかる",
-      "meaning": "to hold something in safekeeping, to be entrusted with"
-    },
-    {
-      "word": "届ける",
-      "reading": "とどける",
-      "meaning": "to deliver, to pass along"
-    },
-    {
-      "word": "迷い込む",
-      "reading": "まよいこむ",
-      "meaning": "to wander into (a place), to get lost inside"
-    },
-    {
-      "word": "奥",
-      "reading": "おく",
-      "meaning": "the back (of a space), inner depths"
-    },
-    {
       "word": "古びた",
       "reading": "ふるびた",
-      "meaning": "aged, worn, faded with time"
+      "meaning": "aged, worn, weathered"
     },
     {
       "word": "表",
       "reading": "おもて",
-      "meaning": "front side, face (of paper or envelope)"
-    },
-    {
-      "word": "裏",
-      "reading": "うら",
-      "meaning": "back side, reverse"
-    },
-    {
-      "word": "押す",
-      "reading": "おす",
-      "meaning": "to stamp, to press (a seal)"
-    },
-    {
-      "word": "じっと",
-      "reading": "じっと",
-      "meaning": "fixedly, without moving, intently"
+      "meaning": "front side, face (of an object)"
     }
   ],
   "items_gained": [
     {
-      "jp": "古い封筒",
-      "reading": "ふるいふうとう"
+      "jp": "祖母からの封筒",
+      "reading": "そぼからのふうとう"
     }
   ],
   "scene_type": "choice",
   "choices": [
     {
-      "jp": "<ruby>封<rt>ふう</rt></ruby><ruby>筒<rt>とう</rt></ruby>をその<ruby>場<rt>ば</rt></ruby>で<ruby>開<rt>あ</rt></ruby>ける",
+      "jp": "<ruby>封筒<rt>ふうとう</rt></ruby>をその<ruby>場<rt>ば</rt></ruby>で<ruby>開<rt>あ</rt></ruby>ける",
       "text_only": "封筒をその場で開ける"
     },
     {
-      "jp": "バーテンダーに<ruby>祖<rt>そ</rt></ruby><ruby>母<rt>ぼ</rt></ruby>のことをもっと<ruby>聞<rt>き</rt></ruby>く",
-      "text_only": "バーテンダーに祖母のことをもっと聞く"
+      "jp": "バーテンダーに<ruby>祖母<rt>そぼ</rt></ruby>がいつ<ruby>最後<rt>さいご</rt></ruby>に<ruby>来<rt>き</rt></ruby>たか<ruby>聞<rt>き</rt></ruby>く",
+      "text_only": "バーテンダーに祖母がいつ最後に来たか聞く"
     },
     {
-      "jp": "<ruby>紋<rt>もん</rt></ruby><ruby>章<rt>しょう</rt></ruby>について<ruby>尋<rt>たず</rt></ruby>ねる",
-      "text_only": "紋章について尋ねる"
+      "jp": "<ruby>封筒<rt>ふうとう</rt></ruby>を<ruby>鞄<rt>かばん</rt></ruby>にしまい、バーの<ruby>奥<rt>おく</rt></ruby>にある<ruby>扉<rt>とびら</rt></ruby>が<ruby>気<rt>き</rt></ruby>になる",
+      "text_only": "封筒を鞄にしまい、バーの奥にある扉が気になる"
     }
   ],
-  "mystery_memo": "The bartender (relationship: cautiously warm — he was entrusted with the envelope and has been waiting; he respects the player as the grandmother's grandchild) has now handed over a sealed envelope addressed to テスト in aged ink, held for three years since the grandmother's death or disappearance. The unfamiliar crest on the back is a new clue — likely the same symbol that will recur on objects or locations. The envelope's contents are still unknown. The woman in blue has not appeared; she may be connected to whoever stamped that crest. Inventory note: the old envelope is a key story item — its contents and the crest will drive Act 2."
+  "mystery_memo": "The envelope addressed to Tesuto (the player) was left by the grandmother on her final visit — establishing she anticipated her grandchild would one day come here. The bartender is now a key figure: warm but carefully measured, clearly protective of old secrets. He knows more than he has said. The woman in blue remains unseen but is likely connected to the grandmother's search. The envelope's contents will be a central clue when opened — probably a name, address, or fragmentary message.",
+  "npcs": [
+    {
+      "name_jp": "<ruby>バーテンダー<rt>バーテンダー</rt></ruby>の<ruby>男<rt>おとこ</rt></ruby>",
+      "name_reading": "バーテンダー",
+      "relationship": "neutral",
+      "note": "地下バーのバーテンダー。祖母を知っており、封筒を保管していた。まだ多くを語らないが、敵意はない。"
+    }
+  ]
 }

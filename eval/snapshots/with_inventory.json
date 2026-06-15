@@ -1,75 +1,84 @@
 {
-  "location_jp": "<ruby>奥<rt>おく</rt></ruby>の<ruby>部屋<rt>へや</rt></ruby>（<ruby>神社<rt>じんじゃ</rt></ruby>）",
-  "image_query": "shinto shrine inner room dim candlelight wooden altar dusty",
-  "scene_jp": "<ruby>鍵<rt>かぎ</rt></ruby>を<ruby>回<rt>まわ</rt></ruby>すと、<ruby>古<rt>ふる</rt></ruby>い<ruby>扉<rt>とびら</rt></ruby>がゆっくり<ruby>開<rt>ひら</rt></ruby>いた。<ruby>中<rt>なか</rt></ruby>には<ruby>小<rt>ちい</rt></ruby>さな<ruby>祭壇<rt>さいだん</rt></ruby>があり、<ruby>薄<rt>うす</rt></ruby>い<ruby>光<rt>ひかり</rt></ruby>の<ruby>中<rt>なか</rt></ruby>にノートが<ruby>置<rt>お</rt></ruby>かれていた。ノートを<ruby>開<rt>ひら</rt></ruby>くと、<ruby>青<rt>あお</rt></ruby>いインクで「テストさん、<ruby>次<rt>つぎ</rt></ruby>は<ruby>水道橋<rt>すいどうばし</rt></ruby>の<ruby>古<rt>ふる</rt></ruby>い<ruby>時計台<rt>とけいだい</rt></ruby>へ。<ruby>夜<rt>よる</rt></ruby>の<ruby>十<rt>じゅう</rt></ruby><ruby>時<rt>じ</rt></ruby>までに。」と<ruby>書<rt>か</rt></ruby>いてあった。<ruby>後<rt>うし</rt></ruby>ろで<ruby>物音<rt>ものおと</rt></ruby>がして、<ruby>振<rt>ふ</rt></ruby>り<ruby>返<rt>かえ</rt></ruby>ると、<ruby>神社<rt>じんじゃ</rt></ruby>の<ruby>宮司<rt>ぐうじ</rt></ruby>らしき<ruby>老<rt>お</rt></ruby>いた<ruby>男性<rt>だんせい</rt></ruby>が<ruby>立<rt>た</rt></ruby>っていた。「この<ruby>部屋<rt>へや</rt></ruby>のことを<ruby>知<rt>し</rt></ruby>っているとは……<ruby>青<rt>あお</rt></ruby>い<ruby>着物<rt>きもの</rt></ruby>の<ruby>女<rt>おんな</rt></ruby>に<ruby>頼<rt>たの</rt></ruby>まれたのかね。」",
-  "scene_translation": "When you turned the key, the old door slowly opened. Inside was a small altar, and in the faint light, a notebook had been placed there. Opening it, you found written in blue ink: 'Testo-san, next go to the old clock tower at Suidobashi. By ten o'clock at night.' There was a sound from behind you — turning around, an elderly man who appeared to be the shrine's priest was standing there. 'To think you know about this room… Were you asked by the woman in the blue kimono?'",
-  "grammar_note": "【〜とは】This expression marks something as surprising or unexpected — the priest says 「この<ruby>部屋<rt>へや</rt></ruby>のことを<ruby>知<rt>し</rt></ruby>っているとは」, meaning 'to think that you know about this room…' It carries a tone of quiet astonishment and is often left unfinished, letting the feeling hang in the air. Note also the priest's speech style: 〜かね is a gentle, old-fashioned masculine ending, warmer and more reflective than plain だ — a register quite different from the casual じゃん of younger characters.",
+  "location_jp": "<ruby>稲荷<rt>いなり</rt></ruby><ruby>神社<rt>じんじゃ</rt></ruby>の<ruby>奥<rt>おく</rt></ruby>の<ruby>間<rt>ま</rt></ruby>",
+  "image_query": "japanese shrine inner room dim lantern light wooden altar",
+  "scene_jp": "<ruby>鍵<rt>かぎ</rt></ruby>を<ruby>回<rt>まわ</rt></ruby>すと、<ruby>重<rt>おも</rt></ruby>い<ruby>扉<rt>とびら</rt></ruby>がゆっくりと<ruby>開<rt>ひら</rt></ruby>いた。<ruby>中<rt>なか</rt></ruby>は<ruby>小<rt>ちい</rt></ruby>さな<ruby>部屋<rt>へや</rt></ruby>で、<ruby>古<rt>ふる</rt></ruby>い<ruby>線香<rt>せんこう</rt></ruby>のにおいがした。<ruby>棚<rt>たな</rt></ruby>の<ruby>上<rt>うえ</rt></ruby>に<ruby>一枚<rt>いちまい</rt></ruby>の<ruby>紙<rt>かみ</rt></ruby>が<ruby>置<rt>お</rt></ruby>いてあり、テストさんはノートを<ruby>開<rt>ひら</rt></ruby>いてみた。すると、<ruby>前<rt>まえ</rt></ruby>のページとは<ruby>違<rt>ちが</rt></ruby>う<ruby>筆跡<rt>ひっせき</rt></ruby>で、こう<ruby>書<rt>か</rt></ruby>いてあった——「<ruby>次<rt>つぎ</rt></ruby>は<ruby>水道橋<rt>すいどうばし</rt></ruby>の<ruby>古<rt>ふる</rt></ruby>い<ruby>喫茶店<rt>きっさてん</rt></ruby>へ。<ruby>店<rt>みせ</rt></ruby>の<ruby>主人<rt>しゅじん</rt></ruby>はあなたのことを<ruby>知<rt>し</rt></ruby>っているはずです。」<ruby>気<rt>き</rt></ruby>がつくと、<ruby>部屋<rt>へや</rt></ruby>の<ruby>隅<rt>すみ</rt></ruby>に<ruby>青<rt>あお</rt></ruby>い<ruby>布<rt>ぬの</rt></ruby>の<ruby>切<rt>き</rt></ruby>れはしが<ruby>落<rt>お</rt></ruby>ちていた——<ruby>青<rt>あお</rt></ruby>い<ruby>女<rt>おんな</rt></ruby>が<ruby>最近<rt>さいきん</rt></ruby>ここにいたことは、まず<ruby>間違<rt>まちが</rt></ruby>いない。",
+  "scene_translation": "When you turned the key, the heavy door slowly opened. Inside was a small room that smelled of old incense. A single sheet of paper rested on a shelf, and you opened the notebook to look — written in a different handwriting from the previous pages, it said: 'Next, go to the old coffee shop in Suidobashi. The owner should know who you are.' When you looked up, a scrap of blue fabric had fallen in the corner of the room — there could be little doubt that the woman in blue had been here recently.",
+  "grammar_note": "【はずです】 'should be; ought to be' — expresses reasonable expectation based on evidence. 「<ruby>店<rt>みせ</rt></ruby>の<ruby>主人<rt>しゅじん</rt></ruby>はあなたのことを<ruby>知<rt>し</rt></ruby>っているはずです」= 'The owner should know about you.' Notice the polite です/ます register of the written message — it feels formal and deliberate, as if written for a specific reader.",
   "vocab": [
     {
-      "word": "祭壇",
-      "reading": "さいだん",
-      "meaning": "altar"
+      "word": "奥の間",
+      "reading": "おくのま",
+      "meaning": "inner room, back room"
     },
     {
-      "word": "宮司",
-      "reading": "ぐうじ",
-      "meaning": "chief priest of a Shinto shrine"
+      "word": "筆跡",
+      "reading": "ひっせき",
+      "meaning": "handwriting, penmanship"
     },
     {
-      "word": "時計台",
-      "reading": "とけいだい",
-      "meaning": "clock tower"
+      "word": "線香",
+      "reading": "せんこう",
+      "meaning": "incense sticks"
     },
     {
-      "word": "物音",
-      "reading": "ものおと",
-      "meaning": "a sound, a noise (from something)"
+      "word": "布",
+      "reading": "ぬの",
+      "meaning": "cloth, fabric"
     },
     {
-      "word": "振り返る",
-      "reading": "ふりかえる",
-      "meaning": "to turn around, to look back"
+      "word": "切れはし",
+      "reading": "きれはし",
+      "meaning": "scrap, small piece (of cloth or paper)"
     },
     {
-      "word": "薄い",
-      "reading": "うすい",
-      "meaning": "thin, faint, pale"
+      "word": "隅",
+      "reading": "すみ",
+      "meaning": "corner (of a room)"
     },
     {
-      "word": "頼む",
-      "reading": "たのむ",
-      "meaning": "to ask (a favour of), to request"
+      "word": "間違いない",
+      "reading": "まちがいない",
+      "meaning": "certain, no doubt about it"
     },
     {
-      "word": "インク",
-      "reading": "インク",
-      "meaning": "ink"
+      "word": "喫茶店",
+      "reading": "きっさてん",
+      "meaning": "old-style Japanese coffee shop"
     },
     {
-      "word": "着物",
-      "reading": "きもの",
-      "meaning": "kimono, traditional Japanese garment"
+      "word": "主人",
+      "reading": "しゅじん",
+      "meaning": "owner, proprietor (of a shop)"
     },
     {
-      "word": "扉",
-      "reading": "とびら",
-      "meaning": "door, gate (often a heavier or significant one)"
+      "word": "棚",
+      "reading": "たな",
+      "meaning": "shelf"
     }
   ],
+  "items_gained": [],
   "scene_type": "choice",
   "choices": [
     {
-      "jp": "「はい、<ruby>青<rt>あお</rt></ruby>い<ruby>着物<rt>きもの</rt></ruby>の<ruby>女性<rt>じょせい</rt></ruby>に<ruby>導<rt>みちび</rt></ruby>かれてここに<ruby>来<rt>き</rt></ruby>ました。」と<ruby>正直<rt>しょうじき</rt></ruby>に<ruby>答<rt>こた</rt></ruby>える",
-      "text_only": "「はい、青い着物の女性に導かれてここに来ました。」と正直に答える"
+      "jp": "<ruby>青<rt>あお</rt></ruby>い<ruby>布<rt>ぬの</rt></ruby>を<ruby>拾<rt>ひろ</rt></ruby>い、ポケットにしまう",
+      "text_only": "青い布を拾い、ポケットにしまう"
     },
     {
-      "jp": "「<ruby>彼女<rt>かのじょ</rt></ruby>のことを<ruby>知<rt>し</rt></ruby>っているんですか？<ruby>教<rt>おし</rt></ruby>えてください。」と<ruby>聞<rt>き</rt></ruby>く",
-      "text_only": "「彼女のことを知っているんですか？教えてください。」と聞く"
+      "jp": "<ruby>棚<rt>たな</rt></ruby>の<ruby>上<rt>うえ</rt></ruby>の<ruby>紙<rt>かみ</rt></ruby>をよく<ruby>調<rt>しら</rt></ruby>べる",
+      "text_only": "棚の上の紙をよく調べる"
     },
     {
-      "jp": "<ruby>黙<rt>だま</rt></ruby>ったまま、ノートを<ruby>胸<rt>むね</rt></ruby>に<ruby>抱<rt>だ</rt></ruby>いて<ruby>宮司<rt>ぐうじ</rt></ruby>を<ruby>見<rt>み</rt></ruby>つめる",
-      "text_only": "黙ったまま、ノートを胸に抱いて宮司を見つめる"
+      "jp": "すぐに<ruby>水道橋<rt>すいどうばし</rt></ruby>へ<ruby>向<rt>む</rt></ruby>かう",
+      "text_only": "すぐに水道橋へ向かう"
     }
   ],
-  "mystery_memo": "The notebook has now revealed the next destination: the clock tower at Suidobashi, by 10 PM. The woman in blue knows the player's name and has been orchestrating each step — locker, shrine, now this. The elderly shrine priest (宮司) recognizes the blue-kimono woman and seems unsurprised by her involvement, suggesting a prior relationship with the shrine; his tone is cautious but not hostile. Relationship status: priest is neutral-watchful. The notebook and key are now confirmed as a matched set left deliberately for the player."
+  "mystery_memo": "The notebook now contains a second message directing the player to an old coffee shop in Suidobashi, whose owner 'knows' the player — deepening the central mystery of who knows the player's name and why. A scrap of blue fabric confirms the woman in blue was in this room recently, possibly very recently. The notebook and locker key are both significant: the key has served its immediate purpose but may have a second use yet to be discovered. The grandpa from scene 3 mentioned a coffee shop in passing — this may be the same one, worth revisiting that connection.",
+  "npcs": [
+    {
+      "name_jp": "<ruby>青<rt>あお</rt></ruby>い<ruby>女<rt>おんな</rt></ruby>",
+      "name_reading": "あおいおんな",
+      "relationship": "unknown",
+      "note": "謎の女性で、プレイヤーの名前を知っているらしく、ノートにメッセージを残していった。"
+    }
+  ]
 }
