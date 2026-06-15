@@ -22,7 +22,8 @@ export const S = {
   currentRoomId: null,         // room the player is currently inside
   visitedRooms: new Set(),     // roomIds where a scene has been entered
   roomScenes: {},              // roomId → last scene object seen; restored on re-entry
-  exploredTiles: new Set()     // "x,y" strings for fog-of-war reveal
+  exploredTiles: new Set(),    // "x,y" strings for fog-of-war reveal
+  dungeonLayout: null          // roomId → {x,y} map, generated each run
 };
 
 export function saveGame() {
@@ -37,7 +38,8 @@ export function saveGame() {
       currentRoomId: S.currentRoomId,
       visitedRooms: [...S.visitedRooms],
       roomScenes: S.roomScenes,
-      exploredTiles: [...S.exploredTiles]
+      exploredTiles: [...S.exploredTiles],
+      dungeonLayout: S.dungeonLayout
     };
     localStorage.setItem(SAVE_KEY, JSON.stringify(snap));
     fetch('/api/save', {

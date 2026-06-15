@@ -1,14 +1,29 @@
 {
-  "location_jp": "<ruby>東<rt>ひがし</rt></ruby><ruby>京<rt>きょう</rt></ruby><ruby>駅<rt>えき</rt></ruby>・<ruby>中<rt>ちゅう</rt></ruby><ruby>央<rt>おう</rt></ruby><ruby>改<rt>かい</rt></ruby><ruby>札<rt>さつ</rt></ruby>",
-  "image_query": "tokyo station central gate crowd arrivals marble floor",
-  "scene_jp": "<ruby>東<rt>ひがし</rt></ruby><ruby>京<rt>きょう</rt></ruby><ruby>駅<rt>えき</rt></ruby>に<ruby>着<rt>つ</rt></ruby>いたばかりのあなたは、ホームの<ruby>人<rt>ひと</rt></ruby><ruby>混<rt>ご</rt></ruby>みの<ruby>中<rt>なか</rt></ruby>で<ruby>立<rt>た</rt></ruby>ち<ruby>止<rt>ど</rt></ruby>まった。ふと<ruby>足<rt>あし</rt></ruby><ruby>元<rt>もと</rt></ruby>を<ruby>見<rt>み</rt></ruby>ると、<ruby>小<rt>ちい</rt></ruby>さな<ruby>白<rt>しろ</rt></ruby>い<ruby>封<rt>ふう</rt></ruby><ruby>筒<rt>とう</rt></ruby>が<ruby>落<rt>お</rt></ruby>ちていた。<ruby>封<rt>ふう</rt></ruby><ruby>筒<rt>とう</rt></ruby>には、インクで<ruby>丁<rt>てい</rt></ruby><ruby>寧<rt>ねい</rt></ruby>に<ruby>書<rt>か</rt></ruby>かれた<ruby>文<rt>も</rt></ruby><ruby>字<rt>じ</rt></ruby>があった。「テストさんへ」。<ruby>周<rt>まわ</rt></ruby>りを<ruby>見<rt>み</rt></ruby><ruby>回<rt>まわ</rt></ruby>しても、だれもこちらを<ruby>見<rt>み</rt></ruby>ていない。",
-  "scene_translation": "You had just arrived at Tokyo Station, standing still amid the crowd on the platform. Glancing down at your feet, you noticed a small white envelope lying there. On it, written carefully in ink, were the words: 'To Tesuto.' You looked around, but no one was watching you.",
-  "grammar_note": "【〜たばかり】means 'just did something' — 着いたばかり = 'just arrived.' It emphasizes that an action happened very recently. Contrast with 〜たところ, which is similar but more neutral in timing.",
+  "location_jp": "<ruby>新<rt>しん</rt></ruby><ruby>宿<rt>じゅく</rt></ruby><ruby>駅<rt>えき</rt></ruby>　<ruby>南<rt>みなみ</rt></ruby><ruby>口<rt>ぐち</rt></ruby>",
+  "image_query": "shinjuku station exit crowd dusk golden light commuters",
+  "scene_jp": "<ruby>夕<rt>ゆう</rt></ruby><ruby>暮<rt>ぐ</rt></ruby>れの<ruby>新<rt>しん</rt></ruby><ruby>宿<rt>じゅく</rt></ruby><ruby>駅<rt>えき</rt></ruby>は、<ruby>何<rt>なん</rt></ruby><ruby>万<rt>まん</rt></ruby>もの<ruby>人<rt>ひと</rt></ruby>が<ruby>流<rt>なが</rt></ruby>れるように<ruby>動<rt>うご</rt></ruby>いていた。テストはスーツケースを<ruby>持<rt>も</rt></ruby>ちながら、<ruby>南<rt>みなみ</rt></ruby><ruby>口<rt>ぐち</rt></ruby>の<ruby>改<rt>かい</rt></ruby><ruby>札<rt>さつ</rt></ruby>を<ruby>出<rt>で</rt></ruby>たところだった。するとーー<ruby>見<rt>み</rt></ruby>ず<ruby>知<rt>し</rt></ruby>らずの<ruby>老<rt>ろう</rt></ruby><ruby>人<rt>じん</rt></ruby>が、まっすぐテストのほうへ<ruby>歩<rt>ある</rt></ruby>いてきた。「テストさん、<ruby>待<rt>ま</rt></ruby>っていましたよ。これを<ruby>受<rt>う</rt></ruby>け<ruby>取<rt>と</rt></ruby>ってください」と<ruby>老<rt>ろう</rt></ruby><ruby>人<rt>じん</rt></ruby>は<ruby>静<rt>しず</rt></ruby>かな<ruby>声<rt>こえ</rt></ruby>で<ruby>言<rt>い</rt></ruby>い、<ruby>小<rt>ちい</rt></ruby>さな<ruby>封<rt>ふう</rt></ruby><ruby>筒<rt>とう</rt></ruby>を<ruby>差<rt>さ</rt></ruby>し<ruby>出<rt>だ</rt></ruby>した。テストが<ruby>名<rt>な</rt></ruby><ruby>前<rt>まえ</rt></ruby>を<ruby>教<rt>おし</rt></ruby>えた<ruby>覚<rt>おぼ</rt></ruby>えはどこにもなかったのに。",
+  "scene_translation": "Shinjuku Station at dusk — tens of thousands of people flowing like a river. Testo had just passed through the south exit ticket gate, suitcase in hand. And then — a complete stranger, an old man, walked straight toward Testo. \"I've been waiting for you, Testo-san. Please take this,\" the old man said in a quiet voice, holding out a small envelope. Testo had no memory of telling anyone here their name.",
+  "grammar_note": "【〜たところだった】means 'had just done ~' — it describes an action that finished only moments before. Here: 改札を出たところだった = 'had just come out of the ticket gate.' The past tense (〜たところだった) is slightly different from the present 〜たところだ, emphasizing that this moment-in-time is now being recalled.",
   "vocab": [
     {
-      "word": "人混み",
-      "reading": "ひとごみ",
-      "meaning": "crowd of people"
+      "word": "夕暮れ",
+      "reading": "ゆうぐれ",
+      "meaning": "dusk, twilight"
+    },
+    {
+      "word": "改札",
+      "reading": "かいさつ",
+      "meaning": "ticket gate"
+    },
+    {
+      "word": "見ず知らず",
+      "reading": "みずしらず",
+      "meaning": "complete stranger (lit. 'unseen, unknown')"
+    },
+    {
+      "word": "老人",
+      "reading": "ろうじん",
+      "meaning": "old man, elderly person"
     },
     {
       "word": "封筒",
@@ -16,41 +31,54 @@
       "meaning": "envelope"
     },
     {
-      "word": "丁寧に",
-      "reading": "ていねいに",
-      "meaning": "carefully, politely"
+      "word": "差し出す",
+      "reading": "さしだす",
+      "meaning": "to hold out, to extend toward someone"
     },
     {
-      "word": "立ち止まる",
-      "reading": "たちどまる",
-      "meaning": "to stop walking, to halt"
+      "word": "受け取る",
+      "reading": "うけとる",
+      "meaning": "to receive, to accept"
     },
     {
-      "word": "見回す",
-      "reading": "みまわす",
-      "meaning": "to look around"
+      "word": "覚え",
+      "reading": "おぼえ",
+      "meaning": "memory, recollection"
+    },
+    {
+      "word": "流れる",
+      "reading": "ながれる",
+      "meaning": "to flow"
+    },
+    {
+      "word": "まっすぐ",
+      "reading": "まっすぐ",
+      "meaning": "straight, directly"
     }
   ],
   "items_gained": [
     {
-      "jp": "白い封筒",
-      "reading": "しろいふうとう"
+      "jp": "小さな封筒",
+      "reading": "ちいさなふうとう"
     }
   ],
   "scene_type": "choice",
   "choices": [
     {
-      "jp": "<ruby>封<rt>ふう</rt></ruby><ruby>筒<rt>とう</rt></ruby>を<ruby>開<rt>あ</rt></ruby>けて、<ruby>中<rt>なか</rt></ruby>を<ruby>読<rt>よ</rt></ruby>む。",
-      "text_only": "封筒を開けて、中を読む。"
+      "jp": "<ruby>封<rt>ふう</rt></ruby><ruby>筒<rt>とう</rt></ruby>を<ruby>受<rt>う</rt></ruby>け<ruby>取<rt>と</rt></ruby>り、「どうして<ruby>私<rt>わたし</rt></ruby>の<ruby>名<rt>な</rt></ruby><ruby>前<rt>まえ</rt></ruby>を<ruby>知<rt>し</rt></ruby>っているんですか？」と<ruby>聞<rt>き</rt></ruby>く。",
+      "text_only": "封筒を受け取り、「どうして私の名前を知っているんですか？」と聞く。",
+      "english": "Accept the envelope and ask, 'How do you know my name?'"
     },
     {
-      "jp": "<ruby>近<rt>ちか</rt></ruby>くにいる<ruby>駅<rt>えき</rt></ruby><ruby>員<rt>いん</rt></ruby>に<ruby>封<rt>ふう</rt></ruby><ruby>筒<rt>とう</rt></ruby>を<ruby>見<rt>み</rt></ruby>せる。",
-      "text_only": "近くにいる駅員に封筒を見せる。"
+      "jp": "<ruby>一<rt>いっ</rt></ruby><ruby>歩<rt>ぽ</rt></ruby><ruby>後<rt>うし</rt></ruby>ろに<ruby>下<rt>さ</rt></ruby>がり、「すみません、<ruby>人<rt>ひと</rt></ruby><ruby>違<rt>ちが</rt></ruby>いじゃないですか？」と<ruby>言<rt>い</rt></ruby>う。",
+      "text_only": "一歩後ろに下がり、「すみません、人違いじゃないですか？」と言う。",
+      "english": "Step back and say, 'Excuse me, aren't you mistaking me for someone else?'"
     },
     {
-      "jp": "<ruby>封<rt>ふう</rt></ruby><ruby>筒<rt>とう</rt></ruby>をポケットに<ruby>入<rt>い</rt></ruby>れて、まず<ruby>改<rt>かい</rt></ruby><ruby>札<rt>さつ</rt></ruby>を<ruby>出<rt>で</rt></ruby>る。",
-      "text_only": "封筒をポケットに入れて、まず改札を出る。"
+      "jp": "だまって<ruby>封<rt>ふう</rt></ruby><ruby>筒<rt>とう</rt></ruby>を<ruby>受<rt>う</rt></ruby>け<ruby>取<rt>と</rt></ruby>り、<ruby>老<rt>ろう</rt></ruby><ruby>人<rt>じん</rt></ruby>の<ruby>顔<rt>かお</rt></ruby>をじっと<ruby>見<rt>み</rt></ruby>る。",
+      "text_only": "だまって封筒を受け取り、老人の顔をじっと見る。",
+      "english": "Silently accept the envelope and stare at the old man's face."
     }
   ],
-  "mystery_memo": "The central mystery begins: a white envelope addressed to the player ('テストさんへ') was found on the platform floor at Tokyo Station — no one nearby could have left it. The envelope has not yet been opened; its contents are unknown. No NPCs have been met yet. This uncanny, personalized message is the mystery's core hook — someone knows the player's name and anticipated their arrival."
+  "mystery_memo": "The central mystery: a stranger at Shinjuku Station south exit knew Testo's name without being told and delivered a small envelope. Contents unknown. The old man's identity and how he knew Testo are the core thread. Old man relationship: neutral/mysterious — no history yet. The envelope is the first key item and must be opened/referenced in a future scene to reveal its first clue."
 }

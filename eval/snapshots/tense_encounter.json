@@ -1,44 +1,75 @@
 {
-  "location_jp": "<ruby>薄暗<rt>うすぐら</rt></ruby>い<ruby>路地<rt>ろじ</rt></ruby>、<ruby>神社<rt>じんじゃ</rt></ruby>の<ruby>裏手<rt>うらて</rt></ruby>",
-  "image_query": "tokyo narrow alley dusk concrete walls lantern dim light",
-  "scene_jp": "<ruby>男<rt>おとこ</rt></ruby>は<ruby>振<rt>ふ</rt></ruby>り<ruby>返<rt>かえ</rt></ruby>ることなく、<ruby>神社<rt>じんじゃ</rt></ruby>の<ruby>裏手<rt>うらて</rt></ruby>の<ruby>薄暗<rt>うすぐら</rt></ruby>い<ruby>路地<rt>ろじ</rt></ruby>へと<ruby>吸<rt>す</rt></ruby>い<ruby>込<rt>こ</rt></ruby>まれるように<ruby>消<rt>き</rt></ruby>えていった。テストが<ruby>角<rt>かど</rt></ruby>を<ruby>曲<rt>ま</rt></ruby>がると、<ruby>男<rt>おとこ</rt></ruby>はそこで<ruby>立<rt>た</rt></ruby>ち<ruby>止<rt>ど</rt></ruby>まり、<ruby>壁<rt>かべ</rt></ruby>に<ruby>背<rt>せ</rt></ruby>を<ruby>預<rt>あず</rt></ruby>けてこちらを<ruby>見<rt>み</rt></ruby>ていた——まるで<ruby>待<rt>ま</rt></ruby>っていたかのように。「テストさん、ですね」と<ruby>男<rt>おとこ</rt></ruby>は<ruby>静<rt>しず</rt></ruby>かに<ruby>言<rt>い</rt></ruby>った。「お<ruby>祖母<rt>ばあ</rt></ruby>さまから、あなたのことは<ruby>伺<rt>うかが</rt></ruby>っておりました」<ruby>灰色<rt>はいいろ</rt></ruby>のスーツの<ruby>胸<rt>むね</rt></ruby>ポケットから、<ruby>男<rt>おとこ</rt></ruby>は<ruby>折<rt>お</rt></ruby>り<ruby>畳<rt>たた</rt></ruby>まれた<ruby>紙<rt>かみ</rt></ruby>を<ruby>取<rt>と</rt></ruby>り<ruby>出<rt>だ</rt></ruby>し、テストの<ruby>手<rt>て</rt></ruby>に<ruby>押<rt>お</rt></ruby>し<ruby>付<rt>つ</rt></ruby>けるように<ruby>渡<rt>わた</rt></ruby>した。",
-  "scene_translation": "The man disappeared into the dim alley behind the shrine as though swallowed by shadow, never once looking back. When the player turned the corner, he was standing there, leaning against the wall, watching — as if he had been waiting all along. \"You are Tesuto-san,\" the man said quietly. \"Your grandmother had spoken to me about you.\" From the breast pocket of his grey suit, he withdrew a folded piece of paper and pressed it into the player's hand.",
-  "grammar_note": "【まるで〜かのように】'as if / just as though' — a vivid simile construction. まるで待っていたかのように = 'as if he had been waiting.' The かの adds a slightly literary, distancing nuance compared to plain ように alone. Also note the man's speech: 伺っておりました uses おります, the humble-respectful (謙譲語) form of います — a register marker of formal, careful politeness, implying he is someone who deals with people of standing.",
+  "location_jp": "<ruby>路<rt>ろ</rt>地<rt>じ</rt>裏<rt>うら</rt></ruby>の<ruby>突<rt>つ</rt>き<rt>き</rt>当<rt>あ</rt>たり</ruby>",
+  "image_query": "tokyo narrow alley night shadow brick wall dim lantern",
+  "scene_jp": "<ruby>男<rt>おとこ</rt></ruby>は<ruby>神<rt>じん</rt>社<rt>じゃ</rt></ruby>を<ruby>出<rt>で</rt></ruby>ると、<ruby>人<rt>ひと</rt></ruby>けのない<ruby>路<rt>ろ</rt>地<rt>じ</rt></ruby>へと<ruby>迷<rt>まよ</rt></ruby>いこむように<ruby>歩<rt>ある</rt></ruby>き<ruby>続<rt>つづ</rt></ruby>けた。テストは<ruby>息<rt>いき</rt></ruby>を<ruby>殺<rt>ころ</rt></ruby>して<ruby>十<rt>じゅう</rt>数<rt>すう</rt>歩<rt>ほ</rt></ruby>うしろをついていく。<ruby>突<rt>つ</rt></ruby>き<ruby>当<rt>あ</rt></ruby>たりの<ruby>古<rt>ふる</rt></ruby>びた<ruby>鉄<rt>てつ</rt>扉<rt>ぴ</rt></ruby>の<ruby>前<rt>まえ</rt></ruby>で、<ruby>男<rt>おとこ</rt></ruby>はふいに<ruby>立<rt>た</rt></ruby>ち<ruby>止<rt>ど</rt></ruby>まり、<ruby>振<rt>ふ</rt></ruby>り<ruby>返<rt>かえ</rt></ruby>らずに<ruby>低<rt>ひく</rt></ruby>い<ruby>声<rt>こえ</rt></ruby>で<ruby>言<rt>い</rt></ruby>った。「つけてくると<ruby>思<rt>おも</rt></ruby>っていたよ、テスト。<ruby>君<rt>きみ</rt></ruby>の<ruby>祖<rt>そ</rt>母<rt>ぼ</rt></ruby>さんも、この<ruby>扉<rt>とびら</rt></ruby>の<ruby>前<rt>まえ</rt></ruby>で<ruby>同<rt>おな</rt></ruby>じように<ruby>立<rt>た</rt></ruby>っていた。」<ruby>扉<rt>とびら</rt></ruby>には<ruby>錆<rt>さ</rt></ruby>びついた<ruby>鍵<rt>かぎ</rt>穴<rt>あな</rt></ruby>があり、<ruby>手<rt>て</rt></ruby>の<ruby>中<rt>なか</rt></ruby>のコインロッカーの<ruby>鍵<rt>かぎ</rt></ruby>がかすかに<ruby>温<rt>あたた</rt></ruby>かくなった<ruby>気<rt>き</rt></ruby>がした。",
+  "scene_translation": "The man left the shrine and walked on, as if losing himself into a deserted alley. Testo followed ten-odd paces behind, holding their breath. At a dead end, before a weathered iron door, the man stopped abruptly and, without turning around, said in a low voice: 'I thought you'd follow me, Testo. Your grandmother once stood in front of this door in exactly the same way.' The door had a rusted keyhole, and the coin-locker key in Testo's hand seemed to grow faintly warm.",
+  "grammar_note": "【〜ずに】 The form 振り返らずに means 'without turning around' — it is the classical negative ~ず attached to に, functioning like ~ないで. It tends to sound more literary and deliberate than 振り返らないで, fitting a character who is being carefully, almost theatrically, calm.",
   "vocab": [
     {
-      "word": "裏手",
-      "reading": "うらて",
-      "meaning": "the back side, rear area (of a building or place)"
+      "word": "人けのない",
+      "reading": "ひとけのない",
+      "meaning": "deserted, with no sign of people"
     },
     {
-      "word": "背を預ける",
-      "reading": "せをあずける",
-      "meaning": "to lean one's back against something"
+      "word": "息を殺す",
+      "reading": "いきをころす",
+      "meaning": "to hold one's breath (to avoid detection)"
     },
     {
-      "word": "伺う",
-      "reading": "うかがう",
-      "meaning": "to hear/ask (humble form of 聞く・訪ねる)"
+      "word": "突き当たり",
+      "reading": "つきあたり",
+      "meaning": "dead end, end of a passage"
     },
     {
-      "word": "折り畳む",
-      "reading": "おりたたむ",
-      "meaning": "to fold up"
+      "word": "鉄扉",
+      "reading": "てっぴ",
+      "meaning": "iron door/gate"
     },
     {
-      "word": "押し付ける",
-      "reading": "おしつける",
-      "meaning": "to press something onto someone, to thrust upon"
+      "word": "ふいに",
+      "reading": "ふいに",
+      "meaning": "suddenly, without warning"
+    },
+    {
+      "word": "低い声",
+      "reading": "ひくいこえ",
+      "meaning": "low voice, hushed tone"
+    },
+    {
+      "word": "祖母",
+      "reading": "そぼ",
+      "meaning": "one's own grandmother (humble/neutral)"
+    },
+    {
+      "word": "錆びついた",
+      "reading": "さびついた",
+      "meaning": "rusted over, corroded"
+    },
+    {
+      "word": "鍵穴",
+      "reading": "かぎあな",
+      "meaning": "keyhole"
+    },
+    {
+      "word": "かすかに",
+      "reading": "かすかに",
+      "meaning": "faintly, barely perceptibly"
     }
   ],
-  "items_gained": [
+  "scene_type": "choice",
+  "choices": [
     {
-      "jp": "折り畳まれた紙",
-      "reading": "おりたたまれたかみ"
+      "jp": "<ruby>鍵<rt>かぎ</rt></ruby>を<ruby>鍵<rt>かぎ</rt>穴<rt>あな</rt></ruby>に<ruby>差<rt>さ</rt></ruby>し<ruby>込<rt>こ</rt></ruby>んでみる",
+      "text_only": "鍵を鍵穴に差し込んでみる"
+    },
+    {
+      "jp": "「<ruby>祖<rt>そ</rt>母<rt>ぼ</rt></ruby>のことをどこまで<ruby>知<rt>し</rt></ruby>っているんですか」と<ruby>男<rt>おとこ</rt></ruby>に<ruby>問<rt>と</rt></ruby>い<ruby>詰<rt>つ</rt></ruby>める",
+      "text_only": "「祖母のことをどこまで知っているんですか」と男に問い詰める"
+    },
+    {
+      "jp": "<ruby>古<rt>ふる</rt></ruby>いノートの<ruby>地<rt>ち</rt>図<rt>ず</rt></ruby>と<ruby>扉<rt>とびら</rt></ruby>の<ruby>位<rt>い</rt>置<rt>ち</rt></ruby>を<ruby>照<rt>て</rt></ruby>らし<ruby>合<rt>あ</rt></ruby>わせる",
+      "text_only": "古いノートの地図と扉の位置を照らし合わせる"
     }
   ],
-  "scene_type": "input",
-  "choices": null,
-  "feedback": null,
-  "mystery_memo": "The grey-suited man — now confirmed as an agent or associate connected to the player's deceased grandmother — has made direct contact. He knew the player's name unprompted (echoing the hook from Scene 1), deepening the central mystery of how the grandmother's world intersects with the player's present. The folded paper likely contains information related to the underground passages sketched in the notebook. The man's tone is formal and non-threatening but guarded; relationship status: neutral-formal, intent unknown. The old shopkeeper remains too frightened to be useful for now. Next: the man should ask or reveal something that requires the player to respond — perhaps asking whether the player has opened the coin locker, or what they know about the notebook, forcing the player to decide how much to trust him."
+  "mystery_memo": "The grey-suited man (Suzuki, or similar — to be named next scene) has led the player deliberately to this iron door at the dead end of the alley — he wanted to be followed. He knew the player's grandmother personally and is not a threat, but is guarded and testing the player's resolve (relationship: cautiously neutral, edging toward ally). The coin-locker key appears to fit the iron door's lock, which would open the underground passage system partially mapped in the notebook — this is the convergence of both inventory items. The old shopkeeper's fear likely relates to whoever originally commissioned the notebook's map. Scene 8 should name the man and reveal the first concrete detail about the grandmother's role in the underground passages."
 }

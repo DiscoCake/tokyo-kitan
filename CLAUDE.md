@@ -44,13 +44,14 @@ collects vocabulary — all wrapped in a ~12-scene mystery story set in Tokyo.
    generation, parallel calls, or per-word lookup calls.
 
 2. **Vocab rides in the scene response — drives lookup and adaptive difficulty.** Each scene
-   returns 4–6 `vocab` entries (no chip UI — hidden). They serve two purposes: (1) the word
-   lookup card (`#word-card`) shows meaning when the player taps a kanji that appears in the
-   list; (2) taps on kanji NOT in the list increment `S.unknownTaps`, which feeds into adaptive
-   difficulty (see #7). Every `<ruby>` element in `#scene-text` is tappable — clicking opens a
-   floating card with reading (from `<rt>`) and meaning (from vocab array if present) plus
-   「単語帳に追加」 to log to `S.vocabLog` for Anki TSV export. `makeSceneWordTaps(sceneEl, vocab)`
-   in `ui.js` wires tap handlers; `logVocabWord(v)` is the shared deduped add-to-log helper.
+   returns 8–12 `vocab` entries (no chip UI — hidden), skewing toward less common vocabulary.
+   They serve two purposes: (1) the word lookup card (`#word-card`) shows meaning when the
+   player taps a kanji that appears in the list; (2) taps on kanji NOT in the list increment
+   `S.unknownTaps`, which feeds into adaptive difficulty (see #7). Every `<ruby>` element in
+   `#scene-text` is tappable — clicking opens a floating card with reading (from `<rt>`) and
+   meaning (from vocab array, or `'(not in scene vocab)'` if absent) plus 「単語帳に追加」 to log
+   to `S.vocabLog` for Anki TSV export. `makeSceneWordTaps(sceneEl, vocab)` in `ui.js` wires
+   tap handlers; `logVocabWord(v)` is the shared deduped add-to-log helper.
 
 3. **Furigana everywhere, one global toggle.** EVERY kanji anywhere in the UI (static text,
    scene text, choices, location names, buttons) gets `<ruby>漢字<rt>かんじ</rt></ruby>`.
@@ -126,8 +127,16 @@ collects vocabulary — all wrapped in a ~12-scene mystery story set in Tokyo.
     `revealAround(x, y)` in `dungeon.js` adds a 3-tile Chebyshev radius on every player move
     and on `startDungeon`. `drawTile` draws near-black and returns early for unexplored tiles.
     **Minimap (Phase 2):** `drawMinimap(miniCanvas)` renders a 4px/tile fog-respecting overview
-    onto `#minimap-canvas` (fixed bottom-left, CSS-scaled 2× for HiDPI); shown when entering a
-    room, hidden on `exitDungeonRoom` and `startDungeon`. Serialize `exploredTiles` as array.
+    onto `#minimap-canvas` (fixed bottom-left, CSS-scaled 2× for HiDPI). Toggle is
+    `#minimap-btn` in `#topbar-right` (game screen) — appears only while inside a room,
+    hidden on `exitDungeonRoom`/`startDungeon`. Mirrors `#dungeon-minimap-btn` in the dungeon
+    topbar; both call `setMinimap()` in `main.js` and stay in sync.
+    **Random room positions:** `ROOMS` holds name data only. `generateLayout()` picks 4 positions
+    from a step-2 candidate grid (12 slots per wing, C(12,4)=495 arrangements) and assigns them
+    to room IDs. Layout stored in `S.dungeonLayout` and serialised with saves; `restoreLayout()`
+    rebuilds `ROOM_COORDS` on resume. `startDungeon()` and `exitDungeonRoom()` both check the
+    current tile for a room trigger so the enter-prompt appears correctly on spawn and on map
+    return without needing to walk off and back.
     Phase 3 remaining: NPC sprites on map, per-district ambient sound.
 
 12. **Cinematic scene transitions + streaming.** Full-black overlay with location kanji title

@@ -1,61 +1,86 @@
 {
-  "location_jp": "<ruby>地<rt>ち</rt></ruby><ruby>下<rt>か</rt></ruby>の<ruby>バー</ruby>「<ruby>月<rt>つき</rt></ruby>の<ruby>裏<rt>うら</rt></ruby>」",
-  "image_query": "underground jazz bar dim amber light wooden counter vintage bottles",
-  "scene_jp": "<ruby>バーテンダー</ruby>は<ruby>グラス<rt>グラス</rt></ruby>を<ruby>磨<rt>みが</rt></ruby>きながら、<ruby>静<rt>しず</rt></ruby>かに<ruby>一<rt>いち</rt></ruby><ruby>枚<rt>まい</rt></ruby>の<ruby>写<rt>しゃ</rt></ruby><ruby>真<rt>しん</rt></ruby>をカウンターの<ruby>上<rt>うえ</rt></ruby>に<ruby>置<rt>お</rt></ruby>いた。「<ruby>あなたのお<ruby>祖<rt>ば</rt></ruby><ruby>母<rt>あ</rt></ruby>さんがここに<ruby>忘<rt>わす</rt></ruby>れていったものだ。もう<ruby>三<rt>さん</rt></ruby><ruby>十<rt>じゅう</rt></ruby><ruby>年<rt>ねん</rt></ruby>も<ruby>前<rt>まえ</rt></ruby>のことだが、いつかあなたが<ruby>来<rt>く</rt></ruby>ると<ruby>言<rt>い</rt></ruby>っていた。」<ruby>写<rt>しゃ</rt></ruby><ruby>真<rt>しん</rt></ruby>には、<ruby>見<rt>み</rt></ruby>たことのない<ruby>神<rt>じん</rt></ruby><ruby>社<rt>じゃ</rt></ruby>の<ruby>鳥<rt>とり</rt></ruby><ruby>居<rt>い</rt></ruby>の<ruby>前<rt>まえ</rt></ruby>に<ruby>立<rt>た</rt></ruby>つ<ruby>若<rt>わか</rt></ruby>い<ruby>女<rt>おんな</rt></ruby>が<ruby>写<rt>うつ</rt></ruby>っており、その<ruby>隣<rt>となり</rt></ruby>には<ruby>青<rt>あお</rt></ruby>いワンピースを<ruby>着<rt>き</rt></ruby>た<ruby>別<rt>べつ</rt></ruby>の<ruby>女<rt>おんな</rt></ruby>の<ruby>姿<rt>すがた</rt></ruby>があった。「<ruby>青<rt>あお</rt></ruby>い<ruby>服<rt>ふく</rt></ruby>の<ruby>方<rt>かた</rt></ruby>は——<ruby>今<rt>いま</rt></ruby>もこの<ruby>街<rt>まち</rt></ruby>のどこかにいるはずだ。」",
-  "scene_translation": "The bartender, polishing a glass, quietly set a single photograph on the counter. \"This is something your grandmother left behind. It was thirty years ago now, but she said someday you would come.\" In the photograph stood a young woman before the torii gate of an unfamiliar shrine, and beside her was the figure of another woman dressed in a blue one-piece. \"The one in blue — she should still be somewhere in this city.\"",
-  "grammar_note": "【はずだ】 expresses the speaker's confident expectation based on reasoning: 「いるはずだ」 = \"she should be / must be there.\" Note also the bartender's speech register — formal but not stiff, using 「〜だ」 over 「〜です」, and the respectful 「お祖母さん」 and 「〜の方」. This measured, slightly archaic masculine register contrasts with how a younger character might speak.",
+  "location_jp": "<ruby>地<rt>ち</rt>下<rt>か</rt></ruby>のバー「<ruby>月<rt>つき</rt>の<rt>の</rt>底<rt>そこ</rt></ruby>」",
+  "image_query": "underground jazz bar dim amber light vintage bottles shadow",
+  "scene_jp": "バーテンダーは<ruby>静<rt>しず</rt>か</ruby>にグラスを<ruby>磨<rt>みが</rt></ruby>きながら、テストの<ruby>顔<rt>かお</rt></ruby>をじっと<ruby>見<rt>み</rt></ruby>つめた。「<ruby>君<rt>きみ</rt></ruby>のおばあさんは、よくここへ<ruby>来<rt>き</rt></ruby>てはその<ruby>話<rt>はなし</rt></ruby>をしてくれたよ——<ruby>孫<rt>まご</rt></ruby>がいつかこの<ruby>街<rt>まち</rt></ruby>に<ruby>迷<rt>まよ</rt></ruby>い<ruby>込<rt>こ</rt></ruby>む、ってね。」<ruby>彼<rt>かれ</rt></ruby>はカウンターの<ruby>奥<rt>おく</rt></ruby>から<ruby>小<rt>ちい</rt></ruby>さな<ruby>封<rt>ふう</rt></ruby><ruby>筒<rt>とう</rt></ruby>を<ruby>取<rt>と</rt></ruby>り<ruby>出<rt>だ</rt></ruby>し、それをテストの<ruby>前<rt>まえ</rt></ruby>に<ruby>静<rt>しず</rt>か</ruby>に<ruby>置<rt>お</rt></ruby>いた。「<ruby>預<rt>あず</rt></ruby>かってから<ruby>三<rt>さん</rt></ruby><ruby>年<rt>ねん</rt></ruby>になる。ようやく<ruby>届<rt>とど</rt></ruby>けられた。」<ruby>封<rt>ふう</rt></ruby><ruby>筒<rt>とう</rt></ruby>の<ruby>表<rt>おもて</rt></ruby>には、テストという<ruby>名<rt>な</rt></ruby>が<ruby>古<rt>ふる</rt></ruby>びたインクで<ruby>書<rt>か</rt></ruby>かれていて、<ruby>裏<rt>うら</rt></ruby>には<ruby>見<rt>み</rt></ruby>たことのない<ruby>紋<rt>もん</rt></ruby><ruby>章<rt>しょう</rt></ruby>が<ruby>押<rt>お</rt></ruby>してあった。",
+  "scene_translation": "The bartender polished a glass in silence, fixing his gaze on you. \"Your grandmother used to come here often and tell me — that someday her grandchild would wander into this city.\" He reached behind the counter and set a small envelope quietly in front of you. \"I've been holding onto it for three years now. I'm glad I can finally pass it along.\" On the front of the envelope, your name was written in faded ink; on the back, an unfamiliar crest had been stamped.",
+  "grammar_note": "【〜てはVする】The pattern 「来ては話をしてくれた」 expresses a repeated action — \"she would come, and each time she would tell me.\" 〜ては links a recurring condition to what habitually followed it. It's subtly different from just 来て話した (a single sequence); the 〜ては implies the cycle kept repeating. You'll also notice the bartender's speech (〜てくれたよ、届けられた) is calm and measured — the register of someone older who chooses words with care.",
   "vocab": [
     {
-      "word": "鳥居",
-      "reading": "とりい",
-      "meaning": "torii gate (shrine archway)"
+      "word": "封筒",
+      "reading": "ふうとう",
+      "meaning": "envelope"
     },
     {
-      "word": "忘れていく",
-      "reading": "わすれていく",
-      "meaning": "to leave (something) behind by forgetting"
+      "word": "紋章",
+      "reading": "もんしょう",
+      "meaning": "crest, coat of arms"
     },
     {
-      "word": "写真",
-      "reading": "しゃしん",
-      "meaning": "photograph"
+      "word": "預かる",
+      "reading": "あずかる",
+      "meaning": "to hold something in safekeeping, to be entrusted with"
     },
     {
-      "word": "姿",
-      "reading": "すがた",
-      "meaning": "figure, appearance, form"
+      "word": "届ける",
+      "reading": "とどける",
+      "meaning": "to deliver, to pass along"
     },
     {
-      "word": "隣",
-      "reading": "となり",
-      "meaning": "beside, next to"
+      "word": "迷い込む",
+      "reading": "まよいこむ",
+      "meaning": "to wander into (a place), to get lost inside"
     },
     {
-      "word": "ワンピース",
-      "reading": "ワンピース",
-      "meaning": "one-piece dress"
+      "word": "奥",
+      "reading": "おく",
+      "meaning": "the back (of a space), inner depths"
+    },
+    {
+      "word": "古びた",
+      "reading": "ふるびた",
+      "meaning": "aged, worn, faded with time"
+    },
+    {
+      "word": "表",
+      "reading": "おもて",
+      "meaning": "front side, face (of paper or envelope)"
+    },
+    {
+      "word": "裏",
+      "reading": "うら",
+      "meaning": "back side, reverse"
+    },
+    {
+      "word": "押す",
+      "reading": "おす",
+      "meaning": "to stamp, to press (a seal)"
+    },
+    {
+      "word": "じっと",
+      "reading": "じっと",
+      "meaning": "fixedly, without moving, intently"
     }
   ],
   "items_gained": [
     {
-      "jp": "古い写真",
-      "reading": "ふるいしゃしん"
+      "jp": "古い封筒",
+      "reading": "ふるいふうとう"
     }
   ],
   "scene_type": "choice",
   "choices": [
     {
-      "jp": "「<ruby>青<rt>あお</rt></ruby>い<ruby>服<rt>ふく</rt></ruby>の<ruby>女<rt>おんな</rt></ruby>の<ruby>人<rt>ひと</rt></ruby>のことをもっと<ruby>教<rt>おし</rt></ruby>えてもらえますか。」と<ruby>聞<rt>き</rt></ruby>く",
-      "text_only": "「青い服の女の人のことをもっと教えてもらえますか。」と聞く"
+      "jp": "<ruby>封<rt>ふう</rt></ruby><ruby>筒<rt>とう</rt></ruby>をその<ruby>場<rt>ば</rt></ruby>で<ruby>開<rt>あ</rt></ruby>ける",
+      "text_only": "封筒をその場で開ける"
     },
     {
-      "jp": "<ruby>写<rt>しゃ</rt></ruby><ruby>真<rt>しん</rt></ruby>の<ruby>神<rt>じん</rt></ruby><ruby>社<rt>じゃ</rt></ruby>がどこにあるか<ruby>尋<rt>たず</rt></ruby>ねる",
-      "text_only": "写真の神社がどこにあるか尋ねる"
+      "jp": "バーテンダーに<ruby>祖<rt>そ</rt></ruby><ruby>母<rt>ぼ</rt></ruby>のことをもっと<ruby>聞<rt>き</rt></ruby>く",
+      "text_only": "バーテンダーに祖母のことをもっと聞く"
     },
     {
-      "jp": "<ruby>黙<rt>だま</rt></ruby>って<ruby>写<rt>しゃ</rt></ruby><ruby>真<rt>しん</rt></ruby>をよく<ruby>見<rt>み</rt></ruby>る",
-      "text_only": "黙って写真をよく見る"
+      "jp": "<ruby>紋<rt>もん</rt></ruby><ruby>章<rt>しょう</rt></ruby>について<ruby>尋<rt>たず</rt></ruby>ねる",
+      "text_only": "紋章について尋ねる"
     }
   ],
-  "mystery_memo": "The photograph is the central artifact — it confirms the woman in blue is real, connected to the player's grandmother, and still alive in Tokyo. The bartender is now firmly allied (friendly) — he has waited thirty years to deliver this item and speaks with quiet gravity. The shrine in the photo is unidentified; it will become a key location around scene 7-8. The woman in blue has now been glimpsed in the photo before appearing in person — her first true appearance should come in scene 5 or 6, triggered by whichever path the player takes. The grandmother's connection to both the bar and the woman in blue is the core of the mystery: they knew something about this neighborhood that was meant to be passed on."
+  "mystery_memo": "The bartender (relationship: cautiously warm — he was entrusted with the envelope and has been waiting; he respects the player as the grandmother's grandchild) has now handed over a sealed envelope addressed to テスト in aged ink, held for three years since the grandmother's death or disappearance. The unfamiliar crest on the back is a new clue — likely the same symbol that will recur on objects or locations. The envelope's contents are still unknown. The woman in blue has not appeared; she may be connected to whoever stamped that crest. Inventory note: the old envelope is a key story item — its contents and the crest will drive Act 2."
 }

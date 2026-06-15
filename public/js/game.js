@@ -33,7 +33,7 @@ OUTPUT: valid JSON only — no markdown fences.
   "scene_jp": "3-5 sentences, ALL kanji with ruby furigana (NO EXCEPTIONS — every single kanji, including common ones like 人・日・駅・続・知, kanji INSIDE 「」 dialogue lines, and BOTH halves of compound/送り仮名 verbs like 拾い上げる → 拾 AND 上), at least one NPC line in 「」",
   "scene_translation": "Natural English translation",
   "grammar_note": "【expression】explanation — sometimes a register note",
-  "vocab": [{"word": "切符", "reading": "きっぷ", "meaning": "ticket"}, ... 4-6 words],
+  "vocab": [{"word": "切符", "reading": "きっぷ", "meaning": "ticket"}, ... 8–12 words, skewing toward less common vocabulary the learner may not know],
   "items_gained": [{"jp": "古い鍵", "reading": "ふるいかぎ"}] (ONLY when the player gains an item this scene, else omit or empty. jp is PLAIN TEXT — no ruby/HTML markup),
   "scene_type": "choice" OR "input" OR "ending",
   "choices": [...] (when choice: 3 options, jp with full ruby + text_only plain),
