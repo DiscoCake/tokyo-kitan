@@ -1,58 +1,90 @@
 {
-  "location_jp": "<ruby>古<rt>ふる</rt></ruby>い<ruby>喫茶店<rt>きっさてん</rt></ruby>",
-  "image_query": "vintage tokyo coffee shop dim warm light wooden counter retro",
-  "scene_jp": "<ruby>女<rt>おんな</rt></ruby>は<ruby>路地<rt>ろじ</rt></ruby>の<ruby>突<rt>つ</rt></ruby>き<ruby>当<rt>あ</rt></ruby>たりにある<ruby>小<rt>ちい</rt></ruby>さな<ruby>喫茶店<rt>きっさてん</rt></ruby>に<ruby>入<rt>はい</rt></ruby>っていった。テストが<ruby>恐<rt>おそ</rt></ruby>る<ruby>恐<rt>おそ</rt></ruby>るドアを<ruby>開<rt>あ</rt></ruby>けると、コーヒーと<ruby>古<rt>ふる</rt></ruby>い<ruby>木<rt>き</rt></ruby>の<ruby>匂<rt>にお</rt></ruby>いがした。<ruby>女<rt>おんな</rt></ruby>はカウンターの<ruby>端<rt>はし</rt></ruby>に<ruby>座<rt>すわ</rt></ruby>っており、こちらを<ruby>見<rt>み</rt></ruby>もせずに<ruby>言<rt>い</rt></ruby>った。「<ruby>来<rt>く</rt></ruby>ると<ruby>思<rt>おも</rt></ruby>っていたよ、テスト。そのノート、もう<ruby>読<rt>よ</rt></ruby>んだ？」<ruby>マスター<rt>マスター</rt></ruby>らしき<ruby>老人<rt>ろうじん</rt></ruby>がカウンターの<ruby>奥<rt>おく</rt></ruby>で<ruby>静<rt>しず</rt></ruby>かにカップを<ruby>磨<rt>みが</rt></ruby>きながら、テストのほうをちらりと<ruby>見<rt>み</rt></ruby>た。",
-  "scene_translation": "The woman had slipped into a small coffee shop at the end of the alley. When Testo cautiously pushed the door open, the smell of coffee and old wood drifted out. The woman was seated at the far end of the counter and, without even glancing over, said: \"I knew you'd come, Testo. Have you read that notebook yet?\" The old man who seemed to be the owner quietly polished a cup behind the counter and shot Testo a brief sideways look.",
-  "grammar_note": "【～もせずに】meaning \"without even ~ing\" — a stronger way to say \"without doing\" than just ～ないで. Here, 見もせずに means \"without even looking\". The も adds emphasis: not just that she didn't look, but she didn't so much as glance. Pattern: verb stem + もせずに.",
+  "location_jp": "<ruby>東京駅<rt>とうきょうえき</rt></ruby>の<ruby>外<rt>そと</rt></ruby>、<ruby>夜<rt>よる</rt></ruby>の<ruby>路地<rt>ろじ</rt></ruby>",
+  "image_query": "tokyo backstreet night misty lamplight cobblestone narrow alley",
+  "scene_jp": "<ruby>路地<rt>ろじ</rt></ruby>の<ruby>突<rt>つ</rt></ruby>き<ruby>当<rt>あ</rt></ruby>たりに、<ruby>小<rt>ちい</rt></ruby>さな<ruby>喫茶店<rt>きっさてん</rt></ruby>があった。<ruby>青<rt>あお</rt></ruby>いレインコートの<ruby>女性<rt>じょせい</rt></ruby>はすでにドアを<ruby>開<rt>あ</rt></ruby>けて<ruby>中<rt>なか</rt></ruby>に<ruby>入<rt>はい</rt></ruby>っていたが、ドアが<ruby>閉<rt>し</rt></ruby>まる<ruby>前<rt>まえ</rt></ruby>に<ruby>振<rt>ふ</rt></ruby>り<ruby>返<rt>かえ</rt></ruby>り、テストをまっすぐ<ruby>見<rt>み</rt></ruby>た。<ruby>店<rt>みせ</rt></ruby>に<ruby>入<rt>はい</rt></ruby>ると、カウンターの<ruby>奥<rt>おく</rt></ruby>に<ruby>座<rt>すわ</rt></ruby>っていた<ruby>老<rt>ろう</rt></ruby>じんが「いらっしゃいませ、どうぞ<ruby>奥<rt>おく</rt></ruby>へ」と<ruby>静<rt>しず</rt></ruby>かに<ruby>言<rt>い</rt></ruby>った。<ruby>女性<rt>じょせい</rt></ruby>は<ruby>窓際<rt>まどぎわ</rt></ruby>の<ruby>席<rt>せき</rt></ruby>に<ruby>腰<rt>こし</rt></ruby>を<ruby>下<rt>お</rt></ruby>ろし、テストが<ruby>近<rt>ちか</rt></ruby>づくと<ruby>低<rt>ひく</rt></ruby>い<ruby>声<rt>こえ</rt></ruby>で「そのノートを<ruby>持<rt>も</rt></ruby>って<ruby>来<rt>き</rt></ruby>てくれてよかった。<ruby>開<rt>あ</rt></ruby>けるまえに、<ruby>私<rt>わたし</rt></ruby>の<ruby>話<rt>はなし</rt></ruby>を<ruby>聞<rt>き</rt></ruby>いてほしいんだけど」と<ruby>言<rt>い</rt></ruby>った。",
+  "scene_translation": "At the end of the alley was a small coffee shop. The woman in the blue raincoat had already pushed open the door and stepped inside, but just before it closed, she turned and looked straight at Testo. Entering the shop, an elderly man sitting behind the counter said quietly, \"Welcome — please, come to the back.\" The woman settled into the window seat, and as Testo approached, she said in a low voice, \"I'm glad you brought that notebook. But before you open it — I need you to hear what I have to say.\"",
+  "grammar_note": "【〜まえに】means 'before doing ~'. It attaches to the dictionary form of a verb: 開けるまえに = 'before opening (it)'. It sets up a sequence — something must happen first. Compare: 食べるまえに手を洗う (wash your hands before eating).",
   "vocab": [
     {
       "word": "突き当たり",
       "reading": "つきあたり",
-      "meaning": "dead end, the very end of a path"
+      "meaning": "dead end, end of a path"
     },
     {
-      "word": "恐る恐る",
-      "reading": "おそるおそる",
-      "meaning": "fearfully, nervously, gingerly"
+      "word": "喫茶店",
+      "reading": "きっさてん",
+      "meaning": "old-style coffee shop, café"
     },
     {
-      "word": "匂い",
-      "reading": "におい",
-      "meaning": "smell, scent"
-    },
-    {
-      "word": "端",
-      "reading": "はし",
-      "meaning": "edge, far end"
-    },
-    {
-      "word": "マスター",
-      "reading": "マスター",
-      "meaning": "proprietor of a small bar or café"
+      "word": "振り返る",
+      "reading": "ふりかえる",
+      "meaning": "to turn around, to look back"
     },
     {
       "word": "老人",
       "reading": "ろうじん",
-      "meaning": "old man, elderly person"
-    },
-    {
-      "word": "磨く",
-      "reading": "みがく",
-      "meaning": "to polish, to scrub"
-    },
-    {
-      "word": "ちらり",
-      "reading": "ちらり",
-      "meaning": "a fleeting glance, a quick look"
+      "meaning": "elderly person"
     },
     {
       "word": "奥",
       "reading": "おく",
-      "meaning": "the back, the interior (of a room or space)"
+      "meaning": "the back (of a room or space), inner area"
+    },
+    {
+      "word": "窓際",
+      "reading": "まどぎわ",
+      "meaning": "by the window, window seat area"
+    },
+    {
+      "word": "腰を下ろす",
+      "reading": "こしをおろす",
+      "meaning": "to sit down, to take a seat"
+    },
+    {
+      "word": "低い声",
+      "reading": "ひくいこえ",
+      "meaning": "low voice, quiet voice"
+    },
+    {
+      "word": "近づく",
+      "reading": "ちかづく",
+      "meaning": "to approach, to draw near"
+    },
+    {
+      "word": "いらっしゃいませ",
+      "reading": "いらっしゃいませ",
+      "meaning": "welcome (formal shopkeeper greeting)"
     }
   ],
-  "scene_type": "input",
-  "mystery_memo": "The woman in the blue raincoat has led Testo to a retro coffee shop at the end of the alley — clearly a place she knows well, possibly her base. She again uses Testo's name with familiarity and references the unlabeled notebook, implying she knows Testo has it. She is confident and slightly ahead of Testo at every step — relationship: mysterious/neutral, not yet hostile. The old master of the café noticed Testo with quiet wariness — possible recurring NPC. The notebook is the central item: the woman's question implies it contains something that should already mean something to Testo. NPC relationship status — blue raincoat woman: intriguing/slightly unsettling; café master: watchful/unknown.",
-  "choices": null,
-  "feedback": null
+  "items_gained": [],
+  "scene_type": "choice",
+  "choices": [
+    {
+      "jp": "「わかった。<ruby>話<rt>はなし</rt></ruby>してください」と<ruby>座<rt>すわ</rt></ruby>る",
+      "text_only": "「わかった。話してください」と座る"
+    },
+    {
+      "jp": "「どうして<ruby>私<rt>わたし</rt></ruby>の<ruby>名前<rt>なまえ</rt></ruby>を<ruby>知<rt>し</rt></ruby>っていたんですか」と<ruby>先<rt>さき</rt></ruby>に<ruby>聞<rt>き</rt></ruby>く",
+      "text_only": "「どうして私の名前を知っていたんですか」と先に聞く"
+    },
+    {
+      "jp": "だまってノートを<ruby>テーブル<rt>テーブル</rt></ruby>の<ruby>上<rt>うえ</rt></ruby>に<ruby>置<rt>お</rt></ruby>く",
+      "text_only": "だまってノートをテーブルの上に置く"
+    }
+  ],
+  "mystery_memo": "The woman in the blue raincoat has led the player to a quiet backstreet coffee shop — clearly a deliberate rendezvous, not coincidence. She knows the player carries the unlabeled notebook and is steering events carefully, suggesting she is not the source of the mystery but perhaps a guide or fellow investigator. The elderly shopkeeper's practiced calm hints he may be connected. The notebook is still unopened — its contents remain the central unknown. The player has followed without confrontation so far; the woman's tone is cautious but not unfriendly.",
+  "npcs": [
+    {
+      "name_jp": "<ruby>青<rt>あお</rt></ruby>いレインコートの<ruby>女性<rt>じょせい</rt></ruby>",
+      "name_reading": "あおいれいんこーとのじょせい",
+      "relationship": "neutral",
+      "note": "謎の女性。プレイヤーの名前を最初から知っていて、ノートについて何か重要なことを話そうとしている。"
+    },
+    {
+      "name_jp": "<ruby>老人<rt>ろうじん</rt></ruby>（<ruby>店主<rt>てんしゅ</rt></ruby>）",
+      "name_reading": "ろうじんてんしゅ",
+      "relationship": "unknown",
+      "note": "喫茶店のカウンターに静かに座っている老店主。女性とつながりがある可能性がある。"
+    }
+  ]
 }

@@ -1,19 +1,14 @@
 {
   "location_jp": "<ruby>東京<rt>とうきょう</rt></ruby><ruby>駅<rt>えき</rt></ruby>コンコース",
-  "image_query": "tokyo station marunouchi concourse interior high ceiling crowd marble",
-  "scene_jp": "<ruby>東京<rt>とうきょう</rt></ruby><ruby>駅<rt>えき</rt></ruby>のコンコースは、<ruby>高<rt>たか</rt></ruby>い<ruby>天井<rt>てんじょう</rt></ruby>の<ruby>下<rt>した</rt></ruby>で<ruby>何百<rt>なんびゃく</rt></ruby>もの<ruby>人<rt>ひと</rt></ruby>が<ruby>行<rt>い</rt></ruby>き<ruby>交<rt>か</rt></ruby>っている。それなのに、<ruby>柱<rt>はしら</rt></ruby>のそばに<ruby>立<rt>た</rt></ruby>っている<ruby>老<rt>ろう</rt></ruby>いた<ruby>男<rt>おとこ</rt></ruby>だけが、じっとこちらを<ruby>見<rt>み</rt></ruby>つめていた。<ruby>男<rt>おとこ</rt></ruby>はゆっくりと<ruby>近<rt>ちか</rt></ruby>づいてきて、<ruby>低<rt>ひく</rt></ruby>い<ruby>声<rt>こえ</rt></ruby>で<ruby>言<rt>い</rt></ruby>った。「テスト、<ruby>駅<rt>えき</rt></ruby>の<ruby>出口<rt>でぐち</rt></ruby>で<ruby>何<rt>なに</rt></ruby>かを<ruby>見<rt>み</rt></ruby>ただろ。あの<ruby>封筒<rt>ふうとう</rt></ruby>は、お<ruby>前<rt>まえ</rt></ruby>に<ruby>届<rt>とど</rt></ruby>くべきものだったんだぞ。」<ruby>男<rt>おとこ</rt></ruby>の<ruby>右手<rt>みぎて</rt></ruby>には、<ruby>同<rt>おな</rt></ruby>じ<ruby>青<rt>あお</rt></ruby>いインクで<ruby>何<rt>なに</rt></ruby>か<ruby>書<rt>か</rt></ruby>かれた<ruby>小<rt>ちい</rt></ruby>さな<ruby>紙切<rt>かみき</rt></ruby>れが<ruby>握<rt>にぎ</rt></ruby>られていた。",
-  "scene_translation": "Hundreds of people move through the high-ceilinged concourse of Tokyo Station. And yet, a single elderly man standing near one of the pillars stares directly at you without moving. He slowly approaches and says in a low voice, \"You saw something at the station exit, didn't you. That envelope — it was meant to reach you.\" Gripped in his right hand is a small scrap of paper, written on in the same blue ink.",
-  "grammar_note": "【〜べき】 The man says とどくべきものだった — 'it was something that was supposed to reach you.' べき attaches to the plain verb form and expresses that something ought to happen or was destined to happen. It carries a sense of obligation or inevitability. Note also his rough, older-male register: だろ and ～ぞ at the end of sentences, rather than the polite ～ですね or ～ましたか you'd hear from a shopkeeper.",
+  "image_query": "tokyo station concourse interior high vaulted ceiling crowd commuters",
+  "scene_jp": "<ruby>東京<rt>とうきょう</rt></ruby><ruby>駅<rt>えき</rt></ruby>のコンコースは、<ruby>何千<rt>なんぜん</rt></ruby>もの<ruby>人<rt>ひと</rt></ruby>が<ruby>行<rt>い</rt></ruby>き<ruby>交<rt>か</rt></ruby>う<ruby>広<rt>ひろ</rt></ruby>い<ruby>空間<rt>くうかん</rt></ruby>だ。<ruby>天井<rt>てんじょう</rt></ruby>は<ruby>高<rt>たか</rt></ruby>く、<ruby>足音<rt>あしおと</rt></ruby>がどこか<ruby>遠<rt>とお</rt></ruby>くで<ruby>響<rt>ひび</rt></ruby>いている。そのとき、<ruby>制服<rt>せいふく</rt></ruby>を<ruby>着<rt>き</rt></ruby>た<ruby>老<rt>ろう</rt></ruby>いた<ruby>駅員<rt>えきいん</rt></ruby>が、テストの<ruby>前<rt>まえ</rt></ruby>に<ruby>立<rt>た</rt></ruby>ち<ruby>止<rt>と</rt></ruby>まった。「あなたが<ruby>出口<rt>でぐち</rt></ruby>で<ruby>拾<rt>ひろ</rt></ruby>ったものを、<ruby>見<rt>み</rt></ruby>せていただけますか。」と、<ruby>静<rt>しず</rt></ruby>かに<ruby>言<rt>い</rt></ruby>った。<ruby>彼<rt>かれ</rt></ruby>の<ruby>目<rt>め</rt></ruby>は、テストのことを<ruby>前<rt>まえ</rt></ruby>から<ruby>知<rt>し</rt></ruby>っていたかのように<ruby>落<rt>お</rt></ruby>ち<ruby>着<rt>つ</rt></ruby>いていた。",
+  "scene_translation": "The concourse of Tokyo Station is a vast space where thousands of people cross paths. The ceiling soars high above, and the sound of footsteps echoes somewhere far away. Just then, an elderly station attendant in uniform stopped directly in front of you. \"Could you show me what you picked up at the exit?\" he said quietly. His eyes were calm — as if he had known about you all along.",
+  "grammar_note": "【〜かのように】 means 'as if' — it describes something that looks or feels like a certain situation, even if it isn't true. Here: 「<ruby>前<rt>まえ</rt></ruby>から<ruby>知<rt>し</rt></ruby>っていたかのように<ruby>落<rt>お</rt></ruby>ち<ruby>着<rt>つ</rt></ruby>いていた」 = 'he was calm, as if he had known all along.' Also note this NPC's speech is keigo (です/ます, 〜ていただけますか) — very polite and formal compared to ordinary station staff.",
   "vocab": [
     {
       "word": "コンコース",
-      "reading": "コンコース",
-      "meaning": "concourse (station hall)"
-    },
-    {
-      "word": "天井",
-      "reading": "てんじょう",
-      "meaning": "ceiling"
+      "reading": "こんこーす",
+      "meaning": "concourse (large open walkway in a station)"
     },
     {
       "word": "行き交う",
@@ -21,66 +16,68 @@
       "meaning": "to come and go, to pass each other"
     },
     {
-      "word": "柱",
-      "reading": "はしら",
-      "meaning": "pillar, column"
+      "word": "天井",
+      "reading": "てんじょう",
+      "meaning": "ceiling"
     },
     {
-      "word": "老いた",
-      "reading": "ろいた",
-      "meaning": "aged, elderly"
+      "word": "響く",
+      "reading": "ひびく",
+      "meaning": "to echo, to resound"
     },
     {
-      "word": "見つめる",
-      "reading": "みつめる",
-      "meaning": "to stare at, to gaze fixedly"
+      "word": "制服",
+      "reading": "せいふく",
+      "meaning": "uniform"
     },
     {
-      "word": "近づく",
-      "reading": "ちかづく",
-      "meaning": "to approach, to draw near"
+      "word": "駅員",
+      "reading": "えきいん",
+      "meaning": "station attendant"
     },
     {
-      "word": "封筒",
-      "reading": "ふうとう",
-      "meaning": "envelope"
+      "word": "立ち止まる",
+      "reading": "たちどまる",
+      "meaning": "to stop (while walking), to come to a halt"
     },
     {
-      "word": "届く",
-      "reading": "とどく",
-      "meaning": "to reach, to be delivered"
+      "word": "落ち着く",
+      "reading": "おちつく",
+      "meaning": "to be calm, to settle down"
     },
     {
-      "word": "紙切れ",
-      "reading": "かみきれ",
-      "meaning": "scrap of paper"
+      "word": "拾う",
+      "reading": "ひろう",
+      "meaning": "to pick up (an object)"
     },
     {
-      "word": "握る",
-      "reading": "にぎる",
-      "meaning": "to grip, to hold in one's hand"
-    },
-    {
-      "word": "インク",
-      "reading": "インク",
-      "meaning": "ink"
+      "word": "見せていただく",
+      "reading": "みせていただく",
+      "meaning": "to show (humble/polite form of 見せてもらう)"
     }
   ],
-  "items_gained": [],
   "scene_type": "choice",
   "choices": [
     {
-      "jp": "「その<ruby>紙切<rt>かみき</rt></ruby>れを<ruby>見<rt>み</rt></ruby>せてください。」と<ruby>頼<rt>たの</rt></ruby>む。",
-      "text_only": "「その紙切れを見せてください。」と頼む。"
+      "jp": "<ruby>素直<rt>すなお</rt></ruby>に<ruby>見<rt>み</rt></ruby>せる — 「どうぞ。」",
+      "text_only": "素直に見せる — 「どうぞ。」"
     },
     {
-      "jp": "「あなたは<ruby>誰<rt>だれ</rt></ruby>ですか？」と<ruby>聞<rt>き</rt></ruby>く。",
-      "text_only": "「あなたは誰ですか？」と聞く。"
+      "jp": "<ruby>警戒<rt>けいかい</rt></ruby>して<ruby>断<rt>ことわ</rt></ruby>る — 「いいえ、<ruby>結構<rt>けっこう</rt></ruby>です。」",
+      "text_only": "警戒して断る — 「いいえ、結構です。」"
     },
     {
-      "jp": "<ruby>黙<rt>だま</rt></ruby>って<ruby>男<rt>おとこ</rt></ruby>から<ruby>離<rt>はな</rt></ruby>れ、<ruby>人込<rt>ひとご</rt></ruby>みの<ruby>中<rt>なか</rt></ruby>に<ruby>消<rt>き</rt></ruby>える。",
-      "text_only": "黙って男から離れ、人込みの中に消える。"
+      "jp": "<ruby>逆<rt>ぎゃく</rt></ruby>に<ruby>聞<rt>き</rt></ruby>く — 「なぜ<ruby>知<rt>し</rt></ruby>っているんですか？」",
+      "text_only": "逆に聞く — 「なぜ知っているんですか？」"
     }
   ],
-  "mystery_memo": "The central mystery: テスト is being sought out — someone, or something, has been arranging for an envelope (spotted at the station exit in scene 1) to reach them. The elderly man at the pillar knows テスト's name without being introduced and knows they saw the envelope, suggesting surveillance or foreknowledge. He carries a second scrap of paper written in the same blue ink as the envelope, hinting at a connected sender or system. NPC relationship — Old Man at Pillar: neutral/watchful; he is not hostile but speaks roughly, as if テスト should already know what is happening. His significance and identity remain unknown."
+  "mystery_memo": "The old station attendant Morimoto knows the player's name and somehow knows they picked something up at the exit — deepening the central mystery of who is watching and why. His calm, knowing demeanor suggests he is a key figure: possibly a guardian, a messenger, or someone who has been expecting the player. The item picked up at the exit (not yet defined in inventory) is clearly significant. Player's choice here will establish whether Morimoto becomes an ally or a suspicious figure.",
+  "npcs": [
+    {
+      "name_jp": "<ruby>森本<rt>もりもと</rt></ruby>さん",
+      "name_reading": "もりもと",
+      "relationship": "unknown",
+      "note": "東京駅の老いた駅員。テストのことを前から知っているかのような落ち着いた態度で近づいてきた。"
+    }
+  ]
 }

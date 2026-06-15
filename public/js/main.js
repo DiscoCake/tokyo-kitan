@@ -208,6 +208,7 @@ document.getElementById('dungeon-restart-btn').onclick = function() {
 
 /* ── ENDING SCREEN ── */
 document.getElementById('ending-vocab-btn').onclick = openVocabPanel;
+document.getElementById('ending-npc-btn').onclick = openNpcPanel;
 document.getElementById('ending-grammar-btn').onclick = openGrammarPanel;
 document.getElementById('ending-gallery-btn').onclick = openGalleryPanel;
 document.getElementById('ending-restart-btn').onclick = () => {

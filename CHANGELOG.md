@@ -1,5 +1,20 @@
 # Changelog
 
+### 2026-06-15 — NPC tracker polish and eval fixes
+
+**Fix — NPC panel note safety, ending screen button, eval hardening (ui.js, index.html, main.js, eval/checks.js, game.js, eval/system.js):**
+- `openNpcPanel()`: `note` now set via `textContent` (not `innerHTML`) — plain Japanese text has no markup.
+- Added `#ending-npc-btn` to ending screen (mirrors grammar/gallery pattern); wired in `main.js`.
+- Added `npcFieldsValid` check to `eval/checks.js` — validates `npcs` array structure (name_jp, name_reading, relationship enum, note) on every snapshot run.
+- `sceneTextLength` validator now strips ruby markup before measuring (30–300 prose chars) — the 1200 raw-char cap was systematically failing complex N3 scenes due to markup overhead, not excess prose.
+- SYSTEM prompt: `scene_jp` capped at 3 sentences for harder difficulty, 4–5 for standard/easier — complexity signals difficulty, not length.
+- All 10 eval snapshots refreshed and passing.
+
+### 2026-06-15 — NPC tracker: note field changed to Japanese
+
+**Fix — NPC note now Japanese plain text (game.js, eval/system.js):**
+- Updated SYSTEM prompt: `note` field is now 1-sentence Japanese plain text (no ruby markup) instead of English, matching the immersive UI tone.
+
 ### 2026-06-15 — NPC tracker panel
 
 **Feature — NPC relationship tracker (scene contract, state, UI):**

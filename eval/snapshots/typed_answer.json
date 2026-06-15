@@ -1,9 +1,9 @@
 {
   "location_jp": "<ruby>古<rt>ふる</rt></ruby>い<ruby>煙草屋<rt>たばこや</rt></ruby>の<ruby>奥<rt>おく</rt></ruby>",
-  "image_query": "old japanese tobacco shop dim interior wooden shelves dusty warm light",
-  "scene_jp": "<ruby>老人<rt>ろうじん</rt></ruby>の<ruby>目<rt>め</rt></ruby>が、すっと<ruby>細<rt>ほそ</rt></ruby>くなった。「……<ruby>婆<rt>ばあ</rt></ruby>さんから、と<ruby>言<rt>い</rt></ruby>ったか」<ruby>彼<rt>かれ</rt></ruby>はカウンターの<ruby>下<rt>した</rt></ruby>に<ruby>手<rt>て</rt></ruby>を<ruby>入<rt>い</rt></ruby>れ、<ruby>何<rt>なに</rt></ruby>かを<ruby>探<rt>さが</rt></ruby>すように<ruby>動<rt>うご</rt></ruby>かした。「その<ruby>婆<rt>ばあ</rt></ruby>さんがどこにいるか、お<ruby>前<rt>まえ</rt></ruby>は<ruby>知<rt>し</rt></ruby>っているのか」<ruby>彼<rt>かれ</rt></ruby>の<ruby>声<rt>こえ</rt></ruby>は<ruby>低<rt>ひく</rt></ruby>く、まるで<ruby>誰<rt>だれ</rt></ruby>かに<ruby>聞<rt>き</rt></ruby>こえないように<ruby>気<rt>き</rt></ruby>をつけているようだった。<ruby>店<rt>みせ</rt></ruby>の<ruby>奥<rt>おく</rt></ruby>、<ruby>暖簾<rt>のれん</rt></ruby>の<ruby>向<rt>む</rt></ruby>こうで、かすかに<ruby>床<rt>ゆか</rt></ruby>が<ruby>鳴<rt>な</rt></ruby>った。",
-  "scene_translation": "The old man's eyes narrowed slowly. '…You said from the old woman?' He slid his hand under the counter, moving it as if searching for something. 'Do you know where that old woman is now?' His voice was low, as though he was careful not to be overheard. From behind the noren curtain at the back of the shop, the floor let out a faint creak.",
-  "grammar_note": "【まるで～ようだった】 'It was as if…' — まるで sets up a comparison or impression, completed by ようだった (past tense of ようだ). Example here: まるで誰かに聞こえないように気をつけているようだった — 'it was as if he was being careful not to be heard.' This is a natural N3 pattern for describing impressions and resemblances.",
+  "image_query": "old japanese tobacco shop interior dim dusty shelves wooden counter",
+  "scene_jp": "<ruby>老人<rt>ろうじん</rt></ruby>はしばらく<ruby>黙<rt>だま</rt></ruby>っていた。「……どのおばあさんのことだ？」と、<ruby>低<rt>ひく</rt></ruby>い<ruby>声<rt>こえ</rt></ruby>で<ruby>聞<rt>き</rt></ruby>いてくる。<ruby>店<rt>みせ</rt></ruby>の<ruby>奥<rt>おく</rt></ruby>で、<ruby>古<rt>ふる</rt></ruby>い<ruby>時計<rt>とけい</rt></ruby>がカチカチと<ruby>音<rt>おと</rt></ruby>を<ruby>立<rt>た</rt></ruby>てている。<ruby>老人<rt>ろうじん</rt></ruby>の<ruby>目<rt>め</rt></ruby>には、<ruby>恐<rt>おそ</rt></ruby>れというより、<ruby>諦<rt>あきら</rt></ruby>めのような<ruby>色<rt>いろ</rt></ruby>が<ruby>浮<rt>う</rt></ruby>かんでいた。「その<ruby>人<rt>ひと</rt></ruby>が<ruby>何<rt>なに</rt></ruby>かを<ruby>話<rt>はな</rt></ruby>したなら、もうここに<ruby>来<rt>き</rt></ruby>てしまったんだ——<ruby>逃<rt>に</rt></ruby>げるわけにもいかん」と<ruby>老人<rt>ろうじん</rt></ruby>はつぶやいた。",
+  "scene_translation": "The old man was silent for a moment. \"…Which old woman do you mean?\" he asked in a low voice. In the back of the shop, an old clock ticked steadily. In the old man's eyes, there was less fear than something that looked like resignation. \"If that person told you something, then you've already come here — there's no running away from it,\" the old man murmured.",
+  "grammar_note": "【わけにもいかん】A contracted form of わけにもいかない — 'there's no way I can / it's out of the question to do.' The pattern Verb-dictionary + わけにはいかない expresses that doing something is socially, morally, or practically impossible. Here the old man uses the blunter いかん (older/masculine speech) instead of いかない, which also reflects his rough register. Compare: 嘘をつくわけにはいかない (I can't very well lie).",
   "vocab": [
     {
       "word": "老人",
@@ -11,34 +11,9 @@
       "meaning": "old man, elderly person"
     },
     {
-      "word": "細くなる",
-      "reading": "ほそくなる",
-      "meaning": "to become narrow/thin (e.g. eyes narrowing)"
-    },
-    {
-      "word": "暖簾",
-      "reading": "のれん",
-      "meaning": "shop curtain (hung in doorways)"
-    },
-    {
-      "word": "かすかに",
-      "reading": "かすかに",
-      "meaning": "faintly, barely"
-    },
-    {
-      "word": "気をつける",
-      "reading": "きをつける",
-      "meaning": "to be careful, to take care"
-    },
-    {
-      "word": "向こう",
-      "reading": "むこう",
-      "meaning": "the other side, beyond"
-    },
-    {
-      "word": "探す",
-      "reading": "さがす",
-      "meaning": "to search for, to look for"
+      "word": "黙る",
+      "reading": "だまる",
+      "meaning": "to be silent, to say nothing"
     },
     {
       "word": "低い",
@@ -46,26 +21,64 @@
       "meaning": "low (voice, height)"
     },
     {
-      "word": "鳴る",
-      "reading": "なる",
-      "meaning": "to sound, to creak, to ring"
+      "word": "諦め",
+      "reading": "あきらめ",
+      "meaning": "resignation, giving up"
+    },
+    {
+      "word": "浮かぶ",
+      "reading": "うかぶ",
+      "meaning": "to float up, to appear (on one's face)"
+    },
+    {
+      "word": "つぶやく",
+      "reading": "つぶやく",
+      "meaning": "to mutter, to murmur"
+    },
+    {
+      "word": "逃げる",
+      "reading": "にげる",
+      "meaning": "to flee, to run away"
+    },
+    {
+      "word": "奥",
+      "reading": "おく",
+      "meaning": "back (of a room), inner part"
+    },
+    {
+      "word": "恐れ",
+      "reading": "おそれ",
+      "meaning": "fear, dread"
+    },
+    {
+      "word": "色",
+      "reading": "いろ",
+      "meaning": "colour; here: expression, look (in one's eyes)"
     }
   ],
+  "feedback": "Good effort — you clearly communicated the meaning! The natural phrasing would be おばあさんから聞きました (きいた → きいた is fine as a plain past form, but です doesn't attach directly to a verb in standard Japanese). You could also say おばあさんに教えてもらいました ('an old woman told me') for a slightly more natural feel. Don't worry — the old man understood you perfectly.",
   "scene_type": "choice",
   "choices": [
     {
-      "jp": "「<ruby>婆<rt>ばあ</rt></ruby>さんは<ruby>東京駅<rt>とうきょうえき</rt></ruby>にいました」と<ruby>答<rt>こた</rt></ruby>える",
-      "text_only": "「婆さんは東京駅にいました」と答える"
+      "jp": "「どんなおばあさんか、<ruby>教<rt>おし</rt></ruby>えてもらえますか？」",
+      "text_only": "「どんなおばあさんか、教えてもらえますか？」"
     },
     {
-      "jp": "<ruby>奥<rt>おく</rt></ruby>の<ruby>暖簾<rt>のれん</rt></ruby>に<ruby>目<rt>め</rt></ruby>をやり、「<ruby>今<rt>いま</rt></ruby>、<ruby>何<rt>なに</rt></ruby>か<ruby>聞<rt>き</rt></ruby>こえませんでしたか」と<ruby>聞<rt>き</rt></ruby>く",
-      "text_only": "奥の暖簾に目をやり、「今、何か聞こえませんでしたか」と聞く"
+      "jp": "「<ruby>逃<rt>に</rt></ruby>げるって、<ruby>何<rt>なに</rt></ruby>から<ruby>逃<rt>に</rt></ruby>げるんですか？」",
+      "text_only": "「逃げるって、何から逃げるんですか？」"
     },
     {
-      "jp": "だまって<ruby>老人<rt>ろうじん</rt></ruby>の<ruby>手<rt>て</rt></ruby>の<ruby>動<rt>うご</rt></ruby>きを<ruby>見<rt>み</rt></ruby>つめる",
-      "text_only": "だまって老人の手の動きを見つめる"
+      "jp": "<ruby>黙<rt>だま</rt></ruby>って、<ruby>老人<rt>ろうじん</rt></ruby>が<ruby>次<rt>つぎ</rt></ruby>に<ruby>話<rt>はな</rt></ruby>すのを<ruby>待<rt>ま</rt></ruby>つ。",
+      "text_only": "黙って、老人が次に話すのを待つ。"
     }
   ],
-  "feedback": "Good try — you communicated the meaning clearly! The natural phrasing would be 「おばあさんから聞きました」. In Japanese, verbs like 聞く already carry the past tense themselves (聞きました), so adding です after a verb form like きいた is not standard. Think of it as: verb-た + です doesn't work, but verb-ます form + でした does (e.g. 聞きました).",
-  "mystery_memo": "The old shopkeeper (おじいさん) reacted with fear and suspicion when the player mentioned the old woman — he knows her, and her whereabouts seem dangerous or secret. He searched under the counter (a hidden object? a weapon? a note?). The creak behind the noren suggests someone or something is in the back room — a new element introduced this scene. The woman from Tokyo Station and the old woman the player heard from may be connected. Relationship with shopkeeper: wary but engaging — he hasn't shut the conversation down, which suggests he needs information too. Items in inventory from prior scenes should be referenced soon."
+  "mystery_memo": "The old shopkeeper (じいさん) has now confirmed he was expecting someone to come — a mysterious old woman sent the player here, and he seems to have resigned himself to this meeting. He knows something about the woman from Scene 1 and about the player's presence. The recurring mystery figure is likely the same woman seen at Tokyo Station. The player's answer (heard from an old woman) has shifted the shopkeeper from fearful/evasive to reluctantly cooperative — relationship moves from suspicious toward neutral-wary. No new items this scene, but the ticking clock in the back of the shop is a potential detail to revisit.",
+  "npcs": [
+    {
+      "name_jp": "<ruby>煙草屋<rt>たばこや</rt></ruby>の<ruby>老人<rt>ろうじん</rt></ruby>",
+      "name_reading": "たばこやのろうじん",
+      "relationship": "neutral",
+      "note": "路地の古い煙草屋の店主で、プレイヤーの訪問を予期していたようだ。"
+    }
+  ]
 }

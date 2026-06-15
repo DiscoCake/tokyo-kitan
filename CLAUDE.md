@@ -169,12 +169,19 @@ collects vocabulary — all wrapped in a ~12-scene mystery story set in Tokyo.
 17. **NPC tracker panel (`#npc-panel`).** Each scene response now includes an `npcs` array of
     established characters (named or clearly identified — not background pedestrians). Each entry
     has `name_jp` (ruby-annotated), `name_reading` (plain kana, used as dedup key), `relationship`
-    (`ally/neutral/suspicious/hostile/unknown`), and `note` (1-sentence English context).
+    (`ally/neutral/suspicious/hostile/unknown`), and `note` (1-sentence Japanese plain text — no ruby markup).
     `S.npcLog` accumulates entries across scenes via upsert-by-`name_reading` in `renderScene()` —
     relationship and note update in place when a character reappears. Serialized in saves.
-    UI: `#npc-btn` in `#topbar-right` (accessible during play, not just end-of-game). Opens
-    `#npc-panel` via `openNpcPanel()` in `ui.js`; relationship shown as a color-coded badge
-    (cyan=ally, yellow=neutral, pink=suspicious, red=hostile, grey=unknown).
+    UI: `#npc-btn` in `#topbar-right` (accessible during play) and `#ending-npc-btn` on the
+    ending screen (mirrors the grammar/gallery pattern). Opens `#npc-panel` via `openNpcPanel()`
+    in `ui.js`; relationship shown as a color-coded badge (cyan=ally, yellow=neutral,
+    pink=suspicious, red=hostile, grey=unknown). The `note` field is set via `textContent`
+    (not `innerHTML`) since it is plain text. A `npcFieldsValid` check in `eval/checks.js`
+    validates the `npcs` array structure on every snapshot run.
+    **Scene length constraint:** `scene_jp` is capped at 3 sentences for harder difficulty,
+    4–5 for standard/easier — complexity signals difficulty, not length. The `sceneTextLength`
+    validator strips ruby markup before measuring (30–300 prose chars) so kanji-heavy scenes
+    aren't penalised by markup overhead.
 
 14. **Eval harness for prompt regression testing.** `eval/run.js` has three modes:
     - `npm run eval:check` — reads `eval/snapshots/*.json` offline, runs all 6 validators. No API

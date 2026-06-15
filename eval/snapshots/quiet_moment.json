@@ -1,10 +1,15 @@
 {
-  "location_jp": "<ruby>古<rt>ふる</rt></ruby>い<ruby>本<rt>ほん</rt></ruby><ruby>屋<rt>や</rt></ruby>",
-  "image_query": "tokyo old bookshop narrow shelves dim warm light dusty",
-  "scene_jp": "<ruby>店<rt>みせ</rt></ruby>の<ruby>中<rt>なか</rt></ruby>は、<ruby>天<rt>てん</rt></ruby><ruby>井<rt>じょう</rt></ruby>まで<ruby>本<rt>ほん</rt></ruby>が<ruby>積<rt>つ</rt></ruby>み<ruby>上<rt>あ</rt></ruby>げられていて、<ruby>古<rt>ふる</rt></ruby>い<ruby>紙<rt>かみ</rt></ruby>のにおいが<ruby>漂<rt>ただよ</rt></ruby>っている。カウンターの<ruby>奥<rt>おく</rt></ruby>に、<ruby>眼鏡<rt>めがね</rt></ruby>をかけた<ruby>女<rt>おんな</rt></ruby><ruby>性<rt>せい</rt></ruby>が<ruby>静<rt>しず</rt></ruby>かに<ruby>本<rt>ほん</rt></ruby>を<ruby>読<rt>よ</rt></ruby>んでいた。テストが<ruby>近<rt>ちか</rt></ruby>づくと、<ruby>彼<rt>かの</rt></ruby><ruby>女<rt>じょ</rt></ruby>は<ruby>顔<rt>かお</rt></ruby>を<ruby>上<rt>あ</rt></ruby>げて、まるでずっと<ruby>待<rt>ま</rt></ruby>っていたかのような<ruby>顔<rt>かお</rt></ruby>をした。「あら、テストさん。ロッカーに<ruby>何<rt>なに</rt></ruby>か<ruby>入<rt>はい</rt></ruby>っていましたか？」と<ruby>彼<rt>かの</rt></ruby><ruby>女<rt>じょ</rt></ruby>は<ruby>静<rt>しず</rt></ruby>かに<ruby>聞<rt>き</rt></ruby>いた。その<ruby>目<rt>め</rt></ruby>は、<ruby>笑<rt>わら</rt></ruby>っているようで、<ruby>笑<rt>わら</rt></ruby>っていない。",
-  "scene_translation": "Inside the shop, books are stacked all the way to the ceiling, and the smell of old paper drifts through the air. Behind the counter, a woman wearing glasses was quietly reading a book. As テスト drew closer, she looked up with an expression as if she had been waiting all along. 'Oh my, テスト-san. Did you find something in the locker?' she asked softly. Her eyes looked like they were smiling — and yet, they were not.",
-  "grammar_note": "【まるで～かのような】means 'as if ~' — it describes something that resembles a situation without actually being it. Here: まるでずっと待っていたかのような顔をした = 'she had an expression *as if* she had been waiting all along.' The かのような attaches to a verb in plain past form and modifies a noun.",
+  "location_jp": "<ruby>古<rt>ふる</rt></ruby>い<ruby>本屋<rt>ほんや</rt></ruby>",
+  "image_query": "tokyo old bookshop narrow dusty shelves dim light",
+  "scene_jp": "<ruby>店<rt>みせ</rt></ruby>の<ruby>中<rt>なか</rt></ruby>は<ruby>薄暗<rt>うすぐら</rt></ruby>く、<ruby>天井<rt>てんじょう</rt></ruby>まで<ruby>積<rt>つ</rt></ruby>み<ruby>上<rt>あ</rt></ruby>げられた<ruby>本<rt>ほん</rt></ruby>の<ruby>匂<rt>にお</rt></ruby>いが<ruby>鼻<rt>はな</rt></ruby>をついた。カウンターの<ruby>奥<rt>おく</rt></ruby>に、<ruby>眼鏡<rt>めがね</rt></ruby>をかけた<ruby>年配<rt>ねんぱい</rt></ruby>の<ruby>女性<rt>じょせい</rt></ruby>が<ruby>座<rt>すわ</rt></ruby>っていて、テストが<ruby>入<rt>はい</rt></ruby>ってくるなり<ruby>目<rt>め</rt></ruby>を<ruby>細<rt>ほそ</rt></ruby>めた。「いらっしゃいませ……<ruby>珍<rt>めずら</rt></ruby>しいお<ruby>客<rt>きゃく</rt></ruby>さんですこと。テストさん、でしたっけ？」<ruby>名前<rt>なまえ</rt></ruby>を<ruby>知<rt>し</rt></ruby>っているはずのない<ruby>人<rt>ひと</rt></ruby>に<ruby>名前<rt>なまえ</rt></ruby>を<ruby>呼<rt>よ</rt></ruby>ばれ、テストは<ruby>思<rt>おも</rt></ruby>わず<ruby>立<rt>た</rt></ruby>ち<ruby>止<rt>ど</rt></ruby>まった。<ruby>棚<rt>たな</rt></ruby>の<ruby>一番奥<rt>いちばんおく</rt></ruby>に、<ruby>青<rt>あお</rt></ruby>い<ruby>布<rt>ぬの</rt></ruby>で<ruby>包<rt>つつ</rt></ruby>まれた<ruby>本<rt>ほん</rt></ruby>が<ruby>一冊<rt>いっさつ</rt></ruby>だけ<ruby>置<rt>お</rt></ruby>いてあるのが<ruby>見<rt>み</rt></ruby>えた。",
+  "scene_translation": "The inside of the shop was dim, and the smell of books stacked up to the ceiling hit your nose. Behind the counter sat an older woman wearing glasses, and the moment you walked in, she narrowed her eyes. \"Welcome… what an unusual guest. It was テスト-san, wasn't it?\" You stopped in your tracks — this was someone who had no way of knowing your name. Deep in the back of the shelves, you could see a single book wrapped in blue cloth.",
+  "grammar_note": "【〜なり】meaning 'the moment / as soon as'. 「テストが入ってくるなり目を細めた」= 'The moment you walked in, she narrowed her eyes.' なり attaches to the dictionary form of a verb and expresses that the second action follows immediately. It often carries a slightly literary or formal tone, common in written narrative.",
   "vocab": [
+    {
+      "word": "薄暗い",
+      "reading": "うすぐらい",
+      "meaning": "dim, gloomy"
+    },
     {
       "word": "天井",
       "reading": "てんじょう",
@@ -16,60 +21,68 @@
       "meaning": "to stack up, to pile up"
     },
     {
-      "word": "漂う",
-      "reading": "ただよう",
-      "meaning": "to drift, to float (of scent, atmosphere)"
+      "word": "匂い",
+      "reading": "においe",
+      "meaning": "smell, scent"
     },
     {
-      "word": "眼鏡",
-      "reading": "めがね",
-      "meaning": "glasses, spectacles"
+      "word": "年配",
+      "reading": "ねんぱい",
+      "meaning": "elderly, older (person)"
     },
     {
-      "word": "カウンター",
-      "reading": "カウンター",
-      "meaning": "counter (in a shop)"
+      "word": "目を細める",
+      "reading": "めをほそめる",
+      "meaning": "to narrow one's eyes (suspicion or scrutiny)"
     },
     {
-      "word": "奥",
-      "reading": "おく",
-      "meaning": "the back (of a room/shop), inner depths"
+      "word": "珍しい",
+      "reading": "めずらしい",
+      "meaning": "unusual, rare"
     },
     {
-      "word": "近づく",
-      "reading": "ちかづく",
-      "meaning": "to approach, to draw near"
+      "word": "思わず",
+      "reading": "おもわず",
+      "meaning": "reflexively, without thinking"
     },
     {
-      "word": "まるで",
-      "reading": "まるで",
-      "meaning": "just like, as if (used with かのような or みたい)"
+      "word": "立ち止まる",
+      "reading": "たちどまる",
+      "meaning": "to stop (in one's tracks)"
     },
     {
-      "word": "表情",
-      "reading": "ひょうじょう",
-      "meaning": "facial expression"
+      "word": "包む",
+      "reading": "つつむ",
+      "meaning": "to wrap"
     },
     {
-      "word": "静かに",
-      "reading": "しずかに",
-      "meaning": "quietly, gently"
+      "word": "一冊",
+      "reading": "いっさつ",
+      "meaning": "one (book, volume)"
     }
   ],
   "scene_type": "choice",
   "choices": [
     {
-      "jp": "「あなたは<ruby>誰<rt>だれ</rt></ruby>ですか？どうして<ruby>私<rt>わたし</rt></ruby>の<ruby>名前<rt>なまえ</rt></ruby>を<ruby>知<rt>し</rt></ruby>っているんですか？」と<ruby>聞<rt>き</rt></ruby>く",
-      "text_only": "「あなたは誰ですか？どうして私の名前を知っているんですか？」と聞く"
+      "jp": "「どうして<ruby>私<rt>わたし</rt></ruby>の<ruby>名前<rt>なまえ</rt></ruby>を<ruby>知<rt>し</rt></ruby>っているんですか？」と<ruby>聞<rt>き</rt></ruby>く",
+      "text_only": "「どうして私の名前を知っているんですか？」と聞く"
     },
     {
-      "jp": "ロッカーで<ruby>見<rt>み</rt></ruby>つけた<ruby>鍵<rt>かぎ</rt></ruby>を<ruby>彼<rt>かの</rt></ruby><ruby>女<rt>じょ</rt></ruby>に<ruby>見<rt>み</rt></ruby>せる",
-      "text_only": "ロッカーで見つけた鍵を彼女に見せる"
+      "jp": "<ruby>青<rt>あお</rt></ruby>い<ruby>布<rt>ぬの</rt></ruby>で<ruby>包<rt>つつ</rt></ruby>まれた<ruby>本<rt>ほん</rt></ruby>に<ruby>近<rt>ちか</rt></ruby>づく",
+      "text_only": "青い布で包まれた本に近づく"
     },
     {
-      "jp": "なにも<ruby>言<rt>い</rt></ruby>わずに、<ruby>棚<rt>たな</rt></ruby>の<ruby>本<rt>ほん</rt></ruby>をさりげなく<ruby>見<rt>み</rt></ruby>てみる",
-      "text_only": "なにも言わずに、棚の本をさりげなく見てみる"
+      "jp": "<ruby>青<rt>あお</rt></ruby>い<ruby>服<rt>ふく</rt></ruby>の<ruby>女性<rt>じょせい</rt></ruby>について<ruby>聞<rt>き</rt></ruby>いてみる",
+      "text_only": "青い服の女性について聞いてみる"
     }
   ],
-  "mystery_memo": "The bespectacled woman in the bookshop (new NPC: 眼鏡の女性, not yet named) knows テスト's name and is aware of the locker visit — she is clearly connected to the mystery. She uses polite, calm speech (です/ます, soft feminine あら) suggesting education and composure, but her unsmiling eyes hint at hidden purpose. Relationship: neutral-mysterious (テスト has not yet responded). The woman in blue from Scene 2 has not reappeared — this bookshop woman may be connected to her, or may be a different figure in the same network. The item gained from the locker (古い鍵) is likely known to her and should be presented or referenced soon."
+  "mystery_memo": "A bookshop owner knows the player's name without being told — the third person to do so (after the woman in blue in Scene 2 and the old tobacco-shop keeper who reacted with fear). The blue-cloth-wrapped book on the back shelf mirrors the blue of the mystery woman's clothing — likely a direct clue. The woman's tone is polite but watching; relationship is neutral-suspicious. The locker notebook and receipt from Scene 4 may connect to this shop — the notebook was old and worn, suggesting it could have originated here.",
+  "npcs": [
+    {
+      "name_jp": "<ruby>本屋<rt>ほんや</rt></ruby>の<ruby>女性<rt>じょせい</rt></ruby>",
+      "name_reading": "ほんやのじょせい",
+      "relationship": "suspicious",
+      "note": "古い本屋のカウンターに座る年配の女性で、テストの名前を知っており、静かに様子をうかがっている。"
+    }
+  ]
 }

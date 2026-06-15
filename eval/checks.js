@@ -108,13 +108,33 @@ function choicesAreJapanese(result) {
 }
 
 function sceneTextLength(result) {
-  const len = (result.scene_jp || '').length;
-  const pass = len >= 60 && len <= 1200;
+  // Measure prose length with ruby markup stripped — markup overhead shouldn't penalise
+  // kanji-heavy N3 scenes. Strip <ruby>kanji<rt>reading</rt></ruby> → kanji, then all other tags.
+  const stripped = (result.scene_jp || '')
+    .replace(/<ruby>([^<]*)<rt>[^<]*<\/rt><\/ruby>/g, '$1')
+    .replace(/<[^>]+>/g, '');
+  const pass = stripped.length >= 30 && stripped.length <= 300;
   return {
     name: 'sceneTextLength',
     pass,
-    messages: pass ? [] : [`scene_jp is ${len} chars (expected 60–1200)`]
+    messages: pass ? [] : [`scene_jp prose is ${stripped.length} chars stripped (expected 30–300)`]
   };
+}
+
+function npcFieldsValid(result) {
+  const msgs = [];
+  if (!Array.isArray(result.npcs)) {
+    msgs.push('npcs must be an array (can be empty)');
+    return { name: 'npcFieldsValid', pass: false, messages: msgs };
+  }
+  const validRels = ['ally', 'neutral', 'suspicious', 'hostile', 'unknown'];
+  result.npcs.forEach((n, i) => {
+    if (typeof n.name_jp !== 'string' || !n.name_jp.trim()) msgs.push(`npcs[${i}].name_jp missing`);
+    if (typeof n.name_reading !== 'string' || !n.name_reading.trim()) msgs.push(`npcs[${i}].name_reading missing`);
+    if (!validRels.includes(n.relationship)) msgs.push(`npcs[${i}].relationship invalid: ${n.relationship}`);
+    if (typeof n.note !== 'string') msgs.push(`npcs[${i}].note must be a string`);
+  });
+  return { name: 'npcFieldsValid', pass: msgs.length === 0, messages: msgs };
 }
 
 function noRawBrackets(result) {
@@ -135,6 +155,7 @@ function runChecks(result) {
     choicesAreJapanese(result),
     sceneTextLength(result),
     noRawBrackets(result),
+    npcFieldsValid(result),
   ];
 }
 
