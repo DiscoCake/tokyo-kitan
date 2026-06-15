@@ -1,6 +1,5 @@
 export const SCENE_NUMS = ['一','二','三','四','五','六','七','八','九','十','十一','十二','十三','十四','十五'];
 export const SAVE_KEY = 'tokyo_kitan_save_v1';
-export const PROFILE_KEY = 'tokyo_kitan_profile_v1';
 
 export const S = {
   playerName: '旅人',
@@ -18,12 +17,6 @@ export const S = {
   gallery: [],
   peeks: 0,
   unknownTaps: 0,
-  // Persistent learner profile — survives restart, stored under PROFILE_KEY (keyed by player
-  // name), NOT in the per-run save blob that clearSave() wipes. This is what gives grammar
-  // spaced reinforcement and output history continuity across separate story runs.
-  globalSceneCount: 0,   // total scenes ever read — the clock for grammar reinforcement spacing
-  grammarMastery: {},    // 【expr】 head → { expr, exposures, lastSeen, strength }
-  errorLog: [],          // typed-output journal: { sceneNum, answer, feedback } (newest first)
   // Dungeon mode state
   mode: 'visual-novel',        // 'visual-novel' | 'dungeon'
   dungeonPos: { x: 1, y: 7 }, // tile coordinates; matches MAP start position
@@ -77,31 +70,5 @@ export function clearSave() {
   try { localStorage.removeItem(SAVE_KEY); } catch(e) {}
   if (S.playerName) {
     fetch(`/api/save/${encodeURIComponent(S.playerName)}`, { method: 'DELETE' }).catch(() => {});
-  }
-}
-
-// Persistent learner profile — deliberately separate from the run save so it outlives
-// restart/ending (which call clearSave()). Keyed by player name within one localStorage blob.
-export function saveProfile() {
-  try {
-    const all = JSON.parse(localStorage.getItem(PROFILE_KEY) || '{}');
-    all[S.playerName] = {
-      globalSceneCount: S.globalSceneCount,
-      grammarMastery: S.grammarMastery,
-      errorLog: S.errorLog
-    };
-    localStorage.setItem(PROFILE_KEY, JSON.stringify(all));
-  } catch(e) {}
-}
-
-export function loadProfile(name) {
-  try {
-    const all = JSON.parse(localStorage.getItem(PROFILE_KEY) || '{}');
-    const p = all[name];
-    S.globalSceneCount = p?.globalSceneCount || 0;
-    S.grammarMastery   = p?.grammarMastery   || {};
-    S.errorLog         = p?.errorLog         || [];
-  } catch(e) {
-    S.globalSceneCount = 0; S.grammarMastery = {}; S.errorLog = [];
   }
 }

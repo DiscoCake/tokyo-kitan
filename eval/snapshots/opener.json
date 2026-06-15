@@ -1,9 +1,10 @@
 {
-  "location_jp": "<ruby>新<rt>しん</rt></ruby><ruby>宿<rt>じゅく</rt></ruby><ruby>駅<rt>えき</rt></ruby>　<ruby>南<rt>みなみ</rt></ruby><ruby>口<rt>ぐち</rt></ruby>",
+  "location_jp": "<ruby>新<rt>しん</rt></ruby><ruby>宿<rt>じゅく</rt></ruby><ruby>駅<rt>えき</rt></ruby>・<ruby>南<rt>みなみ</rt></ruby><ruby>口<rt>ぐち</rt></ruby>",
   "image_query": "shinjuku station south exit crowd evening commuters blur",
-  "scene_jp": "<ruby>新<rt>しん</rt></ruby><ruby>宿<rt>えき</rt></ruby>の<ruby>南<rt>みなみ</rt></ruby><ruby>口<rt>ぐち</rt></ruby>を<ruby>出<rt>で</rt></ruby>ると、<ruby>夕<rt>ゆう</rt></ruby><ruby>暮<rt>ぐ</rt></ruby>れの<ruby>光<rt>ひかり</rt></ruby>の<ruby>中<rt>なか</rt></ruby>で<ruby>人<rt>ひと</rt></ruby>の<ruby>波<rt>なみ</rt></ruby>が<ruby>流<rt>なが</rt></ruby>れていく。バッグを<ruby>肩<rt>かた</rt></ruby>にかけて<ruby>地<rt>じ</rt></ruby><ruby>図<rt>ず</rt></ruby>を<ruby>見<rt>み</rt></ruby>ていると、ふいに<ruby>足<rt>あし</rt></ruby><ruby>元<rt>もと</rt></ruby>に<ruby>小<rt>ちい</rt></ruby>さな<ruby>封<rt>ふう</rt></ruby><ruby>筒<rt>とう</rt></ruby>が<ruby>落<rt>お</rt></ruby>ちているのに<ruby>気<rt>き</rt></ruby>がついた。<ruby>封<rt>ふう</rt></ruby><ruby>筒<rt>とう</rt></ruby>を<ruby>拾<rt>ひろ</rt></ruby>い<ruby>上<rt>あ</rt></ruby>げると、そこには<ruby>見<rt>み</rt></ruby><ruby>覚<rt>おぼ</rt></ruby>えのない<ruby>字<rt>じ</rt></ruby>で「テスト<ruby>様<rt>さま</rt></ruby>へ」と<ruby>書<rt>か</rt></ruby>いてある。<ruby>隣<rt>となり</rt></ruby>に<ruby>立<rt>た</rt></ruby>っていた<ruby>老<rt>ろう</rt></ruby><ruby>人<rt>じん</rt></ruby>が、こちらを<ruby>見<rt>み</rt></ruby>てそっとつぶやいた。「<ruby>待<rt>ま</rt></ruby>っていましたよ、テストさん。」",
-  "scene_translation": "You step out of Shinjuku Station's south exit into the flowing tide of people under the dusk light. You're checking your map, bag slung over your shoulder, when you notice a small envelope lying at your feet. Picking it up, you see written in an unfamiliar hand: 'To テスト-sama.' The old man standing beside you glances over and murmurs quietly, 'I've been waiting for you, テスト-san.'",
-  "grammar_note": "【〜のに気がつく】'to notice that ~' — のに here connects a verb clause to 気がつく, expressing the moment of realizing something. e.g. 封筒が落ちているのに気がついた = 'I noticed that an envelope was lying there.' Very useful for mystery and discovery moments.",
+  "scene_jp": "<ruby>新<rt>しん</rt></ruby><ruby>宿<rt>えき</rt></ruby><ruby>駅<rt>えき</rt></ruby>の<ruby>南<rt>みなみ</rt></ruby><ruby>口<rt>ぐち</rt></ruby>を<ruby>出<rt>で</rt></ruby>ると、<ruby>夕<rt>ゆう</rt></ruby><ruby>暮<rt>ぐ</rt></ruby>れの<ruby>光<rt>ひかり</rt></ruby>が<ruby>ビルの<rt>びるの</rt></ruby><ruby>間<rt>あいだ</rt></ruby>にやわらかく<ruby>溶<rt>と</rt></ruby>けていた。<ruby>人<rt>ひと</rt></ruby>の<ruby>波<rt>なみ</rt></ruby>にのまれそうになったとき、ふと<ruby>足<rt>あし</rt></ruby><ruby>元<rt>もと</rt></ruby>に<ruby>白<rt>しろ</rt></ruby>い<ruby>封<rt>ふう</rt></ruby><ruby>筒<rt>とう</rt></ruby>が<ruby>落<rt>お</rt></ruby>ちているのに<ruby>気<rt>き</rt></ruby>がついた。<ruby>拾<rt>ひろ</rt></ruby>い<ruby>上<rt>あ</rt></ruby>げて<ruby>見<rt>み</rt></ruby>ると、<ruby>表<rt>おもて</rt></ruby>に<ruby>手<rt>て</rt></ruby><ruby>書<rt>が</rt></ruby>きで「テスト<ruby>様<rt>さま</rt></ruby>へ」と<ruby>書<rt>か</rt></ruby>いてある。<ruby>封<rt>ふう</rt></ruby><ruby>筒<rt>とう</rt></ruby>を<ruby>開<rt>あ</rt></ruby>けると、<ruby>中<rt>なか</rt></ruby>には<ruby>一<rt>いち</rt></ruby><ruby>枚<rt>まい</rt></ruby>の<ruby>紙<rt>かみ</rt></ruby>があって、「<ruby>夜<rt>よる</rt></ruby>になる<ruby>前<rt>まえ</rt></ruby>に、<ruby>西<rt>にし</rt></ruby><ruby>口<rt>ぐち</rt></ruby>の<ruby>古<rt>ふる</rt></ruby>い<ruby>時<rt>とけい</rt></ruby><ruby>計<rt>けい</rt></ruby><ruby>屋<rt>や</rt></ruby>を<ruby>訪<rt>たず</rt></ruby>ねなさい」とだけ<ruby>書<rt>か</rt></ruby>いてあった。<ruby>周<rt>まわ</rt></ruby>りを<ruby>見<rt>み</rt></ruby><ruby>回<rt>まわ</rt></ruby>しても、この<ruby>手<rt>て</rt></ruby><ruby>紙<rt>がみ</rt></ruby>を<ruby>置<rt>お</rt></ruby>いた<ruby>人<rt>ひと</rt></ruby>はどこにもいない。",
+  "scene_translation": "Stepping out of Shinjuku Station's south exit, the fading evening light melted softly between the buildings. Just as you were about to be swallowed by the flow of people, you noticed a white envelope lying at your feet. Picking it up, you saw written on the front in handwriting: 'To テスト-sama.' Opening the envelope, inside was a single sheet of paper that read only: 'Before night falls, visit the old clock shop at the west exit.' Looking around, the person who left this letter was nowhere to be found.",
+  "grammar_note": "【〜前に】means 'before ~' and attaches to the dictionary form of a verb. Here: 「<ruby>夜<rt>よる</rt></ruby>になる<ruby>前<rt>まえ</rt></ruby>に」= 'before it becomes night.' The verb before 前に is always in its plain (dictionary) form, even when the main sentence is in polite ます/です style.",
+  "grammar_point_targeted": "〜前に",
   "vocab": [
     {
       "word": "南口",
@@ -13,12 +14,7 @@
     {
       "word": "夕暮れ",
       "reading": "ゆうぐれ",
-      "meaning": "dusk, twilight"
-    },
-    {
-      "word": "人の波",
-      "reading": "ひとのなみ",
-      "meaning": "tide/wave of people"
+      "meaning": "dusk, evening twilight"
     },
     {
       "word": "封筒",
@@ -31,54 +27,57 @@
       "meaning": "to pick up"
     },
     {
-      "word": "見覚え",
-      "reading": "みおぼえ",
-      "meaning": "recollection of having seen something"
+      "word": "表",
+      "reading": "おもて",
+      "meaning": "front surface, face"
     },
     {
-      "word": "老人",
-      "reading": "ろうじん",
-      "meaning": "old man/person"
-    },
-    {
-      "word": "つぶやく",
-      "reading": "つぶやく",
-      "meaning": "to murmur, to mutter"
+      "word": "手書き",
+      "reading": "てがき",
+      "meaning": "handwriting, handwritten"
     },
     {
       "word": "〜様",
-      "reading": "さま",
-      "meaning": "honorific suffix, more formal than さん"
+      "reading": "〜さま",
+      "meaning": "honorific suffix (formal 'Mr./Ms./To ~')"
+    },
+    {
+      "word": "訪ねる",
+      "reading": "たずねる",
+      "meaning": "to visit, to call on"
+    },
+    {
+      "word": "見回す",
+      "reading": "みまわす",
+      "meaning": "to look around"
+    },
+    {
+      "word": "時計屋",
+      "reading": "とけいや",
+      "meaning": "clock/watch shop"
     }
   ],
   "items_gained": [
     {
-      "jp": "封筒（未開封）",
-      "reading": "ふうとう（みかいふう）"
+      "jp": "白い封筒（手紙入り）",
+      "reading": "しろいふうとう（てがみいり）"
     }
   ],
   "scene_type": "choice",
   "choices": [
     {
-      "jp": "「<ruby>あなたは<rt></rt></ruby><ruby>誰<rt>だれ</rt></ruby>ですか？」と<ruby>老<rt>ろう</rt></ruby><ruby>人<rt>じん</rt></ruby>に<ruby>聞<rt>き</rt></ruby>く。",
-      "text_only": "「あなたは誰ですか？」と老人に聞く。"
+      "jp": "<ruby>西<rt>にし</rt></ruby><ruby>口<rt>ぐち</rt></ruby>の<ruby>時<rt>とけい</rt></ruby><ruby>計<rt>けい</rt></ruby><ruby>屋<rt>や</rt></ruby>に<ruby>向<rt>む</rt></ruby>かう",
+      "text_only": "西口の時計屋に向かう"
     },
     {
-      "jp": "<ruby>封<rt>ふう</rt></ruby><ruby>筒<rt>とう</rt></ruby>を<ruby>開<rt>あ</rt></ruby>けて、<ruby>中<rt>なか</rt></ruby><ruby>身<rt>み</rt></ruby>を<ruby>確<rt>かく</rt></ruby><ruby>認<rt>にん</rt></ruby>する。",
-      "text_only": "封筒を開けて、中身を確認する。"
+      "jp": "<ruby>封<rt>ふう</rt></ruby><ruby>筒<rt>とう</rt></ruby>をもっとよく<ruby>調<rt>しら</rt></ruby>べる",
+      "text_only": "封筒をもっとよく調べる"
     },
     {
-      "jp": "<ruby>不<rt>ふ</rt></ruby><ruby>思<rt>し</rt></ruby><ruby>議<rt>ぎ</rt></ruby>に<ruby>思<rt>おも</rt></ruby>いながらも、<ruby>老<rt>ろう</rt></ruby><ruby>人<rt>じん</rt></ruby>から<ruby>離<rt>はな</rt></ruby>れて<ruby>歩<rt>ある</rt></ruby>き<ruby>始<rt>はじ</rt></ruby>める。",
-      "text_only": "不思議に思いながらも、老人から離れて歩き始める。"
+      "jp": "<ruby>近<rt>ちか</rt></ruby>くにいる<ruby>駅<rt>えき</rt></ruby><ruby>員<rt>いん</rt></ruby>に<ruby>話<rt>はなし</rt></ruby>しかける",
+      "text_only": "近くにいる駅員に話しかける"
     }
   ],
-  "mystery_memo": "Central mystery: someone knew the player's name before they arrived in Tokyo and left a sealed envelope for them at Shinjuku Station's south exit. The old man also knows the player's name and claims to have been waiting — he is a key figure. The envelope is unopened and its contents are unknown. The player has just arrived, so no prior relationship has been established with any NPC yet.",
-  "npcs": [
-    {
-      "name_jp": "<ruby>老<rt>ろう</rt></ruby><ruby>人<rt>じん</rt></ruby>",
-      "name_reading": "ろうじん",
-      "relationship": "unknown",
-      "note": "新宿駅でテストさんを待っていた謎の老人。名前はまだ不明。"
-    }
-  ]
+  "mystery_memo": "The central mystery begins: a white envelope addressed to the player by name (テスト) was waiting at Shinjuku Station south exit — no sender visible. The note inside directs the player to an old clock shop at the west exit before nightfall. Key question: who knew the player's name and arrival? The clock shop is the next destination. Player has the letter; its contents and the identity of the sender are the first threads to pull.",
+  "npcs": []
 }

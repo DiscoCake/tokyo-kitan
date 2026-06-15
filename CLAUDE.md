@@ -9,7 +9,7 @@ collects vocabulary — all wrapped in a ~12-scene mystery story set in Tokyo.
 - `public/index.html` — HTML markup only; no inline script or style. Loads `/jp-ui/palette.css` and `/jp-ui/furigana.css` before `css/style.css`
 - `public/css/style.css` — app-specific styles; color variables and furigana rules live in the shared `jp-ui` package (see below)
 - `public/js/` — ES modules (no build step, `<script type="module">`):
-  - `state.js` — `S` object, `SAVE_KEY`, `SCENE_NUMS`, save/load/clear; dungeon fields (`mode`, `dungeonPos`, `currentRoomId`, `visitedRooms` Set)
+  - `state.js` — `S` object, `SAVE_KEY`, `SCENE_NUMS`, save/load/clear; dungeon fields (`mode`, `dungeonPos`, `currentRoomId`, `visitedRooms` Set); **persistent learner profile** (`globalSceneCount`, `grammarMastery`, `errorLog`) stored under `PROFILE_KEY` via `saveProfile()`/`loadProfile(name)` — separate from the run save so it survives restart (see #18)
   - `images.js` — async `pickImage(query)` — fetches scene-matched photos from Pexels via server proxy; falls back to dark gradient
   - `tts.js` — TTS controller, Web Speech API, audio button listeners
   - `ambience.js` — synthesized brown-noise ambience, ambience button
@@ -19,9 +19,9 @@ collects vocabulary — all wrapped in a ~12-scene mystery story set in Tokyo.
   - `main.js` — entry point: scale, furigana (delegates to `setFurigana` from `/jp-ui/furigana.js`), IME, mode select (物語/探索), start/resume/restart, `initDungeon` wiring, ending buttons
 - `eval/` — prompt-output eval harness (CommonJS, runs against the live server):
   - `system.js` — SYSTEM prompt mirrored from `game.js`; keep in sync when the prompt changes
-  - `golden.js` — 10 representative scene prompts (opener, choice follow, typed answer, dungeon room, quiet moment, tense encounter, inventory use, harder/easier difficulty, long history)
-  - `checks.js` — 6 pure validators: `matchesContract`, `everyKanjiHasRuby`, `choiceCount`, `choicesAreJapanese`, `sceneTextLength`, `noRawBrackets`
-  - `run.js` — three-mode runner (`check` / `update` / `run`); invoked via `npm run eval:*`
+  - `golden.js` — 11 representative scene prompts (opener, choice follow, typed answer, dungeon room, quiet moment, tense encounter, inventory use, harder/easier difficulty, grammar reinforcement, long history)
+  - `checks.js` — 8 pure validators: `matchesContract`, `everyKanjiHasRuby`, `choiceCount`, `choicesAreJapanese`, `sceneTextLength`, `noRawBrackets`, `npcFieldsValid`, `grammarTargetPresent`
+  - `run.js` — three-mode runner (`check` / `update` / `run`); invoked via `npm run eval:*`. `assertSystemInSync()` runs first in every mode — fails fast if `eval/system.js` ≠ the `SYSTEM` string in `game.js` (the drift guard)
   - `snapshots/` — committed JSON responses (one per golden case slug); `eval:check` validates these offline
 - `server.js` — Express proxy with seven routes:
   - `GET /jp-ui/*` — static files from `../companion/packages/jp-ui` (sibling repo required; see Setup)
@@ -148,15 +148,18 @@ collects vocabulary — all wrapped in a ~12-scene mystery story set in Tokyo.
     (buffers inside `<...>` to never inject a partial ruby tag). Full JSON parse + `renderScene`
     fires after stream end. Perceived wait drops from ~8s → ~1-2s.
 
-15. **N3 grammar coverage via self-selected targeting.** Each scene request injects a
-    `grammarCtx` string built from `S.grammarSeen` (the list of `grammar_note` values
-    accumulated this run). The SYSTEM prompt instructs the model to pick ONE N3 grammar
-    point not yet in that list and weave it naturally into the prose or dialogue — never
-    forced, never stacked, story always first. If nothing fits, the scene proceeds normally.
-    This is a **coverage** (breadth) axis distinct from the **difficulty** axis (`easier/
-    standard/harder`) — it ensures ~12 distinct N3 points are seen across a full run
-    without skewing the overall register. `grammarCtx` is injected in every user-message
-    branch in `generate()` alongside `memoCtx`/`itemCtx`/`diffCtx`.
+15. **N3 grammar coverage via self-selected targeting + spaced reinforcement.** Each scene
+    request injects a `grammarCtx` string built from `S.grammarSeen` (this-run `grammar_note`
+    values) AND a `reinforceCtx` string of points DUE for reinforcement (see #18). The SYSTEM
+    prompt instructs the model to (a) pick ONE NEW N3 point not yet seen this run, feature it,
+    and echo its `【expression】` head into the `grammar_point_targeted` field, and (b) when a
+    due point is listed, reuse ONE of them naturally **without re-explaining it**. Never forced,
+    never stacked, story always first. This is a **coverage** (breadth) axis distinct from the
+    **difficulty** axis (`easier/standard/harder`). Both `grammarCtx` and `reinforceCtx` are
+    injected in every user-message branch in `generate()` alongside `memoCtx`/`itemCtx`/`diffCtx`.
+    **Evolved from exposure-once:** the original design added each point to a "do not repeat"
+    list and never showed it again. Reinforcement (#18) restores spaced depth — breadth + depth,
+    not breadth alone. Do not revert to exposure-once without asking.
 
 16. **Prompt caching on the static SYSTEM block.** Both Anthropic fetch call sites in
     `server.js` wrap the incoming `system` string as
@@ -184,8 +187,8 @@ collects vocabulary — all wrapped in a ~12-scene mystery story set in Tokyo.
     aren't penalised by markup overhead.
 
 14. **Eval harness for prompt regression testing.** `eval/run.js` has three modes:
-    - `npm run eval:check` — reads `eval/snapshots/*.json` offline, runs all 6 validators. No API
-      calls. Use in CI or to quickly verify a snapshot batch is still valid.
+    - `npm run eval:check` — reads `eval/snapshots/*.json` offline, runs all 8 validators (and the
+      `assertSystemInSync` drift guard). No API calls. Use in CI or to quickly verify a batch.
     - `npm run eval:update` — calls the live server (`POST /api/scene`, non-streaming), writes new
       snapshot files. Run after changing the SYSTEM prompt to refresh the baseline.
     - `npm run eval` — calls the live server, reports pass/fail, does NOT write files.
@@ -196,6 +199,25 @@ collects vocabulary — all wrapped in a ~12-scene mystery story set in Tokyo.
     `node eval/run.js update choice_follow dungeon_room` — re-rolls only those snapshots,
     leaving passing ones untouched. Useful after prompt fixes that only affect certain cases.
 
+18. **Persistent learner profile — grammar mastery loop + output journal.** A learner profile
+    lives under `PROFILE_KEY` (keyed by player name), DELIBERATELY SEPARATE from the per-run
+    save blob (`SAVE_KEY`) that `clearSave()` wipes on restart/ending — so grammar reinforcement
+    and output history carry across story runs. Three fields: `globalSceneCount` (total scenes
+    ever read — the clock for reinforcement spacing), `grammarMastery` (map of `【expr】` head →
+    `{expr, exposures, lastSeen, strength}`), `errorLog` (typed-output journal, newest first,
+    cap 50). `saveProfile()` writes after each scene's meta accumulation in `renderScene()` and
+    after each typed-answer feedback; `loadProfile(name)` hydrates in `getPlayerName()` (so it
+    fires on start/resume). `resetGame()` deliberately does NOT clear these. **Spaced scheduler:**
+    `dueGrammar()` in `game.js` flags a point as due once `globalSceneCount - lastSeen` reaches a
+    strength-based interval (`REINFORCE_INTERVAL = [0,2,4,8,16]` by strength 0–4), returning the
+    up-to-3 most overdue `【expressions】` for `reinforceCtx` (see #15). `strength` rises (capped 4)
+    each exposure. **UI:** `#mastery-btn` in `#topbar-right` and `#ending-mastery-btn` on the
+    ending screen open `#mastery-panel` via `openMasteryPanel()` in `ui.js` — grammar points with
+    ★ strength + exposure count, and the output error journal (answer + specific feedback). The
+    journal's user-supplied `answer`/`feedback` are set via `textContent`. **Contract addition:**
+    scenes now return `grammar_point_targeted` (the featured `【expression】` head, no brackets,
+    must match the `【…】` in `grammar_note`); `grammarTargetPresent` in `eval/checks.js` enforces it.
+
 ## Scene JSON contract (returned by the model)
 
 ```json
@@ -205,6 +227,7 @@ collects vocabulary — all wrapped in a ~12-scene mystery story set in Tokyo.
   "scene_jp": "3-5 sentences, ALL kanji ruby-annotated, ≥1 NPC line in 「」",
   "scene_translation": "English translation",
   "grammar_note": "【expression】explanation",
+  "grammar_point_targeted": "【expression】 head (no brackets) of the featured point — matches grammar_note",
   "vocab": [{"word": "", "reading": "", "meaning": ""}],
   "items_gained": [{"jp": "", "reading": ""}],
   "scene_type": "choice | input | ending",
@@ -234,7 +257,17 @@ collects vocabulary — all wrapped in a ~12-scene mystery story set in Tokyo.
 - ~~Session-end grammar review screen~~ — **done**: `#grammar-panel` on ending screen; `openGrammarPanel()` in ui.js; `【expression】` entries deduplicated and highlighted yellow
 - ~~Dungeon Phase 2 (fog of war + minimap)~~ — **done**: `S.exploredTiles` Set (3-tile Chebyshev reveal per step); unexplored tiles draw near-black; `drawMinimap(canvas)` renders 4px/tile overview in bottom-left corner while inside a room
 - ~~Relationship/NPC tracker UI~~ — **done**: `S.npcLog` array, `npcs` field in scene contract, `#npc-panel` with color-coded relationship badges, accessible mid-game via `#npc-btn` in topbar
+- ~~Grammar mastery loop (spaced reinforcement + targeted output)~~ — **done** (#18): persistent
+  `grammarMastery`/`errorLog` profile across runs, `dueGrammar()` scheduler feeds `reinforceCtx`,
+  input scenes target production, `#mastery-panel` shows strength + output journal
 - Dungeon Phase 3 (remaining): NPC sprites on map, per-district ambient sound
+- Dropped (low learning ROI): ambience audio files, better scene art, in-browser speech input
+- **Known limitation:** the persistent learner profile (#18) is localStorage-only — unlike the
+  run save (#10) it does NOT sync to SQLite, so cross-device resume restores the story but not
+  grammar mastery / the error journal. Server-side profile sync is unbuilt.
+- **Cost lever (see #16):** the SYSTEM prompt is ~5.5k chars / ~1.5–1.7k tokens after #18 —
+  still under the 2048-token cache minimum, but closer. Crossing it would activate prompt
+  caching and cut input tokens on every scene call. Do not pad the prompt just to hit it.
 
 ## Conventions
 

@@ -1,6 +1,6 @@
 import { setFurigana as setFuriganaCore } from '/jp-ui/furigana.js';
-import { S, SCENE_NUMS, loadGame, loadGameFromServer, loadProfile, clearSave } from './state.js';
-import { updateVocabBadge, renderItems, openVocabPanel, openGalleryPanel, openGrammarPanel, openNpcPanel, openMasteryPanel, clearScene } from './ui.js';
+import { S, SCENE_NUMS, loadGame, loadGameFromServer, clearSave } from './state.js';
+import { updateVocabBadge, renderItems, openVocabPanel, openGalleryPanel, openGrammarPanel, openNpcPanel, clearScene } from './ui.js';
 import { generate, renderScene } from './game.js';
 import { initDungeon, startDungeon, hideDungeonScreen, drawMinimap, generateLayout, restoreLayout } from './dungeon.js';
 
@@ -58,7 +58,6 @@ document.getElementById('translation-btn').onclick = function() {
   if (!v) { S.peeks++; }
 };
 document.getElementById('npc-btn').onclick = openNpcPanel;
-document.getElementById('mastery-btn').onclick = openMasteryPanel;
 document.getElementById('grammar-btn').onclick = function() {
   const b = document.getElementById('grammar-box');
   const v = b.style.display !== 'none';
@@ -94,10 +93,7 @@ function submitAnswer() {
   generate({ kind: 'answer', value: val });
 }
 
-/* ── RESET ──
-   Clears per-run state only. The persistent learner profile (globalSceneCount,
-   grammarMastery, errorLog) is deliberately NOT reset here — it spans story runs so
-   grammar reinforcement and output history carry forward. */
+/* ── RESET ── */
 function resetGame() {
   S.history = []; S.sceneNum = 0; S.currentScene = null;
   S.mysteryMemo = ''; S.vocabLog = []; S.grammarSeen = []; S.npcLog = [];
@@ -119,7 +115,6 @@ function resetGame() {
 function getPlayerName() {
   const n = document.getElementById('name-input').value.trim();
   if (n) S.playerName = n;
-  loadProfile(S.playerName); // hydrate this player's persistent grammar/output profile
 }
 
 document.getElementById('start-story-btn').onclick = function() {
@@ -214,7 +209,6 @@ document.getElementById('dungeon-restart-btn').onclick = function() {
 /* ── ENDING SCREEN ── */
 document.getElementById('ending-vocab-btn').onclick = openVocabPanel;
 document.getElementById('ending-npc-btn').onclick = openNpcPanel;
-document.getElementById('ending-mastery-btn').onclick = openMasteryPanel;
 document.getElementById('ending-grammar-btn').onclick = openGrammarPanel;
 document.getElementById('ending-gallery-btn').onclick = openGalleryPanel;
 document.getElementById('ending-restart-btn').onclick = () => {

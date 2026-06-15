@@ -1,4 +1,4 @@
-import { S, SCENE_NUMS, saveGame, saveProfile } from './state.js';
+import { S, SCENE_NUMS, saveGame } from './state.js';
 import {
   stripHtml, cinematicOpen, cinematicClose, clearScene,
   loadHeroImage, renderItems,
@@ -21,11 +21,10 @@ DIFFICULTY (provided per request as easier/standard/harder):
 - standard: N4/N3 mix
 - harder: longer sentences, N3 grammar throughout with occasional N2, less common vocab
 
-GRAMMAR COVERAGE — N3 breadth + spaced reinforcement (separate from difficulty level):
-- Each request lists grammar points already seen this run. Choose ONE NEW N3 point NOT in that list that fits the scene naturally, feature it, and set grammar_point_targeted to its 【expression】 head.
-- A request may also list points DUE FOR REINFORCEMENT. When present, also reuse ONE of them naturally somewhere in the scene — do NOT re-explain it (grammar_note stays focused on the featured point). If a due point is itself the most natural fit to feature, you may instead feature it and set grammar_point_targeted to it.
-- Weave grammar into prose or dialogue — story and natural Japanese always come first. Never force it, never stack multiple new points, never bend the prose to cram grammar in.
-- Highlight the featured point in grammar_note. grammar_point_targeted MUST equal the 【expression】 head shown in grammar_note. If nothing N3 fits naturally, use whatever grammar the scene calls for and set grammar_point_targeted to that point's expression.
+GRAMMAR COVERAGE — N3 breadth (separate from difficulty level):
+- Each request includes a list of grammar points already seen this run. Choose ONE N3 grammar point NOT in that list that fits the scene naturally.
+- Weave it into prose or dialogue — story and natural Japanese always come first. Never force it, never stack multiple target points, never bend the prose to cram grammar in.
+- Highlight it in grammar_note as usual. If nothing fits naturally, use whatever grammar the scene calls for.
 
 OUTPUT: valid JSON only — no markdown fences.
 {
@@ -34,19 +33,18 @@ OUTPUT: valid JSON only — no markdown fences.
   "scene_jp": "3 sentences for harder difficulty, 4–5 for standard/easier. ALL kanji with ruby furigana (NO EXCEPTIONS — every single kanji, including common ones like 人・日・駅・続・知, kanji INSIDE 「」 dialogue lines, and BOTH halves of compound/送り仮名 verbs like 拾い上げる → 拾 AND 上), at least one NPC line in 「」. Complexity of grammar and vocabulary signals difficulty — not length.",
   "scene_translation": "Natural English translation",
   "grammar_note": "【expression】explanation — sometimes a register note",
-  "grammar_point_targeted": "the 【expression】 head WITHOUT brackets of the grammar point this scene featured — MUST match the 【…】 in grammar_note",
   "vocab": [{"word": "切符", "reading": "きっぷ", "meaning": "ticket"}, ... 8–12 words, skewing toward less common vocabulary the learner may not know],
   "items_gained": [{"jp": "古い鍵", "reading": "ふるいかぎ"}] (ONLY when the player gains an item this scene, else omit or empty. jp is PLAIN TEXT — no ruby/HTML markup),
   "scene_type": "choice" OR "input" OR "ending",
   "choices": [...] (when choice: 3 options, jp with full ruby + text_only plain),
-  "feedback": "(only when evaluating typed answer) 1-2 English sentences: say what was right, name any SPECIFIC mistake (particle, verb form, word choice), and give the corrected natural phrasing. Player types kana-only — NEVER penalize missing kanji.",
+  "feedback": "(only when evaluating typed answer) 1-2 English sentences on naturalness; suggest natural phrasing if needed. Player types kana-only — NEVER penalize missing kanji.",
   "mystery_memo": "2-4 sentence English internal note: mystery state + NPC relationships + items significance",
   "npcs": [{"name_jp": "<ruby>鈴木<rt>すずき</rt></ruby>", "name_reading": "すずき", "relationship": "neutral", "note": "1-sentence Japanese context, plain text no ruby"}]
 }
 
 npcs: array of established NPCs appearing or referenced this scene. Each entry: name_jp (ruby-annotated Japanese), name_reading (plain kana — used as dedup key across scenes), relationship (one of: ally/neutral/suspicious/hostile/unknown), note (1-sentence Japanese plain text — no ruby markup, describe who they are and their current stance). Only include named or clearly identified characters — not random pedestrians. Return [] if no established NPCs appear. Relationship should reflect the current state based on player actions so far.
 
-SCENE TYPE: roughly every 3rd scene is "input" — an NPC asks a direct question the player answers by typing. Frame that question so a natural answer would use a grammar point seen this run (ideally one due for reinforcement), giving the player a reason to PRODUCE it. Scene 12+: "ending".
+SCENE TYPE: roughly every 3rd scene is "input" — an NPC asks a direct question the player answers by typing. Scene 12+: "ending".
 Player name: PLAYER_NAME`;
 
 function difficultyLevel() {
@@ -55,19 +53,6 @@ function difficultyLevel() {
   if (rate < 0.10) return 'harder';
   if (rate > 0.6)  return 'easier';
   return 'standard';
-}
-
-// Spaced-reinforcement scheduler. A grammar point becomes "due" once the number of scenes
-// since it was last seen reaches a strength-based interval (the more often it's been
-// reinforced, the longer it waits). Returns up to 3 most-overdue 【expressions】.
-const REINFORCE_INTERVAL = [0, 2, 4, 8, 16]; // index = strength (0–4)
-function dueGrammar() {
-  return Object.values(S.grammarMastery)
-    .map(m => ({ expr: m.expr, overdue: (S.globalSceneCount - m.lastSeen) - (REINFORCE_INTERVAL[Math.min(m.strength, 4)] ?? 16) }))
-    .filter(x => x.overdue >= 0 && x.expr)
-    .sort((a, b) => b.overdue - a.overdue)
-    .slice(0, 3)
-    .map(x => x.expr);
 }
 
 function renderChoices(choices) {
@@ -89,35 +74,19 @@ function renderChoices(choices) {
 
 export function renderScene(scene, skipImageLoad = false, skipMeta = false) {
   S.currentScene = scene;
-  if (!skipMeta) {
-    if (scene.mystery_memo) S.mysteryMemo = scene.mystery_memo;
-    S.globalSceneCount++;  // persistent clock for spaced grammar reinforcement
-    if (scene.grammar_note) {
-      S.grammarSeen.push(scene.grammar_note);
-      // Upsert the featured point into the persistent mastery store. Key on the
-      // 【expression】 head — prefer the explicit field, fall back to parsing grammar_note.
-      const expr = (scene.grammar_point_targeted || scene.grammar_note.match(/【(.+?)】/)?.[1] || '').trim();
-      if (expr) {
-        const m = S.grammarMastery[expr] || { expr, exposures: 0, lastSeen: 0, strength: 0 };
-        m.exposures++;
-        m.lastSeen = S.globalSceneCount;
-        m.strength = Math.min(4, m.strength + 1);
-        S.grammarMastery[expr] = m;
+  if (!skipMeta && scene.mystery_memo) S.mysteryMemo = scene.mystery_memo;
+  if (!skipMeta && scene.grammar_note) S.grammarSeen.push(scene.grammar_note);
+  if (!skipMeta && scene.npcs?.length) {
+    scene.npcs.forEach(npc => {
+      const existing = S.npcLog.find(n => n.name_reading === npc.name_reading);
+      if (existing) {
+        existing.relationship = npc.relationship;
+        existing.note = npc.note;
+        existing.name_jp = npc.name_jp;
+      } else {
+        S.npcLog.push({ ...npc });
       }
-    }
-    if (scene.npcs?.length) {
-      scene.npcs.forEach(npc => {
-        const existing = S.npcLog.find(n => n.name_reading === npc.name_reading);
-        if (existing) {
-          existing.relationship = npc.relationship;
-          existing.note = npc.note;
-          existing.name_jp = npc.name_jp;
-        } else {
-          S.npcLog.push({ ...npc });
-        }
-      });
-    }
-    saveProfile();
+    });
   }
 
   document.getElementById('loc-text').innerHTML = scene.location_jp;
@@ -142,8 +111,7 @@ export function renderScene(scene, skipImageLoad = false, skipMeta = false) {
   } else fb.style.display = 'none';
 
   const textEl = document.getElementById('scene-text');
-  textEl.innerHTML = scene.scene_jp ||
-    '<ruby>場面<rt>ばめん</rt></ruby>の<ruby>読<rt>よ</rt></ruby>み<ruby>込<rt>こ</rt></ruby>みに<ruby>失敗<rt>しっぱい</rt></ruby>しました。もう<ruby>一度<rt>いちど</rt></ruby>お<ruby>試<rt>ため</rt></ruby>しください。';
+  textEl.innerHTML = scene.scene_jp;
   textEl.classList.add('fadein');
   setTimeout(() => textEl.classList.remove('fadein'), 400);
   makeSceneWordTaps(textEl, scene.vocab || []);
@@ -270,23 +238,19 @@ export async function generate(action) {
   const grammarCtx = S.grammarSeen.length
     ? `\nGrammar covered this run (do not repeat): ${S.grammarSeen.join(' | ')}`
     : '';
-  const reinforceCtx = dueGrammar().length
-    ? `\nGrammar due for reinforcement (reuse ONE naturally, do NOT re-explain): ${dueGrammar().join(' | ')}`
-    : '';
-  const gramCtx = grammarCtx + reinforceCtx;
 
   let userMsg;
   if (!action) {
-    userMsg = `Scene 1 of ~12. Begin — the player just arrived in Tokyo. Establish the mystery hook.${diffCtx}${gramCtx}`;
+    userMsg = `Scene 1 of ~12. Begin — the player just arrived in Tokyo. Establish the mystery hook.${diffCtx}${grammarCtx}`;
   } else if (action.kind === 'answer') {
-    userMsg = `Scene ${S.sceneNum} of ~12. The player TYPED this answer to the NPC's question: "${action.value}". Evaluate it (feedback field), then continue incorporating their answer.${memoCtx}${itemCtx}${diffCtx}${gramCtx}${histCtx}`;
+    userMsg = `Scene ${S.sceneNum} of ~12. The player TYPED this answer to the NPC's question: "${action.value}". Evaluate it (feedback field), then continue incorporating their answer.${memoCtx}${itemCtx}${diffCtx}${grammarCtx}${histCtx}`;
   } else if (action.kind === 'room') {
     const visitedCtx = action.visitedRoomNames?.length
       ? `\nAlready visited this dungeon run: ${action.visitedRoomNames.join('、')} — NPCs and clues in this room may reference those locations.`
       : '';
-    userMsg = `Scene ${S.sceneNum} of ~12. The player enters ${action.roomName}. Generate a scene set specifically in this location — describe the space, introduce an NPC or clue, deepen the mystery.${visitedCtx}${memoCtx}${itemCtx}${diffCtx}${gramCtx}${histCtx}`;
+    userMsg = `Scene ${S.sceneNum} of ~12. The player enters ${action.roomName}. Generate a scene set specifically in this location — describe the space, introduce an NPC or clue, deepen the mystery.${visitedCtx}${memoCtx}${itemCtx}${diffCtx}${grammarCtx}${histCtx}`;
   } else {
-    userMsg = `Scene ${S.sceneNum} of ~12. Player chose: "${action.value}". Continue.${memoCtx}${itemCtx}${diffCtx}${gramCtx}${histCtx}`;
+    userMsg = `Scene ${S.sceneNum} of ~12. Player chose: "${action.value}". Continue.${memoCtx}${itemCtx}${diffCtx}${grammarCtx}${histCtx}`;
   }
 
   const startTime = Date.now();
@@ -380,13 +344,6 @@ export async function generate(action) {
       });
     }
     renderScene(scene, /* skipImageLoad */ earlyImagePromise != null);
-
-    // Log typed-output feedback into the persistent error journal (newest first, cap 50).
-    if (action?.kind === 'answer' && scene.feedback) {
-      S.errorLog.unshift({ sceneNum: S.sceneNum, answer: action.value, feedback: scene.feedback });
-      if (S.errorLog.length > 50) S.errorLog.length = 50;
-      saveProfile();
-    }
   } catch (e) {
     cinematicClose();
     console.error('Scene error:', e);

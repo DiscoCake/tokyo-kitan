@@ -1,5 +1,17 @@
 # Changelog
 
+### 2026-06-15 — Grammar mastery loop: spaced reinforcement + targeted output
+
+**Feature — persistent learner profile across runs (state.js, game.js, main.js, ui.js, index.html, eval/*):**
+- New persistent profile under `PROFILE_KEY` (keyed by player name), separate from the run save so it survives restart/ending: `globalSceneCount` (reinforcement clock), `grammarMastery` (`【expr】` → `{exposures, lastSeen, strength}`), `errorLog` (typed-output journal). `saveProfile()`/`loadProfile(name)` in `state.js`; hydrated in `getPlayerName()`; `resetGame()` deliberately preserves them.
+- **Grammar: exposure-once → spaced reinforcement.** SYSTEM prompt now asks for one NEW point (echoed into the new `grammar_point_targeted` field) AND, when present, reuse of a DUE point without re-explaining. `dueGrammar()` scheduler (`REINFORCE_INTERVAL = [0,2,4,8,16]` by strength) feeds `reinforceCtx`, injected alongside `grammarCtx` in every `generate()` branch. Evolves decision #15.
+- **Targeted output.** Input scenes are prompted to frame the NPC question so a natural answer uses a run grammar point; `feedback` tightened to name a specific mistake + corrected phrasing. Feedback logged to `errorLog`.
+- **UI.** `#mastery-panel` (★ strength + exposure count per point, plus output error journal) via `openMasteryPanel()`; `#mastery-btn` (定着) in topbar and `#ending-mastery-btn` on the ending screen. User-supplied answer/feedback set via `textContent`.
+- **Contract.** Added `grammar_point_targeted` (must match `grammar_note` head). Mirrored into `eval/system.js`; new `grammarTargetPresent` validator (now 8 checks); new `reinforce_grammar` golden case (now 11); `assertSystemInSync()` drift guard added to `eval/run.js` (fails fast if mirror diverges). Verified byte-identical.
+- **Resilience.** `renderScene` shows a ruby-annotated retry message instead of `undefined` if `scene_jp` is missing.
+- Archived prior `state.js`/`game.js`/`main.js`/`ui.js`/`index.html` via PreToolUse hook.
+- Snapshots NOT yet refreshed — `grammar_point_targeted` is absent from existing snapshots, so `eval:check` reports `grammarTargetPresent` failures until `eval:update` is run.
+
 ### 2026-06-15 — NPC tracker polish and eval fixes
 
 **Fix — NPC panel note safety, ending screen button, eval hardening (ui.js, index.html, main.js, eval/checks.js, game.js, eval/system.js):**
