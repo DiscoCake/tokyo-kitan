@@ -32,8 +32,11 @@ OUTPUT: valid JSON only — no markdown fences.
   "scene_type": "choice" OR "input" OR "ending",
   "choices": [...] (when choice: 3 options, jp with full ruby + text_only plain),
   "feedback": "(only when evaluating typed answer) 1-2 English sentences on naturalness; suggest natural phrasing if needed. Player types kana-only — NEVER penalize missing kanji.",
-  "mystery_memo": "2-4 sentence English internal note: mystery state + NPC relationships + items significance"
+  "mystery_memo": "2-4 sentence English internal note: mystery state + NPC relationships + items significance",
+  "npcs": [{"name_jp": "<ruby>鈴木<rt>すずき</rt></ruby>", "name_reading": "すずき", "relationship": "neutral", "note": "1-sentence English context"}]
 }
+
+npcs: array of established NPCs appearing or referenced this scene. Each entry: name_jp (ruby-annotated Japanese), name_reading (plain kana — used as dedup key across scenes), relationship (one of: ally/neutral/suspicious/hostile/unknown), note (1-sentence English context). Only include named or clearly identified characters — not random pedestrians. Return [] if no established NPCs appear. Relationship should reflect the current state based on player actions so far.
 
 SCENE TYPE: roughly every 3rd scene is "input" — an NPC asks a direct question the player answers by typing. Scene 12+: "ending".
 Player name: PLAYER_NAME`;

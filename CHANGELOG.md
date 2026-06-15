@@ -1,5 +1,22 @@
 # Changelog
 
+### 2026-06-15 — NPC tracker panel
+
+**Feature — NPC relationship tracker (scene contract, state, UI):**
+- Added `npcs` field to scene JSON contract: array of `{name_jp, name_reading, relationship, note}` for established characters. Model returns only named/identified NPCs; random pedestrians excluded.
+- `S.npcLog` accumulates entries via upsert-by-`name_reading` in `renderScene()` — relationship and note update in place when a character reappears. Serialized in saves.
+- `openNpcPanel()` added to `ui.js`; `#npc-panel` added to `index.html` (same `.panel` structure as grammar/vocab panels).
+- `#npc-btn` (人物) added to `#topbar-right` — accessible during play, not just end-of-game.
+- Relationship badges color-coded: cyan=ally, yellow=neutral, pink=suspicious, red=hostile, grey=unknown.
+- Updated `eval/system.js` to mirror SYSTEM prompt change.
+
+### 2026-06-15 — Difficulty threshold tuning
+
+**Fix — Adaptive difficulty no longer skews hard (public/js/game.js):**
+- Raised the "harder" guard from `sceneNum < 2` to `sceneNum < 4` — no difficulty escalation until there's a meaningful sample of player signals.
+- Lowered the "harder" rate threshold from `< 0.25` to `< 0.10` — "harder" now requires fewer than 1 peek/tap per 10 scenes (genuine ease signal), not 1 per 4.
+- "easier" threshold (`> 0.6`) and "standard" band unchanged.
+
 ### 2026-06-14 — Minimap toggle moved to game screen topbar
 
 **Fix — Minimap toggle now visible inside rooms (public/index.html, public/js/main.js, public/js/dungeon.js):**

@@ -38,16 +38,19 @@ OUTPUT: valid JSON only — no markdown fences.
   "scene_type": "choice" OR "input" OR "ending",
   "choices": [...] (when choice: 3 options, jp with full ruby + text_only plain),
   "feedback": "(only when evaluating typed answer) 1-2 English sentences on naturalness; suggest natural phrasing if needed. Player types kana-only — NEVER penalize missing kanji.",
-  "mystery_memo": "2-4 sentence English internal note: mystery state + NPC relationships + items significance"
+  "mystery_memo": "2-4 sentence English internal note: mystery state + NPC relationships + items significance",
+  "npcs": [{"name_jp": "<ruby>鈴木<rt>すずき</rt></ruby>", "name_reading": "すずき", "relationship": "neutral", "note": "1-sentence English context"}]
 }
+
+npcs: array of established NPCs appearing or referenced this scene. Each entry: name_jp (ruby-annotated Japanese), name_reading (plain kana — used as dedup key across scenes), relationship (one of: ally/neutral/suspicious/hostile/unknown), note (1-sentence English context). Only include named or clearly identified characters — not random pedestrians. Return [] if no established NPCs appear. Relationship should reflect the current state based on player actions so far.
 
 SCENE TYPE: roughly every 3rd scene is "input" — an NPC asks a direct question the player answers by typing. Scene 12+: "ending".
 Player name: PLAYER_NAME`;
 
 function difficultyLevel() {
-  if (S.sceneNum < 2) return 'standard';
+  if (S.sceneNum < 4) return 'standard';
   const rate = (S.peeks + S.unknownTaps) / S.sceneNum;
-  if (rate < 0.25) return 'harder';
+  if (rate < 0.10) return 'harder';
   if (rate > 0.6)  return 'easier';
   return 'standard';
 }
@@ -73,6 +76,18 @@ export function renderScene(scene, skipImageLoad = false, skipMeta = false) {
   S.currentScene = scene;
   if (!skipMeta && scene.mystery_memo) S.mysteryMemo = scene.mystery_memo;
   if (!skipMeta && scene.grammar_note) S.grammarSeen.push(scene.grammar_note);
+  if (!skipMeta && scene.npcs?.length) {
+    scene.npcs.forEach(npc => {
+      const existing = S.npcLog.find(n => n.name_reading === npc.name_reading);
+      if (existing) {
+        existing.relationship = npc.relationship;
+        existing.note = npc.note;
+        existing.name_jp = npc.name_jp;
+      } else {
+        S.npcLog.push({ ...npc });
+      }
+    });
+  }
 
   document.getElementById('loc-text').innerHTML = scene.location_jp;
   if (!skipImageLoad) {

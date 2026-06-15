@@ -433,3 +433,20 @@ body.cinematic-active #cin-top, body.cinematic-active #cin-bottom { height: 2.5r
   font-size: 0.82rem; color: var(--text2); line-height: 1.9;
 }
 .grammar-expr { color: var(--yellow); font-weight: 500; font-size: 0.88rem; }
+
+/* ── NPC PANEL ── */
+.npc-entry {
+  padding: 0.75rem 0; border-bottom: 1px solid var(--border);
+}
+.npc-name {
+  font-size: 1rem; color: var(--cyan); font-family: 'Noto Serif JP', serif;
+  display: flex; align-items: baseline; gap: 0.6rem; flex-wrap: wrap;
+}
+.npc-badge {
+  font-size: 0.7rem; font-family: 'Noto Sans JP', sans-serif;
+  border: 1px solid; border-radius: 3px; padding: 0.1em 0.45em;
+  font-weight: 500; white-space: nowrap;
+}
+.npc-note {
+  font-size: 0.78rem; color: var(--text2); margin-top: 0.3rem; line-height: 1.6;
+}
