@@ -1,0 +1,55 @@
+{
+  "location_jp": "<ruby>古<rt>ふる</rt></ruby>い<ruby>本屋<rt>ほんや</rt></ruby>",
+  "image_query": "tokyo old bookshop narrow shelves dusty warm lamp light",
+  "scene_jp": "<ruby>古<rt>ふる</rt></ruby>い<ruby>本屋<rt>ほんや</rt></ruby>のドアを<ruby>開<rt>あ</rt></ruby>けると、<ruby>紙<rt>かみ</rt></ruby>と<ruby>古<rt>ふる</rt></ruby>いインクのにおいがした。<ruby>棚<rt>たな</rt></ruby>には<ruby>色<rt>いろ</rt></ruby>あせた<ruby>本<rt>ほん</rt></ruby>がぎっしり<ruby>並<rt>なら</rt></ruby>んでいて、<ruby>店<rt>みせ</rt></ruby>の<ruby>奥<rt>おく</rt></ruby>に<ruby>小<rt>ちい</rt></ruby>さな<ruby>女<rt>おんな</rt></ruby>の<ruby>子<rt>こ</rt></ruby>が<ruby>座<rt>すわ</rt></ruby>っていた。<ruby>女<rt>おんな</rt></ruby>の<ruby>子<rt>こ</rt></ruby>はテストを<ruby>見<rt>み</rt></ruby>ると、ふっと<ruby>笑<rt>わら</rt></ruby>った。「あ、やっと<ruby>来<rt>き</rt></ruby>たんだ。ずっと<ruby>待<rt>ま</rt></ruby>ってたよ、テストくん」と<ruby>言<rt>い</rt></ruby>った。<ruby>棚<rt>たな</rt></ruby>の<ruby>一番上<rt>いちばんうえ</rt></ruby>に、<ruby>青<rt>あお</rt></ruby>い<ruby>布<rt>ぬの</rt></ruby>で<ruby>包<rt>つつ</rt></ruby>まれた<ruby>小<rt>ちい</rt></ruby>さな<ruby>箱<rt>はこ</rt></ruby>が<ruby>見<rt>み</rt></ruby>えた。",
+  "scene_translation": "When you opened the door of the old bookshop, the smell of paper and old ink drifted over you. The shelves were packed with faded books, and deep inside the shop sat a small girl. When she saw Tesuto, she smiled softly. \"Ah, you finally came. I've been waiting for you for a long time, Tesuto-kun,\" she said. On the very top shelf, you could see a small box wrapped in blue cloth.",
+  "grammar_note": "【やっと〜んだ】'やっと' means 'finally/at last.' The 〜んだ ending (from のだ) adds a tone of explanation or emotional weight — here, slight relief and expectation. Compare the girl's casual young speech (だよ・たよ) with the polite shopkeeper speech (です・ます) you heard in Scene 3. Same situation, very different register.",
+  "vocab": [
+    {
+      "word": "色あせた",
+      "reading": "いろあせた",
+      "meaning": "faded (in color)"
+    },
+    {
+      "word": "ぎっしり",
+      "reading": "ぎっしり",
+      "meaning": "packed tightly, crammed"
+    },
+    {
+      "word": "奥",
+      "reading": "おく",
+      "meaning": "back (of a room/shop), depths"
+    },
+    {
+      "word": "包む",
+      "reading": "つつむ",
+      "meaning": "to wrap"
+    },
+    {
+      "word": "布",
+      "reading": "ぬの",
+      "meaning": "cloth, fabric"
+    },
+    {
+      "word": "待つ",
+      "reading": "まつ",
+      "meaning": "to wait"
+    }
+  ],
+  "scene_type": "choice",
+  "choices": [
+    {
+      "jp": "「どうして<ruby>私<rt>わたし</rt></ruby>の<ruby>名前<rt>なまえ</rt></ruby>を<ruby>知<rt>し</rt></ruby>っているの？」と<ruby>聞<rt>き</rt></ruby>く",
+      "text_only": "「どうして私の名前を知っているの？」と聞く"
+    },
+    {
+      "jp": "<ruby>棚<rt>たな</rt></ruby>の<ruby>上<rt>うえ</rt></ruby>の<ruby>青<rt>あお</rt></ruby>い<ruby>箱<rt>はこ</rt></ruby>に<ruby>手<rt>て</rt></ruby>を<ruby>伸<rt>の</rt></ruby>ばしてみる",
+      "text_only": "棚の上の青い箱に手を伸ばしてみる"
+    },
+    {
+      "jp": "「<ruby>青<rt>あお</rt></ruby>い<ruby>服<rt>ふく</rt></ruby>の<ruby>女<rt>おんな</rt></ruby>の<ruby>人<rt>ひと</rt></ruby>を<ruby>知<rt>し</rt></ruby>っていますか？」と<ruby>聞<rt>き</rt></ruby>く",
+      "text_only": "「青い服の女の人を知っていますか？」と聞く"
+    }
+  ],
+  "mystery_memo": "The girl in the bookshop knows Tesuto's name — making her the second character (after the woman in blue, Scene 1) to demonstrate impossible foreknowledge of the player. This is a deliberate pattern: someone has been directing Tesuto toward this shop. The blue-wrapped box on the shelf visually echoes the woman in blue, possibly connecting the two. The locker from Scene 4 yielded a small notebook with a key tucked inside (inventory) — the box may require it. The girl's relationship is currently neutral-curious; she is clearly an ally but her motives are unknown. The old tobacco shopkeeper (Scene 3) is coded as frightened/suspicious regarding the woman in blue — he should reappear later with more reluctant information."
+}

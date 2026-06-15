@@ -1,4 +1,3 @@
-import { setFurigana as setFuriganaCore } from '/jp-ui/furigana.js';
 import { S, SCENE_NUMS, loadGame, clearSave } from './state.js';
 import { updateVocabBadge, renderItems, openVocabPanel, openGalleryPanel, clearScene } from './ui.js';
 import { generate, renderScene } from './game.js';
@@ -25,7 +24,7 @@ window.addEventListener('wheel', e => {
 /* ── FURIGANA ── */
 function setFurigana(on) {
   S.furigana = on;
-  setFuriganaCore(on);
+  document.body.classList.toggle('hide-furigana', !on);
   document.getElementById('furigana-btn').classList.toggle('active', on);
   document.getElementById('setup-furigana-btn').classList.toggle('active', on);
   document.getElementById('dungeon-furigana-btn').classList.toggle('active', on);

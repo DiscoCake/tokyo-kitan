@@ -23,9 +23,9 @@ DIFFICULTY (provided per request as easier/standard/harder):
 
 OUTPUT: valid JSON only — no markdown fences.
 {
-  "location_jp": "場所名, ruby furigana on ALL kanji, Japanese only",
+  "location_jp": "場所名, ruby furigana on ALL kanji — NO EXCEPTIONS, even common kanji like 駅 or 道, Japanese only",
   "image_query": "3-6 English keywords describing the VISUAL ATMOSPHERE of the scene for a photo search — focus on what it looks like, not just the place name. Good examples: 'japan train platform interior crowd', 'tokyo neon alley night rain', 'shinto shrine torii gate fog', 'japanese izakaya lanterns warm', 'old bookshop dusty shelves'. Avoid generic location names alone like 'tokyo station' — describe the mood and setting.",
-  "scene_jp": "3-5 sentences, ALL kanji with ruby furigana, at least one NPC line in 「」",
+  "scene_jp": "3-5 sentences, ALL kanji with ruby furigana (NO EXCEPTIONS — every single kanji, including common ones like 人・日・駅・続・知), at least one NPC line in 「」",
   "scene_translation": "Natural English translation",
   "grammar_note": "【expression】explanation — sometimes a register note",
   "vocab": [{"word": "切符", "reading": "きっぷ", "meaning": "ticket"}, ... 4-6 words],

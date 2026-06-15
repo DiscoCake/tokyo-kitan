@@ -19,7 +19,6 @@ if (!process.env.ANTHROPIC_API_KEY) {
 const imageCache = new Map();
 
 app.use(express.json({ limit: '1mb' }));
-app.use('/jp-ui', express.static(path.join(__dirname, '..', 'companion', 'packages', 'jp-ui')));
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.get('/api/image', async (req, res) => {

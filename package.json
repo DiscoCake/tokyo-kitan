@@ -5,7 +5,11 @@
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
-    "dev": "node --watch server.js"
+    "dev": "node --watch server.js",
+    "eval": "node eval/run.js run",
+    "eval:check": "node eval/run.js check",
+    "eval:update": "node eval/run.js update",
+    "test:smoke": "node test/smoke.js"
   },
   "engines": {
     "node": ">=18"
