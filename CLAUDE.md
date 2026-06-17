@@ -23,11 +23,15 @@ collects vocabulary — all wrapped in a ~12-scene mystery story set in Tokyo.
   - `checks.js` — 8 pure validators: `matchesContract`, `everyKanjiHasRuby`, `choiceCount`, `choicesAreJapanese`, `sceneTextLength`, `noRawBrackets`, `npcFieldsValid`, `grammarTargetPresent`
   - `run.js` — three-mode runner (`check` / `update` / `run`); invoked via `npm run eval:*`. `assertSystemInSync()` runs first in every mode — fails fast if `eval/system.js` ≠ the `SYSTEM` string in `game.js` (the drift guard)
   - `snapshots/` — committed JSON responses (one per golden case slug); `eval:check` validates these offline
-- `server.js` — Express proxy with seven routes:
+- `anki.js` — read-only AnkiConnect client (CommonJS); `getStrugglingVocab()` queries lapsed
+  cards (`prop:lapses>=2 -is:new`) → `{word, reading, lapses}[]`. Required by `server.js` for #19.
+  Mirrors the sibling `companion/src/anki.js` struggling-card path, trimmed to the read.
+- `server.js` — Express proxy with eight routes:
   - `GET /jp-ui/*` — static files from `../companion/packages/jp-ui` (sibling repo required; see Setup)
   - `POST /api/scene` — non-streaming fallback (unused by client, kept for debugging)
   - `POST /api/scene/stream` — SSE streaming proxy to Anthropic; pipes `text_delta` events to client; wraps `system` string in `[{ type:'text', cache_control:{type:'ephemeral'} }]` for prompt caching (see #16)
   - `GET /api/image` — Pexels photo search with "japan" appended; in-memory cache (Map)
+  - `GET /api/anki/struggling` — lapsed-vocab feed for #19; calls `getStrugglingVocab()` via AnkiConnect, in-memory last-good cache. **Anki closed is not an error** — returns `{cards:[], available:false}` (HTTP 200) so the client no-ops. `ANKI_URL`/`ANKI_LAPSED_QUERY` env-overridable.
   - `GET /api/save/:name` — retrieve SQLite save by player name (404 if none)
   - `POST /api/save` — upsert save by `playerName` field (JSON blob in `saves` table)
   - `DELETE /api/save/:name` — clear save for that player name
@@ -35,7 +39,8 @@ collects vocabulary — all wrapped in a ~12-scene mystery story set in Tokyo.
   - `palette.css` — CSS custom properties: `--bg`, `--pink`, `--cyan`, `--yellow`, `--purple`, etc.
   - `furigana.css` — `ruby`/`rt` base styles and `body.hide-furigana rt { display:none }` rule
   - `furigana.js` — exports `setFurigana(on: boolean)` — the furigana toggle implementation
-- No database yet. Game state lives in browser memory + localStorage saves
+- Game state lives in browser memory + localStorage, with a server-side SQLite mirror for
+  cross-device resume (see #10). The persistent learner profile (#18/#19) is localStorage-only.
 
 ## Design decisions — DO NOT undo these without asking the user
 
@@ -218,6 +223,26 @@ collects vocabulary — all wrapped in a ~12-scene mystery story set in Tokyo.
     scenes now return `grammar_point_targeted` (the featured `【expression】` head, no brackets,
     must match the `【…】` in `grammar_note`); `grammarTargetPresent` in `eval/checks.js` enforces it.
 
+19. **Anki lapsed-vocab reinforcement — subtle, opt-in, graceful.** Pulls the learner's
+    most-lapsed Anki cards and offers the AI ONE per scene to weave in naturally, giving
+    forgotten words in-context re-exposure. **Deliberately subtle** (the user's words: words
+    shouldn't feel forced or break immersion): at most one candidate per scene, the SYSTEM
+    prompt frames it exactly like grammar reinforcement (#15) — "use it ONLY if it fits, story
+    first, skip entirely if forced." Distinct from the difficulty (#7) and grammar (#15/#18) axes.
+    **Server:** `GET /api/anki/struggling` → `getStrugglingVocab()` in `anki.js` (AnkiConnect
+    `findCards`/`cardsInfo`, query `ANKI_LAPSED_QUERY` default `prop:lapses>=2 -is:new`). Anki
+    closed ⇒ `{cards:[], available:false}`, so the whole feature silently no-ops. **Client:**
+    `primeLapsedPool()` in `game.js` fetches once per start/resume into an ephemeral (NOT persisted)
+    module-level pool; `nextLapsedCandidate()` round-robins one not-yet-surfaced word per scene into
+    `ankiCtx` (appended after `gramCtx` in all four `generate()` branches), holding it in
+    `activeLapsedCandidate`. **Surfacing log:** `renderScene()` checks `stripHtml(scene_jp).includes(word)`
+    — if the model actually used it, pushes `{word, reading, sceneNum, location}` onto `S.lapsedSurfaced`
+    (per-run, serialized in the save blob, NOT the persistent profile). **UI:** the `#mastery-panel`
+    has a third section (`苦手の言葉が出た場面`, `#mastery-lapsed-list`) listing surfaced words + where —
+    skipped candidates never appear. **Contract unchanged** — no new validators. The SYSTEM addition is
+    mirrored in `eval/system.js` (drift guard). **Limitation:** like #18 this is localStorage/desktop-only
+    and depends on the Anki app being open on the same machine as the server (AnkiConnect on localhost:8765).
+
 ## Scene JSON contract (returned by the model)
 
 ```json
@@ -249,24 +274,24 @@ collects vocabulary — all wrapped in a ~12-scene mystery story set in Tokyo.
 
 ## Roadmap (discussed, not yet built)
 
-- Real location-matched ambience with audio files (current: synthesized brown-noise hum)
-- Server-side persistence (SQLite) → cross-device save
-- Speech input (Web Speech recognition) for spoken answers — stretch
-- Better scene photos: generated art or curated image library (Pexels is live but results vary)
-- ~~Vocab chip UX~~ — **done**: tappable ruby words in scene text + explicit ＋ button on chips
+- ~~Vocab chip UX~~ — **done**: tappable ruby words in scene text → floating lookup card with an explicit ＋ add. (Note: `renderVocabChips()` in `ui.js` is an unused earlier chip-row implementation — the shipped UX is the ruby-tap card, `makeSceneWordTaps`.)
 - ~~Session-end grammar review screen~~ — **done**: `#grammar-panel` on ending screen; `openGrammarPanel()` in ui.js; `【expression】` entries deduplicated and highlighted yellow
 - ~~Dungeon Phase 2 (fog of war + minimap)~~ — **done**: `S.exploredTiles` Set (3-tile Chebyshev reveal per step); unexplored tiles draw near-black; `drawMinimap(canvas)` renders 4px/tile overview in bottom-left corner while inside a room
 - ~~Relationship/NPC tracker UI~~ — **done**: `S.npcLog` array, `npcs` field in scene contract, `#npc-panel` with color-coded relationship badges, accessible mid-game via `#npc-btn` in topbar
 - ~~Grammar mastery loop (spaced reinforcement + targeted output)~~ — **done** (#18): persistent
   `grammarMastery`/`errorLog` profile across runs, `dueGrammar()` scheduler feeds `reinforceCtx`,
   input scenes target production, `#mastery-panel` shows strength + output journal
+- ~~Anki integration for lapsed-word reinforcement~~ — **done** (#19): `GET /api/anki/struggling`
+  feeds one lapsed Anki word per scene into `ankiCtx`; surfaced words logged to `S.lapsedSurfaced`
+  and shown in `#mastery-panel`. Subtle by design; silently no-ops when Anki is closed.
 - Dungeon Phase 3 (remaining): NPC sprites on map, per-district ambient sound
-- Dropped (low learning ROI): ambience audio files, better scene art, in-browser speech input
+- Server-side sync for the persistent learner profile (#18) — currently localStorage-only (see Known limitation below)
+- Dropped (low learning ROI): real location-matched ambience audio files, generated/curated scene art (Pexels stays), in-browser speech-recognition input
 - **Known limitation:** the persistent learner profile (#18) is localStorage-only — unlike the
   run save (#10) it does NOT sync to SQLite, so cross-device resume restores the story but not
   grammar mastery / the error journal. Server-side profile sync is unbuilt.
-- **Cost lever (see #16):** the SYSTEM prompt is ~5.5k chars / ~1.5–1.7k tokens after #18 —
-  still under the 2048-token cache minimum, but closer. Crossing it would activate prompt
+- **Cost lever (see #16):** the SYSTEM prompt is ~6.0k chars / ~1.8k tokens after #19 —
+  still under the 2048-token cache minimum, but close. Crossing it would activate prompt
   caching and cut input tokens on every scene call. Do not pad the prompt just to hit it.
 
 ## Conventions

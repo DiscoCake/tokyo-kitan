@@ -1,7 +1,7 @@
 import { setFurigana as setFuriganaCore } from '/jp-ui/furigana.js';
 import { S, SCENE_NUMS, loadGame, loadGameFromServer, loadProfile, clearSave } from './state.js';
 import { updateVocabBadge, renderItems, openVocabPanel, openGalleryPanel, openGrammarPanel, openNpcPanel, openMasteryPanel, clearScene } from './ui.js';
-import { generate, renderScene } from './game.js';
+import { generate, renderScene, primeLapsedPool } from './game.js';
 import { initDungeon, startDungeon, hideDungeonScreen, drawMinimap, generateLayout, restoreLayout } from './dungeon.js';
 
 // Side-effect imports — each module wires its own event listeners on load
@@ -100,7 +100,7 @@ function submitAnswer() {
    grammar reinforcement and output history carry forward. */
 function resetGame() {
   S.history = []; S.sceneNum = 0; S.currentScene = null;
-  S.mysteryMemo = ''; S.vocabLog = []; S.grammarSeen = []; S.npcLog = [];
+  S.mysteryMemo = ''; S.vocabLog = []; S.grammarSeen = []; S.npcLog = []; S.lapsedSurfaced = [];
   S.items = []; S.gallery = []; S.peeks = 0; S.unknownTaps = 0;
   S.roomScenes = {};
   S.dungeonLayout = null;
@@ -120,6 +120,7 @@ function getPlayerName() {
   const n = document.getElementById('name-input').value.trim();
   if (n) S.playerName = n;
   loadProfile(S.playerName); // hydrate this player's persistent grammar/output profile
+  primeLapsedPool();         // fire-and-forget: fetch lapsed Anki vocab for in-scene reinforcement (#19)
 }
 
 document.getElementById('start-story-btn').onclick = function() {

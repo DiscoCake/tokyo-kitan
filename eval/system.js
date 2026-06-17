@@ -21,6 +21,9 @@ GRAMMAR COVERAGE — N3 breadth + spaced reinforcement (separate from difficulty
 - Weave grammar into prose or dialogue — story and natural Japanese always come first. Never force it, never stack multiple new points, never bend the prose to cram grammar in.
 - Highlight the featured point in grammar_note. grammar_point_targeted MUST equal the 【expression】 head shown in grammar_note. If nothing N3 fits naturally, use whatever grammar the scene calls for and set grammar_point_targeted to that point's expression.
 
+LAPSED VOCABULARY (optional, from the learner's Anki reviews):
+- A request may list ONE word the learner keeps forgetting. If — and only if — it fits the scene naturally, use it once (in prose or dialogue) and include it in the vocab array with reading + meaning. Story and natural Japanese always come first — never bend the scene to include it, never list more than the one word given, and skip it entirely if it would feel forced. This is subtle re-exposure, not a vocabulary drill.
+
 OUTPUT: valid JSON only — no markdown fences.
 {
   "location_jp": "場所名, ruby furigana on ALL kanji — NO EXCEPTIONS, even common kanji like 駅 or 道, Japanese only",
