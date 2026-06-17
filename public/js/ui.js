@@ -217,15 +217,18 @@ export function openGrammarPanel() {
 export function openMasteryPanel() {
   const gList = document.getElementById('mastery-grammar-list');
   const eList = document.getElementById('mastery-error-list');
+  const lList = document.getElementById('mastery-lapsed-list');
   const empty = document.getElementById('mastery-empty');
 
   const points = Object.values(S.grammarMastery).sort((a, b) => b.strength - a.strength || b.exposures - a.exposures);
   const errors = S.errorLog || [];
+  const lapsed = S.lapsedSurfaced || [];
 
-  if (!points.length && !errors.length) {
+  if (!points.length && !errors.length && !lapsed.length) {
     empty.style.display = 'block';
     gList.innerHTML = '';
     eList.innerHTML = '';
+    lList.innerHTML = '';
     document.getElementById('mastery-panel').style.display = 'block';
     return;
   }
@@ -254,6 +257,23 @@ export function openMasteryPanel() {
         return d.outerHTML;
       }).join('')
     : '<div class="panel-empty" style="display:block;"><ruby>作文<rt>さくぶん</rt></ruby>の<ruby>記録<rt>きろく</rt></ruby>はまだありません。</div>';
+
+  // Lapsed Anki words that actually surfaced in the story this run, and where (#19).
+  // word/location are Anki/scene-supplied → set via textContent.
+  lList.innerHTML = lapsed.length
+    ? lapsed.map(l => {
+        const d = document.createElement('div');
+        d.className = 'mastery-error-entry';
+        const w = document.createElement('div');
+        w.className = 'mastery-answer';
+        w.textContent = l.reading ? `${l.word}（${l.reading}）` : l.word;
+        const where = document.createElement('div');
+        where.className = 'mastery-feedback';
+        where.textContent = `第${l.sceneNum}場面・${l.location}`;
+        d.appendChild(w); d.appendChild(where);
+        return d.outerHTML;
+      }).join('')
+    : '<div class="panel-empty" style="display:block;"><ruby>苦手<rt>にがて</rt></ruby>の<ruby>言葉<rt>ことば</rt></ruby>はまだ<ruby>出<rt>で</rt></ruby>ていません。</div>';
 
   document.getElementById('mastery-panel').style.display = 'block';
 }

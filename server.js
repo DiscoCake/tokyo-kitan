@@ -5,6 +5,7 @@
  */
 require('dotenv').config();
 const express = require('express');
+const { getStrugglingVocab } = require('./anki');
 const path = require('path');
 const Database = require('better-sqlite3');
 
@@ -28,6 +29,7 @@ db.exec(`
 `);
 
 const imageCache = new Map();
+let ankiCache = null; // last good { cards, total } — served if Anki later goes offline mid-session
 
 app.use(express.json({ limit: '1mb' }));
 app.use('/jp-ui', express.static(path.join(__dirname, '..', 'companion', 'packages', 'jp-ui')));
@@ -53,6 +55,23 @@ app.get('/api/image', async (req, res) => {
   } catch (e) {
     console.error('Pexels error:', e);
     res.status(500).json({ error: e.message });
+  }
+});
+
+// Lapsed-vocab feed for in-scene reinforcement (#19). Reads the learner's most-lapsed
+// Anki cards via AnkiConnect. Anki being closed is NOT an error here — we return an empty,
+// available:false payload (HTTP 200) so the client treats "no Anki" identically to "no
+// lapses": the feature silently no-ops. A last-good result is cached in-memory and served
+// if Anki goes offline mid-session.
+app.get('/api/anki/struggling', async (req, res) => {
+  const limit = Math.min(100, parseInt(req.query.limit) || 50);
+  try {
+    const result = await getStrugglingVocab({ limit });
+    ankiCache = result;
+    res.json(result);
+  } catch (e) {
+    if (ankiCache) return res.json({ ...ankiCache, fromCache: true });
+    res.json({ cards: [], total: 0, available: false });
   }
 });
 

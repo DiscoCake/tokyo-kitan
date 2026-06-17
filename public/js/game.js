@@ -27,6 +27,9 @@ GRAMMAR COVERAGE — N3 breadth + spaced reinforcement (separate from difficulty
 - Weave grammar into prose or dialogue — story and natural Japanese always come first. Never force it, never stack multiple new points, never bend the prose to cram grammar in.
 - Highlight the featured point in grammar_note. grammar_point_targeted MUST equal the 【expression】 head shown in grammar_note. If nothing N3 fits naturally, use whatever grammar the scene calls for and set grammar_point_targeted to that point's expression.
 
+LAPSED VOCABULARY (optional, from the learner's Anki reviews):
+- A request may list ONE word the learner keeps forgetting. If — and only if — it fits the scene naturally, use it once (in prose or dialogue) and include it in the vocab array with reading + meaning. Story and natural Japanese always come first — never bend the scene to include it, never list more than the one word given, and skip it entirely if it would feel forced. This is subtle re-exposure, not a vocabulary drill.
+
 OUTPUT: valid JSON only — no markdown fences.
 {
   "location_jp": "場所名, ruby furigana on ALL kanji — NO EXCEPTIONS, even common kanji like 駅 or 道, Japanese only",
@@ -68,6 +71,38 @@ function dueGrammar() {
     .sort((a, b) => b.overdue - a.overdue)
     .slice(0, 3)
     .map(x => x.expr);
+}
+
+// ── Anki lapsed-vocab reinforcement (#19) ──
+// Ephemeral, session-only pool of words the learner keeps forgetting (from their Anki
+// reviews). Fetched once per game start/resume; NOT persisted. generate() offers at most
+// one candidate per scene as a soft, skippable prompt hint; renderScene() checks whether
+// the model actually used it. If Anki is closed the pool stays empty and everything no-ops.
+let lapsedPool = [];                 // [{ word, reading }] most-lapsed first
+let lapsedPtr = 0;                   // round-robin cursor over the pool
+const lapsedSurfacedWords = new Set(); // words confirmed used in a scene — skipped thereafter
+let activeLapsedCandidate = null;    // the word offered to the current in-flight scene
+
+export async function primeLapsedPool() {
+  lapsedPool = []; lapsedPtr = 0; lapsedSurfacedWords.clear(); activeLapsedCandidate = null;
+  try {
+    const r = await fetch('/api/anki/struggling');
+    const data = await r.json();
+    lapsedPool = (data.cards || []).filter(c => c.word);
+  } catch { lapsedPool = []; }
+}
+
+// Round-robin the next not-yet-surfaced candidate. Returns { word, reading } or null.
+function nextLapsedCandidate() {
+  if (!lapsedPool.length) return null;
+  for (let i = 0; i < lapsedPool.length; i++) {
+    const c = lapsedPool[(lapsedPtr + i) % lapsedPool.length];
+    if (!lapsedSurfacedWords.has(c.word)) {
+      lapsedPtr = (lapsedPtr + i + 1) % lapsedPool.length;
+      return c;
+    }
+  }
+  return null; // every word already surfaced this run
 }
 
 function renderChoices(choices) {
@@ -116,6 +151,20 @@ export function renderScene(scene, skipImageLoad = false, skipMeta = false) {
           S.npcLog.push({ ...npc });
         }
       });
+    }
+    // Lapsed-vocab reinforcement (#19): if a candidate word was offered this scene AND the
+    // model actually wove it in, log where it surfaced. stripHtml leaves the base kanji
+    // intact (ruby reading text trails it) so includes() still matches inside <ruby> markup.
+    if (activeLapsedCandidate) {
+      const word = activeLapsedCandidate.word;
+      if (!lapsedSurfacedWords.has(word) && stripHtml(scene.scene_jp || '').includes(word)) {
+        lapsedSurfacedWords.add(word);
+        S.lapsedSurfaced.push({
+          word, reading: activeLapsedCandidate.reading || '',
+          sceneNum: S.sceneNum, location: stripHtml(scene.location_jp || '')
+        });
+      }
+      activeLapsedCandidate = null;
     }
     saveProfile();
   }
@@ -274,19 +323,25 @@ export async function generate(action) {
     ? `\nGrammar due for reinforcement (reuse ONE naturally, do NOT re-explain): ${dueGrammar().join(' | ')}`
     : '';
   const gramCtx = grammarCtx + reinforceCtx;
+  // Offer at most ONE lapsed Anki word this scene (held in module scope so renderScene can
+  // check whether the model actually used it). Soft and skippable — see SYSTEM prompt #19.
+  activeLapsedCandidate = nextLapsedCandidate();
+  const ankiCtx = activeLapsedCandidate
+    ? `\nLapsed vocabulary the learner keeps forgetting (from their Anki reviews): ${activeLapsedCandidate.word}${activeLapsedCandidate.reading ? `（${activeLapsedCandidate.reading}）` : ''}. If — and only if — it fits this scene naturally, use it ONCE and include it in the vocab array. Story comes first; skip it entirely if it would feel forced.`
+    : '';
 
   let userMsg;
   if (!action) {
-    userMsg = `Scene 1 of ~12. Begin — the player just arrived in Tokyo. Establish the mystery hook.${diffCtx}${gramCtx}`;
+    userMsg = `Scene 1 of ~12. Begin — the player just arrived in Tokyo. Establish the mystery hook.${diffCtx}${gramCtx}${ankiCtx}`;
   } else if (action.kind === 'answer') {
-    userMsg = `Scene ${S.sceneNum} of ~12. The player TYPED this answer to the NPC's question: "${action.value}". Evaluate it (feedback field), then continue incorporating their answer.${memoCtx}${itemCtx}${diffCtx}${gramCtx}${histCtx}`;
+    userMsg = `Scene ${S.sceneNum} of ~12. The player TYPED this answer to the NPC's question: "${action.value}". Evaluate it (feedback field), then continue incorporating their answer.${memoCtx}${itemCtx}${diffCtx}${gramCtx}${ankiCtx}${histCtx}`;
   } else if (action.kind === 'room') {
     const visitedCtx = action.visitedRoomNames?.length
       ? `\nAlready visited this dungeon run: ${action.visitedRoomNames.join('、')} — NPCs and clues in this room may reference those locations.`
       : '';
-    userMsg = `Scene ${S.sceneNum} of ~12. The player enters ${action.roomName}. Generate a scene set specifically in this location — describe the space, introduce an NPC or clue, deepen the mystery.${visitedCtx}${memoCtx}${itemCtx}${diffCtx}${gramCtx}${histCtx}`;
+    userMsg = `Scene ${S.sceneNum} of ~12. The player enters ${action.roomName}. Generate a scene set specifically in this location — describe the space, introduce an NPC or clue, deepen the mystery.${visitedCtx}${memoCtx}${itemCtx}${diffCtx}${gramCtx}${ankiCtx}${histCtx}`;
   } else {
-    userMsg = `Scene ${S.sceneNum} of ~12. Player chose: "${action.value}". Continue.${memoCtx}${itemCtx}${diffCtx}${gramCtx}${histCtx}`;
+    userMsg = `Scene ${S.sceneNum} of ~12. Player chose: "${action.value}". Continue.${memoCtx}${itemCtx}${diffCtx}${gramCtx}${ankiCtx}${histCtx}`;
   }
 
   const startTime = Date.now();

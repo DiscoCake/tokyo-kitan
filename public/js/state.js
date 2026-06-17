@@ -14,6 +14,7 @@ export const S = {
   vocabLog: [],
   grammarSeen: [],
   npcLog: [],
+  lapsedSurfaced: [],          // per-run log of lapsed Anki words that appeared in scenes: { word, reading, sceneNum, location } (#19)
   items: [],
   gallery: [],
   peeks: 0,
@@ -40,6 +41,7 @@ export function saveGame() {
       playerName: S.playerName, sceneNum: S.sceneNum, history: S.history,
       currentScene: S.currentScene, mysteryMemo: S.mysteryMemo,
       vocabLog: S.vocabLog, grammarSeen: S.grammarSeen, npcLog: S.npcLog,
+      lapsedSurfaced: S.lapsedSurfaced,
       items: S.items, gallery: S.gallery, peeks: S.peeks, unknownTaps: S.unknownTaps,
       mode: S.mode,
       dungeonPos: { ...S.dungeonPos },

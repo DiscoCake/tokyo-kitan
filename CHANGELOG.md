@@ -1,5 +1,17 @@
 # Changelog
 
+### 2026-06-16 — Anki lapsed-vocab reinforcement (#19)
+
+**Feature — subtle in-scene re-exposure of forgotten Anki words (anki.js, server.js, game.js, state.js, main.js, ui.js, index.html, eval/system.js, .env.example):**
+- New `anki.js` — read-only AnkiConnect client; `getStrugglingVocab()` queries lapsed cards (`findCards`/`cardsInfo`, query `ANKI_LAPSED_QUERY` default `prop:lapses>=2 -is:new`) → `{word, reading, lapses}[]`. Mirrors the sibling `companion/src/anki.js` struggling-card path, trimmed to the read.
+- New route `GET /api/anki/struggling` in `server.js` (last-good in-memory cache). **Anki closed is not an error** — responds `{cards:[], available:false}` (HTTP 200) so the client treats "no Anki" identically to "no lapses": the feature silently no-ops.
+- **Client (game.js):** `primeLapsedPool()` fetches once per start/resume into an ephemeral (NOT persisted) module pool; `nextLapsedCandidate()` round-robins one not-yet-surfaced word per scene into `ankiCtx`, appended after `gramCtx` in all four `generate()` branches and held in `activeLapsedCandidate`. Wired via `getPlayerName()` in `main.js`.
+- **SYSTEM prompt:** new optional LAPSED VOCABULARY section — "use the one given word ONLY if it fits, story first, skip if forced; never list more than one." Same soft framing as grammar reinforcement (#15). Mirrored into `eval/system.js` (drift guard).
+- **Surfacing log:** `renderScene()` checks `stripHtml(scene_jp).includes(word)` — if the model actually used the candidate, pushes `{word, reading, sceneNum, location}` onto new per-run `S.lapsedSurfaced` (serialized in the save blob, NOT the persistent profile; reset in `resetGame()`).
+- **UI:** `#mastery-panel` gains a third section (`苦手の言葉が出た場面`, `#mastery-lapsed-list`) listing surfaced words + where; skipped candidates never appear. word/location set via `textContent`.
+- **Contract unchanged** — no new validators. Run `eval:update` after this prompt change to refresh snapshots (the SYSTEM addition is inert to existing outputs but the drift guard requires the mirror, which is in place).
+- New env: `ANKI_URL`, `ANKI_LAPSED_QUERY` (both optional, documented in `.env.example`). `anki.js` is new. Prior state of `server.js`/`public/*` is recoverable from the parent commit (no separate archive snapshot this round).
+
 ### 2026-06-15 — Grammar mastery loop: spaced reinforcement + targeted output
 
 **Feature — persistent learner profile across runs (state.js, game.js, main.js, ui.js, index.html, eval/*):**

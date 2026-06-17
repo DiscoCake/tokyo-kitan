@@ -42,6 +42,7 @@ Open http://localhost:3000
 - Multi-voice TTS: Kyoko (narration) / Otoya (dialogue), with play/pause, seek, speed control
 - Adaptive difficulty from two signals: translation peeks + tapping kanji the AI didn't flag as vocabulary
 - Grammar mastery loop: N3 points are reinforced on a spaced schedule across story runs, input scenes prompt you to produce them, and a 定着 panel tracks per-point strength + a journal of your typed-answer feedback
+- Anki lapsed-vocab reinforcement: words you keep failing in Anki are subtly woven into scenes (at most one per scene, skipped if it doesn't fit); the 定着 panel shows which surfaced and where. Requires Anki open with AnkiConnect — silently skipped otherwise
 - NPC relationship tracker (人物 panel) — recurring characters with color-coded ally/suspicious/hostile badges
 - Save/resume, scene gallery, UI scaling, cinematic transitions
 
